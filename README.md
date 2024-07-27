@@ -1,5 +1,5 @@
 Các nhà quản lý nhân sự
-• Quản lý Tuyển dụng: Tạo và quản lý các chiến dịch thực tập, từ đăng tin tuyển dụng đến thu thập đơn xin việc.
+• Quản lý Tuyển dụng: Tạo và quản lý các chiến dịch thực tập, từ đăng tin tuyển dụng đến thu thập hồ sơ xin việc.
 • Quản lý Hồ sơ Thực tập sinh: Duy trì cơ sở dữ liệu thông tin cá nhân, học vấn và lịch sử làm việc của thực tập sinh với khả năng tìm kiếm nâng cao.
 • Báo cáo và Phân tích: Tạo báo cáo tự động về hiệu quả chương trình và thành tích của thực tập sinh. Sử dụng các công cụ phân tích để nhận diện xu hướng và cải thiện quy trình.
 Nhân viên phụ trách Thực tập
@@ -17,3 +17,4 @@ Thực tập sinh
 Quản trị viên
 • Cấu hình và Bảo trì Hệ thống: Xử lý cài đặt hệ thống, quyền người dùng và giao thức bảo mật dữ liệu.
 • Hỗ trợ Kỹ thuật: Cung cấp hỗ trợ kỹ thuật cho người dùng và khắc phục sự cố hệ thống.
+• 
