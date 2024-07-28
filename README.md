@@ -17,4 +17,3 @@ Thực tập sinh
 Quản trị viên
 • Cấu hình và Bảo trì Hệ thống: Xử lý cài đặt hệ thống, quyền người dùng và giao thức bảo mật dữ liệu.
 • Hỗ trợ Kỹ thuật: Cung cấp hỗ trợ kỹ thuật cho người dùng và khắc phục sự cố hệ thống.
-• 
