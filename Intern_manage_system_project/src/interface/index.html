@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Nhân Sự - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>Dashboard Quản Lý Nhân Sự</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
+        <li><a href="recruitment.html">Tuyển Dụng</a></li>
+        <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Thống Kê</h2>
+        <!-- Nội dung thống kê sẽ nằm ở đây -->
+    </section>
+    <button id="registerBtn">Đăng Ký</button>
+    <button id="loginBtn">Đăng Nhập</button>
+</main>
+<footer>
+    <p>&copy; 2024 Quản Lý Nhân Sự</p>
+</footer>
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeRegister">&times;</span>
+        <form>
+            <label for="register_username">Tên Đăng Nhập:</label>
+            <input type="text" id="register_username" name="username" required><br>
+            <label for="register_email">Email:</label>
+            <input type="email" id="register_email" name="email" required><br>
+            <label for="register_password">Mật Khẩu:</label>
+            <input type="password" id="register_password" name="password" required><br>
+            <label for="confirm_password">Xác Nhận Mật Khẩu:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            <input type="submit" value="Đăng Ký">
+        </form>
+    </div>
+</div>
+
+<!-- Modal Đăng Nhập -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeLogin">&times;</span>
+        <form>
+            <label for="login_username">Tên Đăng Nhập:</label>
+            <input type="text" id="login_username" name="username" required><br>
+            <label for="login_password">Mật Khẩu:</label>
+            <input type="password" id="login_password" name="password" required><br>
+            <input type="submit" value="Đăng Nhập">
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
