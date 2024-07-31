@@ -1,9 +1,8 @@
 package Main;
 
 import java.util.Scanner;
-
 import User.User;
-import userDAO.UserDAO;
+import DAO.UserDao;
 
 public class Main {
 	public static void main(String[]agrs) {
@@ -18,21 +17,21 @@ public class Main {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("PLs enter number: ");
 			inputKey = sc.nextInt();
-			UserDAO userDao = new UserDAO("JPAs");
+			UserDao userDao = new UserDao();
 			User user = new User(1, "NgocPhuoc", "123", "admin");
 			switch(inputKey) {
-			case 0:break;
+			case 0: System.exit(0);break;
 			case 1:
-				userDao.getUsers();
+				userDao.getAll();
 				break;
 			case 2:
-				userDao.save(user);
+				userDao.insert(user);
 				break;
 			case 3:
 				userDao.delete(1);
 				break;
 			case 4:
-				user = new User(2, "HuyHoang", "1234", "user");
+				user = new User(1, "HuyHoang", "1234", "user");
 				userDao.update(user);
 				break;
 			default:

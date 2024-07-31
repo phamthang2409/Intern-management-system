@@ -1,5 +1,15 @@
 package User;
 import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "TASKS")
@@ -16,13 +26,14 @@ public class Task {
     private String description;
 
     @Column(name = "deadline")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date deadline;
 
     @ManyToOne
     @JoinColumn(name = "training_program_id")
     private TrainingProgram trainingProgram;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "trainee_id")
     private Trainee trainee;
 

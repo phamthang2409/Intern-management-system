@@ -9,10 +9,10 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:sqlserver://localhost:1433; DatabaseName=tutorial; encrypt=true; trustServerCertificate=true;" />
+				value="jdbc:sqlserver://localhost:1433; DatabaseName=test; encrypt=optional; trustServerCertificate=true;" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password"
-				value="Aesx5099@@" />
+				value="123" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.show_sql" value="true" />
