@@ -1,24 +1,11 @@
-/* */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/* Định dạng chung */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header, footer {
+/*thanh tác vụ*/
+header {
     background-color: #007BFF;
     color: white;
     text-align: center;
-    padding: 1.5em 0;
-}
 
+}
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -128,15 +115,11 @@ form input[type="submit"]:hover {
     background-color: #f2bdf8;
 }
 
-footer {
-    margin-top: 2em;
-}
 
 /* đăng nhập, đăng ký */
-/* Modal */
 button {
-    padding: 0.75em 1.5em;
-    margin: 1em;
+    padding: 1.5px 20px;
+    margin: 5px;
     background-color: #007BFF;
     color: white;
     border: none;
@@ -160,11 +143,11 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modal-content, logout-button {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #4caf50;
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
@@ -202,7 +185,7 @@ form input[type="password"] {
     margin-top: 0.5em;
     border: 1px solid #ddd;
     border-radius: 5px;
-    transition: border-color 0.3s;
+    transition: border-color 0.5s;
 }
 
 form input[type="text"]:focus,
@@ -226,3 +209,16 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* hiệu ứng nền */
+body, h1 , header{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./picture/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: rgba(30, 255, 0, 0.74);
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
