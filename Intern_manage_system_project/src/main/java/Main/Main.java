@@ -1,7 +1,7 @@
 package Main;
 
 import java.util.Scanner;
-import User.User;
+import Model.User;
 import DAO.UserDao;
 
 public class Main {

@@ -1,3 +1,5 @@
+package Model;
+
 //package User;
 //import javax.persistence.*;
 //

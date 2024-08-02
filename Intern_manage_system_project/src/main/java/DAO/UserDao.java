@@ -8,7 +8,7 @@ import Connection.DBContext;
 import java.util.ArrayList;
 import java.sql.*;
 import java.util.List;
-import User.User;
+import Model.User;
 
 /**
  *

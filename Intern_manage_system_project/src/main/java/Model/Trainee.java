@@ -1,4 +1,4 @@
-package User;
+package Model;
 
 public class Trainee extends User {
 	public Trainee(int ID, String userName, String passWord, String role) {
