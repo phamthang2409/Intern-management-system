@@ -220,5 +220,252 @@ body, h1 , header{
     font-family: 'Roboto', sans-serif;
 }
 
+/*trang chương trình đào tạo */
+article {
+    background-color: white;
+    padding: 1.5em;
+    margin: 1em 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* cho form đăng ký trang chương trình đào tạo */
+.registration-form {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
 
+.registration-form h4 {
+    color: #007BFF;
+    margin-bottom: 0.5em;
+}
+
+.registration-form label {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.registration-form input[type="submit"] {
+    margin-top: 1em;
+    padding: 0.75em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.registration-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+article h3 {
+    color: #007BFF;
+    margin-bottom: 0.5em;
+}
+/* form đánh giá trang trainer */
+.review-form {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.review-form h4 {
+    color: #007BFF;
+    margin-bottom: 0.5em;
+}
+
+.review-form label {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-form select {
+    padding: 0.75em;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-form input[type="submit"] {
+    margin-top: 1em;
+    padding: 0.75em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.review-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+/* form đăng ký tuyển dụng */
+#recruitmentForm {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#recruitmentForm label {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+#recruitmentForm input[type="text"],
+#recruitmentForm input[type="email"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#recruitmentForm input[type="submit"] {
+    margin-top: 1em;
+    padding: 0.75em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#recruitmentForm input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/*danh sách nhân viên */
+.list {
+    margin-top: 1em;
+}
+
+.item {
+    background-color: #fff;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.item h3 {
+    margin-top: 0;
+    color: #007BFF;
+}
+
+.item p {
+    margin: 0.5em 0;
+    color: #555;
+}
+/* danh sách ứng viên */
+#recruitmentList {
+    margin-top: 1em;
+}
+
+.applicant {
+    background-color: #fff;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.applicant:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.applicant h3 {
+    margin-top: 0;
+    color: #007BFF;
+}
+
+.applicant p {
+    margin: 0.5em 0;
+    color: #555;
+}
+/* form thêm nhân viên */
+#addEmployeeForm {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addEmployeeForm label {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+#addEmployeeForm input[type="text"],
+#addEmployeeForm input[type="email"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#addEmployeeForm input[type="submit"] {
+    margin-top: 1em;
+    padding: 0.75em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#addEmployeeForm input[type="submit"]:hover {
+    background-color: #0056b3;
+}
 

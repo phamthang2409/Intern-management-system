@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quản Lý Nhân Sự - Danh Sách Nhân Viên</title>
+    <title>Danh Sách Nhân Viên</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -16,25 +16,17 @@
         <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
         <li><a href="recruitment.html">Tuyển Dụng</a></li>
         <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
+        <li><a href="training_program.html">Chương Trình Đào Tạo</a></li>
+        <li><a href="trainer.html">Hướng Dẫn Viên</a></li>
         <button id="logout-button">Đăng Xuất</button>
     </ul>
 </nav>
 <main>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Chức Vụ</th>
-            <th>Phòng Ban</th>
-            <th>Hành Động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Dữ liệu nhân viên sẽ được chèn vào đây -->
-        </tbody>
-    </table>
+    <section>
+        <h2>Danh Sách Nhân Viên</h2>
+        <div id="employeeList" class="list"></div>
+    </section>
 </main>
-
+<script src="script.js"></script>
 </body>
 </html>

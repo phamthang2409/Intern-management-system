@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chương Trình Đào Tạo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Chương Trình Đào Tạo</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Trang Chủ</a></li>
+        <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
+        <li><a href="recruitment.html">Tuyển Dụng</a></li>
+        <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
+        <li><a href="training_program.html">Chương Trình Đào Tạo</a></li>
+        <li><a href="trainer.html">Hướng Dẫn Viên</a></li>
+        <button id="logout-button">Đăng Xuất</button>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Chương Trình Đào Tạo Nhân Viên</h2>
+        <article>
+            <h3>Khóa Học Kỹ Năng Giao Tiếp</h3>
+            <p>Khóa học này giúp nhân viên nâng cao kỹ năng giao tiếp trong công việc và cuộc sống.</p>
+            <button onclick="showRegistrationForm('registrationForm1')">Đăng Ký</button>
+            <div id="registrationForm1" class="registration-form" style="display:none;">
+                <h4>Đăng Ký Khóa Học Kỹ Năng Giao Tiếp</h4>
+                <form>
+                    <label for="name1">Họ và Tên:</label>
+                    <input type="text" id="name1" name="name" required>
+                    <br>
+                    <label for="email1">Email:</label>
+                    <input type="email" id="email1" name="email" required>
+                    <br>
+                    <input type="submit" value="Gửi Đăng Ký">
+                </form>
+            </div>
+        </article>
+        <article>
+            <h3>Khóa Học Quản Lý Thời Gian</h3>
+            <p>Khóa học này giúp nhân viên học cách quản lý thời gian hiệu quả, tăng năng suất làm việc.</p>
+            <button onclick="showRegistrationForm('registrationForm2')">Đăng Ký</button>
+            <div id="registrationForm2" class="registration-form" style="display:none;">
+                <h4>Đăng Ký Khóa Học Quản Lý Thời Gian</h4>
+                <form>
+                    <label for="name2">Họ và Tên:</label>
+                    <input type="text" id="name2" name="name" required>
+                    <br>
+                    <label for="email2">Email:</label>
+                    <input type="email" id="email2" name="email" required>
+                    <br>
+                    <input type="submit" value="Gửi Đăng Ký">
+                </form>
+            </div>
+        </article>
+        <article>
+            <h3>Khóa Học Lập Trình</h3>
+            <p>Khóa học này trang bị cho nhân viên các kỹ năng cần thiết để trở thành một lập trình viên giỏi.</p>
+            <button onclick="showRegistrationForm('registrationForm3')">Đăng Ký</button>
+            <div id="registrationForm3" class="registration-form" style="display:none;">
+                <h4>Đăng Ký Khóa Học Lập Trình</h4>
+                <form>
+                    <label for="name3">Họ và Tên:</label>
+                    <input type="text" id="name3" name="name" required>
+                    <br>
+                    <label for="email3">Email:</label>
+                    <input type="email" id="email3" name="email" required>
+                    <br>
+                    <input type="submit" value="Gửi Đăng Ký">
+                </form>
+            </div>
+        </article>
+    </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
