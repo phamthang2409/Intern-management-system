@@ -32,7 +32,14 @@
             <input type="email" id="email" name="email" required>
             <br>
             <label for="position">Chức Vụ:</label>
-            <input type="text" id="position" name="position" required>
+            <select id="position" name="position" required>
+                <option value="">Chọn chức vụ</option>
+                <option value="manager">Quản Lý</option>
+                <option value="developer">Nhà Phát Triển</option>
+                <option value="designer">Nhà Thiết Kế</option>
+                <option value="tester">Kiểm Thử Viên</option>
+                <option value="analyst">Nhà Phân Tích</option>
+            </select>
             <br>
             <input type="submit" value="Thêm Nhân Viên">
         </form>
@@ -42,5 +49,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
