@@ -84,36 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 /*thêm nhân viên mới*/
 document.addEventListener("DOMContentLoaded", function() {
-    const addEmployeeForm = document.getElementById("addEmployeeForm");
-
-    if (addEmployeeForm) {
-        addEmployeeForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const position = document.getElementById("position").value;
-
-            const employee = {
-                name: name,
-                email: email,
-                position: position
-            };
-
-            let employees = localStorage.getItem("employees");
-            if (employees) {
-                employees = JSON.parse(employees);
-            } else {
-                employees = [];
-            }
-
-            employees.push(employee);
-            localStorage.setItem("employees", JSON.stringify(employees));
-
-            window.location.href = "employee_list.html";
-        });
-    }
-
     const employeeList = document.getElementById("employeeList");
 
     function displayEmployees() {
@@ -122,13 +92,17 @@ document.addEventListener("DOMContentLoaded", function() {
             let employees = localStorage.getItem("employees");
             if (employees) {
                 employees = JSON.parse(employees);
-                employees.forEach(function(employee) {
+                employees.forEach(function(employee, index) {
                     const employeeDiv = document.createElement("div");
                     employeeDiv.className = "item";
                     employeeDiv.innerHTML = `
                         <h3>${employee.name}</h3>
                         <p>Email: ${employee.email}</p>
                         <p>Chức Vụ: ${employee.position}</p>
+                        <div class="actions">
+                            <button class="detail-btn" onclick="viewEmployeeDetail(${index})">Chi Tiết</button>
+                            <button class="delete-btn" onclick="deleteEmployee(${index})">Xóa</button>
+                        </div>
                     `;
                     employeeList.appendChild(employeeDiv);
                 });
@@ -138,71 +112,120 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    window.deleteEmployee = function(index) {
+        let employees = localStorage.getItem("employees");
+        if (employees) {
+            employees = JSON.parse(employees);
+            employees.splice(index, 1);
+            localStorage.setItem("employees", JSON.stringify(employees));
+            displayEmployees(); // Cập nhật danh sách sau khi xóa
+        }
+    };
 
-    displayEmployees();
-});
+    window.viewEmployeeDetail = function(index) {
+        let employees = localStorage.getItem("employees");
+        if (employees) {
+            employees = JSON.parse(employees);
+            const employee = employees[index];
 
-/*danh sách ứng viên*/
-document.addEventListener("DOMContentLoaded", function() {
-    const recruitmentForm = document.getElementById("recruitmentForm");
+            // Lưu thông tin chi tiết nhân viên
+            localStorage.setItem("employeeDetail", JSON.stringify(employee));
 
-    if (recruitmentForm) {
-        recruitmentForm.addEventListener("submit", function(event) {
-            event.preventDefault();
+            // Chuyển hướng sang trang chi tiết nhân viên
+            window.location.href = "employee_details.html";
+        }
+    };
 
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const position = document.getElementById("position").value;
-
-            const applicant = {
-                name: name,
-                email: email,
-                position: position
-            };
-
-            let applicants = localStorage.getItem("applicants");
-            if (applicants) {
-                applicants = JSON.parse(applicants);
+    function loadEmployeeDetail() {
+        const employeeDetailSection = document.getElementById("employeeDetail");
+        if (employeeDetailSection) {
+            let employee = localStorage.getItem("employeeDetail");
+            if (employee) {
+                employee = JSON.parse(employee);
+                document.getElementById("employeeName").innerText = `Họ và Tên: ${employee.name}`;
+                document.getElementById("employeeEmail").innerText = `Email: ${employee.email}`;
+                document.getElementById("employeePosition").innerText = `Chức Vụ: ${employee.position}`;
             } else {
-                applicants = [];
-            }
-
-            applicants.push(applicant);
-            localStorage.setItem("applicants", JSON.stringify(applicants));
-
-            // khởi động form
-            recruitmentForm.reset();
-
-            // tải lại applicants list
-            displayApplicants();
-        });
-    }
-
-    const recruitmentList = document.getElementById("recruitmentList");
-
-    function displayApplicants() {
-        if (recruitmentList) {
-            recruitmentList.innerHTML = "";
-            let applicants = localStorage.getItem("applicants");
-            if (applicants) {
-                applicants = JSON.parse(applicants);
-                applicants.forEach(function(applicant) {
-                    const applicantDiv = document.createElement("div");
-                    applicantDiv.className = "applicant";
-                    applicantDiv.innerHTML = `
-                        <h3>${applicant.name}</h3>
-                        <p>Email: ${applicant.email}</p>
-                        <p>Vị Trí Ứng Tuyển: ${applicant.position}</p>
-                    `;
-                    recruitmentList.appendChild(applicantDiv);
-                });
-            } else {
-                recruitmentList.innerHTML = "<p>Chưa có ứng viên nào.</p>";
+                employeeDetailSection.innerHTML = "<p>Không có thông tin nhân viên.</p>";
             }
         }
     }
 
+    window.goBack = function() {
+        window.location.href = "employee_list.html";
+    };
 
-    displayApplicants();
+    // Load employees list on page load
+    displayEmployees();
+
+    // Tải thông tin chi tiết về nhân viên nếu ở trang chi tiết
+    loadEmployeeDetail();
+    //trở về trang danh sách nhân viên
+    window.goBack = function() {
+        window.location.href = "employee_list.html";
+    };
+
 });
+
+/*danh sách ứng viên*/
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('recruitmentForm');
+    const recruitmentList = document.getElementById('recruitmentList');
+
+    // Tải danh sách ứng viên từ localStorage
+    const savedApplicants = JSON.parse(localStorage.getItem('applicants')) || [];
+    savedApplicants.forEach(applicant => {
+        addApplicantToList(applicant);
+    });
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Ngăn không gửi biểu mẫu đến máy chủ
+
+        // Lấy dữ liệu từ biểu mẫu
+        const name = document.getElementById('ho-va-ten').value;
+        const gender = document.getElementById('gioi-tinh').value;
+        const dob = document.getElementById('ngay-sinh').value;
+        const phone = document.getElementById('so-dien-thoai').value;
+        const email = document.getElementById('email').value;
+        const position = document.getElementById('vi-tri-ung-tuyen').value;
+        const education = document.getElementById('trinh-do-hoc-van').value;
+        const salary = document.getElementById('muc-luong-co-ban').value;
+
+        const applicant = {
+            name, gender, dob, phone, email, position, education, salary
+        };
+
+        // Thêm ứng viên vào danh sách
+        addApplicantToList(applicant);
+
+        // Lưu danh sách vào localStorage
+        const currentApplicants = JSON.parse(localStorage.getItem('applicants')) || [];
+        currentApplicants.push(applicant);
+        localStorage.setItem('applicants', JSON.stringify(currentApplicants));
+
+        // Xóa dữ liệu biểu mẫu
+        form.reset();
+    });
+
+    function addApplicantToList(applicant) {
+        const applicantDiv = document.createElement('div');
+        applicantDiv.classList.add('applicant');
+
+        // Thêm nội dung vào phần tử
+        applicantDiv.innerHTML = `
+            <h3>${applicant.name}</h3>
+            <p><strong>Giới tính:</strong> ${applicant.gender}</p>
+            <p><strong>Ngày sinh:</strong> ${applicant.dob}</p>
+            <p><strong>Số điện thoại:</strong> ${applicant.phone}</p>
+            <p><strong>Email:</strong> ${applicant.email}</p>
+            <p><strong>Vị trí ứng tuyển:</strong> ${applicant.position}</p>
+            <p><strong>Trình độ học vấn:</strong> ${applicant.education}</p>
+            <p><strong>Mức lương cơ bản:</strong> ${applicant.salary}</p>
+        `;
+
+        recruitmentList.appendChild(applicantDiv);
+    }
+});
+
+
 

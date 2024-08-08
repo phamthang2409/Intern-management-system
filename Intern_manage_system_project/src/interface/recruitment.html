@@ -13,8 +13,8 @@
     <ul>
         <li><a href="index.html">Trang Chủ</a></li>
         <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
-        <li><a href="recruitment.html">Tuyển Dụng</a></li>
         <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
+        <li><a href="recruitment.html">Tuyển Dụng</a></li>
         <li><a href="training_program.html">Chương Trình Đào Tạo</a></li>
         <li><a href="trainer.html">Hướng Dẫn Viên</a></li>
         <button id="logout-button">Đăng Xuất</button>
@@ -28,22 +28,78 @@
     <section>
         <h2>Đăng Ký Tuyển Dụng</h2>
         <form id="recruitmentForm">
-            <label for="name">Họ và Tên:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="position">Vị Trí Ứng Tuyển:</label>
-            <select id="position" name="position" required>
-                <option value="">Chọn vị trí ứng tuyển</option>
-                <option value="manager">Quản Lý</option>
-                <option value="developer">Nhà Phát Triển</option>
-                <option value="designer">Nhà Thiết Kế</option>
-                <option value="tester">Kiểm Thử Viên</option>
-                <option value="analyst">Nhà Phân Tích</option>
-            </select>
-            <br>
+            <div class="form-container">
+                <div class="form-group image-upload">
+                    <div class="image-placeholder">
+                        <img src="path/to/default/avatar.png" alt="Avatar" />
+                    </div>
+                </div>
+
+                <div class="form-group name-field">
+                    <label for="ho-va-ten">Họ Và Tên*</label>
+                    <input type="text" id="ho-va-ten" name="ho-va-ten" required />
+                </div>
+
+                <div class="form-group gender-field">
+                    <label for="gioi-tinh">Giới tính*</label>
+                    <select id="gioi-tinh" name="gioi-tinh" required>
+                        <option value="nam">Nam</option>
+                        <option value="nu">Nữ</option>
+                        <option value="khac">Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group dob-field">
+                    <label for="ngay-sinh">Ngày sinh*</label>
+                    <input type="text" id="ngay-sinh" name="ngay-sinh" placeholder="dd/mm/yyyy" required />
+                </div>
+
+                <div class="form-group phone-number-field">
+                    <label for="so-dien-thoai">Số điện thoại*</label>
+                    <input type="tel" id="so-dien-thoai" name="so-dien-thoai" required />
+                </div>
+
+                <div class="form-group email-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group position-field">
+                    <label for="vi-tri-ung-tuyen">Vị trí ứng tuyển</label>
+                    <select id="vi-tri-ung-tuyen" name="vi-tri-ung-tuyen">
+                            <option value="">Chọn chức vụ</option>
+                            <option value="manager">Quản Lý</option>
+                            <option value="developer">Nhà Phát Triển</option>
+                            <option value="designer">Nhà Thiết Kế</option>
+                            <option value="tester">Kiểm Thử Viên</option>
+                            <option value="analyst">Nhà Phân Tích</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group education-field">
+                    <label for="trinh-do-hoc-van">Trình độ học vấn</label>
+                    <select id="trinh-do-hoc-van" name="trinh-do-hoc-van">
+                        <option value="cao-dang">Cao đẳng</option>
+                        <option value="dai-hoc">Đại học</option>
+                        <option value="thac-si">Thạc sĩ</option>
+                        <option value="tien-si">Tiến sĩ</option>
+                    </select>
+                </div>
+
+                <div class="form-group salary-field">
+                    <label for="muc-luong-co-ban">Mức lương cơ bản</label>
+                    <select id="muc-luong-co-ban" name="muc-luong-co-ban">
+                        <option value="5000000">5,000,000 VNĐ</option>
+                        <option value="10000000">10,000,000 VNĐ</option>
+                        <option value="15000000">15,000,000 VNĐ</option>
+                        <option value="20000000">20,000,000 VNĐ</option>
+                    </select>
+                </div>
+
+            </div>
+
             <input type="submit" value="Đăng Ký">
         </form>
     </section>

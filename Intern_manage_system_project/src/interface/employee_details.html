@@ -13,19 +13,22 @@
     <ul>
         <li><a href="index.html">Trang Chủ</a></li>
         <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
-        <li><a href="recruitment.html">Tuyển Dụng</a></li>
         <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
+        <li><a href="recruitment.html">Tuyển Dụng</a></li>
         <li><a href="training_program.html">Chương Trình Đào Tạo</a></li>
         <li><a href="trainer.html">Hướng Dẫn Viên</a></li>
         <button id="logout-button">Đăng Xuất</button>
     </ul>
 </nav>
 <main>
-    <section>
+    <section id="employeeDetail">
         <h2>Thông Tin Nhân Viên</h2>
-        <!-- Chi tiết thông tin nhân viên sẽ nằm ở đây -->
+        <p id="employeeName"></p>
+        <p id="employeeEmail"></p>
+        <p id="employeePosition"></p>
+        <button onclick="goBack()">Trở Về Danh Sách Nhân Viên</button>
     </section>
 </main>
-
+<script src="script.js"></script>
 </body>
 </html>
