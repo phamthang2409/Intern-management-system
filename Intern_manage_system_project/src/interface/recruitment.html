@@ -2,109 +2,114 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quản Lý Nhân Sự - Tuyển Dụng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tuyển dụng</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
 </head>
 <body>
 <header>
-    <h1>Tuyển Dụng Nhân Sự</h1>
+    <h1>Quản lý Tuyển dụng</h1>
+    <nav>
+        <ul>
+            <li><a href="admin_dashboard.html"><button>Quay lại Bảng điều khiển</button></a></li>
+            <li><a href="intern_profiles.html"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
+            <li><a href="reporting_analysis.html"><button>Báo cáo và Phân tích</button></a></li>
+        </ul>
+    </nav>
 </header>
-<nav>
-    <ul>
-        <li><a href="index.html">Trang Chủ</a></li>
-        <li><a href="employee_list.html">Danh Sách Nhân Viên</a></li>
-        <li><a href="add_employee.html">Thêm Nhân Viên</a></li>
-        <li><a href="recruitment.html">Tuyển Dụng</a></li>
-        <li><a href="training_program.html">Chương Trình Đào Tạo</a></li>
-        <li><a href="trainer.html">Hướng Dẫn Viên</a></li>
-        <button id="logout-button">Đăng Xuất</button>
-    </ul>
-</nav>
+
 <main>
-    <section>
-        <h2>Danh Sách Tuyển Dụng</h2>
-        <div id="recruitmentList"></div>
-    </section>
-    <section>
-        <h2>Đăng Ký Tuyển Dụng</h2>
-        <form id="recruitmentForm">
-            <div class="form-container">
-                <div class="form-group image-upload">
-                    <div class="image-placeholder">
-                        <img src="path/to/default/avatar.png" alt="Avatar" />
-                    </div>
-                </div>
+    <h2>Thêm Chiến dịch Tuyển dụng</h2>
+    <form id="recruitmentForm">
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <th>Tên Chiến dịch</th>
+                <th>Vị trí Tuyển dụng</th>
+                <th>Mức Lương</th>
+                <th>Trình độ Học vấn</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="campaignName" name="campaignName" required></td>
+                <td><input type="text" id="position" name="position" placeholder="Nhập các vị trí, ngăn cách bởi dấu phẩy" required></td>
+                <td><input type="text" id="salary" name="salary" placeholder="Nhập các mức lương, ngăn cách bởi dấu phẩy" required></td>
+                <td><input type="text" id="education" name="education" placeholder="Nhập các trình độ, ngăn cách bởi dấu phẩy" required></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">Thêm Chiến dịch</button>
+    </form>
 
-                <div class="form-group name-field">
-                    <label for="ho-va-ten">Họ Và Tên*</label>
-                    <input type="text" id="ho-va-ten" name="ho-va-ten" required />
-                </div>
-
-                <div class="form-group gender-field">
-                    <label for="gioi-tinh">Giới tính*</label>
-                    <select id="gioi-tinh" name="gioi-tinh" required>
-                        <option value="nam">Nam</option>
-                        <option value="nu">Nữ</option>
-                        <option value="khac">Khác</option>
-                    </select>
-                </div>
-
-                <div class="form-group dob-field">
-                    <label for="ngay-sinh">Ngày sinh*</label>
-                    <input type="text" id="ngay-sinh" name="ngay-sinh" placeholder="dd/mm/yyyy" required />
-                </div>
-
-                <div class="form-group phone-number-field">
-                    <label for="so-dien-thoai">Số điện thoại*</label>
-                    <input type="tel" id="so-dien-thoai" name="so-dien-thoai" required />
-                </div>
-
-                <div class="form-group email-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group position-field">
-                    <label for="vi-tri-ung-tuyen">Vị trí ứng tuyển</label>
-                    <select id="vi-tri-ung-tuyen" name="vi-tri-ung-tuyen">
-                            <option value="">Chọn chức vụ</option>
-                            <option value="manager">Quản Lý</option>
-                            <option value="developer">Nhà Phát Triển</option>
-                            <option value="designer">Nhà Thiết Kế</option>
-                            <option value="tester">Kiểm Thử Viên</option>
-                            <option value="analyst">Nhà Phân Tích</option>
-                    </select>
-                </div>
-
-
-
-                <div class="form-group education-field">
-                    <label for="trinh-do-hoc-van">Trình độ học vấn</label>
-                    <select id="trinh-do-hoc-van" name="trinh-do-hoc-van">
-                        <option value="cao-dang">Cao đẳng</option>
-                        <option value="dai-hoc">Đại học</option>
-                        <option value="thac-si">Thạc sĩ</option>
-                        <option value="tien-si">Tiến sĩ</option>
-                    </select>
-                </div>
-
-                <div class="form-group salary-field">
-                    <label for="muc-luong-co-ban">Mức lương cơ bản</label>
-                    <select id="muc-luong-co-ban" name="muc-luong-co-ban">
-                        <option value="5000000">5,000,000 VNĐ</option>
-                        <option value="10000000">10,000,000 VNĐ</option>
-                        <option value="15000000">15,000,000 VNĐ</option>
-                        <option value="20000000">20,000,000 VNĐ</option>
-                    </select>
-                </div>
-
-            </div>
-
-            <input type="submit" value="Đăng Ký">
-        </form>
-    </section>
+    <h2>Danh sách Chiến dịch Tuyển dụng</h2>
+    <table id="recruitmentTable" border="1" cellspacing="0" cellpadding="5">
+        <thead>
+        <tr>
+            <th>Tên Chiến dịch</th>
+            <th>Vị trí</th>
+            <th>Mức Lương</th>
+            <th>Trình độ Học vấn</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thông tin chiến dịch tuyển dụng sẽ được thêm tại đây -->
+        </tbody>
+    </table>
 </main>
 
-<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let recruitments = JSON.parse(localStorage.getItem('recruitments')) || [];
+
+        function displayRecruitments() {
+            const recruitmentTableBody = document.querySelector('#recruitmentTable tbody');
+            recruitmentTableBody.innerHTML = '';
+
+            recruitments.forEach((recruitment, index) => {
+                let row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${recruitment.name}</td>
+                    <td>${recruitment.position}</td>
+                    <td>${recruitment.salary}</td>
+                    <td>${recruitment.education}</td>
+                    <td><button onclick="deleteRecruitment(${index})">Xóa</button></td>
+                `;
+
+                recruitmentTableBody.appendChild(row);
+            });
+        }
+
+        function deleteRecruitment(index) {
+            recruitments.splice(index, 1);
+            localStorage.setItem('recruitments', JSON.stringify(recruitments));
+            displayRecruitments();
+        }
+
+        document.querySelector('#recruitmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let recruitment = {
+                name: document.querySelector('#campaignName').value.trim(),
+                position: document.querySelector('#position').value.trim(),
+                salary: document.querySelector('#salary').value.trim(),
+                education: document.querySelector('#education').value.trim(),
+            };
+
+            recruitments.push(recruitment);
+            localStorage.setItem('recruitments', JSON.stringify(recruitments));
+            displayRecruitments();
+
+            // Xóa form sau khi thêm
+            document.querySelector('#recruitmentForm').reset();
+        });
+
+        displayRecruitments();
+    });
+    syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
+    autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
+</script>
+
 </body>
 </html>
