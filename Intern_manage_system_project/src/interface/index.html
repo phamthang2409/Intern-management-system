@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng nhập và Đăng ký</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="auth-container">
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <form id="loginForm">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Đăng nhập</button>
+            <p id="errorMessage"></p>
+        </form>
+    </div>
+
+    <div class="register-container">
+        <h2>Đăng ký</h2>
+        <form id="registerForm">
+            <label for="newUsername">Tên đăng nhập:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">Mật khẩu:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmPassword">Nhập lại mật khẩu:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <label for="role">Vai trò:</label>
+            <select id="role" name="role">
+                <option value="intern_dashboard.html">Thực tập sinh</option>
+                <option value="mentor_dashboard.html">Mentor</option>
+                <option value="admin_dashboard.html">Quản trị viên</option>
+                <option value="staff_dashboard.html">Nhân viên phụ trách</option>
+            </select>
+
+            <button type="submit">Đăng ký</button>
+            <p id="registerMessage"></p>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Lưu thông tin đăng ký vào localStorage
+    function saveRegistrationInfo() {
+        const newUsername = document.getElementById('newUsername').value.trim();
+        const newPassword = document.getElementById('newPassword').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+        const role = document.getElementById('role').value;
+
+        if (newUsername && newPassword && confirmPassword && role) {
+            if (newPassword !== confirmPassword) {
+                alert('Mật khẩu không khớp. Vui lòng nhập lại.');
+                return;
+            }
+
+            let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            // Kiểm tra xem tên đăng nhập đã tồn tại chưa
+            const isDuplicate = registeredUsers.some(user => user.username === newUsername);
+
+            if (isDuplicate) {
+                alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.');
+            } else {
+                const userInfo = {
+                    username: newUsername,
+                    password: newPassword,
+                    role: role
+                };
+
+                registeredUsers.push(userInfo);
+                localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+                alert('Đăng ký thành công!');
+            }
+        } else {
+            alert('Vui lòng điền đầy đủ thông tin.');
+        }
+    }
+
+    // Kiểm tra thông tin đăng nhập
+    function checkLogin() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+        const user = registeredUsers.find(user => user.username === username && user.password === password);
+
+        if (user) {
+            alert('Đăng nhập thành công!');
+            window.location.href = user.role;
+        } else {
+            alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+        }
+    }
+
+    // Gọi hàm saveRegistrationInfo khi người dùng đăng ký
+    document.getElementById('registerForm')?.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form gửi đi
+        saveRegistrationInfo();
+    });
+
+    // Gọi hàm checkLogin khi người dùng đăng nhập
+    document.getElementById('loginForm')?.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form gửi đi
+        checkLogin();
+    });
+</script>
+</body>
+</html>
