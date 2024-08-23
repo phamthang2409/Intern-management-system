@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -8,10 +9,18 @@ body {
     animation: gradientShift 15s ease infinite;
     font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
     color: #333; /* Màu chữ đậm */
+=======
+/* Tông màu cổ điển và phông chữ chung */
+body {
+    background-color: #f5f5dc; /* Màu nền be nhẹ */
+    font-family: 'Georgia', serif; /* Font chữ cổ điển */
+    color: #333; /* Màu chữ đậm để dễ đọc */
+>>>>>>> origin/master
     margin: 0;
     padding: 0;
 }
 
+<<<<<<< HEAD
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -26,12 +35,25 @@ header {
     text-align: center;
     border-bottom: 2px solid #3498db; /* Đường viền dưới xanh đậm */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+=======
+/* Đầu trang (Header) */
+header {
+    background-color: #8b4513; /* Màu nâu đậm */
+    color: #fff8dc; /* Màu kem nhạt */
+    padding: 15px 30px;
+    text-align: center;
+    border-bottom: 2px solid #deb887; /* Đường viền dưới màu nâu sáng */
+>>>>>>> origin/master
 }
 
 header h1 {
     margin: 0;
+<<<<<<< HEAD
     font-size: 26px;
     font-weight: 700;
+=======
+    font-size: 24px;
+>>>>>>> origin/master
 }
 
 nav ul {
@@ -43,6 +65,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
+<<<<<<< HEAD
     margin: 0 15px;
 }
 
@@ -59,10 +82,28 @@ nav ul li a:hover {
 }
 
 /* Bố cục trang chính (Main Layout) */
+=======
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff8dc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Cấu trúc chính */
+>>>>>>> origin/master
 .main-container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 30px;
+<<<<<<< HEAD
     background-color: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -124,6 +165,136 @@ nav ul li a:hover {
     border-bottom: 1px solid #ccc;
     text-align: left;
     font-size: 16px;
+=======
+    background-color: rgba(255, 248, 220, 0.9); /* Màu nền nhẹ nhàng */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.info-box {
+    background-color: #fffaf0; /* Màu nền kem */
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #deb887;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+.table-container {
+    margin: 30px 0;
+}
+
+.table-row {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #deb887; /* Viền bàn màu nâu sáng */
+}
+
+.table-row th, .table-row td {
+    padding: 15px;
+    border: 1px solid #deb887;
+    text-align: left;
+    font-size: 16px; /* Kích thước chữ lớn hơn cho dễ đọc */
+}
+
+.table-row th {
+    background-color: #8b4513; /* Màu nền tiêu đề bảng nâu đậm */
+    color: #fff8dc; /* Chữ màu kem nhạt */
+}
+
+.table-row tr:hover {
+    background-color: #f5deb3; /* Màu nền sáng khi di chuột */
+    transition: background-color 0.3s;
+}
+
+.form-container {
+    background-color: #fffaf0;
+    padding: 25px;
+    border: 1px solid #deb887;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.form-container input, .form-container select {
+    width: calc(100% - 30px);
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #8b4513; /* Viền ô nhập liệu màu nâu đậm */
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+}
+
+/* Bố cục chung cho khung đăng nhập và đăng ký */
+.auth-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 50px auto;
+    gap: 30px; /* Khoảng cách giữa hai khung */
+}
+
+/* Khung đăng nhập */
+.login-container, .register-container {
+    flex: 1;
+    padding: 30px;
+    background-color: #fffaf0; /* Màu nền kem */
+    border: 1px solid #deb887; /* Viền màu nâu sáng */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Tiêu đề của từng khung */
+.login-container h2, .register-container h2 {
+    text-align: center;
+    color: #8b4513; /* Màu chữ nâu đậm */
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.login-container label, .register-container label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+    font-family: 'Georgia', serif;
+}
+
+.login-container input, .register-container input, .register-container select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #8b4513;
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+}
+
+.login-container button, .register-container button {
+    width: 100%;
+    background-color: #8b4513;
+    color: #fff8dc;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container button:hover, .register-container button:hover {
+    background-color: #5a3310;
+    transform: translateY(-2px);
+}
+
+#loginForm p, #registerForm p {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+>>>>>>> origin/master
 }
 
 .floating-table th {
@@ -257,3 +428,81 @@ button:active {
     transition: box-shadow 0.3s;
 }
 
+/* Nút bấm chung */
+button {
+    background-color: #8b4513;
+    color: #fff8dc;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Thêm hiệu ứng */
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+button:hover {
+    background-color: #5a3310;
+    transform: translateY(-2px); /* Nút sẽ di chuyển lên một chút */
+}
+
+/* Hiệu ứng khi nhấn nút */
+button:active {
+    transform: translateY(2px); /* Nút sẽ di chuyển xuống một chút khi nhấn */
+    background-color: #4e2b08; /* Màu đậm hơn khi nhấn */
+}
+
+/* Nút đăng xuất */
+#logoutButton {
+    background-color: #8b0000; /* Màu đỏ đậm */
+    color: #fff8dc;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#logoutButton:hover {
+    background-color: #660000;
+    transform: translateY(-2px);
+}
+
+#logoutButton:active {
+    transform: translateY(2px);
+    background-color: #4e0000;
+}
+
+/* Nút trở về bảng điều khiển */
+.back-button {
+    background-color: #8b4513;
+    color: #fff8dc;
+    padding: 12px 25px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #5a3310;
+    transform: translateY(-2px);
+}
+
+.back-button:active {
+    transform: translateY(2px);
+    background-color: #4e2b08;
+}
+
+/* Hiệu ứng di chuột vào các mục */
+.info-box:hover, .form-container:hover, .table-container:hover {
+    box-shadow: 0px 0px 15px #aaa;
+    transition: box-shadow 0.3s;
+}
