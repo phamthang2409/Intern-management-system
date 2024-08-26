@@ -45,25 +45,51 @@
         <!-- Trình độ học vấn -->
         <div class="form-group">
             <label for="education">Trình độ học vấn:</label>
-            <select id="education" name="education" required></select>
+            <input id="education" name="education" required>
         </div>
 
         <!-- Vị trí ứng tuyển -->
         <div class="form-group">
             <label for="position">Vị trí ứng tuyển:</label>
-            <select id="position" name="position" required></select>
+            <input id="position" name="position" required>
         </div>
 
         <!-- Mức lương -->
         <div class="form-group">
             <label for="salary">Mức lương mong muốn:</label>
-            <select id="salary" name="salary" required></select>
+            <input id="salary" name="salary" required>
+        </div>
+        <div class="auth-container">
+        <div class="register-container">
+            <h2>Cấp tài khoản</h2>
+            <form id="registerForm">
+                <label for="newUsername">Tên đăng nhập:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+
+                <label for="newPassword">Mật khẩu:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+
+                <label for="confirmPassword">Nhập lại mật khẩu:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <label for="role">Vai trò:</label>
+                <select id="role" name="role">
+                    <option value="intern_dashboard.html">Thực tập sinh</option>
+                    <option value="mentor_dashboard.htm1l">Mentor</option>
+                    <option value="admin_dashboard.html">Quản trị viên</option>
+                    <option value="staff_dashboard.html">Nhân viên phụ trách</option>
+                </select>
+
+                <button type="submit">Đăng ký</button>
+                <p id="registerMessage"></p>
+            </form>
+        </div>
         </div>
 
         <!-- Nút Submit -->
-        <div class="form-group">
-            <button type="submit">Đăng Ký</button>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <button type="submit">Đăng Ký</button>-->
+<!--        </div>-->
 
     </form>
 </div>
