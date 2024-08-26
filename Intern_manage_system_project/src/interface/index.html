@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Đăng nhập và Đăng ký</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <div class="auth-container">
-    <div class="login-container">
+    <div class="buttons-container">
+        <div id="loginButton" class="auth-button">Đăng nhập</div>
+        <div id="registerButton" class="auth-button">Đăng ký</div>
+    </div>
+    <div class="form-container login-form">
         <h2>Đăng nhập</h2>
         <form id="loginForm">
             <label for="username">Tên đăng nhập:</label>
@@ -22,7 +26,7 @@
         </form>
     </div>
 
-    <div class="register-container">
+    <div class="form-container register-form">
         <h2>Đăng ký</h2>
         <form id="registerForm">
             <label for="newUsername">Tên đăng nhập:</label>
@@ -49,6 +53,22 @@
 </div>
 
 <script>
+    // Điều khiển hiệu ứng chuyển đổi giữa đăng nhập và đăng ký
+    // ấn vào nút đăng nhập
+    document.getElementById('loginButton').addEventListener('click', function() {
+        document.querySelector('.login-form').classList.add('show-form'); // hiển thị form của đăng nhập
+        document.querySelector('.register-form').classList.remove('show-form'); // xóa form đăng ký 
+        document.getElementById('loginButton').classList.add('hide-button'); // ẩn nút đăng nhập
+        document.getElementById('registerButton').classList.remove('hide-button'); // hiển thị nút đăng ký
+    });
+    //ấn vào nút đăng ký
+    document.getElementById('registerButton').addEventListener('click', function() {
+        document.querySelector('.register-form').classList.add('show-form');
+        document.querySelector('.login-form').classList.remove('show-form'); // ngược lại với đăng nhập
+        document.getElementById('registerButton').classList.add('hide-button');
+        document.getElementById('loginButton').classList.remove('hide-button');
+    });
+
     // Lưu thông tin đăng ký vào localStorage
     function saveRegistrationInfo() {
         const newUsername = document.getElementById('newUsername').value.trim();
@@ -80,6 +100,9 @@
                 localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
 
                 alert('Đăng ký thành công!');
+                //  sau khi đăng ký thành công Ẩn form đăng ký và trở về giao diện đăng nhập/đăng ký
+                document.querySelector('.register-form').classList.remove('show-form');
+                document.getElementById('registerButton').classList.remove('hide-button'); // hiển thị nút đăng ký
             }
         } else {
             alert('Vui lòng điền đầy đủ thông tin.');
