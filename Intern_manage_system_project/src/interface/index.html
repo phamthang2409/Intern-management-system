@@ -31,7 +31,25 @@
         <form id="registerForm">
             <label for="newUsername">Tên đăng nhập:</label>
             <input type="text" id="newUsername" name="newUsername" required>
+            
+            <label for="newPassword">Mật khẩu:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
 
+            <label for="confirmPassword">Nhập lại mật khẩu:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <label for="role">Vai trò:</label>
+            <select id="role" name="role">
+                <option value="intern_dashboard.html">Thực tập sinh</option>
+                <option value="mentor_dashboard.htm1l">Mentor</option>
+                <option value="admin_dashboard.html">Quản trị viên</option>
+                <option value="staff_dashboard.html">Nhân viên phụ trách</option>
+            </select>
+
+            <button type="submit">Đăng ký</button>
+            <p id="registerMessage"></p>
+        </form>
+    </div>
 </div>
 
 <script>
