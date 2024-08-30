@@ -1,0 +1,28 @@
+--User
+CREATE TABLE User (
+    ID       INT            PRIMARY KEY NOT NULL,
+    userName NVARCHAR (100) NOT NULL,
+    passWord NVARCHAR (100) NOT NULL,
+    role     NVARCHAR (20)  NOT NULL
+);
+
+-- admin quản lý tuỷen dụng
+CREATE TABLE Recruitment_Campaigns (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    campaignName NVARCHAR(255) NOT NULL,
+    position NVARCHAR(255) NOT NULL,
+    salary INT NOT NULL,
+    education NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE InternProfile (
+    ID               INTEGER primary key AUTOINCREMENT,
+    profileFirstName NVARCHAR (50) NOT NULL,
+    profileLastName  NVARCHAR (50) NOT NULL,
+    profileDOB       DATE NOT NULL,
+    profileEmail     NVARCHAR (50) NOT NULL,
+    profilePhone     NVARCHAR (20) NOT NULL,
+    profileEducation VARCHAR (20) NOT NULL,
+    profilePosition  NVARCHAR (50) NOT NULL,
+    profileSalary    NVARCHAR (50) NOT NULL 
+);
