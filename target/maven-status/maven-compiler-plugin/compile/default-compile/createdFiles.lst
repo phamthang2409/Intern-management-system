@@ -17,6 +17,7 @@ Model\TrainingProgram.class
 controller\ReprotingAnalysisServlet.class
 DAO\RecruitmentCampaignDao.class
 com\intern_management_system\resources\JakartaEE10Resource.class
+controller\HandleAdminDashBoardServlet.class
 controller\InternDashBoardServlet.class
 DAO\InternProfileDao.class
 Model\User.class

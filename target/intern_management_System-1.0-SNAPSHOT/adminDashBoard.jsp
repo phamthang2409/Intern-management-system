@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,17 +30,34 @@
 
         <main>
             <section class="info-box">
-                <h2>Đăng ký Thực tập sinh mới</h2>
+                <h2>Danh Sách Thực tập sinh Ứng Tuyển</h2>
                 <table id="newInternsTable" class="table-row" border = "1px">
                     <thead>
-                    <tr>
-                        <th>Tên Thực tập sinh</th>
-                        <th>Email</th>
-                        <th>Hành động</th>
-                    </tr>
+                        <tr>
+                            <th>Họ và Tên</th>
+                            <th>Ngày tháng năm sinh</th>
+                            <th>Email</th>
+                            <th>Vị trí ứng tuyển</th>
+                            <th>Mức lương</th>
+                            <th>Hành động</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <!-- Dữ liệu thực tập sinh mới đăng ký sẽ được hiển thị tại đây -->
+                        <c:forEach items="${requestScope.listIntern}" var="i">
+                        <tbody>
+                            <tr>
+                                <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                <td>${i.getProfileDOB()}</td>
+                                <td>${i.getProfileEmail()}</td>
+                                <td>${i.getProfilePosition()}</td>
+                                <td>${i.getProfileSalary()}</td>
+                                <td>
+                                    <button name="ADD" onclick="doADD(${i.ID})">Duyệt</button>
+                                    <button name="delete" onclick="doDelete(${i.ID})">Hủy Bỏ</button> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </c:forEach>
                     </tbody>
                 </table>
             </section>
@@ -48,75 +66,37 @@
                 <h2>Danh sách Hồ sơ Thực tập sinh</h2>
                 <table id="internsTable" class="table-row" border = "1px">
                     <thead>
-                    <tr>
-                        <th>Tên Thực tập sinh</th>
-                        <th>Email</th>
-                        <th>Trình độ học vấn</th>
-                        <th>Vị trí ứng tuyển</th>
-                        <th>Mức lương</th>
-                    </tr>
+                        <tr>
+                        <tr>
+                            <th>Họ và Tên</th>
+                            <th>Ngày tháng năm sinh</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Trình độ học vấn</th>
+                            <th>Vị trí ứng tuyển</th>
+                            <th>Mức lương</th>
+                            <th>Hành động</th>
+                        </tr>
+                        </tr>
                     </thead>
                     <tbody>
-                    <!-- Dữ liệu hồ sơ đã duyệt sẽ được hiển thị tại đây -->
+                        <!-- Dữ liệu hồ sơ đã duyệt sẽ được hiển thị tại đây -->
                     </tbody>
                 </table>
             </section>
         </main>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Lấy danh sách thực tập sinh từ Local Storage
-                let internProfiles = JSON.parse(localStorage.getItem('internProfiles')) || [];
-                let approvedInterns = JSON.parse(localStorage.getItem('approvedInterns')) || [];
-                let newInternsTable = document.getElementById('newInternsTable').getElementsByTagName('tbody')[0];
-                let internsTable = document.getElementById('internsTable').getElementsByTagName('tbody')[0];
-
-                // Hiển thị danh sách đăng ký mới
-                internProfiles.forEach((profile, index) => {
-                    let row = newInternsTable.insertRow();
-                    row.insertCell(0).textContent = profile.lastName + ' ' + profile.firstName;
-                    row.insertCell(1).textContent = profile.email;
-                    let actionCell = row.insertCell(2);
-
-                    // Nút Duyệt
-                    let approveButton = document.createElement('button');
-                    approveButton.textContent = 'Duyệt';
-                    approveButton.addEventListener('click', function () {
-                        // Thêm vào danh sách đã duyệt
-                        approvedInterns.push(profile);
-                        localStorage.setItem('approvedInterns', JSON.stringify(approvedInterns));
-
-                        // Xóa khỏi danh sách đăng ký mới
-                        internProfiles.splice(index, 1);
-                        localStorage.setItem('internProfiles', JSON.stringify(internProfiles));
-                        window.location.reload(); // Reload trang để cập nhật giao diện
-                    });
-                    actionCell.appendChild(approveButton);
-
-                    // Nút Từ chối
-                    let rejectButton = document.createElement('button');
-                    rejectButton.textContent = 'Từ chối';
-                    rejectButton.addEventListener('click', function () {
-                        // Xóa khỏi danh sách đăng ký mới
-                        internProfiles.splice(index, 1);
-                        localStorage.setItem('internProfiles', JSON.stringify(internProfiles));
-                        window.location.reload(); // Reload trang để cập nhật giao diện
-                    });
-                    actionCell.appendChild(rejectButton);
-                });
-
-                // Hiển thị danh sách thực tập sinh đã duyệt
-                approvedInterns.forEach(profile => {
-                    let row = internsTable.insertRow();
-                    row.insertCell(0).textContent = profile.lastName + ' ' + profile.firstName;
-                    row.insertCell(1).textContent = profile.email;
-                    row.insertCell(2).textContent = profile.education;
-                    row.insertCell(3).textContent = profile.position;
-                    row.insertCell(4).textContent = profile.salary;
-                });
-            });
-            syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-            autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
+        <script type="text/javascript">
+            function doDelete(id) {
+                if (confirm("Are you want to delete ")) {
+                    window.location = "handleAdminDashBoard?id=" + id + "action=delete";
+                }
+            }
+            function doADD(id) {
+                if (confirm("Are you want to ADD Intern ")) {
+                    window.location = "handleAdminDashBoard?id=" + id + "action=add";
+                }
+            }
         </script>
     </body>
 </html>

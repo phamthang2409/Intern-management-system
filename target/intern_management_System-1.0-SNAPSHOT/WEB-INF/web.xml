@@ -4,6 +4,14 @@
         <servlet-name>DeleteProfileInternServlet</servlet-name>
         <servlet-class>controller.DeleteProfileInternServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HandleAdminDashBoardServlet</servlet-name>
+        <servlet-class>controller.HandleAdminDashBoardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashBoardServlet</servlet-name>
+        <servlet-class>controller.StaffDashBoardServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RecruitmentServlet</servlet-name>
         <url-pattern>/recruitment</url-pattern>
@@ -11,6 +19,14 @@
     <servlet-mapping>
         <servlet-name>DeleteProfileInternServlet</servlet-name>
         <url-pattern>/deleteProfileIntern</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HandleAdminDashBoardServlet</servlet-name>
+        <url-pattern>/handleAdminDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashBoardServlet</servlet-name>
+        <url-pattern>/staffDashBoard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

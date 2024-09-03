@@ -42,16 +42,16 @@ public class DBContext {
             System.out.println("" + se.getMessage());
         }
         try {
-            String url = "jdbc:sqlite:D:\\projectWeb\\intern_management_System\\intern_management.db3";
+//            String url = "jdbc:sqlite:intern.sqlite";
+            String url = "jdbc:sqlite:D:\\New folder\\Intern-management-system\\intern_management.db3";
             conn = DriverManager.getConnection(url);
             if (conn != null){
                 System.out.println("Conntection SQLITE Success");
             }
             return conn;
         } catch (SQLException e) {
-            System.out.println(e);
+            throw new RuntimeException("uncaught", e);
         }
-        return null;
     }
 //    public DBContext() {
 //        try {

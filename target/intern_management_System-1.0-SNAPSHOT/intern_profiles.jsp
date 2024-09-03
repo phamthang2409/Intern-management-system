@@ -31,6 +31,9 @@
                 <h3 style="color: red">${requestScope.msg}</h3>
             </c:if>
             <h2>Danh sách Thực tập sinh</h2>
+            <c:if test="${requestScope.listIntern == null}">
+                <h3>Không có dữ liệu tìm thấy</h3>
+            </c:if>
             <c:if test="${requestScope.listIntern != null}">
                 <table id="internsTable" class="table-row" border = '1px'>
                     <thead>
@@ -55,7 +58,9 @@
                                 <td>${i.getProfileEducation()}</td>
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
-                                <td><button name="delete" onclick="doDelete(${i.ID})">Xóa</button></td>
+                                <td>
+                                    <button name="delete" onclick="doDelete(${i.ID})">Xóa</button>
+                                </td>
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -64,11 +69,11 @@
         </main>
 
         <script type="text/javascript">
-            function doDelete(id){
-                if (confirm("Are you want to delete ")){
+            function doDelete(id) {
+                if (confirm("Are you want to delete ")) {
                     window.location = "deleteProfileIntern?id=" + id;
                 }
             }
-    </script>
+        </script>
     </body>
 </html>

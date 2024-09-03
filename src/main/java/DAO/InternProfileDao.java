@@ -37,6 +37,22 @@ public class InternProfileDao extends DBContext{
         return null;
     }
     
+    public InternProfile findByID(int id){
+        String sql = "Select * from InternProfile where id = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                InternProfile internProfile = new InternProfile(rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
+                        rs.getString("profileEmail"), rs.getString("profilePhone"), rs.getString("profileEducation"), rs.getString("profilePosition"), rs.getString("profileSalary"));
+                return internProfile;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return null;
+    }
+    
     public void insert(InternProfile internProfile) {
         String sql = "Insert into InternProfile (profileFirstName, profileLastName, profileDOB, profileEmail, profilePhone, "
                 + "profileEducation, profilePosition, profileSalary) values(?, ?, ?, ?, ?, ?, ?, ?)";
