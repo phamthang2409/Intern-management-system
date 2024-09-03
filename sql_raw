@@ -48,3 +48,14 @@ CREATE TABLE InternViewForm (
 	internViewDateTime DATETIME NOT NULL,
 	location NVARCHAR(255) NOT NULL
 );
+
+-- staff chương trình đào tạo
+CREATE TABLE TrainingForm(
+	ID INT PRIMARY KEY autoincrement,
+	programName NVARCHAR(255),
+	startDate DATE,
+	endDate DATE,
+	sessionStartTime TIME,
+	sessionEndTime TIME,
+	trainerName NVARCHAR(255)
+);
