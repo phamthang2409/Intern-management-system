@@ -14,19 +14,7 @@
         <script src="js/script.js"></script>
     </head>
     <body>
-        <header>
-            <h1>Bảng điều khiển Nhân viên phụ trách</h1>
-            <nav>
-                <ul>
-                    <li><a href="staffDashBoard"><button>Bảng điều khiển nhân viên</button></a></li>
-                    <li><a href="interview_scheduling.html"><button>Lên Lịch Phỏng vấn</button></a></li>
-                    <li><a href="training_program.html"><button>Thiết lập Chương trình Đào tạo</button></a></li>
-                    <li><a href="performance_tracking.html"><button>Theo dõi Hiệu suất</button></a></li>
-                </ul>
-            </nav>
-            <a href="index.html"><button id="logoutButton"> Đăng Xuất</button></a>
-        </header>
-
+        <%@include file="menu_staff.jsp"%>
         <main>
             <h2>Thông tin Chương trình Đào tạo</h2>
             <table id="trainingTableDisplay" border="1" cellspacing="0" cellpadding="5">

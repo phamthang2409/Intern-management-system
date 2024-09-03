@@ -12,6 +12,18 @@
         <servlet-name>StaffDashBoardServlet</servlet-name>
         <servlet-class>controller.StaffDashBoardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InterviewSchedulingServlet</servlet-name>
+        <servlet-class>controller.InterviewSchedulingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrainingProgramServlet</servlet-name>
+        <servlet-class>controller.TrainingProgramServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PerformanceTrackingServlet</servlet-name>
+        <servlet-class>controller.PerformanceTrackingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RecruitmentServlet</servlet-name>
         <url-pattern>/recruitment</url-pattern>
@@ -27,6 +39,18 @@
     <servlet-mapping>
         <servlet-name>StaffDashBoardServlet</servlet-name>
         <url-pattern>/staffDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InterviewSchedulingServlet</servlet-name>
+        <url-pattern>/interviewScheduling</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrainingProgramServlet</servlet-name>
+        <url-pattern>/trainingProgram</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PerformanceTrackingServlet</servlet-name>
+        <url-pattern>/performanceTracking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

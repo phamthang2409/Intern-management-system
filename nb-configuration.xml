@@ -16,6 +16,13 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>ide</org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>
     </properties>
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+        <word>Kỹ</word>
+        <word>Lên</word>
+        <word>lý</word>
+        <word>lập</word>
+        <word>Lịch</word>
         <word>sơ</word>
+        <word>Thiết</word>
+        <word>tạo</word>
     </spellchecker-wordlist>
 </project-shared-configuration>

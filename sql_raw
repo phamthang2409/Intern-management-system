@@ -38,5 +38,13 @@ CREATE TABLE InternProfileApproved (
     profilePhone     NVARCHAR (20) NOT NULL,
     profileEducation VARCHAR (20) NOT NULL,
     profilePosition  NVARCHAR (50) NOT NULL,
-    profileSalary    NVARCHAR (50) NOT NULL  
-)
+    profileSalary    NVARCHAR (50) NOT NULL 
+);
+
+-- staff lich phỏng vấn
+CREATE TABLE InternViewForm (
+	ID INT PRIMARY KEY AUTOINCREMENT,
+	candidateName NVARCHAR(255) NOT NULL,
+	internViewDateTime DATETIME NOT NULL,
+	location NVARCHAR(255) NOT NULL
+);
