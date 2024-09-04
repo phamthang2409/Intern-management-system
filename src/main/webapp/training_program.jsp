@@ -17,7 +17,7 @@
         <%@include file="menu_staff.jsp"%>
         <main>
             <h2>Chương trình Đào tạo</h2>
-            <form id="trainingForm">
+            <form id="trainingForm" action="trainingProgram" method="post">
                 <label for="programName">Tên Chương trình:</label>
                 <input type="text" id="programName" name="programName" required><br><br>
 

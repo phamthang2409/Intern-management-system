@@ -5,15 +5,12 @@ controller\InternProfileRegisterServlet.class
 controller\RecruitmentServlet.class
 controller\AdminDashBoardServlet.class
 controller\MentorDashBoardServlet.class
-DAO\TrainingProgramDao.class
 Model\InternProfile.class
 controller\DeleteProfileInternServlet.class
 Model\Admin.class
 com\intern_management_system\JakartaRestConfiguration.class
 controller\LoginServlet.class
 controller\InternProfileServlet.class
-Model\Task.class
-Model\TrainingProgram.class
 controller\ReprotingAnalysisServlet.class
 DAO\RecruitmentCampaignDao.class
 com\intern_management_system\resources\JakartaEE10Resource.class
@@ -21,7 +18,9 @@ controller\InternDashBoardServlet.class
 DAO\InternProfileDao.class
 Model\User.class
 controller\DeleteRecruitmentServlet.class
+DAO\TrainingFormDao.class
 Model\Report.class
+Model\TrainingForm.class
 Model\RecruitmentCampaign.class
 Model\Trainee.class
 Model\Trainer.class

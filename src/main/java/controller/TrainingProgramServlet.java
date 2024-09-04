@@ -4,12 +4,16 @@
  */
 package controller;
 
+import DAO.TrainingFormDao;
+import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -69,7 +73,27 @@ public class TrainingProgramServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String programName = request.getParameter("programName");
+        String startDate_raw = request.getParameter("startDate");
+        String endDate_raw = request.getParameter("endDate");
+        String sessionStartTime_raw = request.getParameter("sessionStartTime");
+        String sessionEndTime_raw = request.getParameter("sessionEndTime");
+        String trainerName = request.getParameter("trainerName");
+        Date startDate, endDate;
+        System.out.println("Hi");
+        Time sessionStartTime, sessionEndTime;
+        TrainingFormDao trainingFormDao = new TrainingFormDao();
+        try {
+            startDate = (startDate_raw == null) ? null: Date.valueOf(startDate_raw);
+            endDate = (endDate_raw == null) ? null: Date.valueOf(endDate_raw);
+            sessionStartTime = (sessionStartTime_raw == null) ? null : Time.valueOf(sessionStartTime_raw);
+            sessionEndTime = (sessionEndTime_raw == null) ? null : Time.valueOf(sessionEndTime_raw);
+            TrainingForm trainingForm = new TrainingForm(programName, startDate, endDate, sessionStartTime, sessionEndTime, trainerName);
+            trainingFormDao.insert(trainingForm);
+            System.out.println("Hi");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     /**

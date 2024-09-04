@@ -24,5 +24,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>sơ</word>
         <word>Thiết</word>
         <word>tạo</word>
+        <word>viên</word>
     </spellchecker-wordlist>
 </project-shared-configuration>
