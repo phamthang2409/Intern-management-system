@@ -33,6 +33,7 @@
             <th>Vị trí ứng tuyển</th>
             <th>Mức lương</th>
             <th>Hành động</th>
+            <th>Cấp tài khoan</th>
         </tr>
         </thead>
         <tbody>
@@ -68,10 +69,23 @@
                 window.location.reload(); // Reload trang để cập nhật danh sách
             });
             actionCell.appendChild(deleteButton);
+
+            // Thêm nút Thêm
+            let addCell = row.insertCell(8);
+            let addButton = document.createElement('button');
+            addButton.textContent = 'Thêm';
+            addButton.addEventListener('click', function () {
+                // Hành động khi nhấn nút "Thêm"
+                console.log('Thực hiện hành động thêm cho:', profile);
+                // Bạn có thể tùy chỉnh logic của nút Thêm ở đây
+            });
+            addCell.appendChild(addButton);
         });
     });
     syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
     autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
+
+
 </script>
 
 </body>
