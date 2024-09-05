@@ -2,7 +2,6 @@ D:\New folder\Intern-management-system\src\main\java\controller\TrainingFormServ
 D:\New folder\Intern-management-system\src\main\java\controller\StaffDashBoardServlet.java
 D:\New folder\Intern-management-system\src\main\java\DAO\InterviewSchedulingDao.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternProfileServlet.java
-D:\New folder\Intern-management-system\src\main\java\Model\Admin.java
 D:\New folder\Intern-management-system\src\main\java\Model\Report.java
 D:\New folder\Intern-management-system\src\main\java\DAO\UserDao.java
 D:\New folder\Intern-management-system\src\main\java\controller\LoginServlet.java
@@ -22,10 +21,8 @@ D:\New folder\Intern-management-system\src\main\java\controller\RegisterServlet.
 D:\New folder\Intern-management-system\src\main\java\DAO\TrainingFormDao.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternDashBoardServlet.java
 D:\New folder\Intern-management-system\src\main\java\Model\InterviewScheduling.java
-D:\New folder\Intern-management-system\src\main\java\Model\Trainer.java
 D:\New folder\Intern-management-system\src\main\java\com\intern_management_system\JakartaRestConfiguration.java
 D:\New folder\Intern-management-system\src\main\java\Model\TrainingForm.java
-D:\New folder\Intern-management-system\src\main\java\Model\Trainee.java
 D:\New folder\Intern-management-system\src\main\java\controller\HandleDeleteServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternProfileRegisterServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\PerformanceTrackingServlet.java

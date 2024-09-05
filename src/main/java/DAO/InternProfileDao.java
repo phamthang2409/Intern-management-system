@@ -19,6 +19,22 @@ import java.util.List;
  */
 public class InternProfileDao extends DBContext{
     Connection conn = DBContext();
+    
+    public int countAllProfiles(){
+        int cnt = 0;
+        String sql = "Select * from InternProfile";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                cnt++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cnt;
+    }
+    
     public List<InternProfile> getAll(){
         List<InternProfile> list = new ArrayList<>();
         String sql = "Select * from InternProfile";
@@ -113,6 +129,16 @@ public class InternProfileDao extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Delete Fail");
+        }
+    }
+    
+    public void reset(){
+        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 }

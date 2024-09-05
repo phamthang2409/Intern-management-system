@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register Page</title>
-<!--        <link rel="stylesheet" href="css/style.css"/>-->
+        <!--        <link rel="stylesheet" href="css/style.css"/>-->
         <link rel="stylesheet" href="css/index.css"/>
     </head>
     <body>
@@ -20,7 +20,8 @@
             <c:if test="${requestScope.msg != null}">
                 <h3 style="color: red">${requestScope.msg}</h3>
             </c:if>
-                <form id="registerForm" action="register" method="post">
+            <form id="registerForm" action="register" method="post">
+                <input type="hidden" id = "internID" name ="internID" value="${requestScope.internID_raw}"/>
                 <label for="newUsername">Tên đăng nhập:</label>
                 <input type="text" id="newUsername" name="newUsername" required>
 

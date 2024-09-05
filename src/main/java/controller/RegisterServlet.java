@@ -57,6 +57,8 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String internID_raw = request.getParameter("id");
+        request.setAttribute("internID_raw", internID_raw);
         request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
@@ -71,22 +73,29 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String internID_raw = request.getParameter("internID");
         String user = request.getParameter("newUsername");
         String pass = request.getParameter("newPassword");
         String role = request.getParameter("role");
+        int internID;
+        System.out.println(internID_raw);
         UserDao userDao = new UserDao();
-        User checkUser = userDao.check(user, pass);
-        if (checkUser == null){
-            int cntAllUser = userDao.countAllUsers();
-            System.out.println(cntAllUser);
-            User newUser = new User(cntAllUser + 1, user, pass, role);
-            userDao.insert(newUser);
-            response.sendRedirect("login");
-            
-        }else{
-            request.setAttribute("msg", "Account has already existed!");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+        try {
+            internID = Integer.parseInt(internID_raw);
+            User checkUser = userDao.check(user, pass);
+            if (checkUser == null) {
+                User newUser = new User(user, pass, role, internID);
+                userDao.insert(newUser);
+                response.sendRedirect("internProfiles");
+
+            } else {
+                request.setAttribute("msg", "Account has already existed!");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            System.err.println(e);
         }
+
     }
 
     /**

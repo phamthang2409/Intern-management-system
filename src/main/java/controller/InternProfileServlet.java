@@ -63,6 +63,9 @@ public class InternProfileServlet extends HttpServlet {
         int cnt = 0;
         request.setAttribute("cnt", cnt);
         request.setAttribute("listIntern", list);
+        if (internProfileDao.countAllProfiles() == 0){
+                internProfileDao.reset();
+            }
         request.getRequestDispatcher("intern_profiles.jsp").forward(request, response);
     }
 

@@ -80,7 +80,7 @@
             }
             
             function doADD(id){
-                window.location = "register";
+                window.location = "register?id="+id;
             }
         </script>
     </body>

@@ -1,14 +1,17 @@
 --User
+
 CREATE TABLE User (
-    ID       INT            PRIMARY KEY NOT NULL,
+    ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     userName NVARCHAR (100) NOT NULL,
     passWord NVARCHAR (100) NOT NULL,
-    role     NVARCHAR (20)  NOT NULL
+    role     NVARCHAR (20)  NOT NULL,
+    internID INT            NOT NULL,
+    foreign key (internID) references InternProfile(ID)
 );
 
 -- admin quản lý tuỷen dụng
 CREATE TABLE Recruitment_Campaigns (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     campaignName NVARCHAR(255) NOT NULL,
     position NVARCHAR(255) NOT NULL,
     salary INT NOT NULL,
@@ -16,8 +19,9 @@ CREATE TABLE Recruitment_Campaigns (
 );
 
 --Danh sách InternProfie đăng ký
+
 CREATE TABLE InternProfile (
-    ID               INTEGER primary key AUTOINCREMENT,
+    ID               INTEGER primary key AUTOINCREMENT DEFAULT 1,
     profileFirstName NVARCHAR (50) NOT NULL,
     profileLastName  NVARCHAR (50) NOT NULL,
     profileDOB       DATE NOT NULL,
@@ -30,7 +34,7 @@ CREATE TABLE InternProfile (
 
 --Danh sách InternProfile được duyệt
 CREATE TABLE InternProfileApproved (
-    ID               INTEGER primary key AUTOINCREMENT,
+    ID               INTEGER primary key AUTOINCREMENT DEFAULT 1,
     profileFirstName NVARCHAR (50) NOT NULL,
     profileLastName  NVARCHAR (50) NOT NULL,
     profileDOB       DATE NOT NULL,
@@ -43,7 +47,7 @@ CREATE TABLE InternProfileApproved (
 
 --Lên lịch phỏng vấn
 CREATE TABLE InternViewForm (
-	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
 	candidateName NVARCHAR(255) NOT NULL,
 	internViewDateTime DATETIME NOT NULL,
 	location NVARCHAR(255) NOT NULL
@@ -51,7 +55,7 @@ CREATE TABLE InternViewForm (
 
 -- staff chương trình đào tạo
 CREATE TABLE TrainingForm (
-	ID INTEGER PRIMARY KEY autoincrement,
+	ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
 	programName NVARCHAR(255) NOT NULL,
 	startDate DATE NOT NULL,
 	endDate DATE NOT NULL,

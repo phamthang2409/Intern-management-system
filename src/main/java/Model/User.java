@@ -6,20 +6,26 @@ public class User {
     private String userName;
     private String passWord;
     private String role;
+    private int internID;
 
     public User() {
-
     }
 
-    // Constructor
-    public User(int ID, String userName, String passWord, String role) {
+    public User(String userName, String passWord, String role, int internID) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.role = role;
+        this.internID = internID;
+    }
+
+    public User(int ID, String userName, String passWord, String role, int internID) {
         this.ID = ID;
         this.userName = userName;
         this.passWord = passWord;
         this.role = role;
+        this.internID = internID;
     }
 
-    // Getters and Setters
     public int getID() {
         return ID;
     }
@@ -36,11 +42,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getpassWord() {
+    public String getPassWord() {
         return passWord;
     }
 
-    public void setpassWord(String passWord) {
+    public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
 
@@ -52,4 +58,13 @@ public class User {
         this.role = role;
     }
 
+    public int getInternID() {
+        return internID;
+    }
+
+    public void setInternID(int internID) {
+        this.internID = internID;
+    }
+
+    
 }

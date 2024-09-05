@@ -41,7 +41,8 @@ public class UserDao extends DBContext{
             if (rs.next()){
                 User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
                         rs.getString("passWord"), 
-                        rs.getString("role"));
+                        rs.getString("role"),
+                        rs.getInt("internID"));
                 return newUser;
             }
             
@@ -62,7 +63,8 @@ public class UserDao extends DBContext{
                 User user = new User(rs.getInt("id"),
                         rs.getString("username"),
                         rs.getNString("passWord"),
-                        rs.getString("role"));
+                        rs.getString("role"),
+                            rs.getInt("internID"));
                 list.add(user);
             }
         } catch (SQLException e) {
@@ -72,14 +74,14 @@ public class UserDao extends DBContext{
     }
 
     public void insert(User user) {
-        String sql = "Insert into User (ID, userName, passWord, role) values(?, ?, ?, ?)";
+        String sql = "Insert into User (userName, passWord, role, internID) values(?, ?, ?, ?)";
         try{
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, user.getID());
-            st.setString(2, user.getUserName());
-            st.setString(3, user.getpassWord());
-            st.setString(4, user.getRole());
-            st.executeQuery();
+            st.setString(1, user.getUserName());
+            st.setString(2, user.getPassWord());
+            st.setString(3, user.getRole());
+            st.setInt(4, user.getInternID());
+            st.executeUpdate();
             System.out.println("add thành công");
         } catch (SQLException e) {
             System.err.println("add thất bại");
@@ -87,22 +89,22 @@ public class UserDao extends DBContext{
         }
     }
     
-    public void update(User user){
-        String sql = "Update User set userName = ?, passWord = ?, role = ? where ID = ?";
-        System.out.println(user.getUserName());
-        try{
-            PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, user.getUserName());
-            st.setString(2, user.getpassWord());
-            st.setString(3, user.getRole());
-            st.setInt(4,user.getID());
-            st.executeUpdate();
-            System.out.println("Update Success");
-        } catch (SQLException e) {
-            System.out.println(e);  
-            System.out.println("Update Fail");
-        }
-    }
+//    public void update(User user){
+//        String sql = "Update User set userName = ?, passWord = ?, role = ? where ID = ?";
+//        System.out.println(user.getUserName());
+//        try{
+//            PreparedStatement st = conn.prepareStatement(sql);
+//            st.setString(1, user.getUserName());
+//            st.setString(2, user.getPassWord());
+//            st.setString(3, user.getRole());
+//            st.setInt(4,user.getID());
+//            st.executeUpdate();
+//            System.out.println("Update Success");
+//        } catch (SQLException e) {
+//            System.out.println(e);  
+//            System.out.println("Update Fail");
+//        }
+//    }
     
     public void delete(int id){
         String sql = "DELETE from User where ID = ?";
@@ -127,7 +129,8 @@ public class UserDao extends DBContext{
                 User user = new User(rs.getInt("ID"),
                         rs.getString("userName"),
                         rs.getNString("passWord"),
-                        rs.getString("role"));
+                        rs.getString("role"),
+                rs.getInt("internID"));
                 return user;
             }
         } catch (SQLException e) {
