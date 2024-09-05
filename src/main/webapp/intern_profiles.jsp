@@ -35,7 +35,7 @@
                 <h3>Không có dữ liệu tìm thấy</h3>
             </c:if>
             <c:if test="${requestScope.listIntern != null}">
-                <table id="internsTable" class="table-row" border = '1px'>
+                <table id="internsTable" class="table-row" border = '1px' style="text-align: center">
                     <thead>
                         <tr>
                             <th>Họ và Tên</th>
@@ -59,7 +59,7 @@
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
                                 <td>
-                                    <button name="delete" onclick="doDelete(${i.ID})">Xóa</button>
+                                    <button name="delete" onclick="doDelete(${i.getID()})">Xóa</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -71,7 +71,7 @@
         <script type="text/javascript">
             function doDelete(id) {
                 if (confirm("Are you want to delete ")) {
-                    window.location = "deleteProfileIntern?id=" + id;
+                    window.location = "delete?id=" + id +"&name=internProfiles";
                 }
             }
         </script>

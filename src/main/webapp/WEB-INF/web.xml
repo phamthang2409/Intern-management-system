@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet-mapping>
+        <servlet-name>HandleDeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
     <servlet>
         <servlet-name>DeleteProfileInternServlet</servlet-name>
         <servlet-class>controller.DeleteProfileInternServlet</servlet-class>
@@ -17,46 +26,13 @@
         <servlet-class>controller.InterviewSchedulingServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>TrainingProgramServlet</servlet-name>
-        <servlet-class>controller.TrainingProgramServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>PerformanceTrackingServlet</servlet-name>
         <servlet-class>controller.PerformanceTrackingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RecruitmentServlet</servlet-name>
-        <url-pattern>/recruitment</url-pattern>
+        <servlet-name>TrainingFormServlet</servlet-name>
+        <url-pattern>/trainingForm</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteProfileInternServlet</servlet-name>
-        <url-pattern>/deleteProfileIntern</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HandleAdminDashBoardServlet</servlet-name>
-        <url-pattern>/handleAdminDashBoard</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StaffDashBoardServlet</servlet-name>
-        <url-pattern>/staffDashBoard</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>InterviewSchedulingServlet</servlet-name>
-        <url-pattern>/interviewScheduling</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>TrainingProgramServlet</servlet-name>
-        <url-pattern>/trainingProgram</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PerformanceTrackingServlet</servlet-name>
-        <url-pattern>/performanceTracking</url-pattern>
-    </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
     <servlet>
         <servlet-name>DeleteRecruitmentServlet</servlet-name>
         <servlet-class>controller.DeleteRecruitmentServlet</servlet-class>
@@ -93,6 +69,14 @@
         <servlet-name>RecruitmentServlet</servlet-name>
         <servlet-class>controller.RecruitmentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TrainingFormServlet</servlet-name>
+        <servlet-class>controller.TrainingFormServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HandleDeleteServlet</servlet-name>
+        <servlet-class>controller.HandleDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -124,5 +108,29 @@
     <servlet-mapping>
         <servlet-name>DeleteRecruitmentServlet</servlet-name>
         <url-pattern>/deleteRecruitment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecruitmentServlet</servlet-name>
+        <url-pattern>/recruitment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProfileInternServlet</servlet-name>
+        <url-pattern>/deleteProfileIntern</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HandleAdminDashBoardServlet</servlet-name>
+        <url-pattern>/handleAdminDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashBoardServlet</servlet-name>
+        <url-pattern>/staffDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InterviewSchedulingServlet</servlet-name>
+        <url-pattern>/interviewScheduling</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PerformanceTrackingServlet</servlet-name>
+        <url-pattern>/performanceTracking</url-pattern>
     </servlet-mapping>
 </web-app>

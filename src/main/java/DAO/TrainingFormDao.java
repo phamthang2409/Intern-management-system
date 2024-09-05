@@ -26,7 +26,7 @@ public class TrainingFormDao extends DBContext{
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                TrainingForm trainingForm = new TrainingForm(rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"), 
+                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"),rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"), 
                         rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"));
                 list.add(trainingForm);
             }

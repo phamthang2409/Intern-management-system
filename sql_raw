@@ -41,21 +41,21 @@ CREATE TABLE InternProfileApproved (
     profileSalary    NVARCHAR (50) NOT NULL 
 );
 
--- staff lich phỏng vấn
+--Lên lịch phỏng vấn
 CREATE TABLE InternViewForm (
-	ID INT PRIMARY KEY AUTOINCREMENT,
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
 	candidateName NVARCHAR(255) NOT NULL,
 	internViewDateTime DATETIME NOT NULL,
 	location NVARCHAR(255) NOT NULL
 );
 
 -- staff chương trình đào tạo
-CREATE TABLE TrainingForm(
-	ID INT PRIMARY KEY autoincrement,
-	programName NVARCHAR(255),
-	startDate DATE,
-	endDate DATE,
-	sessionStartTime TIME,
-	sessionEndTime TIME,
-	trainerName NVARCHAR(255)
+CREATE TABLE TrainingForm (
+	ID INTEGER PRIMARY KEY autoincrement,
+	programName NVARCHAR(255) NOT NULL,
+	startDate DATE NOT NULL,
+	endDate DATE NOT NULL,
+	sessionStartTime TIME NOT NULL,
+	sessionEndTime TIME NOT NULL,
+	trainerName NVARCHAR(255) NOT NULL
 );

@@ -4,12 +4,15 @@
  */
 package controller;
 
+import DAO.TrainingFormDao;
+import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -55,6 +58,9 @@ public class StaffDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        TrainingFormDao trainingFormDao = new TrainingFormDao();
+        List<TrainingForm> list = trainingFormDao.getAll();
+        request.setAttribute("listTraining", list);
         request.getRequestDispatcher("staff_dashboard.jsp").forward(request, response);
     }
 

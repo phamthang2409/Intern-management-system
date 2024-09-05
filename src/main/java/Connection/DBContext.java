@@ -10,11 +10,6 @@ import java.sql.*;
 
 
 public class DBContext {
-//    public static void main(String[] args) {
-//        RecruitmentCampaign recruitmentCampaign = new RecruitmentCampaign("sass", "123", 1111, "12/12");
-//        insert(recruitmentCampaign);
-//        
-//    }
     
 //    public static void insert(RecruitmentCampaign recruitmentCampaign) {
 //        String sql = "Insert into Recruitment_Campaigns(campaignName, position, salary, education) values(?, ?, ?, ?)";

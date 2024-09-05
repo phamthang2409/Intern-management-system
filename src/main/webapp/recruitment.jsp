@@ -76,7 +76,7 @@
     <script type="text/javascript">
             function doDelete(id){
                 if (confirm("Are you want to delete ")){
-                    window.location = "deleteRecruitment?id=" + id;
+                    window.location = "delete?id=" + id+ "&name=recruitment";
                 }
             }
     </script>
