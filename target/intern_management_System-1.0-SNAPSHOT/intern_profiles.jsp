@@ -46,6 +46,7 @@
                             <th>Vị trí ứng tuyển</th>
                             <th>Mức lương</th>
                             <th>Hành động</th>
+                            <th>Cấp tài khoản</th>
                         </tr>
                     </thead>
                     <c:forEach items="${requestScope.listIntern}" var="i">
@@ -61,6 +62,9 @@
                                 <td>
                                     <button name="delete" onclick="doDelete(${i.getID()})">Xóa</button>
                                 </td>
+                                <td>
+                                    <button name="add" onclick="doADD(${i.getID()})">Cấp tài khoản</button>
+                                </td>
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -73,6 +77,10 @@
                 if (confirm("Are you want to delete ")) {
                     window.location = "delete?id=" + id +"&name=internProfiles";
                 }
+            }
+            
+            function doADD(id){
+                window.location = "register";
             }
         </script>
     </body>

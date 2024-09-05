@@ -11,7 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register Page</title>
-        <link rel="stylesheet" href="css/style.css"/>
+<!--        <link rel="stylesheet" href="css/style.css"/>-->
+        <link rel="stylesheet" href="css/index.css"/>
     </head>
     <body>
         <div class="register-container">
@@ -33,7 +34,6 @@
                 <select id="role" name="role">
                     <option value="intern">Thực tập sinh</option>
                     <option value="mentor">Mentor</option>
-                    <option value="admin">Quản trị viên</option>
                     <option value="staff">Nhân viên phụ trách</option>
                 </select>
                 <button type="submit">Đăng ký</button>
