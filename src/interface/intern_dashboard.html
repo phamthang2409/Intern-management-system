@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bảng điều khiển Thực tập sinh</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="intern_dashboard.css">
     <script src="script.js"></script>
 
 </head>
@@ -14,23 +14,43 @@
 </header>
 
 <main>
-    <section class="info-box">
-        <h2>Thông tin Hồ sơ Đã Đăng Ký</h2>
-        <div id="profileInfo">
-            <p><strong>Họ và Tên:</strong> <span id="profileName"></span></p>
-            <p><strong>Ngày tháng năm sinh:</strong> <span id="profileDob"></span></p>
-            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-            <p><strong>Số điện thoại:</strong> <span id="profilePhone"></span></p>
-            <p><strong>Trình độ học vấn:</strong> <span id="profileEducation"></span></p>
-            <p><strong>Vị trí ứng tuyển:</strong> <span id="profilePosition"></span></p>
-            <p><strong>Mức lương mong muốn:</strong> <span id="profileSalary"></span></p>
+    <!-- Hồ sơ thông tin -->
+    <section class="profile-section">
+        <h2>HỒ SƠ:</h2>
+        <div class="profile-info">
+            <div class="profile-details-left">
+                <p><strong>Họ và Tên:</strong> <span id="profileName"></span></p>
+                <p><strong>Ngày sinh:</strong> <span id="profileDob"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Số điện thoại:</strong> <span id="profilePhone"></span></p>
+            </div>
+            <div class="profile-details-right">
+                <p><strong>Trình độ học vấn:</strong> <span id="profileEducation"></span></p>
+                <p><strong>Vị trí ứng tuyển:</strong> <span id="profilePosition"></span></p>
+            </div>
         </div>
-
-        <!-- Nút hoàn thành xem lại -->
-        <button id="completeReviewButton">Hoàn Thành Xem Lại</button>
     </section>
 
+    <!-- Nhắc nhở và lịch -->
+    <section class="notifications">
+        <div class="reminders">
+            <h3>Nhắc nhở mới, chưa xem</h3>
+            <p>0</p>
+            <a href="#">Xem chi tiết</a>
+        </div>
+        <div class="schedule">
+            <h3>Lịch</h3>
+            <p>0</p>
+            <a href="#">Xem chi tiết</a>
+        </div>
+    </section>
+
+    <!-- Biểu đồ -->
+    <section class="chart">
+        <canvas id="scoreChart"></canvas>
+    </section>
 </main>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -57,6 +77,33 @@
     });
     syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
     autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Initialize the bar chart
+    var ctx = document.getElementById('scoreChart').getContext('2d');
+    var scoreChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Kỳ 1', 'Kỳ 2', 'Kỳ 3', 'Kỳ 4'],
+            datasets: [
+                {
+                    label: 'Điểm của bạn',
+                    data: [8, 7, 6, 7],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>
 
 </body>
