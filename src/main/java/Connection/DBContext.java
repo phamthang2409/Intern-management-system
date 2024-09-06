@@ -11,23 +11,6 @@ import java.sql.*;
 
 public class DBContext {
     
-//    public static void insert(RecruitmentCampaign recruitmentCampaign) {
-//        String sql = "Insert into Recruitment_Campaigns(campaignName, position, salary, education) values(?, ?, ?, ?)";
-//        try {
-//            PreparedStatement st = conn.prepareStatement(sql);
-//            System.out.println("eeeeee");
-//            st.setString(1, recruitmentCampaign.getCampaignName());
-//            st.setString(2, recruitmentCampaign.getPosition());
-//            st.setInt(3, recruitmentCampaign.getSalary());
-//            st.setString(4, recruitmentCampaign.getEducation());
-//            st.executeUpdate();
-//            System.out.println("add thành công");
-//        } catch (SQLException e) {
-//            System.out.println("add thất bại");
-//            System.out.println(e);
-//        }
-//    }
-    
     public Connection DBContext(){
         Connection conn;
         try {
@@ -48,19 +31,4 @@ public class DBContext {
             throw new RuntimeException("uncaught", e);
         }
     }
-//    public DBContext() {
-//        try {
-//            String url = "jdbc:sqlserver://localhost:1433;databaseName = intern-management-System;"
-//                    + "encrypt=optional; trustServerCertificate=true;";
-//            String user = "sa";
-//            String passWord = "123";
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            conn = DriverManager.getConnection(url, user, passWord);
-//            System.out.println("Ket noi thanh cong");
-//        } catch ( ClassNotFoundException|SQLException ex) {
-//            System.out.println("Ket noi that bai");
-//            System.out.println(ex.getMessage());
-//            System.exit(0);
-//        }
-//    }
 }

@@ -4,7 +4,9 @@
  */
 package controller;
 
+import DAO.InternProfileDao;
 import DAO.UserDao;
+import Model.InternProfile;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -74,21 +76,21 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String user = request.getParameter("userName");
         String pass = request.getParameter("passWord");
-        String rem = request.getParameter("rem");
+//        String rem = request.getParameter("rem");
         
         //Tạo 3 cookie user, pass, rem
         Cookie userCookie = new Cookie("cUser", user);
         Cookie passCookie = new Cookie("cPass", pass);
-        Cookie remCookie = new Cookie("cRem", rem);
-        if (rem!=null){
-            userCookie.setMaxAge(60*60*24*7);
-            passCookie.setMaxAge(60*60*24*7);
-            remCookie.setMaxAge(60*60*24*7);
-        }else{
-            userCookie.setMaxAge(0);
-            passCookie.setMaxAge(0);
-            remCookie.setMaxAge(0);
-        }
+//        Cookie remCookie = new Cookie("cRem", rem);
+//        if (rem!=null){
+//            userCookie.setMaxAge(60*60*24*7);
+//            passCookie.setMaxAge(60*60*24*7);
+//            remCookie.setMaxAge(60*60*24*7);
+//        }else{
+//            userCookie.setMaxAge(0);
+//            passCookie.setMaxAge(0);
+//            remCookie.setMaxAge(0);
+//        }
         
         UserDao userDao = new UserDao();
         User newUser = userDao.check(user, pass);
@@ -98,11 +100,15 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             
         }else{
-            request.setAttribute("account", newUser);
+
             String role = newUser.getRole();
             System.out.println("Find Success");
             if(role.equals("intern")){
-                response.sendRedirect("internDashBoard");
+                InternProfileDao internProfileDao = new InternProfileDao();
+                InternProfile internProfile = internProfileDao.findByID(newUser.getInternID());
+                System.out.println(internProfile.getProfileFirstName());
+                request.setAttribute("internProfile", internProfile);
+                request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
             }
         }
         

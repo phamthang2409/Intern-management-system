@@ -18,9 +18,8 @@ import java.util.List;
  * @author PC
  */
 public class InternProfileDao extends DBContext{
-    Connection conn = DBContext();
-    
-    public int countAllProfiles(){
+    public int countAllProfiles() {
+        Connection conn = DBContext();
         int cnt = 0;
         String sql = "Select * from InternProfile";
         try {
@@ -31,11 +30,18 @@ public class InternProfileDao extends DBContext{
             }
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return cnt;
     }
     
-    public List<InternProfile> getAll(){
+    public List<InternProfile> getAll() {
+        Connection conn = DBContext();
         List<InternProfile> list = new ArrayList<>();
         String sql = "Select * from InternProfile";
         try {
@@ -43,35 +49,56 @@ public class InternProfileDao extends DBContext{
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 InternProfile newInternProfile = new InternProfile(rs.getInt("ID"), rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
-                        rs.getString("profileEmail"), rs.getString("profilePhone"), rs.getString("profileEducation"), rs.getString("profilePosition"), rs.getString("profileSalary"));
+                        rs.getString("profileEmail"), rs.getString("profilePhone"), 
+                        rs.getString("profileEducation"), rs.getString("profilePosition"), 
+                        rs.getString("profileSalary"), rs.getInt("status"));
                 list.add(newInternProfile);
             }
             return list;
         } catch (SQLException e) {
             System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return null;
     }
     
-    public InternProfile findByID(int id){
-        String sql = "Select * from InternProfile where id = ?";
+    public InternProfile findByID(int id) {
+        Connection conn = DBContext();
+        String sql = "Select * from InternProfile where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
-                InternProfile internProfile = new InternProfile(rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
-                        rs.getString("profileEmail"), rs.getString("profilePhone"), rs.getString("profileEducation"), rs.getString("profilePosition"), rs.getString("profileSalary"));
+                InternProfile internProfile = new InternProfile(rs.getString("profileFirstName"), 
+                        rs.getString("profileLastName"), 
+                        rs.getDate("profileDOB"), 
+                        rs.getString("profileEmail"), rs.getString("profilePhone"), 
+                        rs.getString("profileEducation"), 
+                        rs.getString("profilePosition"), rs.getString("profileSalary"), rs.getInt("status"));
                 return internProfile;
             }
         } catch (SQLException e) {
             System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return null;
     }
     
-    public void insert(InternProfile internProfile) {
+    public void insert(InternProfile internProfile)  {
+        Connection conn = DBContext();
         String sql = "Insert into InternProfile (profileFirstName, profileLastName, profileDOB, profileEmail, profilePhone, "
-                + "profileEducation, profilePosition, profileSalary) values(?, ?, ?, ?, ?, ?, ?, ?)";
+                + "profileEducation, profilePosition, profileSalary, status) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, internProfile.getProfileFirstName());
@@ -82,15 +109,23 @@ public class InternProfileDao extends DBContext{
             st.setString(6, internProfile.getProfileEducation());
             st.setString(7, internProfile.getProfilePosition());
             st.setString(8, internProfile.getProfileSalary());
+            st.setInt(9, internProfile.getStatus());
             st.executeUpdate();
             System.err.println("add thành công");
         } catch (SQLException e) {
             System.err.println("add thất bại");
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     
-    public InternProfile check(InternProfile internProfile){
+    public InternProfile check(InternProfile internProfile) {
+        Connection conn = DBContext();
         String sql = "select * from InternProfile where profileFirstName = ? and "
                 + "profileLastName = ? and profileDOB = ? and profilePosition = ?";
         try {
@@ -115,11 +150,18 @@ public class InternProfileDao extends DBContext{
             
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return null;
     }
     
-    public void delete(int id){
+    public void delete(int id) {
+        Connection conn = DBContext();
         String sql = "DELETE from InternProfile where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
@@ -129,16 +171,49 @@ public class InternProfileDao extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Delete Fail");
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     
-    public void reset(){
+    public void updateStatus(int id, int status) {
+        Connection conn = DBContext();
+        String sql = "Update InternProfile set status = ? where ID = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, status);
+            st.setInt(2, id);
+            st.executeUpdate();
+            System.out.println("Update Success");
+        } catch (SQLException e) {
+            System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+    
+    public void reset() {
+        Connection conn = DBContext();
         String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
 }

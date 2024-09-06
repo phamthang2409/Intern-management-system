@@ -25,7 +25,7 @@
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
                 </ul>
             </nav>
-            <a href="index.html"><button id="logoutButton"> Đăng Xuất</button></a>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
         <main>

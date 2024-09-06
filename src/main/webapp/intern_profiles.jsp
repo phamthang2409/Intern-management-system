@@ -62,9 +62,17 @@
                                 <td>
                                     <button name="delete" onclick="doDelete(${i.getID()})">Xóa</button>
                                 </td>
-                                <td>
-                                    <button name="add" onclick="doADD(${i.getID()})">Cấp tài khoản</button>
-                                </td>
+                                <c:if test="${i.getStatus() == 1}">
+                                    <td>
+                                        <label>Đã cấp tài khoản</label>
+                                    </td>
+                                </c:if>
+                                <c:if test="${i.getStatus() == 0}">
+                                    <td>
+                                        <button name="add" onclick="doADD(${i.getID()})">Cấp tài khoản</button>
+                                    </td>
+                                </c:if>
+
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -75,12 +83,12 @@
         <script type="text/javascript">
             function doDelete(id) {
                 if (confirm("Are you want to delete ")) {
-                    window.location = "delete?id=" + id +"&name=internProfiles";
+                    window.location = "delete?id=" + id + "&name=internProfiles";
                 }
             }
-            
-            function doADD(id){
-                window.location = "register?id="+id;
+
+            function doADD(id) {
+                window.location = "register?id=" + id;
             }
         </script>
     </body>

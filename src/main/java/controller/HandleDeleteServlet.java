@@ -7,12 +7,15 @@ package controller;
 import DAO.InternProfileDao;
 import DAO.RecruitmentCampaignDao;
 import DAO.TrainingFormDao;
+import DAO.UserDao;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -61,8 +64,9 @@ public class HandleDeleteServlet extends HttpServlet {
         String id_raw = request.getParameter("id");
         String name = request.getParameter("name");
         RecruitmentCampaignDao recruitmentCampaignDao = new RecruitmentCampaignDao();
-        InternProfileDao internProfileDao = new InternProfileDao();
+        
         TrainingFormDao trainingFormDao = new TrainingFormDao();
+        
         int id;
         try{
             id = Integer.parseInt(id_raw);
@@ -70,7 +74,14 @@ public class HandleDeleteServlet extends HttpServlet {
                 recruitmentCampaignDao.delete(id);
                 response.sendRedirect("recruitment");
             }else if (name.equals("internProfiles")){
+                System.out.println("Da vao delete intern");
+                UserDao userDao = new UserDao();
+                if (userDao.checkAccountUser(id) != null){
+                    userDao.delete(id);
+                }
+                InternProfileDao internProfileDao = new InternProfileDao();
                 internProfileDao.delete(id);
+                
                 response.sendRedirect("internProfiles");
             }else if (name.equals("trainingForm")){
                 trainingFormDao.delete(id);

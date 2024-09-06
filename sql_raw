@@ -1,5 +1,5 @@
 --User
-
+drop table InternProfile;
 CREATE TABLE User (
     ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     userName NVARCHAR (100) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE User (
     internID INT            NOT NULL,
     foreign key (internID) references InternProfile(ID)
 );
-
+delete from User where internID = 1;
 -- admin quản lý tuỷen dụng
 CREATE TABLE Recruitment_Campaigns (
     ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
@@ -29,7 +29,8 @@ CREATE TABLE InternProfile (
     profilePhone     NVARCHAR (20) NOT NULL,
     profileEducation VARCHAR (20) NOT NULL,
     profilePosition  NVARCHAR (50) NOT NULL,
-    profileSalary    NVARCHAR (50) NOT NULL 
+    profileSalary    NVARCHAR (50) NOT NULL,
+    status           INTEGER     NOT NULL DEFAULT 0
 );
 
 --Danh sách InternProfile được duyệt

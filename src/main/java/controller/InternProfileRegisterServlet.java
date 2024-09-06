@@ -86,7 +86,7 @@ public class InternProfileRegisterServlet extends HttpServlet {
         try {
             profileDOB = (profileDOB_raw == null) ? null: Date.valueOf(profileDOB_raw);
             InternProfile internProfile = new InternProfile(profileFirstName, profileLastName, profileDOB, profileEmail, 
-                    profilePhone, profileEducation, profilePosition, profileSalary);
+                    profilePhone, profileEducation, profilePosition, profileSalary, 0);
            
             if (internProfileDao.check(internProfile) == null){
                 internProfileDao.insert(internProfile);

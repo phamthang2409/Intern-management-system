@@ -20,13 +20,24 @@ public class InternProfile {
     private String profileEducation;
     private String profilePosition;
     private String profileSalary;
+    private int status;
 
     public InternProfile() {
     }
 
+    public InternProfile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
+        this.profileFirstName = profileFirstName;
+        this.profileLastName = profileLastName;
+        this.profileDOB = profileDOB;
+        this.profileEmail = profileEmail;
+        this.profilePhone = profilePhone;
+        this.profileEducation = profileEducation;
+        this.profilePosition = profilePosition;
+        this.profileSalary = profileSalary;
+        this.status = status;
+    }
 
-
-    public InternProfile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary) {
+    public InternProfile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
         this.ID = ID;
         this.profileFirstName = profileFirstName;
         this.profileLastName = profileLastName;
@@ -36,18 +47,21 @@ public class InternProfile {
         this.profileEducation = profileEducation;
         this.profilePosition = profilePosition;
         this.profileSalary = profileSalary;
+        this.status = status;
     }
 
-    public InternProfile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary) {
-        this.profileFirstName = profileFirstName;
-        this.profileLastName = profileLastName;
-        this.profileDOB = profileDOB;
-        this.profileEmail = profileEmail;
-        this.profilePhone = profilePhone;
-        this.profileEducation = profileEducation;
-        this.profilePosition = profilePosition;
-        this.profileSalary = profileSalary;
+        
+    
+
+    public int getStatus() {
+        return status;
     }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
 
     public int getID() {
         return ID;

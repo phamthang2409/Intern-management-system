@@ -5,7 +5,9 @@
 package controller;
 
 import DAO.InternProfileDao;
+import DAO.UserDao;
 import Model.InternProfile;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -59,13 +61,24 @@ public class InternProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         InternProfileDao internProfileDao = new InternProfileDao();
+        UserDao userDao = new UserDao();
         List<InternProfile> list = internProfileDao.getAll();
         int cnt = 0;
+        int cntIntern = internProfileDao.countAllProfiles();
+        int cntUserAccount = userDao.countAllUsers();
+        if (cntIntern == 0) {
+            internProfileDao.reset();
+        }
+        if (cntUserAccount == 0){
+            userDao.reset();
+        }
         request.setAttribute("cnt", cnt);
         request.setAttribute("listIntern", list);
-        if (internProfileDao.countAllProfiles() == 0){
-                internProfileDao.reset();
-            }
+        
+//        //set ID ve ban dau trong sql
+//        if (userDao.countAllUsers() == 0) {
+//            userDao.reset();
+//        }
         request.getRequestDispatcher("intern_profiles.jsp").forward(request, response);
     }
 

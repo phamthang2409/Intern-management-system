@@ -69,4 +69,14 @@ public class TrainingFormDao extends DBContext{
         }
     }
     
+    public void reset(){
+        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
 }

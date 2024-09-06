@@ -4,6 +4,7 @@
  */
 package controller;
 
+import DAO.InternProfileDao;
 import DAO.UserDao;
 import Model.User;
 import java.io.IOException;
@@ -80,12 +81,14 @@ public class RegisterServlet extends HttpServlet {
         int internID;
         System.out.println(internID_raw);
         UserDao userDao = new UserDao();
+        InternProfileDao internProfileDao = new InternProfileDao();
         try {
             internID = Integer.parseInt(internID_raw);
             User checkUser = userDao.check(user, pass);
             if (checkUser == null) {
                 User newUser = new User(user, pass, role, internID);
                 userDao.insert(newUser);
+                internProfileDao.updateStatus(internID, 1);
                 response.sendRedirect("internProfiles");
 
             } else {
