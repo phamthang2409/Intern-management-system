@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký Hồ Sơ Thực Tập Sinh</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="intern_profile_registrantion.css">
     <script src="script.js"></script>
 
 </head>
@@ -16,15 +16,15 @@
     <form id="internForm" onsubmit="return validateForm()">
         <!-- Họ và Tên -->
         <div class="form-group">
-            <label for="lastName">Họ:</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <label for="firstName">Họ:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Họ" required>
         </div>
         <div class="form-group">
-            <label for="firstName">Tên:</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">Tên:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Tên" required>
         </div>
 
-        <!-- Ngày tháng năm sinh -->
+        <!-- Ngày sinh -->
         <div class="form-group">
             <label for="dob">Ngày tháng năm sinh:</label>
             <input type="date" id="dob" name="dob" required>
@@ -33,101 +33,57 @@
         <!-- Số điện thoại -->
         <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" placeholder="Số điện thoại" required>
         </div>
 
         <!-- Email -->
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
+
+<!--        chuong trinh dao tao--><!-- Email -->
+        <div class="form-group">
+            <label for="program">chương trình đào tao:</label>
+            <input type="program" id="program" name="program" placeholder="chương trình đào tạo" required>
+        </div>
+
 
         <!-- Trình độ học vấn -->
         <div class="form-group">
             <label for="education">Trình độ học vấn:</label>
-            <input id="education" name="education" required>
+            <input id="education" name="education" placeholder="Trình độ học vấn" required>
         </div>
 
         <!-- Vị trí ứng tuyển -->
         <div class="form-group">
             <label for="position">Vị trí ứng tuyển:</label>
-            <input id="position" name="position" required>
+            <input id="position" name="position" placeholder="Vị trí ứng tuyển" required>
         </div>
 
-        <!-- Mức lương -->
+        <!-- Mức lương mong muốn -->
         <div class="form-group">
             <label for="salary">Mức lương mong muốn:</label>
-            <input id="salary" name="salary" required>
+            <input id="salary" name="salary" placeholder="Mức lương mong muốn" required>
         </div>
 
-         Nút Submit
+        <!-- Nút Submit -->
         <div class="form-group">
-            <button type="submit">Đăng Ký</button>
+            <button type="submit" class="submit-button">Thêm</button>
         </div>
-
     </form>
 </div>
 
 <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-        let recruitments = JSON.parse(localStorage.getItem('recruitments')) || [];
-        let educationSelect = document.getElementById('education');
-        let positionSelect = document.getElementById('position');
-        let salarySelect = document.getElementById('salary');
-
-        // Làm sạch các danh sách hiện có
-        educationSelect.innerHTML = '';
-        positionSelect.innerHTML = '';
-        salarySelect.innerHTML = '';
-
-        // Gộp tất cả các tùy chọn từ các chiến dịch khác nhau
-        let allEducations = new Set();
-        let allPositions = new Set();
-        let allSalaries = new Set();
-
-        recruitments.forEach(recruitment => {
-            recruitment.education.split(',').forEach(edu => allEducations.add(edu.trim()));
-            recruitment.position.split(',').forEach(pos => allPositions.add(pos.trim()));
-            recruitment.salary.split(',').forEach(sal => allSalaries.add(sal.trim()));
-        });
-
-        // Thêm các tùy chọn vào các dropdown
-        allEducations.forEach(edu => {
-            let option = document.createElement('option');
-            option.value = edu;
-            option.textContent = edu;
-            educationSelect.appendChild(option);
-        });
-
-        allPositions.forEach(pos => {
-            let option = document.createElement('option');
-            option.value = pos;
-            option.textContent = pos;
-            positionSelect.appendChild(option);
-        });
-
-        allSalaries.forEach(sal => {
-            let option = document.createElement('option');
-            option.value = sal;
-            option.textContent = sal;
-            salarySelect.appendChild(option);
-        });
-    });
-
-    document.getElementById('internForm').addEventListener('submit', function() {
-        saveRegisteredName();
-    });
-
-
     function validateForm() {
         const lastName = document.getElementById('lastName').value.trim();
         const firstName = document.getElementById('firstName').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const email = document.getElementById('email').value.trim();
-        const position = document.getElementById('position').value;
+        const position = document.getElementById('position').value.trim();
+        const salary = document.getElementById('salary').value.trim();
 
-        if (!lastName || !firstName || !phone || !email) {
+        if (!lastName || !firstName || !phone || !email || !position || !salary) {
             alert('Vui lòng điền đầy đủ tất cả các trường thông tin.');
             return false;
         }
@@ -144,16 +100,17 @@
             return false;
         }
 
+        // Lưu thông tin vào localStorage
         let internProfiles = JSON.parse(localStorage.getItem('internProfiles')) || [];
 
         // Kiểm tra trùng lặp email
         let isDuplicateEmail = internProfiles.some(profile => profile.email === email);
-
         if (isDuplicateEmail) {
             alert('Email đã được đăng ký trước đó.');
             return false;
         }
 
+        // Thêm thông tin thực tập sinh vào localStorage
         const profile = {
             lastName,
             firstName,
@@ -162,7 +119,7 @@
             email,
             education: document.getElementById('education').value,
             position,
-            salary: document.getElementById('salary').value
+            salary
         };
 
         internProfiles.push(profile);
@@ -172,10 +129,10 @@
         window.location.href = 'intern_dashboard.html';
         return false;
     }
-    syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-    autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
 
-
+    // Đồng bộ tên của thực tập sinh
+    syncNameInput('internName');
+    autoFillName('profileName');
 </script>
 
 </body>

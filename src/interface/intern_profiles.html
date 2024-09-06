@@ -29,6 +29,7 @@
             <th>Ngày tháng năm sinh</th>
             <th>Email</th>
             <th>Số điện thoại</th>
+            <th>Chương trình đào tạo</th>
             <th>Trình độ học vấn</th>
             <th>Vị trí ứng tuyển</th>
             <th>Mức lương</th>
@@ -54,9 +55,10 @@
             row.insertCell(1).textContent = profile.dob;
             row.insertCell(2).textContent = profile.email;
             row.insertCell(3).textContent = profile.phone;
-            row.insertCell(4).textContent = profile.education;
-            row.insertCell(5).textContent = profile.position;
-            row.insertCell(6).textContent = profile.salary;
+            row.insertCell(4).textContent = profile.program;
+            row.insertCell(5).textContent = profile.education;
+            row.insertCell(6).textContent = profile.position;
+            row.insertCell(7).textContent = profile.salary;
 
             // Thêm nút Xóa
             let actionCell = row.insertCell(7);
