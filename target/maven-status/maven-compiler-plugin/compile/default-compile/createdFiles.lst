@@ -2,6 +2,8 @@ DAO\UserDao.class
 controller\DailyProgressServlet.class
 controller\HandleDeleteServlet.class
 controller\StaffDashBoardServlet.class
+controller\ResetSessionServlet.class
+FIlter\LoginFilter.class
 Connection\DBContext.class
 controller\InternProfileRegisterServlet.class
 controller\RecruitmentServlet.class

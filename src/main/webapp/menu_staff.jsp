@@ -11,8 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <header>
-            <h1>Lên Lịch Phỏng vấn</h1>
             <nav>
                 <ul>
                     <li><a href="staffDashBoard"><button>Bảng điều khiển nhân viên</button></a></li>
@@ -21,7 +19,6 @@
                     <li><a href="performanceTracking"><button>Theo dõi Hiệu suất</button></a></li>
                 </ul>
             </nav>
-            <a href="index.html"><button id="logoutButton"> Đăng Xuất</button></a>
-        </header>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
     </body>
 </html>

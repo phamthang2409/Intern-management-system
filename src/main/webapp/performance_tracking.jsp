@@ -10,11 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Theo dõi Hiệu suất Thực tập sinh</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/performance_tracking.css">
         <script src="js/script.js"></script>
     </head>
     <body>
-        <%@include file="menu_staff.jsp"%>
+        <header>
+            <h1>Theo dõi Hiệu suất Thực tập sinh</h1>
+            <%@include file="menu_staff.jsp"%>
+        </header>
+        
         <main>
             <h2>Quản lý Hiệu suất</h2>
             <form id="performanceForm">

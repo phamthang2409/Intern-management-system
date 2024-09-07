@@ -4,17 +4,22 @@
     Author     : PC
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bảng điều khiển Nhân viên phụ trách</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/staff_dashboard.css">
         <script src="js/script.js"></script>
     </head>
     <body>
-        <%@include file="menu_staff.jsp"%>
+        <header>
+            <h1>Bảng điều khiển Nhân viên phụ trách</h1>
+            <%@include file="menu_staff.jsp"%>
+        </header>
+        
         <main>
             <h2>Thông tin Chương trình Đào tạo</h2>
             <table id="trainingTableDisplay" border="1" cellspacing="0" cellpadding="5">

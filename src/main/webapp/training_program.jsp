@@ -11,11 +11,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thiết lập Chương trình Đào tạo</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/traning_program.css">
         <script src="js/script.js"></script>
     </head>
     <body>
-        <%@include file="menu_staff.jsp"%>
+        <header>
+            <h1>Thiết lập Chương trình Đào tạo</h1>
+            <%@include file="menu_staff.jsp"%>
+        </header>
+        
         <main>
             <h2>Chương trình Đào tạo</h2>
             <form id="trainingForm" action="trainingForm" method="post">

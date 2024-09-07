@@ -15,6 +15,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -94,22 +95,22 @@ public class LoginServlet extends HttpServlet {
         
         UserDao userDao = new UserDao();
         User newUser = userDao.check(user, pass);
+        HttpSession session = request.getSession();
         if (newUser == null){
             request.setAttribute("msg", "UserName or PassWord is invalid");
             System.out.println("Send Fail");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             
         }else{
-
             String role = newUser.getRole();
-            System.out.println("Find Success");
             if(role.equals("intern")){
                 InternProfileDao internProfileDao = new InternProfileDao();
                 InternProfile internProfile = internProfileDao.findByID(newUser.getInternID());
-                System.out.println(internProfile.getProfileFirstName());
+                session.setAttribute("account", newUser);
                 request.setAttribute("internProfile", internProfile);
                 request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
             }
+            
         }
         
     }

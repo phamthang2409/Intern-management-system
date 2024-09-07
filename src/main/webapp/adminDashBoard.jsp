@@ -25,13 +25,14 @@
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
                 </ul>
             </nav>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+<!--            <a href="login"></a>-->
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
 
         <main>
             <section class="info-box">
-                <h2>Danh Sách Thực tập sinh Ứng Tuyển</h2>
-                <table id="newInternsTable" class="table-row" border = "1px">
+                <h2>Danh Sách Thực tập sinh</h2>
+                <table id="newInternsTable" class="table-row" border = "1px" style="text-align: center" >
                     <thead>
                         <tr>
                             <th>Họ và Tên</th>
@@ -39,7 +40,6 @@
                             <th>Email</th>
                             <th>Vị trí ứng tuyển</th>
                             <th>Mức lương</th>
-                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,10 +51,6 @@
                                 <td>${i.getProfileEmail()}</td>
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
-                                <td>
-                                    <button name="ADD" onclick="doADD(${i.ID})">Duyệt</button>
-                                    <button name="delete" onclick="doDelete(${i.ID})">Hủy Bỏ</button> 
-                                </td>
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -63,7 +59,7 @@
             </section>
 
             <section class="info-box">
-                <h2>Danh sách Hồ sơ Thực tập sinh</h2>
+                <h2>Danh sách Tuyển Dụng</h2>
                 <table id="internsTable" class="table-row" border = "1px">
                     <thead>
                         <tr>
@@ -75,7 +71,6 @@
                             <th>Trình độ học vấn</th>
                             <th>Vị trí ứng tuyển</th>
                             <th>Mức lương</th>
-                            <th>Hành động</th>
                         </tr>
                         </tr>
                     </thead>
@@ -85,18 +80,12 @@
                 </table>
             </section>
         </main>
-
-        <script type="text/javascript">
-            function doDelete(id) {
-                if (confirm("Are you want to delete ")) {
-                    window.location = "handleAdminDashBoard?id=" + id + "action=delete";
-                }
-            }
-            function doADD(id) {
-                if (confirm("Are you want to ADD Intern ")) {
-                    window.location = "handleAdminDashBoard?id=" + id + "action=add";
-                }
-            }
-        </script>
     </body>
+    <script type="text/javascript">
+        function doClick(){
+            if (confirm("Are you want to exit? ")){
+                window.location = "resetSession";
+            }
+        }
+    </script>
 </html>

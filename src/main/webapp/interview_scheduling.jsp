@@ -10,14 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lên Lịch Phỏng vấn</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/interview_scheduling.css">
         <script src="js/script.js"></script>
     </head>
     <body>
-        <%@include file="menu_staff.jsp"%>
+        <header>
+            <h1>Lên Lịch Phỏng vấn</h1>
+            <%@include file="menu_staff.jsp"%>
+        </header>
+        
         <main>
-            <h2>Lịch Phỏng vấn</h2>
             <form id="interviewForm">
+                <h2>Lên Lịch Phỏng Vấn</h2>
                 <label for="candidateName">Tên Thực tập sinh:</label>
                 <input type="text" id="candidateName" name="candidateName" required><br><br>
 
@@ -80,6 +84,7 @@
                         candidate: document.querySelector('#candidateName').value,
                         dateTime: document.querySelector('#interviewDateTime').value,
                         location: document.querySelector('#location').value,
+                        role: document.querySelector('#role').value
                     };
 
                     interviewSchedule.push(interview);
@@ -91,8 +96,7 @@
 
                 displayInterviews();
             });
-            syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-            autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
         </script>
+
     </body>
 </html>

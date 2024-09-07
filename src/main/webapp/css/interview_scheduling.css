@@ -1,0 +1,170 @@
+/* Hiệu ứng nền trộn màu theo chủ đề công nghệ */
+body {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af, #bdc3c7);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
+    color: #333; /* Màu chữ đậm */
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header styles */
+header {
+    background-color: #013e51;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#logoutButton {
+    background-color: #ff5722; /* Orange color for logout button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#logoutButton:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+}
+/* Navigation menu styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a button {
+    background-color: #a45112;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav ul li a button:hover {
+    background-color: #883c0e;
+}
+
+/* Page title before the main section */
+h2 {
+    color: #3e3e3e;
+    text-align: left;
+    margin-left: 20px;
+    font-size: 22px;
+}
+
+/* Main form styling */
+main {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e64a19;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+table td {
+    font-size: 14px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Action button in table */
+table button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table button:hover {
+    background-color: #d32f2f;
+}
+
+/* Styling for the navigation buttons */
+header nav ul li button:hover {
+    background-color: #eeeeee;
+}
