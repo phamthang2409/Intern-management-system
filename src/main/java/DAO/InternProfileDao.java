@@ -49,7 +49,7 @@ public class InternProfileDao extends DBContext{
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 InternProfile newInternProfile = new InternProfile(rs.getInt("ID"), rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
-                        rs.getString("profileEmail"), rs.getString("profilePhone"), 
+                        rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 
                         rs.getString("profileEducation"), rs.getString("profilePosition"), 
                         rs.getString("profileSalary"), rs.getInt("status"));
                 list.add(newInternProfile);
@@ -78,7 +78,7 @@ public class InternProfileDao extends DBContext{
                 InternProfile internProfile = new InternProfile(rs.getString("profileFirstName"), 
                         rs.getString("profileLastName"), 
                         rs.getDate("profileDOB"), 
-                        rs.getString("profileEmail"), rs.getString("profilePhone"), 
+                        rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 
                         rs.getString("profileEducation"), 
                         rs.getString("profilePosition"), rs.getString("profileSalary"), rs.getInt("status"));
                 return internProfile;
@@ -97,19 +97,20 @@ public class InternProfileDao extends DBContext{
     
     public void insert(InternProfile internProfile)  {
         Connection conn = DBContext();
-        String sql = "Insert into InternProfile (profileFirstName, profileLastName, profileDOB, profileEmail, profilePhone, "
-                + "profileEducation, profilePosition, profileSalary, status) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "Insert into InternProfile (profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, profilePhone, "
+                + "profileEducation, profilePosition, profileSalary, status) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, internProfile.getProfileFirstName());
             st.setString(2, internProfile.getProfileLastName());
             st.setDate(3, internProfile.getProfileDOB());
             st.setString(4, internProfile.getProfileEmail());
-            st.setString(5, internProfile.getProfilePhone());
-            st.setString(6, internProfile.getProfileEducation());
-            st.setString(7, internProfile.getProfilePosition());
-            st.setString(8, internProfile.getProfileSalary());
-            st.setInt(9, internProfile.getStatus());
+            st.setString(5, internProfile.getTrainingProgram());
+            st.setString(6, internProfile.getProfilePhone());
+            st.setString(7, internProfile.getProfileEducation());
+            st.setString(8, internProfile.getProfilePosition());
+            st.setString(9, internProfile.getProfileSalary());
+            st.setInt(10, internProfile.getStatus());
             st.executeUpdate();
             System.err.println("add thành công");
         } catch (SQLException e) {
@@ -141,6 +142,7 @@ public class InternProfileDao extends DBContext{
                 newInternProfile.setProfileLastName(rs.getString("profileLastName"));
                 newInternProfile.setProfileDOB(rs.getDate("profileDOB"));
                 newInternProfile.setProfileEmail(rs.getString("profileEmail"));
+                newInternProfile.setTrainingProgram(rs.getString("trainingProgram"));
                 newInternProfile.setProfilePhone(rs.getString("profilePhone"));
                 newInternProfile.setProfileEducation(rs.getString("profileEducation"));
                 newInternProfile.setProfilePosition(rs.getString("profilePosition"));

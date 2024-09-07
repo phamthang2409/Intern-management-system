@@ -33,6 +33,12 @@ public class RecruitmentCampaignDao extends DBContext{
         } catch (SQLException e) {
             System.out.println("add thất bại");
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     
@@ -51,6 +57,12 @@ public class RecruitmentCampaignDao extends DBContext{
             }
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return list;
     }
@@ -65,15 +77,27 @@ public class RecruitmentCampaignDao extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Delete Fail");
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     public void reset(){
-        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
+        String sql = "DELETE FROM sqlite_sequence WHERE name ='Recruitment_Campaigns'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
 }

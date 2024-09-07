@@ -5,7 +5,9 @@
 package controller;
 
 import DAO.InternProfileDao;
+import DAO.TrainingFormDao;
 import Model.InternProfile;
+import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -58,6 +61,9 @@ public class InternProfileRegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        TrainingFormDao trainingFormDao = new TrainingFormDao();
+        List<TrainingForm> list = trainingFormDao.getAll();
+        request.setAttribute("listTrainingForm", list);
         request.getRequestDispatcher("intern_profile_register.jsp").forward(request, response);
     }
 
@@ -77,15 +83,17 @@ public class InternProfileRegisterServlet extends HttpServlet {
         String profileDOB_raw = request.getParameter("dob");
         String profileEmail = request.getParameter("email");
         String profilePhone = request.getParameter("phone");
+        String trainingProgram = request.getParameter("program");
         String profileEducation = request.getParameter("education");
         String profilePosition = request.getParameter("position");
         String profileSalary = request.getParameter("salary");
+        System.out.println(trainingProgram);
         InternProfileDao internProfileDao = new InternProfileDao();
         Date profileDOB;
         
         try {
             profileDOB = (profileDOB_raw == null) ? null: Date.valueOf(profileDOB_raw);
-            InternProfile internProfile = new InternProfile(profileFirstName, profileLastName, profileDOB, profileEmail, 
+            InternProfile internProfile = new InternProfile(profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, 
                     profilePhone, profileEducation, profilePosition, profileSalary, 0);
            
             if (internProfileDao.check(internProfile) == null){

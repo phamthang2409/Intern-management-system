@@ -33,6 +33,12 @@ public class InterviewSchedulingDao extends DBContext{
             return list;
         } catch (SQLException e) {
             System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
         return null;
     }
@@ -49,6 +55,12 @@ public class InterviewSchedulingDao extends DBContext{
         } catch (SQLException e) {
             System.err.println("add thất bại");
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     
@@ -62,16 +74,28 @@ public class InterviewSchedulingDao extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Delete Fail");
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
     
     public void reset(){
-        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
+        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternViewForm'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
         }
     }
 }

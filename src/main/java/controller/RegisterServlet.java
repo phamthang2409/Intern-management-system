@@ -75,8 +75,8 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String internID_raw = request.getParameter("internID");
-        String user = request.getParameter("newUsername");
-        String pass = request.getParameter("newPassword");
+        String user = request.getParameter("userName");
+        String pass = request.getParameter("password");
         String role = request.getParameter("role");
         int internID;
         System.out.println(internID_raw);
@@ -87,10 +87,10 @@ public class RegisterServlet extends HttpServlet {
             User checkUser = userDao.check(user, pass);
             if (checkUser == null) {
                 User newUser = new User(user, pass, role, internID);
+                
                 userDao.insert(newUser);
                 internProfileDao.updateStatus(internID, 1);
                 response.sendRedirect("internProfiles");
-
             } else {
                 request.setAttribute("msg", "Account has already existed!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);

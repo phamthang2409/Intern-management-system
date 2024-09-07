@@ -43,6 +43,7 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Trình độ học vấn</th>
+                            <th>Chương trình đào tạo</th>
                             <th>Vị trí ứng tuyển</th>
                             <th>Mức lương</th>
                             <th>Hành động</th>
@@ -57,6 +58,7 @@
                                 <td>${i.getProfileEmail()}</td>
                                 <td>${i.getProfilePhone()}</td>
                                 <td>${i.getProfileEducation()}</td>
+                                <td>${i.getTrainingProgram()}</td>
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
                                 <td>

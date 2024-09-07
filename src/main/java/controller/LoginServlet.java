@@ -109,6 +109,8 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("account", newUser);
                 request.setAttribute("internProfile", internProfile);
                 request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
+            }else if(role.equals("staff")){
+                
             }
             
         }

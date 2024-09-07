@@ -1,159 +1,195 @@
-
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    box-sizing: border-box;
 }
-/* bố cục khung đăng nhập, đăng ký */
-.auth-container {
-    position: relative;
-    width: 800px;
-    height: 500px;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #005bac;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* bố cục 2 nút */
-.buttons-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    gap: 200px; /* Tạo khoảng cách giữa hai nút đăng nhập và đăng ký*/
-}
-/* kích thước, màu sắc, vị trí... 2 nút */
-.auth-button {
-    width: 120px;
-    height: 120px;
-    /* background-color: #ffffff; (nút màu trắng) */
-    border: 4px solid #FF6347;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 18px;
-    color: #FF6347;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-}
-
-.auth-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.auth-button:active {
-    transform: scale(0.9);
-}
-/* bố cục, màu sắc, kích thước cơ bản của 2 form */
-.form-container {
-    position: absolute;
-    top: 50%;
-    width: 350px;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-50%) scale(0);
-    opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 1;
-}
-
-/*Form đăng nhập lệch trái  */
-.login-form {
-    left: 5%;
-}
-
-/* form đăng ký lệch phải */
-.register-form {
-    right: 5%;
-}
-
-.show-form {
-    transform: translateY(-50%) scale(1);
-    opacity: 1;
-    z-index: 2;
-}
-/* Nút khi ẩn */
-.hide-button {
-    transform: scale(0);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #FF6347;
-}
-
-.form-container label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
+.header .logo h1 {
+    font-size: 22px;
+    color: white;
     font-weight: bold;
 }
 
-.form-container input,
-.form-container select {
+.header .logo h2 {
+    font-size: 18px;
+    color: white;
+}
+.login-role {
+    margin: 10px 0;
+}
+
+.login-role label {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 14px;
 }
 
-.form-container button {
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid white;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.announcement {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.announcement:last-child {
+    border-bottom: none;
+}
+
+.announcement .date {
+    background-color: #005bac;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.announcement .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.announcement .new {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.announcement .detail {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.announcement .detail:hover {
+    text-decoration: underline;
+}
+
+.login-box {
+    margin-top: 10%;
+    margin-left: 35%;
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-box h3 {
+    color: #005bac;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login-box input {
     width: 100%;
     padding: 10px;
-    background-color: #FF6347;
-    color: #fff;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.captcha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.captcha img {
+    height: 40px;
+}
+
+button[type="button"] {
+    background-color: transparent;
+    border: none;
+    color: #005bac;
+    cursor: pointer;
+}
+
+.graduate label {
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5722;
+    color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
-.form-container button:hover {
-    background-color: #FF4500;
+button[type="submit"]:hover {
+    background-color: #e64a19;
 }
 
-.form-container button:active {
-    transform: translateY(2px);
+.footer {
+    text-align: right;
+    margin-top: 20px;
 }
 
-/* Hiệu ứng động cho viền nút */
-@keyframes rotateBorder {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.footer a {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.auth-button::before {
-    content: '';
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: 50%;
-    border: 4px solid transparent;
-    border-top-color: #FF6347;
-    animation: rotateBorder 1.5s linear infinite;
-}   
+.footer a:hover {
+    text-decoration: underline;
+}

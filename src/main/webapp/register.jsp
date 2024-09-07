@@ -10,35 +10,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register Page</title>
-        <!--        <link rel="stylesheet" href="css/style.css"/>-->
-        <link rel="stylesheet" href="css/index.css"/>
+        <title>Đăng ký</title>
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
-        <div class="register-container">
-            <h2>Đăng ký</h2>
-            <c:if test="${requestScope.msg != null}">
-                <h3 style="color: red">${requestScope.msg}</h3>
-            </c:if>
-            <form id="registerForm" action="register" method="post">
+        <div class="login-box">
+            <h3> CẤP TÀI KHOẢN </h3>
+            <form action="register" method="post">
                 <input type="hidden" id = "internID" name ="internID" value="${requestScope.internID_raw}"/>
-                <label for="newUsername">Tên đăng nhập:</label>
-                <input type="text" id="newUsername" name="newUsername" required>
+                <input type="text" name="userName" placeholder="Nhập mã số" required>
+                <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
+                <input type="password" name="re_passWord" placeholder="Nhập lại mật khẩu" required>
+                <div class="login-role">
+                    <label for="role">Quyền:</label>
+                    <select name="role" id="role">
+                        <option value="admin">Quản trị viên</option>
+                        <option value="staff">Người hướng dẫn</option>
+                        <option value="intern">Thực tập sinh</option>
+                    </select>
+                </div>
 
-                <label for="newPassword">Mật khẩu:</label>
-                <input type="password" id="newPassword" name="newPassword" required>
-
-                <label for="confirmPassword">Nhập lại mật khẩu:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-
-                <label for="role">Vai trò:</label>
-                <select id="role" name="role">
-                    <option value="intern">Thực tập sinh</option>
-                    <option value="mentor">Mentor</option>
-                    <option value="staff">Nhân viên phụ trách</option>
-                </select>
-                <button type="submit">Đăng ký</button>
-                <p id="registerMessage"></p>
+                <button type="submit">Đăng Ký</button>
             </form>
         </div>
     </body>

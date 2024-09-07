@@ -74,11 +74,7 @@ public class InternProfileServlet extends HttpServlet {
         }
         request.setAttribute("cnt", cnt);
         request.setAttribute("listIntern", list);
-        
-//        //set ID ve ban dau trong sql
-//        if (userDao.countAllUsers() == 0) {
-//            userDao.reset();
-//        }
+       
         request.getRequestDispatcher("intern_profiles.jsp").forward(request, response);
     }
 

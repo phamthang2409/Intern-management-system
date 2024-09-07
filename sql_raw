@@ -1,5 +1,5 @@
 --User
-drop table InternProfile;
+insert into User(userName, passWord, role, internID) values("ngocphuoc", "123", "intern", 1);
 CREATE TABLE User (
     ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     userName NVARCHAR (100) NOT NULL,
@@ -20,12 +20,17 @@ CREATE TABLE Recruitment_Campaigns (
 
 --Danh sách InternProfie đăng ký
 
+insert into InternProfile(profileFirstName, profileLastName, profileDOB, 
+profileEmail, trainingProgram, profilePhone, profileEducation, profilePosition, profileSalary, status)
+values("Trần Ngọc", "Phước", "22-06-2004", "tranngocphuoc.2000vta@gmail.com", "Đào tạo thực tập sinh", "0393329634", "Bằng đại học", "Intern", 100000, 0);
+
 CREATE TABLE InternProfile (
     ID               INTEGER primary key AUTOINCREMENT DEFAULT 1,
     profileFirstName NVARCHAR (50) NOT NULL,
     profileLastName  NVARCHAR (50) NOT NULL,
     profileDOB       DATE NOT NULL,
     profileEmail     NVARCHAR (50) NOT NULL,
+    trainingProgram  NVARCHAR (200) NOT NULL,
     profilePhone     NVARCHAR (20) NOT NULL,
     profileEducation VARCHAR (20) NOT NULL,
     profilePosition  NVARCHAR (50) NOT NULL,

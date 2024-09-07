@@ -53,6 +53,9 @@
 
             <div class="login-box">
                 <h3>THÔNG TIN ĐĂNG NHẬP</h3>
+                <c:if test="${requestScope.account == null}">
+                    <h3 style="color: red">${requestScope.msg}</h3>
+                </c:if>
                 <form action="login" method="post">
                     <input type="text" name="userName" placeholder="Nhập mã sinh viên" required>
                     <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>

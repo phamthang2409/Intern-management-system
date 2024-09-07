@@ -16,6 +16,7 @@ public class InternProfile {
     private String profileLastName;
     private Date profileDOB;
     private String profileEmail;
+    private String trainingProgram;
     private String profilePhone;
     private String profileEducation;
     private String profilePosition;
@@ -25,11 +26,12 @@ public class InternProfile {
     public InternProfile() {
     }
 
-    public InternProfile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
+    public InternProfile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
         this.profileFirstName = profileFirstName;
         this.profileLastName = profileLastName;
         this.profileDOB = profileDOB;
         this.profileEmail = profileEmail;
+        this.trainingProgram = trainingProgram;
         this.profilePhone = profilePhone;
         this.profileEducation = profileEducation;
         this.profilePosition = profilePosition;
@@ -37,12 +39,13 @@ public class InternProfile {
         this.status = status;
     }
 
-    public InternProfile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
+    public InternProfile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
         this.ID = ID;
         this.profileFirstName = profileFirstName;
         this.profileLastName = profileLastName;
         this.profileDOB = profileDOB;
         this.profileEmail = profileEmail;
+        this.trainingProgram = trainingProgram;
         this.profilePhone = profilePhone;
         this.profileEducation = profileEducation;
         this.profilePosition = profilePosition;
@@ -50,9 +53,16 @@ public class InternProfile {
         this.status = status;
     }
 
+    public String getTrainingProgram() {
+        return trainingProgram;
+    }
+
+    public void setTrainingProgram(String trainingProgram) {
+        this.trainingProgram = trainingProgram;
+    }
         
     
-
+    
     public int getStatus() {
         return status;
     }

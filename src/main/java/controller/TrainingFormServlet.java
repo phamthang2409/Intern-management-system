@@ -62,6 +62,9 @@ public class TrainingFormServlet extends HttpServlet {
             throws ServletException, IOException {
         TrainingFormDao trainingFormDao = new TrainingFormDao();
         List<TrainingForm> list = trainingFormDao.getAll();
+        if (list == null){
+            trainingFormDao.reset();
+        }
         request.setAttribute("listTraining", list);
         request.getRequestDispatcher("training_program.jsp").forward(request, response);
     }

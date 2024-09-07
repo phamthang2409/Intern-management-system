@@ -25,7 +25,7 @@
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
                 </ul>
             </nav>
-<!--            <a href="login"></a>-->
+            <!--            <a href="login"></a>-->
             <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
 
@@ -40,6 +40,7 @@
                             <th>Email</th>
                             <th>Vị trí ứng tuyển</th>
                             <th>Mức lương</th>
+                            <th>Tình Trạng</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,12 @@
                                 <td>${i.getProfileEmail()}</td>
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
+                                <c:if test="${i.getStatus() == 0}">
+                                    <td>Chưa cấp tài khoản</td>
+                                </c:if>
+                                <c:if test="${i.getStatus() == 1}">
+                                    <td>Đã cấp tài khoản</td>
+                                </c:if>    
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -82,8 +89,8 @@
         </main>
     </body>
     <script type="text/javascript">
-        function doClick(){
-            if (confirm("Are you want to exit? ")){
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
                 window.location = "resetSession";
             }
         }

@@ -24,6 +24,7 @@ D:\New folder\Intern-management-system\src\main\java\controller\InternDashBoardS
 D:\New folder\Intern-management-system\src\main\java\Model\InterviewScheduling.java
 D:\New folder\Intern-management-system\src\main\java\com\intern_management_system\JakartaRestConfiguration.java
 D:\New folder\Intern-management-system\src\main\java\Model\TrainingForm.java
+D:\New folder\Intern-management-system\src\main\java\controller\ResetSessionServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\HandleDeleteServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternProfileRegisterServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\PerformanceTrackingServlet.java
