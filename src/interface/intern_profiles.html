@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Hồ sơ Thực tập sinh</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="intern_profiles.css">
     <script src="script.js"></script>
 
 </head>
@@ -13,9 +13,10 @@
     <h1>Quản lý Hồ sơ Thực tập sinh</h1>
     <nav>
         <ul>
-            <ul>
-                <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
-                <li><a href="intern_profile_registration.html"><button>Thêm thực tập sinh </button></a></li>
+            <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
+            <li><a href="recruitment.html"><button>Quản lý Tuyển dụng</button></a></li>
+            <li><a href="intern_profiles.html"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
+            <li><a href="reporting_analysis.html"><button>Báo cáo và Phân tích</button></a></li>
 
         </ul>
     </nav>
@@ -64,6 +65,7 @@
             let actionCell = row.insertCell(7);
             let deleteButton = document.createElement('button');
             deleteButton.textContent = 'Xóa';
+            deleteButton.classList.add('delete-btn'); // Apply the delete button style
             deleteButton.addEventListener('click', function () {
                 // Xóa hồ sơ khỏi danh sách
                 approvedInterns.splice(index, 1);
@@ -76,12 +78,14 @@
             let addCell = row.insertCell(8);
             let addButton = document.createElement('button');
             addButton.textContent = 'Thêm';
+            addButton.classList.add('add-btn'); // Apply the add button style
             addButton.addEventListener('click', function () {
                 // Hành động khi nhấn nút "Thêm"
                 console.log('Thực hiện hành động thêm cho:', profile);
                 // Bạn có thể tùy chỉnh logic của nút Thêm ở đây
             });
             addCell.appendChild(addButton);
+
         });
     });
     syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh

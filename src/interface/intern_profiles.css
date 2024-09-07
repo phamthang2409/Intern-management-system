@@ -43,68 +43,24 @@ nav ul li a button:hover {
     background-color: #e68850;
 }
 
-/* Main container */
-.container {
+main {
     margin: 20px auto;
     width: 90%;
-    max-width: 600px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
 }
 
-/* Form styles */
-form {
-    display: flex;
-    flex-direction: column;
+h2 {
+    color: #0b64a0;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-form .form-group {
-    margin-bottom: 15px;
-}
-
-form label {
-    margin-bottom: 5px;
-    color: #073b5a;
-    font-weight: bold;
-}
-
-form input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-form input:focus {
-    outline: none;
-    border-color: #a6d9e7;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Submit button */
-.submit-button {
-    background-color: #28a745; /* Green for submit */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-}
-
-.submit-button:hover {
-    background-color: #218838;
-}
-
-/* Table styles for any table in the form (optional) */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 table th, table td {
@@ -124,4 +80,32 @@ table tbody tr:nth-child(even) {
 
 table tbody tr:hover {
     background-color: #e0f3fa;
+}
+
+/* Button styles */
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+button.delete-btn {
+    background-color: #dc3545; /* Red for Delete */
+    color: white;
+}
+
+button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+button.add-btn {
+    background-color: #28a745; /* Green for Add */
+    color: white;
+}
+
+button.add-btn:hover {
+    background-color: #218838;
 }

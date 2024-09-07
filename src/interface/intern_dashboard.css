@@ -36,7 +36,7 @@ main {
 
 .notifications {
     background-color: white;
-    padding: 1.5vw; /* Điều chỉnh padding theo viewport */
+    padding: 1vw; /* Điều chỉnh padding theo viewport */
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     grid-column: 2; /* Đặt ở cột thứ hai */
@@ -50,20 +50,21 @@ main {
 
 .chart {
     background-color: white;
-    padding: 1.5vw;
+    padding: 1vw; /* Giảm padding để làm nhỏ lại */
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    grid-column: 1 / span 2; /* Chiếm cả 2 cột */
-    grid-row: 2; /* Đặt ở hàng thứ hai */
+    grid-column: 1 / span 2; /* Giữ nguyên chiếm 2 cột */
+    grid-row: 2; /* Giữ nguyên hàng thứ hai */
     border: 1px solid #ccc;
-    margin-top: 1.5vw;
+    margin-top: 1vw; /* Giảm margin để làm nhỏ hơn */
 }
 
 canvas {
-    max-width: 100%;
+    max-width: 100%; /* Giữ nguyên chiều ngang */
+    margin-top: 10px; /* Giảm khoảng cách margin-top */
     height: auto;
-    margin-top: 20px;
 }
+
 
 .reminders, .schedule, .profile-info {
     padding: 1vw;

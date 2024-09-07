@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Tuyển dụng</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recruitment.css">
     <script src="script.js"></script>
-
 </head>
 <body>
 <header>
     <h1>Quản lý Tuyển dụng</h1>
     <nav>
         <ul>
-            <ul>
-                <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
+            <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
+            <li><a href="recruitment.html"><button>Quản lý Tuyển dụng</button></a></li>
+            <li><a href="intern_profiles.html"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
+            <li><a href="reporting_analysis.html"><button>Báo cáo và Phân tích</button></a></li>
 
         </ul>
     </nav>
@@ -23,26 +24,30 @@
 <main>
     <h2>Thêm Chiến dịch Tuyển dụng</h2>
     <form id="recruitmentForm">
-        <table border="1" cellspacing="0" cellpadding="5">
+        <table class="bordered-table">
+            <thead>
             <tr>
                 <th>Tên Chiến dịch</th>
                 <th>Vị trí Tuyển dụng</th>
                 <th>Mức Lương</th>
                 <th>Trình độ Học vấn</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
-                <td><input type="text" id="campaignName" name="campaignName" required></td>
-                <td><input type="text" id="position" name="position" placeholder="Nhập các vị trí, ngăn cách bởi dấu phẩy" required></td>
-                <td><input type="text" id="salary" name="salary" placeholder="Nhập các mức lương, ngăn cách bởi dấu phẩy" required></td>
-                <td><input type="text" id="education" name="education" placeholder="Nhập các trình độ, ngăn cách bởi dấu phẩy" required></td>
+                <td><input type="text" id="campaignName" name="campaignName" placeholder="Nhập tên chiến dich" required></td>
+                <td><input type="text" id="position" name="position" placeholder="Nhập vị trí tuyển dụng" required></td>
+                <td><input type="text" id="salary" name="salary" placeholder="Nhập mức lương" required></td>
+                <td><input type="text" id="education" name="education" placeholder="Nhập trình độ học vấn" required></td>
             </tr>
+            </tbody>
         </table>
         <br>
         <button type="submit">Thêm Chiến dịch</button>
     </form>
 
     <h2>Danh sách Chiến dịch Tuyển dụng</h2>
-    <table id="recruitmentTable" border="1" cellspacing="0" cellpadding="5">
+    <table id="recruitmentTable" class="bordered-table">
         <thead>
         <tr>
             <th>Tên Chiến dịch</th>
@@ -74,7 +79,7 @@
                     <td>${recruitment.position}</td>
                     <td>${recruitment.salary}</td>
                     <td>${recruitment.education}</td>
-                    <td><button onclick="deleteRecruitment(${index})">Xóa</button></td>
+                    <td><button class="delete-btn" onclick="deleteRecruitment(${index})">Xóa</button></td>
                 `;
 
                 recruitmentTableBody.appendChild(row);
@@ -110,6 +115,5 @@
     syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
     autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
 </script>
-
 </body>
 </html>

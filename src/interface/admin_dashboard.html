@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ Quản trị viên</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin_dashboard.css">
     <script src="script.js"></script>
 
 </head>
@@ -20,7 +20,7 @@
 
         </ul>
     </nav>
-    <a href="index.html"><button id="logoutButton"> Đăng Xuất</button></a>
+    <a href="login.html"><button id="logoutButton"> Đăng Xuất</button></a>
 </header>
 
 <main>
@@ -77,6 +77,7 @@
             // Nút Duyệt
             let approveButton = document.createElement('button');
             approveButton.textContent = 'Duyệt';
+            approveButton.classList.add('approve-btn'); // Apply class for approve button
             approveButton.addEventListener('click', function () {
                 // Thêm vào danh sách đã duyệt
                 approvedInterns.push(profile);
@@ -92,6 +93,7 @@
             // Nút Từ chối
             let rejectButton = document.createElement('button');
             rejectButton.textContent = 'Từ chối';
+            rejectButton.classList.add('reject-btn'); // Apply class for reject button
             rejectButton.addEventListener('click', function () {
                 // Xóa khỏi danh sách đăng ký mới
                 internProfiles.splice(index, 1);
@@ -99,6 +101,7 @@
                 window.location.reload(); // Reload trang để cập nhật giao diện
             });
             actionCell.appendChild(rejectButton);
+
         });
 
         // Hiển thị danh sách thực tập sinh đã duyệt
