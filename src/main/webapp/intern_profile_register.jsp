@@ -49,25 +49,32 @@
 
                 <!--        chuong trinh dao tao--><!-- Email -->
                 <div class="form-group">
-                    <label for="program">chương trình đào tao:</label>
-                    <select type="program" id="program" name="program" placeholder="chương trình đào tạo" required>
+                    <label for="program">Chương trình đào tạo:</label>
+                    <select id="program" name="program" placeholder="chương trình đào tạo" required>
                         <c:forEach items="${requestScope.listTrainingForm}" var="i">
                             <option value="${i.getProgramName()}">${i.getProgramName()}</option>
                         </c:forEach>
                     </select>
                 </div>
 
-
                 <!-- Trình độ học vấn -->
                 <div class="form-group">
                     <label for="education">Trình độ học vấn:</label>
-                    <input id="education" name="education" placeholder="Trình độ học vấn" required>
+                    <select type="program" id="education" name="education" placeholder="Trình độ học vấn" required>
+                        <option value="Bằng đại học">Bằng đại học</option>
+                        <option value="Đã tốt nghiệp">Đã tốt nghiệp</option>
+                        <option value="Chưa tốt nghiệp">Chưa tốt nghiệp</option>
+                    </select>
                 </div>
 
                 <!-- Vị trí ứng tuyển -->
                 <div class="form-group">
                     <label for="position">Vị trí ứng tuyển:</label>
-                    <input id="position" name="position" placeholder="Vị trí ứng tuyển" required>
+                    <select type="program" id="position" name="position" placeholder="Vị trí ứng tuyển" required>
+                        <option value="Intern">Intern</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Admin">Admin</option>
+                    </select>
                 </div>
 
                 <!-- Mức lương mong muốn -->

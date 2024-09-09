@@ -4,9 +4,9 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
+import DAO.ProfileDao;
 import DAO.TrainingFormDao;
-import Model.InternProfile;
+import Model.Profile;
 import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -88,12 +88,12 @@ public class InternProfileRegisterServlet extends HttpServlet {
         String profilePosition = request.getParameter("position");
         String profileSalary = request.getParameter("salary");
         System.out.println(trainingProgram);
-        InternProfileDao internProfileDao = new InternProfileDao();
+        ProfileDao internProfileDao = new ProfileDao();
         Date profileDOB;
         
         try {
             profileDOB = (profileDOB_raw == null) ? null: Date.valueOf(profileDOB_raw);
-            InternProfile internProfile = new InternProfile(profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, 
+            Profile internProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, 
                     profilePhone, profileEducation, profilePosition, profileSalary, 0);
            
             if (internProfileDao.check(internProfile) == null){

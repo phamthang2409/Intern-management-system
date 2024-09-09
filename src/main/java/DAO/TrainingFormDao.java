@@ -17,23 +17,24 @@ import java.util.List;
  *
  * @author PC
  */
-public class TrainingFormDao extends DBContext{
-    Connection conn = DBContext();
-    public List<TrainingForm> getAll(){
-        List<TrainingForm> list = new ArrayList<>();
+public class TrainingFormDao extends DBContext {
+
+    public List<TrainingForm> getAll() {
+        Connection conn = DBContext();    
         String sql = "Select * from TrainingForm";
         try {
+            List<TrainingForm> list = new ArrayList<>();
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
-                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"),rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"), 
+            while (rs.next()) {
+                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
                         rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"));
                 list.add(trainingForm);
             }
             return list;
         } catch (SQLException e) {
             System.err.println(e);
-        }finally{
+        } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -42,8 +43,57 @@ public class TrainingFormDao extends DBContext{
         }
         return null;
     }
+
+    public int getCountTrainingForms() {
+        Connection conn = DBContext();    
+        String sql = "Select * from TrainingForm";
+        int cnt = 0;
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                cnt++;
+            }
+            return cnt;
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return 0;
+    }
     
+    public TrainingForm check(String programName, String trainerName) {
+        Connection conn = DBContext();
+        String sql = "Select * from TrainingForm where programName = ? and trainerName = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, programName);
+            st.setString(2, trainerName);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
+                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"));
+                return trainingForm;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+
     public void insert(TrainingForm trainingForm) {
+        Connection conn = DBContext();
         String sql = "Insert into TrainingForm (programName, startDate, endDate, sessionStartTime, sessionEndTime, "
                 + "trainerName) values(?, ?, ?, ?, ?, ?)";
         try {
@@ -59,7 +109,7 @@ public class TrainingFormDao extends DBContext{
         } catch (SQLException e) {
             System.err.println("add thất bại");
             System.out.println(e);
-        }finally{
+        } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -67,8 +117,9 @@ public class TrainingFormDao extends DBContext{
             }
         }
     }
-    
-    public void delete(int id){
+
+    public void delete(int id) {
+        Connection conn = DBContext();
         String sql = "DELETE from TrainingForm where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
@@ -78,7 +129,7 @@ public class TrainingFormDao extends DBContext{
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Delete Fail");
-        }finally{
+        } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -86,15 +137,16 @@ public class TrainingFormDao extends DBContext{
             }
         }
     }
-    
-    public void reset(){
+
+    public void reset() {
+        Connection conn = DBContext();
         String sql = "DELETE FROM sqlite_sequence WHERE name ='TrainingForm'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
-        }finally{
+        } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -102,5 +154,5 @@ public class TrainingFormDao extends DBContext{
             }
         }
     }
-    
+
 }

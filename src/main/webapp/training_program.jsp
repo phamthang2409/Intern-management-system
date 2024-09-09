@@ -22,6 +22,9 @@
         
         <main>
             <h2>Chương trình Đào tạo</h2>
+            <c:if test="${requestScope.msg != null}">
+                <h2 style="color: red">${requestScope.msg}</h2>
+            </c:if>
             <form id="trainingForm" action="trainingForm" method="post">
                 <label for="programName">Tên Chương trình:</label>
                 <input type="text" id="programName" name="programName" required><br><br>

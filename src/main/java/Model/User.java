@@ -6,24 +6,24 @@ public class User {
     private String userName;
     private String passWord;
     private String role;
-    private int internID;
+    private int profileID;
 
     public User() {
     }
 
-    public User(String userName, String passWord, String role, int internID) {
+    public User(String userName, String passWord, String role, int profileID) {
         this.userName = userName;
         this.passWord = passWord;
         this.role = role;
-        this.internID = internID;
+        this.profileID = profileID;
     }
 
-    public User(int ID, String userName, String passWord, String role, int internID) {
+    public User(int ID, String userName, String passWord, String role, int profileID) {
         this.ID = ID;
         this.userName = userName;
         this.passWord = passWord;
         this.role = role;
-        this.internID = internID;
+        this.profileID = profileID;
     }
 
     public int getID() {
@@ -58,13 +58,12 @@ public class User {
         this.role = role;
     }
 
-    public int getInternID() {
-        return internID;
+    public int getProfileID() {
+        return profileID;
     }
 
-    public void setInternID(int internID) {
-        this.internID = internID;
-    }
+    public void setProfileID(int profileID) {
+        this.profileID = profileID;
+    }    
 
-    
 }

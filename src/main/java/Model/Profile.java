@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author PC
  */
-public class InternProfile { 
+public class Profile { 
     private int ID;
     private String profileFirstName;
     private String profileLastName;
@@ -23,10 +23,10 @@ public class InternProfile {
     private String profileSalary;
     private int status;
 
-    public InternProfile() {
+    public Profile() {
     }
 
-    public InternProfile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
+    public Profile(String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
         this.profileFirstName = profileFirstName;
         this.profileLastName = profileLastName;
         this.profileDOB = profileDOB;
@@ -39,7 +39,7 @@ public class InternProfile {
         this.status = status;
     }
 
-    public InternProfile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
+    public Profile(int ID, String profileFirstName, String profileLastName, Date profileDOB, String profileEmail, String trainingProgram, String profilePhone, String profileEducation, String profilePosition, String profileSalary, int status) {
         this.ID = ID;
         this.profileFirstName = profileFirstName;
         this.profileLastName = profileLastName;
@@ -70,9 +70,7 @@ public class InternProfile {
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    
-
+       
     public int getID() {
         return ID;
     }

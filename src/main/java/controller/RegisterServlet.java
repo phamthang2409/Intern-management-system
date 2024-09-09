@@ -4,7 +4,7 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
+import DAO.ProfileDao;
 import DAO.UserDao;
 import Model.User;
 import java.io.IOException;
@@ -58,8 +58,10 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String internID_raw = request.getParameter("id");
-        request.setAttribute("internID_raw", internID_raw);
+        String profileID_raw = request.getParameter("id");
+        String profilePosition = request.getParameter("profilePosition");
+        request.setAttribute("profileID_raw", profileID_raw);
+        request.setAttribute("profilePosition", profilePosition);
         request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
@@ -74,23 +76,26 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String internID_raw = request.getParameter("internID");
+        String profileID_raw = request.getParameter("profileID");
         String user = request.getParameter("userName");
-        String pass = request.getParameter("password");
-        String role = request.getParameter("role");
-        int internID;
-        System.out.println(internID_raw);
+        String pass = request.getParameter("passWord");
+        String profilePosition = request.getParameter("profilePosition");
+        int profileID;
         UserDao userDao = new UserDao();
-        InternProfileDao internProfileDao = new InternProfileDao();
+        ProfileDao ProfileDao = new ProfileDao();
         try {
-            internID = Integer.parseInt(internID_raw);
+            profileID = Integer.parseInt(profileID_raw);
             User checkUser = userDao.check(user, pass);
             if (checkUser == null) {
-                User newUser = new User(user, pass, role, internID);
+                User newUser = new User(user, pass, profilePosition, profileID);
+                if (userDao.insert(newUser)) {
+                    ProfileDao.updateStatus(profileID, 1);
+                    response.sendRedirect("internProfiles");
+                }else{
+                    request.setAttribute("msg", "Account authorization failed");
+                    request.getRequestDispatcher("register.jsp").forward(request, response);
+                }
                 
-                userDao.insert(newUser);
-                internProfileDao.updateStatus(internID, 1);
-                response.sendRedirect("internProfiles");
             } else {
                 request.setAttribute("msg", "Account has already existed!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);

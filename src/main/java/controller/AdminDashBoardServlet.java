@@ -4,8 +4,8 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
-import Model.InternProfile;
+import DAO.ProfileDao;
+import Model.Profile;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -58,8 +58,8 @@ public class AdminDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        InternProfileDao internProfileDao = new InternProfileDao();
-        List<InternProfile> list = internProfileDao.getAll();
+        ProfileDao internProfileDao = new ProfileDao();
+        List<Profile> list = internProfileDao.getAll();
         int cnt = 0;
         request.setAttribute("cnt", cnt);
         request.setAttribute("listIntern", list);

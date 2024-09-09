@@ -16,19 +16,23 @@
     <body>
         <div class="login-box">
             <h3> CẤP TÀI KHOẢN </h3>
+            <c:if test="${requestScope.msg != null}">
+                <h3 style="color: red">${requestScope.msg}</h3>
+            </c:if>
             <form action="register" method="post">
-                <input type="hidden" id = "internID" name ="internID" value="${requestScope.internID_raw}"/>
+                <input type="hidden" id = "profileID" name ="profileID" value="${requestScope.profileID_raw}"/>
+                <input type="hidden" id = "profilePosition" name ="profilePosition" value="${requestScope.profilePosition}"/>
                 <input type="text" name="userName" placeholder="Nhập mã số" required>
                 <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
                 <input type="password" name="re_passWord" placeholder="Nhập lại mật khẩu" required>
-                <div class="login-role">
+<!--                <div class="login-role">
                     <label for="role">Quyền:</label>
                     <select name="role" id="role">
                         <option value="admin">Quản trị viên</option>
                         <option value="staff">Người hướng dẫn</option>
                         <option value="intern">Thực tập sinh</option>
                     </select>
-                </div>
+                </div>-->
 
                 <button type="submit">Đăng Ký</button>
             </form>

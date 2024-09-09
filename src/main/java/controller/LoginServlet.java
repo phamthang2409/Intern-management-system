@@ -4,9 +4,9 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
+import DAO.ProfileDao;
 import DAO.UserDao;
-import Model.InternProfile;
+import Model.Profile;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -103,14 +103,19 @@ public class LoginServlet extends HttpServlet {
             
         }else{
             String role = newUser.getRole();
+            System.out.println(role);
             if(role.equals("intern")){
-                InternProfileDao internProfileDao = new InternProfileDao();
-                InternProfile internProfile = internProfileDao.findByID(newUser.getInternID());
+                ProfileDao internProfileDao = new ProfileDao();
+                Profile internProfile = internProfileDao.findByID(newUser.getProfileID());
                 session.setAttribute("account", newUser);
                 request.setAttribute("internProfile", internProfile);
                 request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
             }else if(role.equals("staff")){
-                
+                ProfileDao staffProfileDao = new ProfileDao();
+                Profile staffProfile = staffProfileDao.findByID(newUser.getProfileID());
+                session.setAttribute("account", newUser);
+                request.setAttribute("staffProfile", staffProfile);
+                request.getRequestDispatcher("staff_dashboard.jsp").forward(request, response);
             }
             
         }

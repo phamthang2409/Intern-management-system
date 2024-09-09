@@ -22,7 +22,6 @@
                     <ul>
                         <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
                         <li><a href="internProfileRegister"><button>Thêm thực tập sinh </button></a></li>
-
                     </ul>
             </nav>
         </header>
@@ -30,11 +29,12 @@
             <c:if test="${requestScope.msg != null}">
                 <h3 style="color: red">${requestScope.msg}</h3>
             </c:if>
-            <h2>Danh sách Thực tập sinh</h2>
             <c:if test="${requestScope.listIntern == null}">
                 <h3>Không có dữ liệu tìm thấy</h3>
             </c:if>
+                
             <c:if test="${requestScope.listIntern != null}">
+                <h2>Danh sách Thực tập sinh</h2>
                 <table id="internsTable" class="table-row" border = '1px' style="text-align: center">
                     <thead>
                         <tr>
@@ -62,7 +62,7 @@
                                 <td>${i.getProfilePosition()}</td>
                                 <td>${i.getProfileSalary()}</td>
                                 <td>
-                                    <button name="delete" onclick="doDelete(${i.getID()})">Xóa</button>
+                                    <button name="delete" onclick="doDelete('${i.getID()}')">Xóa</button>
                                 </td>
                                 <c:if test="${i.getStatus() == 1}">
                                     <td>
@@ -71,7 +71,7 @@
                                 </c:if>
                                 <c:if test="${i.getStatus() == 0}">
                                     <td>
-                                        <button name="add" onclick="doADD(${i.getID()})">Cấp tài khoản</button>
+                                        <button name="add" onclick="doADD('${i.getID()}', '${i.getProfilePosition()}')">Cấp tài khoản</button>
                                     </td>
                                 </c:if>
 
@@ -89,8 +89,8 @@
                 }
             }
 
-            function doADD(id) {
-                window.location = "register?id=" + id;
+            function doADD(id, profilePosition) {
+                window.location = "register?id=" + id + "&profilePosition=" + profilePosition;
             }
         </script>
     </body>

@@ -17,6 +17,8 @@ Any value defined here will override the pom.xml file value but is only applicab
     </properties>
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
         <word>cấp</word>
+        <word>dẫn</word>
+        <word>hướng</word>
         <word>Kỹ</word>
         <word>Lên</word>
         <word>lý</word>
@@ -26,6 +28,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>Thiết</word>
         <word>tạo</word>
         <word>viên</word>
+        <word>đào</word>
         <word>đăng</word>
     </spellchecker-wordlist>
 </project-shared-configuration>

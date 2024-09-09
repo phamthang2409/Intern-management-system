@@ -9,7 +9,6 @@ controller\InternProfileRegisterServlet.class
 controller\RecruitmentServlet.class
 controller\AdminDashBoardServlet.class
 controller\MentorDashBoardServlet.class
-Model\InternProfile.class
 Model\InterviewScheduling.class
 com\intern_management_system\JakartaRestConfiguration.class
 controller\InterviewSchedulingServlet.class
@@ -21,7 +20,6 @@ controller\ReprotingAnalysisServlet.class
 DAO\RecruitmentCampaignDao.class
 com\intern_management_system\resources\JakartaEE10Resource.class
 controller\InternDashBoardServlet.class
-DAO\InternProfileDao.class
 Model\User.class
 DAO\TrainingFormDao.class
 Model\Report.class

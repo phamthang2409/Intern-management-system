@@ -49,7 +49,7 @@ public class UserDao extends DBContext{
                 User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
                         rs.getString("passWord"), 
                         rs.getString("role"),
-                        rs.getInt("internID"));
+                        rs.getInt("profileID"));
                 return newUser;
             }
             
@@ -65,18 +65,18 @@ public class UserDao extends DBContext{
         return null;
     }
     
-    public User checkAccountUser(int InternID) {
+    public User checkAccountUser(int profileID) {
         Connection conn = DBContext();
-        String sql = "Select * from User where internID = ?";
+        String sql = "Select * from User where profileID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, InternID);
+            st.setInt(1, profileID);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
                         rs.getString("passWord"), 
                         rs.getString("role"),
-                        rs.getInt("internID"));
+                        rs.getInt("profileID"));
                 return newUser;
             }
             
@@ -101,11 +101,11 @@ public class UserDao extends DBContext{
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                User user = new User(rs.getInt("id"),
+                User user = new User(rs.getInt("ID"),
                         rs.getString("username"),
                         rs.getNString("passWord"),
                         rs.getString("role"),
-                            rs.getInt("internID"));
+                            rs.getInt("profileID"));
                 list.add(user);
             }
         } catch (SQLException e) {
@@ -120,17 +120,18 @@ public class UserDao extends DBContext{
         return list;
     }
 
-    public void insert(User user)  {
+    public boolean insert(User user)  {
         Connection conn = DBContext();
-        String sql = "Insert into User (userName, passWord, role, internID) values(?, ?, ?, ?)";
+        String sql = "Insert into User (userName, passWord, role, profileID) values(?, ?, ?, ?)";
         try{
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, user.getUserName());
             st.setString(2, user.getPassWord());
             st.setString(3, user.getRole());
-            st.setInt(4, user.getInternID());
+            st.setInt(4, user.getProfileID());
             st.executeUpdate();
             System.out.println("add thành công");
+            return true;
         } catch (SQLException e) {
             System.err.println("add thất bại");
             System.out.println(e);
@@ -141,28 +142,13 @@ public class UserDao extends DBContext{
                 System.out.println(e);
             }
         }
+        return false;
     }
-    
-//    public void update(User user){
-//        String sql = "Update User set userName = ?, passWord = ?, role = ? where ID = ?";
-//        System.out.println(user.getUserName());
-//        try{
-//            PreparedStatement st = conn.prepareStatement(sql);
-//            st.setString(1, user.getUserName());
-//            st.setString(2, user.getPassWord());
-//            st.setString(3, user.getRole());
-//            st.setInt(4,user.getID());
-//            st.executeUpdate();
-//            System.out.println("Update Success");
-//        } catch (SQLException e) {
-//            System.out.println(e);  
-//            System.out.println("Update Fail");
-//        }
-//    }
+
     
     public void delete(int id) {
         Connection conn = DBContext();
-        String sql = "DELETE from [User] where internID = ?";
+        String sql = "DELETE from User where profileID = ?";
         try{
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, id);

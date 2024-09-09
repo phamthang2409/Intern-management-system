@@ -62,7 +62,8 @@ public class TrainingFormServlet extends HttpServlet {
             throws ServletException, IOException {
         TrainingFormDao trainingFormDao = new TrainingFormDao();
         List<TrainingForm> list = trainingFormDao.getAll();
-        if (list == null){
+        int cnt = trainingFormDao.getCountTrainingForms();
+        if (cnt == 0) {
             trainingFormDao.reset();
         }
         request.setAttribute("listTraining", list);
@@ -94,13 +95,15 @@ public class TrainingFormServlet extends HttpServlet {
             endDate = Date.valueOf(endDate_raw);
             sessionStartTime = Time.valueOf(sessionStartTime_raw + ":00");
             sessionEndTime = Time.valueOf(sessionEndTime_raw + ":00");
-            System.out.println(startDate);
-            System.out.println(endDate);
-            System.out.println(sessionStartTime);
-            System.out.println(sessionEndTime);
             TrainingForm trainingForm = new TrainingForm(programName, startDate, endDate, sessionStartTime, sessionEndTime, trainerName);
-            trainingFormDao.insert(trainingForm);
-            response.sendRedirect("trainingForm");
+            if (trainingFormDao.check(programName, trainerName) == null) {
+                trainingFormDao.insert(trainingForm);
+                response.sendRedirect("trainingForm");
+            }else{
+                request.setAttribute("msg", "This program name is registered");
+                request.getRequestDispatcher("training_program.jsp").forward(request, response);
+            }
+
         } catch (Error e) {
             System.err.println(e);
         }

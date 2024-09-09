@@ -4,7 +4,7 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
+import DAO.ProfileDao;
 import DAO.RecruitmentCampaignDao;
 import DAO.TrainingFormDao;
 import DAO.UserDao;
@@ -74,14 +74,12 @@ public class HandleDeleteServlet extends HttpServlet {
                 recruitmentCampaignDao.delete(id);
                 response.sendRedirect("recruitment");
             }else if (name.equals("internProfiles")){
-                System.out.println("Da vao delete intern");
                 UserDao userDao = new UserDao();
                 if (userDao.checkAccountUser(id) != null){
                     userDao.delete(id);
                 }
-                InternProfileDao internProfileDao = new InternProfileDao();
+                ProfileDao internProfileDao = new ProfileDao();
                 internProfileDao.delete(id);
-                
                 response.sendRedirect("internProfiles");
             }else if (name.equals("trainingForm")){
                 trainingFormDao.delete(id);

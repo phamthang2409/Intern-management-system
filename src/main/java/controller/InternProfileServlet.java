@@ -4,9 +4,9 @@
  */
 package controller;
 
-import DAO.InternProfileDao;
+import DAO.ProfileDao;
 import DAO.UserDao;
-import Model.InternProfile;
+import Model.Profile;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,9 +60,9 @@ public class InternProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        InternProfileDao internProfileDao = new InternProfileDao();
+        ProfileDao internProfileDao = new ProfileDao();
         UserDao userDao = new UserDao();
-        List<InternProfile> list = internProfileDao.getAll();
+        List<Profile> list = internProfileDao.getAll();
         int cnt = 0;
         int cntIntern = internProfileDao.countAllProfiles();
         int cntUserAccount = userDao.countAllUsers();

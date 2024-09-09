@@ -1,14 +1,14 @@
 --User
-insert into User(userName, passWord, role, internID) values("ngocphuoc", "123", "intern", 1);
+insert into User(userName, passWord, role, profileID) values("ngocphuoc", "123", "intern", 1);
 CREATE TABLE User (
     ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     userName NVARCHAR (100) NOT NULL,
     passWord NVARCHAR (100) NOT NULL,
     role     NVARCHAR (20)  NOT NULL,
-    internID INT            NOT NULL,
-    foreign key (internID) references InternProfile(ID)
+    profileID INTEGER            NOT NULL,
+    foreign key (profileID) references Profile(ID)
 );
-delete from User where internID = 1;
+drop table User;
 -- admin quản lý tuỷen dụng
 CREATE TABLE Recruitment_Campaigns (
     ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
@@ -24,7 +24,7 @@ insert into InternProfile(profileFirstName, profileLastName, profileDOB,
 profileEmail, trainingProgram, profilePhone, profileEducation, profilePosition, profileSalary, status)
 values("Trần Ngọc", "Phước", "22-06-2004", "tranngocphuoc.2000vta@gmail.com", "Đào tạo thực tập sinh", "0393329634", "Bằng đại học", "Intern", 100000, 0);
 
-CREATE TABLE InternProfile (
+CREATE TABLE Profile (
     ID               INTEGER primary key AUTOINCREMENT DEFAULT 1,
     profileFirstName NVARCHAR (50) NOT NULL,
     profileLastName  NVARCHAR (50) NOT NULL,

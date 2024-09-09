@@ -5,7 +5,7 @@
 package DAO;
 
 import java.sql.*;
-import Model.InternProfile;
+import Model.Profile;
 import Connection.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +17,11 @@ import java.util.List;
  *
  * @author PC
  */
-public class InternProfileDao extends DBContext{
+public class ProfileDao extends DBContext{
     public int countAllProfiles() {
         Connection conn = DBContext();
         int cnt = 0;
-        String sql = "Select * from InternProfile";
+        String sql = "Select * from Profile";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -40,19 +40,19 @@ public class InternProfileDao extends DBContext{
         return cnt;
     }
     
-    public List<InternProfile> getAll() {
+    public List<Profile> getAll() {
         Connection conn = DBContext();
-        List<InternProfile> list = new ArrayList<>();
-        String sql = "Select * from InternProfile";
+        List<Profile> list = new ArrayList<>();
+        String sql = "Select * from Profile";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                InternProfile newInternProfile = new InternProfile(rs.getInt("ID"), rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
+                Profile profile = new Profile(rs.getInt("ID"), rs.getString("profileFirstName"), rs.getString("profileLastName"), rs.getDate("profileDOB"), 
                         rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 
                         rs.getString("profileEducation"), rs.getString("profilePosition"), 
                         rs.getString("profileSalary"), rs.getInt("status"));
-                list.add(newInternProfile);
+                list.add(profile);
             }
             return list;
         } catch (SQLException e) {
@@ -67,15 +67,15 @@ public class InternProfileDao extends DBContext{
         return null;
     }
     
-    public InternProfile findByID(int id) {
+    public Profile findByID(int id) {
         Connection conn = DBContext();
-        String sql = "Select * from InternProfile where ID = ?";
+        String sql = "Select * from Profile where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
-                InternProfile internProfile = new InternProfile(rs.getString("profileFirstName"), 
+                Profile internProfile = new Profile(rs.getString("profileFirstName"), 
                         rs.getString("profileLastName"), 
                         rs.getDate("profileDOB"), 
                         rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 
@@ -95,9 +95,9 @@ public class InternProfileDao extends DBContext{
         return null;
     }
     
-    public void insert(InternProfile internProfile)  {
+    public void insert(Profile internProfile)  {
         Connection conn = DBContext();
-        String sql = "Insert into InternProfile (profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, profilePhone, "
+        String sql = "Insert into Profile (profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, profilePhone, "
                 + "profileEducation, profilePosition, profileSalary, status) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
@@ -125,31 +125,30 @@ public class InternProfileDao extends DBContext{
         }
     }
     
-    public InternProfile check(InternProfile internProfile) {
+    public Profile check(Profile newProfile) {
         Connection conn = DBContext();
-        String sql = "select * from InternProfile where profileFirstName = ? and "
+        String sql = "select * from Profile where profileFirstName = ? and "
                 + "profileLastName = ? and profileDOB = ? and profilePosition = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, internProfile.getProfileFirstName());
-            st.setString(2, internProfile.getProfileLastName());
-            st.setDate(3, internProfile.getProfileDOB());
-            st.setString(4, internProfile.getProfilePosition());
+            st.setString(1, newProfile.getProfileFirstName());
+            st.setString(2, newProfile.getProfileLastName());
+            st.setDate(3, newProfile.getProfileDOB());
+            st.setString(4, newProfile.getProfilePosition());
             ResultSet rs = st.executeQuery();
             if (rs.next()){
-                InternProfile newInternProfile = new InternProfile();
-                newInternProfile.setProfileFirstName(rs.getString("profileFirstName"));
-                newInternProfile.setProfileLastName(rs.getString("profileLastName"));
-                newInternProfile.setProfileDOB(rs.getDate("profileDOB"));
-                newInternProfile.setProfileEmail(rs.getString("profileEmail"));
-                newInternProfile.setTrainingProgram(rs.getString("trainingProgram"));
-                newInternProfile.setProfilePhone(rs.getString("profilePhone"));
-                newInternProfile.setProfileEducation(rs.getString("profileEducation"));
-                newInternProfile.setProfilePosition(rs.getString("profilePosition"));
-                newInternProfile.setProfileSalary(rs.getString("profileSalary"));
-                return newInternProfile;
-            }
-            
+                Profile profile = new Profile();
+                profile.setProfileFirstName(rs.getString("profileFirstName"));
+                profile.setProfileLastName(rs.getString("profileLastName"));
+                profile.setProfileDOB(rs.getDate("profileDOB"));
+                profile.setProfileEmail(rs.getString("profileEmail"));
+                profile.setTrainingProgram(rs.getString("trainingProgram"));
+                profile.setProfilePhone(rs.getString("profilePhone"));
+                profile.setProfileEducation(rs.getString("profileEducation"));
+                profile.setProfilePosition(rs.getString("profilePosition"));
+                profile.setProfileSalary(rs.getString("profileSalary"));
+                return profile;
+            }          
         } catch (SQLException e) {
             System.out.println(e);
         }finally{
@@ -164,7 +163,7 @@ public class InternProfileDao extends DBContext{
     
     public void delete(int id) {
         Connection conn = DBContext();
-        String sql = "DELETE from InternProfile where ID = ?";
+        String sql = "DELETE from Profile where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, id);
@@ -184,7 +183,7 @@ public class InternProfileDao extends DBContext{
     
     public void updateStatus(int id, int status) {
         Connection conn = DBContext();
-        String sql = "Update InternProfile set status = ? where ID = ?";
+        String sql = "Update Profile set status = ? where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, status);
@@ -204,7 +203,7 @@ public class InternProfileDao extends DBContext{
     
     public void reset() {
         Connection conn = DBContext();
-        String sql = "DELETE FROM sqlite_sequence WHERE name ='InternProfile'";
+        String sql = "DELETE FROM sqlite_sequence WHERE name ='Profile'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.executeUpdate();
