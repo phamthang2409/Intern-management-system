@@ -17,7 +17,9 @@
     <body>
         <div class="container">
             <h2>Thêm Hồ Sơ Thực Tập Sinh</h2>
-
+            <c:if test="${requestScope.msg != null}">
+                <h3 style="color: red">${requestScope.msg}</h3>
+            </c:if>
             <form id="internForm" action="internProfileRegister" method="post">
                 <!-- Họ và Tên -->
                 <div class="form-group">

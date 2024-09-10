@@ -63,8 +63,8 @@ public class InternProfileServlet extends HttpServlet {
         ProfileDao internProfileDao = new ProfileDao();
         UserDao userDao = new UserDao();
         List<Profile> list = internProfileDao.getAll();
-        int cnt = 0;
-        int cntIntern = internProfileDao.countAllProfiles();
+        int cntIntern = 0;
+        cntIntern = internProfileDao.countAllProfiles();
         int cntUserAccount = userDao.countAllUsers();
         if (cntIntern == 0) {
             internProfileDao.reset();
@@ -72,7 +72,7 @@ public class InternProfileServlet extends HttpServlet {
         if (cntUserAccount == 0){
             userDao.reset();
         }
-        request.setAttribute("cnt", cnt);
+        request.setAttribute("cnt", cntIntern);
         request.setAttribute("listIntern", list);
        
         request.getRequestDispatcher("intern_profiles.jsp").forward(request, response);

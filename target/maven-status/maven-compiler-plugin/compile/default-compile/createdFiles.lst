@@ -19,6 +19,7 @@ DAO\InterviewSchedulingDao.class
 controller\ReprotingAnalysisServlet.class
 DAO\RecruitmentCampaignDao.class
 com\intern_management_system\resources\JakartaEE10Resource.class
+Model\Profile.class
 controller\InternDashBoardServlet.class
 Model\User.class
 DAO\TrainingFormDao.class
@@ -27,3 +28,4 @@ Model\TrainingForm.class
 Model\RecruitmentCampaign.class
 controller\PerformanceTrackingServlet.class
 controller\RegisterServlet.class
+DAO\ProfileDao.class

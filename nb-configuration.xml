@@ -26,6 +26,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>Lịch</word>
         <word>sơ</word>
         <word>Thiết</word>
+        <word>thực</word>
         <word>tạo</word>
         <word>viên</word>
         <word>đào</word>

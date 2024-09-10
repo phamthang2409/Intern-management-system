@@ -29,11 +29,10 @@
             <c:if test="${requestScope.msg != null}">
                 <h3 style="color: red">${requestScope.msg}</h3>
             </c:if>
-            <c:if test="${requestScope.listIntern == null}">
-                <h3>Không có dữ liệu tìm thấy</h3>
+            <c:if test="${requestScope.cnt == 0}">
+                <h3>Không tìm thấy dữ liệu</h3>
             </c:if>
-                
-            <c:if test="${requestScope.listIntern != null}">
+            <c:if test="${requestScope.cnt != 0}">
                 <h2>Danh sách Thực tập sinh</h2>
                 <table id="internsTable" class="table-row" border = '1px' style="text-align: center">
                     <thead>
@@ -52,30 +51,31 @@
                     </thead>
                     <c:forEach items="${requestScope.listIntern}" var="i">
                         <tbody>
-                            <tr>
-                                <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
-                                <td>${i.getProfileDOB()}</td>
-                                <td>${i.getProfileEmail()}</td>
-                                <td>${i.getProfilePhone()}</td>
-                                <td>${i.getProfileEducation()}</td>
-                                <td>${i.getTrainingProgram()}</td>
-                                <td>${i.getProfilePosition()}</td>
-                                <td>${i.getProfileSalary()}</td>
-                                <td>
-                                    <button name="delete" onclick="doDelete('${i.getID()}')">Xóa</button>
-                                </td>
-                                <c:if test="${i.getStatus() == 1}">
+                            <c:if test="${i.getProfilePosition() != 'Admin'}">
+                                <tr>
+                                    <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                    <td>${i.getProfileDOB()}</td>
+                                    <td>${i.getProfileEmail()}</td>
+                                    <td>${i.getProfilePhone()}</td>
+                                    <td>${i.getProfileEducation()}</td>
+                                    <td>${i.getTrainingProgram()}</td>
+                                    <td>${i.getProfilePosition()}</td>
+                                    <td>${i.getProfileSalary()}</td>
                                     <td>
-                                        <label>Đã cấp tài khoản</label>
+                                        <button name="delete" onclick="doDelete('${i.getID()}')">Xóa</button>
                                     </td>
-                                </c:if>
-                                <c:if test="${i.getStatus() == 0}">
-                                    <td>
-                                        <button name="add" onclick="doADD('${i.getID()}', '${i.getProfilePosition()}')">Cấp tài khoản</button>
-                                    </td>
-                                </c:if>
-
-                            </tr>
+                                    <c:if test="${i.getStatus() == 1}">
+                                        <td>
+                                            <label>Đã cấp tài khoản</label>
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${i.getStatus() == 0}">
+                                        <td>
+                                            <button name="add" onclick="doADD('${i.getID()}', '${i.getProfilePosition()}')">Cấp tài khoản</button>
+                                        </td>
+                                    </c:if>
+                                </tr>
+                            </c:if>
                         </tbody>
                     </c:forEach>
                 </table>

@@ -6,10 +6,10 @@ D:\New folder\Intern-management-system\src\main\java\Model\Report.java
 D:\New folder\Intern-management-system\src\main\java\DAO\UserDao.java
 D:\New folder\Intern-management-system\src\main\java\controller\LoginServlet.java
 D:\New folder\Intern-management-system\src\main\java\Model\RecruitmentCampaign.java
-D:\New folder\Intern-management-system\src\main\java\Model\InternProfile.java
 D:\New folder\Intern-management-system\src\main\java\Model\Feedback.java
 D:\New folder\Intern-management-system\src\main\java\com\intern_management_system\resources\JakartaEE10Resource.java
 D:\New folder\Intern-management-system\src\main\java\controller\MentorDashBoardServlet.java
+D:\New folder\Intern-management-system\src\main\java\Model\Profile.java
 D:\New folder\Intern-management-system\src\main\java\Model\User.java
 D:\New folder\Intern-management-system\src\main\java\controller\DailyProgressServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\RecruitmentServlet.java
@@ -21,6 +21,7 @@ D:\New folder\Intern-management-system\src\main\java\controller\AdminDashBoardSe
 D:\New folder\Intern-management-system\src\main\java\controller\RegisterServlet.java
 D:\New folder\Intern-management-system\src\main\java\DAO\TrainingFormDao.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternDashBoardServlet.java
+D:\New folder\Intern-management-system\src\main\java\DAO\ProfileDao.java
 D:\New folder\Intern-management-system\src\main\java\Model\InterviewScheduling.java
 D:\New folder\Intern-management-system\src\main\java\com\intern_management_system\JakartaRestConfiguration.java
 D:\New folder\Intern-management-system\src\main\java\Model\TrainingForm.java
@@ -28,5 +29,4 @@ D:\New folder\Intern-management-system\src\main\java\controller\ResetSessionServ
 D:\New folder\Intern-management-system\src\main\java\controller\HandleDeleteServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\InternProfileRegisterServlet.java
 D:\New folder\Intern-management-system\src\main\java\controller\PerformanceTrackingServlet.java
-D:\New folder\Intern-management-system\src\main\java\DAO\InternProfileDao.java
 D:\New folder\Intern-management-system\src\main\java\DAO\RecruitmentCampaignDao.java

@@ -25,14 +25,6 @@
                 <input type="text" name="userName" placeholder="Nhập mã số" required>
                 <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
                 <input type="password" name="re_passWord" placeholder="Nhập lại mật khẩu" required>
-<!--                <div class="login-role">
-                    <label for="role">Quyền:</label>
-                    <select name="role" id="role">
-                        <option value="admin">Quản trị viên</option>
-                        <option value="staff">Người hướng dẫn</option>
-                        <option value="intern">Thực tập sinh</option>
-                    </select>
-                </div>-->
 
                 <button type="submit">Đăng Ký</button>
             </form>

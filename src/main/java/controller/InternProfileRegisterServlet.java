@@ -87,26 +87,27 @@ public class InternProfileRegisterServlet extends HttpServlet {
         String profileEducation = request.getParameter("education");
         String profilePosition = request.getParameter("position");
         String profileSalary = request.getParameter("salary");
-        System.out.println(trainingProgram);
         ProfileDao internProfileDao = new ProfileDao();
         Date profileDOB;
-        
         try {
-            profileDOB = (profileDOB_raw == null) ? null: Date.valueOf(profileDOB_raw);
-            Profile internProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, 
+            profileDOB = (profileDOB_raw == null) ? null : Date.valueOf(profileDOB_raw);
+            Profile internProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram,
                     profilePhone, profileEducation, profilePosition, profileSalary, 0);
-           
-            if (internProfileDao.check(internProfile) == null){
+
+            if (internProfileDao.check(internProfile) == null) {
                 internProfileDao.insert(internProfile);
                 response.sendRedirect("internProfiles");
-            }else{
+            } else {
                 request.setAttribute("msg", "This Profile is registered");
+                TrainingFormDao trainingFormDao = new TrainingFormDao();
+                List<TrainingForm> list = trainingFormDao.getAll();
+                request.setAttribute("listTrainingForm", list);
                 request.getRequestDispatcher("intern_profile_register.jsp").forward(request, response);
             }
-        } catch (ServletException | IOException  e) {
+        } catch (ServletException | IOException e) {
             System.out.println(e);
         }
-    } 
+    }
 
     /**
      * Returns a short description of the servlet.
