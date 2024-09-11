@@ -1,20 +1,3 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e9eef3;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #ccc;
-    padding: 1em;
-    text-align: left;
-    font-size: 20px; /* Sử dụng đơn vị viewport để điều chỉnh kích thước linh hoạt */
-    font-weight: bold;
-    border-bottom: 2px solid #ddd;
-    color: #333;
-}
-
 main {
     display: grid;
     grid-template-columns: 2fr 1fr; /* Chia thành 2 cột theo tỷ lệ */

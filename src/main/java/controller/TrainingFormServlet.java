@@ -68,15 +68,15 @@ public class TrainingFormServlet extends HttpServlet {
         TrainingFormDao trainingFormDao = new TrainingFormDao();
         ProfileDao profileDao = new ProfileDao();
         UserDao userDao = new UserDao();
-        List<TrainingForm> list = trainingFormDao.getAll();List<User> listUserStaff = userDao.getAllStaff();
+        List<TrainingForm> list = trainingFormDao.getAll();
+        List<User> listUserStaff = userDao.getAllStaff();
         List<Profile> listProfileStaff = new ArrayList<>();
-        
-        for (User i : listUserStaff){
-            Profile profileStaff = profileDao.findByID(i.getID());
-            listProfileStaff.add(profileStaff);
+        if (listUserStaff != null) {
+            for (int i = 0; i < listUserStaff.size(); i++) {
+                Profile profileStaff = profileDao.findByID(listUserStaff.get(i).getProfileID());
+                listProfileStaff.add(profileStaff);
+            }
         }
-        
-        
         int cnt = trainingFormDao.getCountTrainingForms();
         if (cnt == 0) {
             trainingFormDao.reset();
@@ -103,6 +103,7 @@ public class TrainingFormServlet extends HttpServlet {
         String sessionStartTime_raw = request.getParameter("sessionStartTime");
         String sessionEndTime_raw = request.getParameter("sessionEndTime");
         String trainerName = request.getParameter("trainerName");
+        System.out.println(trainerName);
         Date startDate, endDate;
         Time sessionStartTime, sessionEndTime;
         TrainingFormDao trainingFormDao = new TrainingFormDao();
@@ -115,7 +116,7 @@ public class TrainingFormServlet extends HttpServlet {
             if (trainingFormDao.check(programName, trainerName) == null) {
                 trainingFormDao.insert(trainingForm);
                 response.sendRedirect("trainingForm");
-            }else{
+            } else {
                 request.setAttribute("msg", "This program name is registered");
                 request.getRequestDispatcher("training_program.jsp").forward(request, response);
             }

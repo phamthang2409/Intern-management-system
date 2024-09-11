@@ -13,7 +13,7 @@
     <body>
         <nav>
             <ul>
-                <li><a href="mentorDashBoard"><button>Bảng điều khiển Mentor</button></a></li>
+                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
                 <li><a href="dailyProgress"><button>Quản lý Tiến độ Hằng ngày</button></a></li>
                 <li><a href="trainingForm"><button>Thiết lập Chương trình đào tạo</button></a></li>
                 <li><a href="skillAssessment"><button>Đánh giá Kỹ năng</button></a></li>

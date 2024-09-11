@@ -95,18 +95,19 @@ public class UserDao extends DBContext{
     public List<User> getAllStaff()  {
         Connection conn = DBContext();
         List<User> list = new ArrayList<>();
-        String sql = "Select * from User where role = 'staff'";
+        String sql = "Select * from User where role = 'Staff'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 User user = new User(rs.getInt("ID"),
                         rs.getString("username"),
-                        rs.getNString("passWord"),
+                        rs.getString("passWord"),
                         rs.getString("role"),
                             rs.getInt("profileID"));
                 list.add(user);
             }
+            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }finally{
@@ -116,7 +117,7 @@ public class UserDao extends DBContext{
                 System.out.println(e);
             }
         }
-        return list;
+        return null;
     }
     
     //Doc tat ca ban ghi tu table UserDao

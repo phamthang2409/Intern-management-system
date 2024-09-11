@@ -5,6 +5,10 @@
 
 package controller;
 
+import DAO.ProfileDao;
+import DAO.TrainingFormDao;
+import Model.Profile;
+import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +16,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -69,7 +75,33 @@ public class StaffRegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String profileFirstName = request.getParameter("firstName");
+        String profileLastName = request.getParameter("lastName");
+        String profileDOB_raw = request.getParameter("dob");
+        String profileEmail = request.getParameter("email");
+        String profilePhone = request.getParameter("phone");
+        String profileEducation = request.getParameter("education");
+        String profileSalary = request.getParameter("salary");
+        ProfileDao internProfileDao = new ProfileDao();
+        Date profileDOB;
+        try {
+            profileDOB = (profileDOB_raw == null) ? null : Date.valueOf(profileDOB_raw);
+            Profile internProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, "Đào tạo thực tập sinh",
+                    profilePhone, profileEducation, "Staff", profileSalary, 0);
+
+            if (internProfileDao.check(internProfile) == null) {
+                internProfileDao.insert(internProfile);
+                response.sendRedirect("staffProfile");
+            } else {
+                request.setAttribute("msg", "This Profile is registered");
+                TrainingFormDao trainingFormDao = new TrainingFormDao();
+                List<TrainingForm> list = trainingFormDao.getAll();
+                request.setAttribute("listTrainingForm", list);
+                request.getRequestDispatcher("staff_profile_register.jsp").forward(request, response);
+            }
+        } catch (ServletException | IOException e) {
+            System.out.println(e);
+        }
     }
 
     /**

@@ -11,12 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Công cụ giao tiếp</title>
         <link rel="stylesheet" href="css/skill_assessment.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="script.js"></script>
     </head>
     <body>
         <header>
             <h1>Đánh giá kỹ năng</h1>
-            <%@include file="menu_mentor.jsp"%>
+           <nav>
+            <ul>
+                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>                
+            </ul>
+        </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
         <main>
             <h2>Đánh Giá Kỹ Năng: </h2>

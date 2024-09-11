@@ -5,12 +5,16 @@
 
 package controller;
 
+import DAO.ProfileDao;
+import DAO.UserDao;
+import Model.Profile;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -53,6 +57,20 @@ public class StaffProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        ProfileDao internProfileDao = new ProfileDao();
+        UserDao userDao = new UserDao();
+        List<Profile> list = internProfileDao.getAll();
+        int cntIntern = 0;
+        cntIntern = internProfileDao.countAllProfiles();
+        int cntUserAccount = userDao.countAllUsers();
+        if (cntIntern == 0) {
+            internProfileDao.reset();
+        }
+        if (cntUserAccount == 0){
+            userDao.reset();
+        }
+        request.setAttribute("cnt", cntIntern);
+        request.setAttribute("listStaff", list);
         request.getRequestDispatcher("staffProfile.jsp").forward(request, response);
     }
 

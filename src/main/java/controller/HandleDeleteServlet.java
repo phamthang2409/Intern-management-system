@@ -64,7 +64,6 @@ public class HandleDeleteServlet extends HttpServlet {
         String id_raw = request.getParameter("id");
         String name = request.getParameter("name");
         RecruitmentCampaignDao recruitmentCampaignDao = new RecruitmentCampaignDao();
-        
         TrainingFormDao trainingFormDao = new TrainingFormDao();
         
         int id;
@@ -74,13 +73,19 @@ public class HandleDeleteServlet extends HttpServlet {
                 recruitmentCampaignDao.delete(id);
                 response.sendRedirect("recruitment");
             }else if (name.equals("internProfiles")){
+                String profilePosition = request.getParameter("profilePosition");
                 UserDao userDao = new UserDao();
                 if (userDao.checkAccountUser(id) != null){
                     userDao.delete(id);
-                }
+                }   
                 ProfileDao internProfileDao = new ProfileDao();
                 internProfileDao.delete(id);
-                response.sendRedirect("internProfiles");
+                if ("Intern".equals(profilePosition)){
+                    response.sendRedirect("internProfiles");
+                }else if("Staff".equals(profilePosition)){
+                    response.sendRedirect("staffProfile");
+                }              
+                
             }else if (name.equals("trainingForm")){
                 trainingFormDao.delete(id);
                 response.sendRedirect("trainingForm");

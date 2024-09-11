@@ -24,8 +24,10 @@ D:\Intern-management-system\src\main\java\controller\TrainingFormServlet.java
 D:\Intern-management-system\src\main\java\DAO\InterviewSchedulingDao.java
 D:\Intern-management-system\src\main\java\Model\RecruitmentCampaign.java
 D:\Intern-management-system\src\main\java\FIlter\LoginFilter.java
+D:\Intern-management-system\src\main\java\controller\StaffProfileServlet.java
 D:\Intern-management-system\src\main\java\controller\MentorDashBoardServlet.java
 D:\Intern-management-system\src\main\java\controller\SkillAssessmentServlet.java
+D:\Intern-management-system\src\main\java\controller\StaffRegisterServlet.java
 D:\Intern-management-system\src\main\java\controller\LoginServlet.java
 D:\Intern-management-system\src\main\java\controller\StaffDashBoardServlet.java
 D:\Intern-management-system\src\main\java\Model\User.java

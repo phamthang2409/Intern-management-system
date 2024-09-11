@@ -89,13 +89,19 @@ public class RegisterServlet extends HttpServlet {
             if (checkUser == null) {
                 User newUser = new User(user, pass, profilePosition, profileID);
                 if (userDao.insert(newUser)) {
-                    ProfileDao.updateStatus(profileID, 1);
-                    response.sendRedirect("internProfiles");
-                }else{
+                    if ("Intern".equals(profilePosition)) {
+                        ProfileDao.updateStatus(profileID, 1);
+                        response.sendRedirect("internProfiles");
+                    }else if ("Staff".equals(profilePosition)){
+                        ProfileDao.updateStatus(profileID, 1);
+                        response.sendRedirect("staffProfile");
+                    }
+
+                } else {
                     request.setAttribute("msg", "Account authorization failed");
                     request.getRequestDispatcher("register.jsp").forward(request, response);
                 }
-                
+
             } else {
                 request.setAttribute("msg", "Account has already existed!");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
