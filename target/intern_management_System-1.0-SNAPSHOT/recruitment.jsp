@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quản lý Tuyển dụng</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/recruitment.css">
         <script src="js/script.js"></script>
     </head>
     <body>
@@ -24,32 +24,37 @@
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
                 </ul>
             </nav>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
+
 
         <main>
             <h2>Thêm Chiến dịch Tuyển dụng</h2>
-            <form id="recruitmentForm" action="recruitment" method="post">
-                <table border="1px" cellspacing="0" cellpadding="5">
-                    <tr>
-                        <th>Tên Chiến dịch</th>
-                        <th>Vị trí Tuyển dụng</th>
-                        <th>Mức Lương</th>
-                        <th>Trình độ Học vấn</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="campaignName" name="campaignName" required></td>
-                        <td><input type="text" id="position" name="position" placeholder="Nhập các vị trí, ngăn cách bởi dấu phẩy" required></td>
-                        <td><input type="text" id="salary" name="salary" placeholder="Nhập các mức lương, ngăn cách bởi dấu phẩy" required></td>
-                        <td><input type="text" id="education" name="education" placeholder="Nhập các trình độ, ngăn cách bởi dấu phẩy" required></td>
-                    </tr>
+            <form id="recruitmentForm">
+                <table class="bordered-table">
+                    <thead>
+                        <tr>
+                            <th>Tên Chiến dịch</th>
+                            <th>Vị trí Tuyển dụng</th>
+                            <th>Mức Lương</th>
+                            <th>Trình độ Học vấn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" id="campaignName" name="campaignName" placeholder="Nhập tên chiến dich" required></td>
+                            <td><input type="text" id="position" name="position" placeholder="Nhập vị trí tuyển dụng" required></td>
+                            <td><input type="text" id="salary" name="salary" placeholder="Nhập mức lương" required></td>
+                            <td><input type="text" id="education" name="education" placeholder="Nhập trình độ học vấn" required></td>
+                        </tr>
+                    </tbody>
                 </table>
                 <br>
                 <button type="submit">Thêm Chiến dịch</button>
             </form>
 
             <h2>Danh sách Chiến dịch Tuyển dụng</h2>
-
-            <table id="recruitmentTable" border="1" cellspacing="0" cellpadding="5">
+            <table id="recruitmentTable" class="bordered-table">
                 <thead>
                     <tr>
                         <th>Tên Chiến dịch</th>
@@ -66,7 +71,7 @@
                             <td>${i.position}</td>
                             <td>${i.salary}</td>
                             <td>${i.education}</td>
-                            <td><button name="delete" onclick="doDelete(${i.ID})">Xóa</button></td>
+                            <td><button class="delete-btn" name="delete" onclick="doDelete(${i.ID})">Xóa</button></td>
                         </tr>
                     </tbody>
                 </c:forEach>
@@ -74,10 +79,16 @@
         </main>
     </body>
     <script type="text/javascript">
-            function doDelete(id){
-                if (confirm("Are you want to delete ")){
-                    window.location = "delete?id=" + id+ "&name=recruitment";
-                }
+        function doDelete(id) {
+            if (confirm("Are you want to delete ")) {
+                window.location = "delete?id=" + id + "&name=recruitment";
             }
+        }
+        
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
+            }
+        }
     </script>
 </html>

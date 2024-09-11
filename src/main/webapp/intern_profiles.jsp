@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quản lý Hồ sơ Thực tập sinh</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/intern_profiles.css">
         <script src="js/script.js"></script>
     </head>
     <body>
@@ -21,9 +21,12 @@
                 <ul>
                     <ul>
                         <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
+                        <li><a href="recruitment"><button>Quản lý Tuyển dụng</button></a></li>
                         <li><a href="internProfileRegister"><button>Thêm thực tập sinh </button></a></li>
+                        <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
                     </ul>
             </nav>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
         <main>
             <c:if test="${requestScope.msg != null}">
@@ -91,6 +94,12 @@
 
             function doADD(id, profilePosition) {
                 window.location = "register?id=" + id + "&profilePosition=" + profilePosition;
+            }
+
+            function doClick() {
+                if (confirm("Are you want to exit? ")) {
+                    window.location = "resetSession";
+                }
             }
         </script>
     </body>
