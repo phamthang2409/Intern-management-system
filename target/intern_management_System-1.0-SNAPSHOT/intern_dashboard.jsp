@@ -45,7 +45,7 @@
                 <div class="reminders">
                     <h3>Nhắc nhở mới, chưa xem</h3>
                     <p>0</p>
-                    <a href="#">Xem chi tiết</a>
+                    <a href="video-call-demo/user1.html">Xem chi tiết</a>
                 </div>
                 <div class="schedule">
                     <h3>Lịch</h3>

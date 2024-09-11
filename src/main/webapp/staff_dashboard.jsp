@@ -22,7 +22,6 @@
                 <ul>
                     <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
                     <li><a href="interviewScheduling"><button>Lên Lịch Phỏng vấn</button></a></li>
-                    <li><a href="video-call-demo/user2.html"><button>Gọi Phỏng vấn</button></a></li>
                     <li><a href="performanceTracking"><button>Theo dõi Hiệu suất</button></a></li>
                 </ul>
             </nav>
@@ -58,6 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
+<!--                     <a href="video-call-demo//user2.html"><button id="logoutButton"> Gọi</button></a>-->
                     <!-- Lịch Phỏng vấn sẽ được thêm tại đây -->
                 </tbody>
             </table>
