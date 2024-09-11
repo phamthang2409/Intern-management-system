@@ -1,0 +1,176 @@
+/* Hiệu ứng nền trộn màu theo chủ đề công nghệ */
+body {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af, #bdc3c7);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
+    color: #333; /* Màu chữ đậm */
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header styles */
+header {
+    background-color: #013e51;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Navigation menu styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a button {
+    background-color: #a45112;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav ul li a button:hover {
+    background-color: #883c0e;
+}
+
+/* Page title before the main section */
+h2 {
+    color: #3e3e3e;
+    text-align: left;
+    margin-left: 20px;
+    font-size: 22px;
+}
+
+/* General layout settings */
+.container {
+    background-color: #6ac4d0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Main Form Styles */
+main {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 0 auto;
+}
+
+#logoutButton {
+    background-color: #D06A3D;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    float: right;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #f2875b;
+}
+
+main h1 {
+    text-align: center;
+    color: #2979ff;
+    margin-bottom: 20px;
+}
+
+main label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+main input[type="text"],
+main input[type="email"],
+main input[type="tel"],
+main input[type="date"],
+main select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+main input[type="text"]::placeholder,
+main input[type="email"]::placeholder,
+main input[type="tel"]::placeholder,
+main input[type="date"]::placeholder {
+    color: #999;
+}
+
+main button {
+    background-color: #43a047;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+main button:hover {
+    background-color: #388e3c;
+}
+/* Align skills and button in a row */
+.skill-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.skill-row input[type="text"] {
+    width: 40%;
+    margin-right: 10px;
+}
+
+.skill-row select {
+    width: 20%;
+    margin-right: 10px;
+}
+
+.skill-row button {
+    padding: 10px 20px;
+    background-color: #a45112;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.skill-row button:hover {
+    background-color: #883c0e;
+}
+
