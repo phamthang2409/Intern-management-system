@@ -22,6 +22,7 @@
                 <ul>
                     <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
                     <li><a href="interviewScheduling"><button>Lên Lịch Phỏng vấn</button></a></li>
+                    <li><a href="video-call-demo/user2.html"><button>Gọi Phỏng vấn</button></a></li>
                     <li><a href="performanceTracking"><button>Theo dõi Hiệu suất</button></a></li>
                 </ul>
             </nav>

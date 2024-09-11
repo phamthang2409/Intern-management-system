@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <style>
+        #video-container {
+            position: relative;
+            margin: auto;
+            width: 640px;
+        }
+
+        video {
+            background: #dee;
+            display: none;
+        }
+
+        #localVideo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            z-index: 10;
+            background: #333;
+        }
+
+        #remoteVideo {
+            width: 100%;
+        }
+
+        #action-buttons {
+            margin: auto;
+            text-align: center;
+        }
+
+        .hidden-first {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-12">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2>Video call Demo</h2>
+                    <p>By <a href="https://developer.stringee.com/">stringee.com</a></p>
+                </div>
+                
+            </div>
+
+                <div id="video-container">
+                    <video id="localVideo" autoplay muted></video>
+                    <video id="remoteVideo" autoplay style="height: 360px;"></video>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <select class="form-control" id="client_type">
+                    <option value="new">I am New</option>
+                    <option value="vip">I am VIP</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col" id="action-buttons">
+                <button id="callButton" class="btn btn-success">Call</button>
+                <button id="answerCallButton" class="btn btn-info hidden-first">Answer Call</button>
+                <button id="rejectCallButton" class="btn btn-warning hidden-first">Reject Call</button>
+                <button id="endCallButton" class="btn btn-danger hidden-first">End Call</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/socket.io-2.2.0.js"></script>
+    <script src="js/StringeeSDK-1.5.10.js"></script>
+    
+    
+
+
+    <script>
+        var token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTc5NiIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzc5NiwidXNlcklkIjoicmVndWxhcl9jbGllbnQifQ.rVvNqXqgbO1QsVvSHs2wzLJpQbnGgdNmv-5uP_1jHCA';
+        var callerId = 'regular_client';
+        var calleeId = 'stringee';
+
+        $(function(){
+            $('#client_type').on('change', function(){
+                if ($(this).val() === 'vip')
+                {
+                    console.log('calling as vip');
+                    callerId = 'vip_client';
+                    token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTg4MCIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzg4MCwidXNlcklkIjoidmlwX2NsaWVudCJ9.Dgx-9xgmnTKLNx7Ws6VEMZ7ppRumAXFeXowqBj9OmE0';
+                } else
+                {
+                    console.log('calling as regular');
+                    callerId = 'regular_client';
+                    token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTc5NiIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzc5NiwidXNlcklkIjoicmVndWxhcl9jbGllbnQifQ.rVvNqXqgbO1QsVvSHs2wzLJpQbnGgdNmv-5uP_1jHCA';
+                }
+            });
+            
+        });
+    </script>
+
+
+    <script src="js/code.js"></script>
+</body>
+</html>
