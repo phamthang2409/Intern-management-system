@@ -1,337 +1,70 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-/* Hiệu ứng nền trộn màu theo chủ đề công nghệ */
+/* General page styles */
 body {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af, #bdc3c7);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
-    color: #333; /* Màu chữ đậm */
+    font-family: Arial, sans-serif;
+    background-color: #e8f3f8;
     margin: 0;
     padding: 0;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Đầu trang (Header) */
 header {
-    background-color: rgba(0, 0, 0, 0.7); /* Màu đen trong suốt */
-    color: #fff; /* Màu chữ trắng */
-    padding: 15px 30px;
+    background-color: #073b5a;
+    padding: 35px;
     text-align: center;
-    border-bottom: 2px solid #3498db; /* Đường viền dưới xanh đậm */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 header h1 {
+    padding: 0px;
     margin: 0;
-    font-size: 26px;
-    font-weight: 700;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 15px 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 nav ul li {
-    display: inline-block;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+nav ul li a button {
+    background-color: #d96634;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
     font-weight: bold;
-    font-size: 18px;
-    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #f7c08a; /* Chữ màu cam nhạt khi di chuột */
+nav ul li a button:hover {
+    background-color: #e68850;
 }
 
-/* Bố cục trang chính (Main Layout) */
-.main-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.flex-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.grid-item {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.grid-item:hover {
-    transform: translateY(-10px); /* Di chuyển item lên khi di chuột */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Tăng bóng đổ */
-}
-
-/* Bảng nổi (Floating Table) */
-.floating-table {
-    width: 100%;
-    background-color: #ffffff;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.floating-table:hover {
-    transform: translateY(-10px); /* Di chuyển bảng lên khi di chuột */
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2); /* Tăng bóng đổ */
-}
-
-.floating-table th, .floating-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-    font-size: 16px;
-}
-
-.floating-table th {
-    background-color: #3b5998; /* Màu nền tiêu đề bảng xanh đậm */
-    color: #fff; /* Chữ màu trắng */
-}
-
-.floating-table tr:hover {
-    background-color: #f7f7f7; /* Màu nền sáng khi di chuột */
-    transition: background-color 0.3s;
-}
-
-/* Hộp thông tin */
-.info-box {
-    padding: 25px;
-    margin-bottom: 25px;
-    background-color: #f1f1f1; /* Màu nền xám nhạt */
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-box:hover {
-    transform: scale(1.05); /* Phóng to nhẹ khi di chuột */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Form */
-.form-container {
-    background-color: #f1f1f1;
-    padding: 25px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.form-container input, .form-container select {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #3b5998; /* Viền ô nhập liệu màu xanh đậm */
-    border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-}
-
-/* Nút bấm */
-button {
-    background-color: #3b5998;
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Hiệu ứng khi di chuột vào nút */
-button:hover {
-    background-color: #2d4373;
-    transform: translateY(-2px); /* Nút sẽ di chuyển lên một chút */
-}
-
-/* Hiệu ứng khi nhấn nút */
-button:active {
-    transform: translateY(2px);
-    background-color: #1a2e52; /* Màu đậm hơn khi nhấn */
-}
-
-/* Nút đăng xuất */
 #logoutButton {
-    background-color: #e74c3c; /* Màu đỏ đậm */
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    position: absolute;
-    top: 15px;
-    right: 30px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: red; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ viền */
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    text-align: center; /* Canh giữa chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: inline-block;
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+    border-radius: 5px; /* Bo góc nút */
+    position: absolute; /* Định vị tuyệt đối */
+    top: 10px; /* Cách cạnh trên 10px */
+    right: 10px; /* Cách cạnh phải 10px */
 }
 
 #logoutButton:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
+    background-color: darkred; /* Màu khi hover chuột */
 }
 
-#logoutButton:active {
-    transform: translateY(2px);
-    background-color: #a93226;
-}
-
-/* Nút trở về bảng điều khiển */
-.back-button {
-    background-color: #3b5998;
-    color: #fff;
-    padding: 12px 25px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.back-button:hover {
-    background-color: #2d4373;
-    transform: translateY(-2px);
-}
-
-.back-button:active {
-    transform: translateY(2px);
-    background-color: #1a2e52;
-}
-
-/* Hiệu ứng di chuột vào các mục */
-.info-box:hover, .form-container:hover, .floating-table:hover {
-    box-shadow: 0px 0px 20px #aaa;
-    transition: box-shadow 0.3s;
-}
-
-/* Nút bấm chung */
-button {
-    background-color: #8b4513;
-    color: #fff8dc;
-    padding: 12px 25px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: 'Georgia', serif;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Thêm hiệu ứng */
-}
-
-/* Hiệu ứng khi di chuột vào nút */
-button:hover {
-    background-color: #5a3310;
-    transform: translateY(-2px); /* Nút sẽ di chuyển lên một chút */
-}
-
-/* Hiệu ứng khi nhấn nút */
-button:active {
-    transform: translateY(2px); /* Nút sẽ di chuyển xuống một chút khi nhấn */
-    background-color: #4e2b08; /* Màu đậm hơn khi nhấn */
-}
-
-/* Nút đăng xuất */
-#logoutButton {
-    background-color: #8b0000; /* Màu đỏ đậm */
-    color: #fff8dc;
-    padding: 12px 25px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    position: absolute;
-    top: 15px;
-    right: 30px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#logoutButton:hover {
-    background-color: #660000;
-    transform: translateY(-2px);
-}
-
-#logoutButton:active {
-    transform: translateY(2px);
-    background-color: #4e0000;
-}
-
-/* Nút trở về bảng điều khiển */
-.back-button {
-    background-color: #8b4513;
-    color: #fff8dc;
-    padding: 12px 25px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.back-button:hover {
-    background-color: #5a3310;
-    transform: translateY(-2px);
-}
-
-.back-button:active {
-    transform: translateY(2px);
-    background-color: #4e2b08;
-}
-
-/* Hiệu ứng di chuột vào các mục */
-.info-box:hover, .form-container:hover, .table-container:hover {
-    box-shadow: 0px 0px 15px #aaa;
-    transition: box-shadow 0.3s;
+header {
+    position: relative; /* Đặt header ở vị trí tương đối để chứa nút */
+    height: 60px; /* Chiều cao của header (tuỳ chỉnh nếu cần) */
 }

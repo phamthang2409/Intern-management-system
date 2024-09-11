@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang Chủ Quản trị viên</title>
         <link rel="stylesheet" href="css/admin_dashboard.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
@@ -24,10 +25,10 @@
                     <li><a href="internProfiles"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
                     <li><a href="staffProfile"><button>Quản lý Hồ sơ Nhân viên</button></a></li>
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
-                    <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+                    
                 </ul>
             </nav>
-            <!--            <a href="login"></a>-->
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
     
         </header>
 

@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thiết lập Chương trình Đào tạo</title>
         <link rel="stylesheet" href="css/traning_program.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>

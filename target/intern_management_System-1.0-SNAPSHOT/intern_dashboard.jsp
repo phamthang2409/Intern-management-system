@@ -12,11 +12,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bảng điều khiển Thực tập sinh</title>
         <link rel="stylesheet" href="css/intern_dashboard.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="script.js"></script>
     </head>
     <body>
         <header>
             <h1>Bảng điều khiển Thực tập sinh</h1>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
         <main>

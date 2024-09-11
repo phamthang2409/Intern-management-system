@@ -11,12 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Theo dõi Tiến độ Hằng ngày</title>
         <link rel="stylesheet" href="css/daily_progress.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="script.js"></script>
     </head>
     <body>
         <header>
             <h1> Tiến độ Hằng ngày</h1>
-            <%@include file="menu_mentor.jsp"%>
+          <nav>
+            <ul>
+                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
+            </ul>
+        </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
         <main>
             <h2>Tiến độ Hằng ngày của Thực tập sinh</h2>

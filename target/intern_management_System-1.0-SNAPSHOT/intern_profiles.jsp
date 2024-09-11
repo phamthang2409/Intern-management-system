@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quản lý Hồ sơ Thực tập sinh</title>
         <link rel="stylesheet" href="css/intern_profiles.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
@@ -22,10 +23,9 @@
                     <ul>
                         <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
                         <li><a href="internProfileRegister"><button>Thêm thực tập sinh </button></a></li>
-                        <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                     </ul>
             </nav>
-            
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>s
         <main>
             <c:if test="${requestScope.msg != null}">

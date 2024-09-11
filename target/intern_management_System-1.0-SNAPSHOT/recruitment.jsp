@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quản lý Tuyển dụng</title>
         <link rel="stylesheet" href="css/recruitment.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
@@ -19,11 +20,10 @@
             <h1>Quản lý Tuyển dụng</h1>
             <nav>
                 <ul>
-                    <li><a href="adminDashBoard"><button>Trang chủ</button></a></li>
-                     <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+                    <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>                                    
                 </ul>
             </nav>
-           
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
 
 

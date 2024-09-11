@@ -11,12 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Công cụ giao tiếp</title>
         <link rel="stylesheet" href="css/communication_tools.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
         <header>
             <h1>Công cụ Giao tiếp</h1>
-            <%@include file="menu_mentor.jsp" %>
+            <nav>
+            <ul>
+                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
+            </ul>
+        </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
         <main>
             <h2>Giao tiếp với Thực tập sinh</h2>

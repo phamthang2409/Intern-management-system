@@ -1,13 +1,3 @@
-body {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af, #bdc3c7);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
-    color: #333; /* Màu chữ đậm */
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     width: 100%;
     max-width: 500px; /* Thu ngắn form */

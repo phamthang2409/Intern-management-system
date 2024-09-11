@@ -11,12 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lên Lịch Phỏng vấn</title>
         <link rel="stylesheet" href="css/interview_scheduling.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
         <header>
             <h1>Lên Lịch Phỏng vấn</h1>
-            <%@include file="menu_staff.jsp"%>
+            <nav>
+                <ul>
+                    <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
+                </ul>
+            </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
         <main>

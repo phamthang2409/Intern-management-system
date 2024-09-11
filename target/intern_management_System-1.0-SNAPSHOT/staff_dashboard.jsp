@@ -12,12 +12,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bảng điều khiển Nhân viên phụ trách</title>
         <link rel="stylesheet" href="css/staff_dashboard.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
         <header>
             <h1>Bảng điều khiển Nhân viên phụ trách</h1>
-            <%@include file="menu_staff.jsp"%>
+            <nav>
+                <ul>
+                    <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
+                    <li><a href="interviewScheduling"><button>Lên Lịch Phỏng vấn</button></a></li>
+                    <li><a href="performanceTracking"><button>Theo dõi Hiệu suất</button></a></li>
+                </ul>
+            </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
         <main>

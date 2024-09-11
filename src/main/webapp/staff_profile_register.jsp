@@ -9,7 +9,9 @@
 <html>
     <head>
         <title>Đăng Ký Hồ Sơ Nhân Viên</title>
+    <a href="staff_profile_register.jsp"></a>
         <link rel="stylesheet" href="css/intern_profile_registrantion.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
        <body>

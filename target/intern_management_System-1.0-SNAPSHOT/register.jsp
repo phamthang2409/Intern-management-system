@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Đăng ký</title>
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div class="login-box">

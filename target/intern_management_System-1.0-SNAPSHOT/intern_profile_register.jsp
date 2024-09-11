@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Đăng Ký Hồ Sơ Thực Tập Sinh Page</title>
         <link rel="stylesheet" href="css/intern_profile_registrantion.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
     <body>
