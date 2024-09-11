@@ -17,7 +17,17 @@
     <body>
         <header>
             <h1>Bảng điều khiển Mentor</h1>
-            <%@include file="menu_mentor.jsp"%>
+            <nav>
+            <ul>
+                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
+                <li><a href="dailyProgress"><button>Quản lý Tiến độ Hằng ngày</button></a></li>
+                <li><a href="trainingForm"><button>Thiết lập Chương trình đào tạo</button></a></li>
+                <li><a href="skillAssessment"><button>Đánh giá Kỹ năng</button></a></li>
+                <li><a href="communicationTool"><button>Công cụ giao tiếp</button></a></li>
+                 
+            </ul>
+        </nav>
+            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
         <main>
