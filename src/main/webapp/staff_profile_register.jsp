@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +21,7 @@
             <c:if test="${requestScope.msg != null}">
                 <h3 style="color: red">${requestScope.msg}</h3>
             </c:if>
-            <form id="internForm" action="internProfileRegister" method="post">
+            <form id="internForm" action="staffRegister" method="post">
                 <!-- Họ và Tên -->
                 <div class="form-group">
                     <label for="firstName">Họ:</label>
@@ -68,7 +69,10 @@
                         <option value="Admin">Admin</option>
                     </select>
                 </div>-->
-
+                <div class="form-group">
+                    <label for="salary">Mức lương mong muốn:</label>
+                    <input id="salary" name="salary" placeholder="Mức lương mong muốn" required>
+                </div>
 
                 <!-- Nút Submit -->
                 <div class="form-group">

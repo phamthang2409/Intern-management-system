@@ -103,7 +103,6 @@ public class TrainingFormServlet extends HttpServlet {
         String sessionStartTime_raw = request.getParameter("sessionStartTime");
         String sessionEndTime_raw = request.getParameter("sessionEndTime");
         String trainerName = request.getParameter("trainerName");
-        System.out.println(trainerName);
         Date startDate, endDate;
         Time sessionStartTime, sessionEndTime;
         TrainingFormDao trainingFormDao = new TrainingFormDao();

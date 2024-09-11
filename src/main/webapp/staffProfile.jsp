@@ -53,32 +53,34 @@
                             <th>Cấp tài khoản</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${requestScope.listIntern}" var="i">
+                    <c:forEach items="${requestScope.listStaff}" var="i">
                         <tbody>
                             <c:if test="${i.getProfilePosition() != 'Admin'}">
-                                <tr>
-                                    <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
-                                    <td>${i.getProfileDOB()}</td>
-                                    <td>${i.getProfileEmail()}</td>
-                                    <td>${i.getProfilePhone()}</td>
-                                    <td>${i.getProfileEducation()}</td>
-                                    <td>${i.getTrainingProgram()}</td>
-                                    <td>${i.getProfilePosition()}</td>
-                                    <td>${i.getProfileSalary()}</td>
-                                    <td>
-                                        <button name="delete" onclick="doDelete('${i.getID()}')">Xóa</button>
-                                    </td>
-                                    <c:if test="${i.getStatus() == 1}">
+                                <c:if test="${i.getProfilePosition() == 'Staff'}">
+                                    <tr>
+                                        <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                        <td>${i.getProfileDOB()}</td>
+                                        <td>${i.getProfileEmail()}</td>
+                                        <td>${i.getProfilePhone()}</td>
+                                        <td>${i.getProfileEducation()}</td>
+                                        <td>${i.getTrainingProgram()}</td>
+                                        <td>${i.getProfilePosition()}</td>
+                                        <td>${i.getProfileSalary()}</td>
                                         <td>
-                                            <label>Đã cấp tài khoản</label>
+                                            <button name="delete" onclick="doDelete('${i.getID()}')">Xóa</button>
                                         </td>
-                                    </c:if>
-                                    <c:if test="${i.getStatus() == 0}">
-                                        <td>
-                                            <button name="add" onclick="doADD('${i.getID()}', '${i.getProfilePosition()}')">Cấp tài khoản</button>
-                                        </td>
-                                    </c:if>
-                                </tr>
+                                        <c:if test="${i.getStatus() == 1}">
+                                            <td>
+                                                <label>Đã cấp tài khoản</label>
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${i.getStatus() == 0}">
+                                            <td>
+                                                <button name="add" onclick="doADD('${i.getID()}', '${i.getProfilePosition()}')">Cấp tài khoản</button>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:if>
                             </c:if>
                         </tbody>
                     </c:forEach>
@@ -89,7 +91,7 @@
         <script type="text/javascript">
             function doDelete(id) {
                 if (confirm("Are you want to delete ")) {
-                    window.location = "delete?id=" + id + "&name=internProfiles";
+                    window.location = "delete?id=" + id + "&name=internProfiles"+"&profilePosition=Staff";
                 }
             }
 

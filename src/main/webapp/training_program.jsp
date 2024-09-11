@@ -45,7 +45,7 @@
                 <label for="trainerName">Tên Người Phụ trách:</label>
                 <select type="text" id="trainerName" name="trainerName" required>
                     <c:forEach items="${requestScope.listProfileStaff}" var="i">
-                        <option value="${i.getTrainerName()}">${i.getTrainerName()}</option>
+                        <option value="${i.getProfileFirstName()}+${i.getProfileLastName()}">${i.getProfileFirstName()} ${i.getProfileLastName()}</option>
                     </c:forEach>
                     
                 </select>
