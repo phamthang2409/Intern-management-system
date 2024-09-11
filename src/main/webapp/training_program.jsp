@@ -17,7 +17,7 @@
     <body>
         <header>
             <h1>Thiết lập Chương trình Đào tạo</h1>
-            <%@include file="menu_staff.jsp"%>
+            <%@include file="menu_mentor.jsp"%>
         </header>
         
         <main>

@@ -18,8 +18,9 @@
                 <li><a href="trainingForm"><button>Thiết lập Chương trình đào tạo</button></a></li>
                 <li><a href="skillAssessment"><button>Đánh giá Kỹ năng</button></a></li>
                 <li><a href="communicationTool"><button>Công cụ giao tiếp</button></a></li>
+                 <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
             </ul>
         </nav>
-        <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+       
     </body>
 </html>
