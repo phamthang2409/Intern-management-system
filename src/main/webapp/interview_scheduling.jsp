@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,13 +28,22 @@
 
         <main>
 
-            <form id="interviewForm">
+            <form id="interviewForm" action="interviewScheduling" method="post">
                 <h2>Lên Lịch Phỏng Vấn</h2>
-                <label for="candidateName">Tên Thực tập sinh:</label>
-                <input type="text" id="candidateName" name="candidateName" required><br><br>
+                <c:if test="${requestScope.msg != null}">
+                    <h3 style="color: red">${requestScope.msg}</h3>
+                </c:if>
+                <label for="candidateName">Mã số thực tập sinh:</label>
+                <input type="text" id="candidateID" name="candidateID" required><br><br>
+                
+<!--                <label for="candidateName">Tên Thực tập sinh:</label>
+                <input type="text" id="candidateName" name="candidateName" required><br><br>-->
 
-                <label for="interviewDateTime">Ngày và Giờ:</label>
-                <input type="datetime-local" id="interviewDateTime" name="interviewDateTime" required><br><br>
+                <label for="startDate">Ngày phỏng vấn:</label>
+                <input type="date" id="startDate" name="startDate" required><br><br>
+
+                <label for="sessionStartTime">Thời gian bắt đầu phỏng vấn</label>
+                <input type="time" id="sessionStartTime" name="sessionStartTime" pattern="[0-9]{2}:[0-9]{2}" required><br><br>
 
                 <label for="location">Địa điểm Phỏng vấn:</label>
                 <input type="text" id="location" name="location" required><br><br>
@@ -51,59 +61,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Lịch phỏng vấn sẽ được thêm tại đây -->
+                    
                 </tbody>
             </table>
         </main>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                let interviewSchedule = JSON.parse(localStorage.getItem('interviewSchedule')) || [];
-
-                function displayInterviews() {
-                    const interviewTableBody = document.querySelector('#interviewTable tbody');
-                    interviewTableBody.innerHTML = '';
-
-                    interviewSchedule.forEach((interview, index) => {
-                        let row = document.createElement('tr');
-
-                        row.innerHTML = `
-                            <td>${interview.candidate}</td>
-                            <td>${interview.dateTime}</td>
-                            <td>${interview.location}</td>
-                            <td><button onclick="deleteInterview(${index})">Xóa</button></td>
-                        `;
-
-                        interviewTableBody.appendChild(row);
-                    });
-                }
-
-                function deleteInterview(index) {
-                    interviewSchedule.splice(index, 1);
-                    localStorage.setItem('interviewSchedule', JSON.stringify(interviewSchedule));
-                    displayInterviews();
-                }
-
-                document.querySelector('#interviewForm').addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    let interview = {
-                        candidate: document.querySelector('#candidateName').value,
-                        dateTime: document.querySelector('#interviewDateTime').value,
-                        location: document.querySelector('#location').value,
-                        role: document.querySelector('#role').value
-                    };
-
-                    interviewSchedule.push(interview);
-                    localStorage.setItem('interviewSchedule', JSON.stringify(interviewSchedule));
-                    displayInterviews();
-
-                    document.querySelector('#interviewForm').reset();
-                });
-
-                displayInterviews();
-            });
-        </script>
 
     </body>
 </html>

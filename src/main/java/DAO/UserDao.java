@@ -65,6 +65,33 @@ public class UserDao extends DBContext{
         return null;
     }
     
+    public User checkUserName(String userName) {
+        Connection conn = DBContext();
+        String sql = "Select * from User where userName = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
+                        rs.getString("passWord"), 
+                        rs.getString("role"),
+                        rs.getInt("profileID"));
+                return newUser;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
     public User checkAccountUser(int profileID) {
         Connection conn = DBContext();
         String sql = "Select * from User where profileID = ?";

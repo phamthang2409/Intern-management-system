@@ -4,12 +4,26 @@
  */
 package controller;
 
+import DAO.InterviewSchedulingDao;
+import DAO.UserDao;
+import Model.InterviewScheduling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -55,6 +69,9 @@ public class InterviewSchedulingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
+        List<InterviewScheduling> list = interviewSchedulingDao.getAll();
+        request.setAttribute("listInterviewScheduling", list);
         request.getRequestDispatcher("interview_scheduling.jsp").forward(request, response);
     }
 
@@ -69,7 +86,30 @@ public class InterviewSchedulingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String candidateID = request.getParameter("candidateID");
+//        String candidateName = request.getParameter("candidateName");
+        String startDate_raw = request.getParameter("startDate");
+        String sessionStartTime_raw = request.getParameter("sessionStartTime");
+        String location = request.getParameter("location");
+        Date startDate;
+        Time sessionStartTime;
+        try {
+            startDate = Date.valueOf(startDate_raw);
+            sessionStartTime = Time.valueOf(sessionStartTime_raw + ":00");
+            InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
+            InterviewScheduling interviewScheduling = new InterviewScheduling(candidateID,
+                    startDate, sessionStartTime, location);
+            UserDao newUserDao = new UserDao();
+            if (newUserDao.checkUserName(candidateID) != null){
+                interviewSchedulingDao.insert(interviewScheduling);
+                response.sendRedirect("interviewScheduling");
+            }else{
+                request.setAttribute("msg", "Student ID does not exist");
+                request.getRequestDispatcher("interview_scheduling.jsp").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        }
     }
 
     /**

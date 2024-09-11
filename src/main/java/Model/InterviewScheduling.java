@@ -5,55 +5,50 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
  * @author PC
  */
 public class InterviewScheduling {
-    private int ID;
-    private String CandidateName;
-    private Date InternViewDateTime;
+    private String CandidateID;
+    private Date startDate;
+    private Time sessionStartTime;
     private String Location;
 
     public InterviewScheduling() {
     }
 
-    public InterviewScheduling(String CandidateName, Date InternViewDateTime, String Location) {
-        this.CandidateName = CandidateName;
-        this.InternViewDateTime = InternViewDateTime;
+    public InterviewScheduling(String CandidateID, Date startDate, Time sessionStartTime, String Location) {
+        this.CandidateID = CandidateID;
+        this.startDate = startDate;
+        this.sessionStartTime = sessionStartTime;
         this.Location = Location;
     }
 
-    public InterviewScheduling(int ID, String CandidateName, Date InternViewDateTime, String Location) {
-        this.ID = ID;
-        this.CandidateName = CandidateName;
-        this.InternViewDateTime = InternViewDateTime;
-        this.Location = Location;
+    public String getCandidateID() {
+        return CandidateID;
     }
 
-    public int getID() {
-        return ID;
+    public void setCandidateID(String CandidateID) {
+        this.CandidateID = CandidateID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public String getCandidateName() {
-        return CandidateName;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public void setCandidateName(String CandidateName) {
-        this.CandidateName = CandidateName;
+    public Time getSessionStartTime() {
+        return sessionStartTime;
     }
 
-    public Date getInternViewDateTime() {
-        return InternViewDateTime;
-    }
-
-    public void setInternViewDateTime(Date InternViewDateTime) {
-        this.InternViewDateTime = InternViewDateTime;
+    public void setSessionStartTime(Time sessionStartTime) {
+        this.sessionStartTime = sessionStartTime;
     }
 
     public String getLocation() {
@@ -63,6 +58,7 @@ public class InterviewScheduling {
     public void setLocation(String Location) {
         this.Location = Location;
     }
+
     
     
 }

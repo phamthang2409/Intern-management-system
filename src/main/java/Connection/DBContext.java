@@ -4,8 +4,6 @@
  */
 package Connection;
 
-import DAO.RecruitmentCampaignDao;
-import Model.RecruitmentCampaign;
 import java.sql.*;
 
 
