@@ -28,21 +28,6 @@ header h1 {
     font-size: 24px;
 }
 
-#logoutButton {
-    background-color: #ff5722; /* Orange color for logout button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-#logoutButton:hover {
-    background-color: #e64a19; /* Darker orange on hover */
-}
 /* Navigation menu styles */
 nav ul {
     list-style-type: none;

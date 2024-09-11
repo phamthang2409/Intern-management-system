@@ -18,8 +18,9 @@
             <h1>Lên Lịch Phỏng vấn</h1>
             <%@include file="menu_staff.jsp"%>
         </header>
-        
+
         <main>
+
             <form id="interviewForm">
                 <h2>Lên Lịch Phỏng Vấn</h2>
                 <label for="candidateName">Tên Thực tập sinh:</label>

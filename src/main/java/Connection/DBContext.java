@@ -21,7 +21,7 @@ public class DBContext {
         }
         try {
 //            String url = "jdbc:sqlite:intern.sqlite";
-            String url = "jdbc:sqlite:D:\\New folder\\Intern-management-system\\intern_management.db3";
+            String url = "jdbc:sqlite:D:\\Intern-management-system\\intern_management.db3";
             conn = DriverManager.getConnection(url);
             if (conn != null){
                 System.out.println("Conntection SQLITE Success");

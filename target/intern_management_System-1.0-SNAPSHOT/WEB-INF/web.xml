@@ -4,6 +4,18 @@
         <servlet-name>ResetSessionServlet</servlet-name>
         <servlet-class>controller.ResetSessionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MentorDashBoardServlet</servlet-name>
+        <servlet-class>controller.MentorDashBoardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SkillAssessmentServlet</servlet-name>
+        <servlet-class>controller.SkillAssessmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommunicationToolsServlet</servlet-name>
+        <servlet-class>controller.CommunicationToolsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HandleDeleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -12,12 +24,24 @@
         <servlet-name>ResetSessionServlet</servlet-name>
         <url-pattern>/resetSession</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MentorDashBoardServlet</servlet-name>
+        <url-pattern>/mentorDashBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SkillAssessmentServlet</servlet-name>
+        <url-pattern>/skillAssessment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommunicationToolsServlet</servlet-name>
+        <url-pattern>/communicationTool</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-<!--    <filter>
+    <!--    <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>FIlter.LoginFilter</filter-class>
     </filter>

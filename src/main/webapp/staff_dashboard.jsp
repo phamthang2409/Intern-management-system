@@ -19,10 +19,10 @@
             <h1>Bảng điều khiển Nhân viên phụ trách</h1>
             <%@include file="menu_staff.jsp"%>
         </header>
-        
+
         <main>
             <h2>Thông tin Chương trình Đào tạo</h2>
-            <table id="trainingTableDisplay" border="1" cellspacing="0" cellpadding="5">
+            <table id="trainingTableDisplay" border="1px" cellspacing="0" cellpadding="5">
                 <thead>
                     <tr>
                         <th>Tên Thực tập sinh</th>

@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang Chủ Quản trị viên</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/admin_dashboard.css">
         <script src="js/script.js"></script>
     </head>
     <body>
