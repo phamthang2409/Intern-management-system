@@ -59,6 +59,8 @@ CREATE TABLE InternViewForm (
 	location NVARCHAR(255) NOT NULL
 );
 
+drop table TrainingForm;
+
 -- staff chương trình đào tạo
 CREATE TABLE TrainingForm (
 	ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
@@ -67,5 +69,7 @@ CREATE TABLE TrainingForm (
 	endDate DATE NOT NULL,
 	sessionStartTime TIME NOT NULL,
 	sessionEndTime TIME NOT NULL,
-	trainerName NVARCHAR(255) NOT NULL
+	trainerName NVARCHAR(255) NOT NULL,
+         trainerID INTEGER NOT NULL,
+         foreign key (trainerID) references Profile(ID)
 );

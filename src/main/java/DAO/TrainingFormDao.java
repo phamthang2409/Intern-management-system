@@ -6,6 +6,7 @@ package DAO;
 
 import Connection.DBContext;
 import Model.TrainingForm;
+import Model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class TrainingFormDao extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
-                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"));
+                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"), rs.getInt("trainerID"));
                 list.add(trainingForm);
             }
             return list;
@@ -77,7 +78,7 @@ public class TrainingFormDao extends DBContext {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
-                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"));
+                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"), rs.getInt("trainerID"));
                 return trainingForm;
             }
         } catch (SQLException e) {
@@ -95,7 +96,7 @@ public class TrainingFormDao extends DBContext {
     public void insert(TrainingForm trainingForm) {
         Connection conn = DBContext();
         String sql = "Insert into TrainingForm (programName, startDate, endDate, sessionStartTime, sessionEndTime, "
-                + "trainerName) values(?, ?, ?, ?, ?, ?)";
+                + "trainerName, trainerID) values(?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, trainingForm.getProgramName());
@@ -104,6 +105,7 @@ public class TrainingFormDao extends DBContext {
             st.setTime(4, trainingForm.getSessionStartTime());
             st.setTime(5, trainingForm.getSessionEndTime());
             st.setString(6, trainingForm.getTrainerName());
+            st.setInt(7, trainingForm.getTrainerID());
             st.executeUpdate();
             System.err.println("add thành công");
         } catch (SQLException e) {
@@ -136,6 +138,30 @@ public class TrainingFormDao extends DBContext {
                 System.out.println(e);
             }
         }
+    }
+    
+    public TrainingForm findbyID(int id)  {
+        Connection conn = DBContext();
+        String sql = "Select * from TrainingForm where ID = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
+                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"), rs.getInt("trainerID"));
+                return trainingForm;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
     }
 
     public void reset() {

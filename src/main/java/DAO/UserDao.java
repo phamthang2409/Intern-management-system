@@ -92,6 +92,33 @@ public class UserDao extends DBContext{
         return null;
     }
 
+    public List<User> getAllStaff()  {
+        Connection conn = DBContext();
+        List<User> list = new ArrayList<>();
+        String sql = "Select * from User where role = 'staff'";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getInt("ID"),
+                        rs.getString("username"),
+                        rs.getNString("passWord"),
+                        rs.getString("role"),
+                            rs.getInt("profileID"));
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return list;
+    }
+    
     //Doc tat ca ban ghi tu table UserDao
     public List<User> getAll()  {
         Connection conn = DBContext();

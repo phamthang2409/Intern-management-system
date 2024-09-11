@@ -42,7 +42,13 @@
                 <input type="time" id="sessionEndTime" name="sessionEndTime" pattern="[0-9]{2}:[0-9]{2}" required><br><br>
 
                 <label for="trainerName">Tên Người Phụ trách:</label>
-                <input type="text" id="trainerName" name="trainerName" required><br><br>
+                <select type="text" id="trainerName" name="trainerName" required>
+                    <c:forEach items="${requestScope.listProfileStaff}" var="i">
+                        <option value="${i.getTrainerName()}">${i.getTrainerName()}</option>
+                    </c:forEach>
+                    
+                </select>
+                <br><br>
 
                 <button type="submit">Thêm Chương trình Đào tạo</button>
             </form>

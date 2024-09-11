@@ -70,6 +70,20 @@ main {
     max-width: 500px;
 }
 
+#logoutButton {
+    background-color: #e85140;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logoutButton:hover {
+    background-color: #ff6550;
+}
+
 form {
     background-color: #ffffff;
     padding: 20px;
