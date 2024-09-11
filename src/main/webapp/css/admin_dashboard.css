@@ -50,6 +50,9 @@ nav ul li a button:hover {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    
+    
+    
 }
 
 #logoutButton:hover {

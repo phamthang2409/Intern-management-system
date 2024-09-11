@@ -21,13 +21,12 @@
                 <ul>
                     <ul>
                         <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
-                        <li><a href="recruitment"><button>Quản lý Tuyển dụng</button></a></li>
                         <li><a href="internProfileRegister"><button>Thêm thực tập sinh </button></a></li>
-                        <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
+                        <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                     </ul>
             </nav>
-            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
-        </header>
+            
+        </header>s
         <main>
             <c:if test="${requestScope.msg != null}">
                 <h3 style="color: red">${requestScope.msg}</h3>

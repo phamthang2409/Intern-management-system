@@ -22,11 +22,13 @@
                     <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
                     <li><a href="recruitment"><button>Quản lý Tuyển dụng</button></a></li>
                     <li><a href="internProfiles"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
+                    <li><a href="staffProfile"><button>Quản lý Hồ sơ Nhân viên</button></a></li>
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
+                    <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                 </ul>
             </nav>
             <!--            <a href="login"></a>-->
-            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+    
         </header>
 
         <main>
@@ -66,7 +68,7 @@
             </section>
 
             <section class="info-box">
-                <h2>Danh sách Tuyển Dụng</h2>
+                <h2>Danh sách người phụ trách</h2>
                 <table id="internsTable" class="table-row" border = "1px">
                     <thead>
                         <tr>

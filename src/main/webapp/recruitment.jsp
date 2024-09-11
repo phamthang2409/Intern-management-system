@@ -19,12 +19,11 @@
             <h1>Quản lý Tuyển dụng</h1>
             <nav>
                 <ul>
-                    <li><a href="adminDashBoard"><button>Quay lại Bảng điều khiển</button></a></li>
-                    <li><a href="internProfiles"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
-                    <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
+                    <li><a href="adminDashBoard"><button>Trang chủ</button></a></li>
+                     <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                 </ul>
             </nav>
-            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+           
         </header>
 
 

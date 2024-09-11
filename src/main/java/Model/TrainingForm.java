@@ -19,20 +19,12 @@ public class TrainingForm {
     private Time sessionStartTime;
     private Time sessionEndTime;
     private String trainerName;
+    private int trainerID;
 
     public TrainingForm() {
     }
 
-    public TrainingForm(String programName, Date startDate, Date endDate, Time sessionStartTime, Time sessionEndTime, String trainerName) {
-        this.programName = programName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.sessionStartTime = sessionStartTime;
-        this.sessionEndTime = sessionEndTime;
-        this.trainerName = trainerName;
-    }
-
-    public TrainingForm(int ID, String programName, Date startDate, Date endDate, Time sessionStartTime, Time sessionEndTime, String trainerName) {
+    public TrainingForm(int ID, String programName, Date startDate, Date endDate, Time sessionStartTime, Time sessionEndTime, String trainerName, int trainerID) {
         this.ID = ID;
         this.programName = programName;
         this.startDate = startDate;
@@ -40,6 +32,17 @@ public class TrainingForm {
         this.sessionStartTime = sessionStartTime;
         this.sessionEndTime = sessionEndTime;
         this.trainerName = trainerName;
+        this.trainerID = trainerID;
+    }
+
+    public TrainingForm(String programName, Date startDate, Date endDate, Time sessionStartTime, Time sessionEndTime, String trainerName, int trainerID) {
+        this.programName = programName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.sessionStartTime = sessionStartTime;
+        this.sessionEndTime = sessionEndTime;
+        this.trainerName = trainerName;
+        this.trainerID = trainerID;
     }
 
     public int getID() {
@@ -97,6 +100,16 @@ public class TrainingForm {
     public void setTrainerName(String trainerName) {
         this.trainerName = trainerName;
     }
+
+    public int getTrainerID() {
+        return trainerID;
+    }
+
+    public void setTrainerID(int trainerID) {
+        this.trainerID = trainerID;
+    }
+
+    
     
     
     

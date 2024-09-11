@@ -16,6 +16,10 @@
         <servlet-name>CommunicationToolsServlet</servlet-name>
         <servlet-class>controller.CommunicationToolsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffProfileServlet</servlet-name>
+        <servlet-class>controller.StaffProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HandleDeleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>CommunicationToolsServlet</servlet-name>
         <url-pattern>/communicationTool</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffProfileServlet</servlet-name>
+        <url-pattern>/staffProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

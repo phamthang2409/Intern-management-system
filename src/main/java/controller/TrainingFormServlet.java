@@ -4,8 +4,12 @@
  */
 package controller;
 
+import DAO.ProfileDao;
 import DAO.TrainingFormDao;
+import DAO.UserDao;
+import Model.Profile;
 import Model.TrainingForm;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,11 +66,20 @@ public class TrainingFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TrainingFormDao trainingFormDao = new TrainingFormDao();
-        List<TrainingForm> list = trainingFormDao.getAll();
+        ProfileDao profileDao = new ProfileDao();
+        UserDao userDao = new UserDao();
+        List<TrainingForm> list = trainingFormDao.getAll();List<User> listUserStaff = userDao.getAllStaff();
+        List<Profile> listProfileStaff = new ArrayList<>();
+        
+        for (User i : listUserStaff){
+            Profile profileStaff = profileDao.findByID(i.getID());
+            listProfileStaff.add(profileStaff);
+        }
         int cnt = trainingFormDao.getCountTrainingForms();
         if (cnt == 0) {
             trainingFormDao.reset();
         }
+        request.setAttribute("listProfileStaff", listProfileStaff);
         request.setAttribute("listTraining", list);
         request.getRequestDispatcher("training_program.jsp").forward(request, response);
     }
@@ -95,7 +109,7 @@ public class TrainingFormServlet extends HttpServlet {
             endDate = Date.valueOf(endDate_raw);
             sessionStartTime = Time.valueOf(sessionStartTime_raw + ":00");
             sessionEndTime = Time.valueOf(sessionEndTime_raw + ":00");
-            TrainingForm trainingForm = new TrainingForm(programName, startDate, endDate, sessionStartTime, sessionEndTime, trainerName);
+            TrainingForm trainingForm = new TrainingForm(programName, startDate, endDate, sessionStartTime, sessionEndTime, trainerName, 1);
             if (trainingFormDao.check(programName, trainerName) == null) {
                 trainingFormDao.insert(trainingForm);
                 response.sendRedirect("trainingForm");

@@ -1,0 +1,133 @@
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f3f8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #073b5a;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a button {
+    background-color: #d96634;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+nav ul li a button:hover {
+    background-color: #e68850;
+}
+
+#logoutButton {
+    background-color: #e85140;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logoutButton:hover {
+    background-color: #ff6550;
+}
+
+/* Main section styles */
+main {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+section.info-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+section.info-box h2 {
+    color: #0b64a0;
+    margin-bottom: 15px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #a6d9e7;
+    color: #073b5a;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+table tbody tr:hover {
+    background-color: #e0f3fa;
+}
+/* Approve button style (Duyệt) */
+button.approve-btn {
+    background-color: #28a745; /* Green for approve */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px; /* Adds space between the two buttons */
+}
+
+button.approve-btn:hover {
+    background-color: #218838;
+}
+
+/* Reject button style (Từ chối) */
+button.reject-btn {
+    background-color: #dc3545; /* Red for reject */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button.reject-btn:hover {
+    background-color: #c82333;
+}
+

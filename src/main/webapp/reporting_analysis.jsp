@@ -19,13 +19,11 @@ Author     : PC
             <nav>
                 <ul>
                     <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
-                    <li><a href="recruitment"><button>Quản lý Tuyển dụng</button></a></li>
-                    <li><a href="internProfiles"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
-                    <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
+                    <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                 </ul>
                 
             </nav>
-            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+            
         </header>
             <main>
                 <h2>Báo cáo Hiệu suất Thực tập sinh</h2>
