@@ -75,6 +75,8 @@ public class TrainingFormServlet extends HttpServlet {
             Profile profileStaff = profileDao.findByID(i.getID());
             listProfileStaff.add(profileStaff);
         }
+        
+        
         int cnt = trainingFormDao.getCountTrainingForms();
         if (cnt == 0) {
             trainingFormDao.reset();
