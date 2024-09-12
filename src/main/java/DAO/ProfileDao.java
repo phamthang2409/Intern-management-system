@@ -95,6 +95,34 @@ public class ProfileDao extends DBContext{
         return null;
     }
     
+    public Profile findInternProgram(String profilePosition) {
+        Connection conn = DBContext();
+        String sql = "Select * from Profile where profilePosition = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, profilePosition);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                Profile internProfile = new Profile(rs.getString("profileFirstName"), 
+                        rs.getString("profileLastName"), 
+                        rs.getDate("profileDOB"), 
+                        rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 
+                        rs.getString("profileEducation"), 
+                        rs.getString("profilePosition"), rs.getString("profileSalary"), rs.getInt("status"));
+                return internProfile;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
     public void insert(Profile internProfile)  {
         Connection conn = DBContext();
         String sql = "Insert into Profile (profileFirstName, profileLastName, profileDOB, profileEmail, trainingProgram, profilePhone, "

@@ -4,6 +4,12 @@
     Author     : PC
 --%>
 
+<%@page import="java.sql.Time"%>
+<%@page import="java.sql.Date"%>
+<%@page import="DAO.TrainingFormDao"%>
+<%@page import="Model.TrainingForm"%>
+<%@page import="Model.Profile"%>
+<%@page import="DAO.ProfileDao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,9 +33,9 @@
             </nav>
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
-        
+
         <style>
-           button#callButton{
+            button#callButton{
                 background-color: red; /* Màu nền */
                 color: white; /* Màu chữ */
                 border: none; /* Bỏ viền */
@@ -39,7 +45,7 @@
                 display: inline-block;
                 font-size: 16px; /* Kích thước chữ */
                 cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
-                border-radius: 5px; /* Bo góc nút */  
+                border-radius: 5px; /* Bo góc nút */
             }
         </style>
 
@@ -58,7 +64,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Thông tin Chương trình Đào tạo sẽ được hiển thị tại đây -->
+                    <c:if test="${requestScope.listProfileIntern != null}">
+                        <%!
+                            TrainingFormDao trainingFormDao = new TrainingFormDao();
+                            TrainingForm trainingForm = new TrainingForm();
+                            String nameTrainer;
+                            Date startDate, endDate;
+                            Time startTime, endTime;
+                        %>
+
+                        <c:forEach items="${requestScope.listProfileIntern}" var="i">
+                            <tr>
+                                <%
+                                    Profile profile = (Profile) pageContext.getAttribute("i");
+                                    trainingForm = trainingFormDao.findbyProgramTraining(profile.getTrainingProgram());
+                                    nameTrainer = trainingForm.getTrainerName();
+                                    startDate = trainingForm.getStartDate();
+                                    endDate = trainingForm.getEndDate();
+                                    startTime = trainingForm.getSessionStartTime();
+                                    endTime = trainingForm.getSessionEndTime();
+                                %>
+                                <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                <td>${i.getTrainingProgram()}</td>
+                                <td><%= startDate%></td>
+                                <td><%= endDate%></td>
+                                <td><%= startTime%></td>
+                                <td><%= endTime%></td>
+                                <td><%= nameTrainer%></td>
+                            </tr>
+                        </c:forEach>
+
+                    </c:if>
                 </tbody>
             </table>
 

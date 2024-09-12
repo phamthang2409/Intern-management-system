@@ -5,8 +5,10 @@
 package controller;
 
 import DAO.InterviewSchedulingDao;
+import DAO.ProfileDao;
 import DAO.TrainingFormDao;
 import Model.InterviewScheduling;
+import Model.Profile;
 import Model.TrainingForm;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,12 +64,20 @@ public class StaffDashBoardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TrainingFormDao trainingFormDao = new TrainingFormDao();
+        ProfileDao profileDao = new ProfileDao();
         InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
-        
+        List<Profile> listProfileIntern = new ArrayList<>();
         List<TrainingForm> list = trainingFormDao.getAll();
-        
+        List<Profile> listAllProfiles = profileDao.getAll();
+        for (int i = 0; i < listAllProfiles.size(); i++) {
+            if ("Intern".equals(listAllProfiles.get(i).getProfilePosition())) {
+                Profile profileIntern = profileDao.findInternProgram("Intern");
+                listProfileIntern.add(profileIntern);
+            }
+        }
+        request.setAttribute("listProfileIntern", listProfileIntern);
         request.setAttribute("listTraining", list);
-        
+
         List<InterviewScheduling> listInterview = interviewSchedulingDao.getAll();
         request.setAttribute("listInterviewScheduling", listInterview);
         request.getRequestDispatcher("staff_dashboard.jsp").forward(request, response);

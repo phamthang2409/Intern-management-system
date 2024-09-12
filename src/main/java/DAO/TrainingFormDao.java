@@ -164,6 +164,30 @@ public class TrainingFormDao extends DBContext {
         return null;
     }
 
+    public TrainingForm findbyProgramTraining(String programName)  {
+        Connection conn = DBContext();
+        String sql = "Select * from TrainingForm where programName = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, programName);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                TrainingForm trainingForm = new TrainingForm(rs.getInt("ID"), rs.getString("programName"), rs.getDate("startDate"), rs.getDate("endDate"),
+                        rs.getTime("sessionStartTime"), rs.getTime("sessionEndTime"), rs.getString("trainerName"), rs.getInt("trainerID"));
+                return trainingForm;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
     public void reset() {
         Connection conn = DBContext();
         String sql = "DELETE FROM sqlite_sequence WHERE name ='TrainingForm'";
