@@ -63,7 +63,18 @@ nav ul li a button:hover {
 #logoutButton:hover {
     background-color: darkred; /* Màu khi hover chuột */
 }
-
+/*#callButton{
+    background-color: red;  Màu nền 
+    color: white;  Màu chữ 
+    border: none;  Bỏ viền 
+    padding: 10px 20px;  Khoảng cách bên trong nút 
+    text-align: center;  Canh giữa chữ 
+    text-decoration: none;  Bỏ gạch chân 
+    display: inline-block;
+    font-size: 16px;  Kích thước chữ 
+    cursor: pointer;  Thay đổi con trỏ khi di chuột vào nút 
+    border-radius: 5px;  Bo góc nút   
+}*/
 header {
     position: relative; /* Đặt header ở vị trí tương đối để chứa nút */
     height: 60px; /* Chiều cao của header (tuỳ chỉnh nếu cần) */

@@ -46,8 +46,25 @@
                 <h2>THÔNG BÁO</h2>
                 <div class="announcement">
                     <div class="date">Tháng 09</div>
-                    <div class="title">NGỌC PHƯỚC THOÁT Ế VỚI NHƯ NHƯ TRONG MỘT NGÀY MƯA<span class="new">new</span></div>
-                    <a href="#" class="detail">Xem chi tiết</a>
+                    <div class="title">Về việc đăng ký đồng phục đối với sinh viên khóa 2024
+                    Thông báo đến sinh viên chương trình tiên tiến, chuẩn và hoàn toàn tiếng Anh khóa 2024 về việc đăng ký đồng phục trực tiếp tại Trường<span class="new">new</span></div>
+                    <a href="https://sv.ut.edu.vn/sinh-vien/tin-tuc/ve-viec-dang-ky-dong-phuc-doi-voi-sinh-vien-khoa-2024.html?pIDDanhMuc=368" class="detail">Xem chi tiết</a>
+                </div>
+                  <div class="announcement">
+                    <div class="date">Tháng 10</div>
+                    <div class="title">THÔNG BÁO VỀ VIỆC ĐĂNG KÝ HỌC PHẦN HỌC KỲ 1 NĂM HỌC 2024-2025<span class="new">new</span></div>
+                    <a href="https://sv.ut.edu.vn/sinh-vien/tin-tuc/thong-bao-ve-viec-dang-ky-hoc-phan-hoc-ky-1-nam-hoc-2024-2025.html?pIDDanhMuc=368" class="detail">Xem chi tiết</a>
+                </div>
+                  <div class="announcement">
+                    <div class="date">Tháng 07</div>
+                    <div class="title">Thông báo về việc Khảo sát ý kiến bạn đọc năm học 2023-2024
+Nhằm tiếp thu ý kiến, đống góp, phản hồi của người sử dụng trong việc đáp ứng nhu cầu về nguồn lực thông tin trong hoạt động học tập, nghiên cứu và giảng dạy của Người học, GV, CB-CNV, NLĐ tại Trường Đại học Giao thông vận tải TP.Hồ Chí Minh, từ đó giúp Trung tâm Thông tin - Thư viện đưa ra những<span class="new">new</span></div>
+                    <a href="https://sv.ut.edu.vn/sinh-vien/tin-tuc/ve-viec-dang-ky-dong-phuc-doi-voi-sinh-vien-khoa-2024.html?pIDDanhMuc=368" class="detail">Xem chi tiết</a>
+                </div>
+                  <div class="announcement">
+                    <div class="date">Tháng 04</div>
+                    <div class="title">Đăng ký bổ sung học phần giáo dục thể chất học kỳ 2 năm học 2023-2024 đối với sinh viên chính quy chương trình chuẩn (đại trà)<span class="new">new</span></div>
+                    <a href="https://sv.ut.edu.vn/sinh-vien/tin-tuc/dang-ky-bo-sung-hoc-phan-giao-duc-the-chat-hoc-ky-2-nam-hoc-2023-2024-doi-voi-sinh-vien-chinh-quy-chuong-trinh-chuan-dai-tra.html?pIDDanhMuc=368" class="detail">Xem chi tiết</a>
                 </div>
                 <!-- Add more announcements as needed -->
             </div>
@@ -60,18 +77,10 @@
                 <form action="login" method="post">
                     <input type="text" name="userName" placeholder="Nhập mã sinh viên" required>
                     <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
-                    <div class="login-role">
-                        <label for="role">Quyền đăng nhập:</label>
-                        <select name="role" id="role">
-                            <option value="admin">Quản trị viên</option>
-                            <option value="staff">Người hướng dẫn</option>
-                            <option value="intern">Thực tập sinh</option>
-                        </select>
-                    </div>
-
                     <button type="submit">Đăng Nhập</button>
                 </form>
             </div>
         </div>
     </body>
 </html>
+    

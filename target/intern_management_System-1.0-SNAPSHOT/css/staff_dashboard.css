@@ -42,7 +42,6 @@ table th {
 table td {
     border-bottom: 1px solid #ddd;
 }
-
 table tr:nth-child(even) {
     background-color: #e0f7fa;
 }

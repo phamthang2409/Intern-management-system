@@ -27,6 +27,21 @@
             </nav>
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
+        
+        <style>
+           button#callButton{
+                background-color: red; /* Màu nền */
+                color: white; /* Màu chữ */
+                border: none; /* Bỏ viền */
+                padding: 10px 20px; /* Khoảng cách bên trong nút */
+                text-align: center; /* Canh giữa chữ */
+                text-decoration: none; /* Bỏ gạch chân */
+                display: inline-block;
+                font-size: 16px; /* Kích thước chữ */
+                cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+                border-radius: 5px; /* Bo góc nút */  
+            }
+        </style>
 
         <main>
             <h2>Thông tin Chương trình Đào tạo</h2>
@@ -65,7 +80,7 @@
                             <td>${i.getStartDate()}</td>
                             <td>${i.getSessionStartTime()}</td>
                             <td>${i.getLocation()}</td>
-                            <td><a href="video-call-demo//user2.html"><button id="logoutButton"> Gọi</button></a></td>
+                            <td><a href="video-call-demo//user2.html"><button id="callButton"> Gọi</button></a></td>
                         </tr>
 
                     </c:forEach>
