@@ -6,37 +6,124 @@
     <title>User 2</title>
 
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <style>
+<style>
+        body {
+            background-color: #adcff2;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
         #video-container {
             position: relative;
-            margin: auto;
-            width: 640px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: #333;
         }
 
         video {
-            background: #dee;
+            background: #444;
+            border-radius: 8px;
         }
 
         #localVideo {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 120px;
+            top: 10px;
+            right: 10px;
+            width: 150px;
+            border-radius: 8px;
+            border: 2px solid #fff;
             z-index: 10;
-            background: #333;
         }
 
         #remoteVideo {
             width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
 
         #action-buttons {
-            margin: auto;
             text-align: center;
+            margin: 20px 0;
+        }
+
+        #action-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #callButton {
+            background-color: #28a745;
+            border: none;
+            color: white;
+        }
+
+        #callButton:hover {
+            background-color: #218838;
+        }
+
+        #answerCallButton {
+            background-color: #17a2b8;
+            border: none;
+            color: white;
+        }
+
+        #answerCallButton:hover {
+            background-color: #138496;
+        }
+
+        #rejectCallButton {
+            background-color: #ffc107;
+            border: none;
+            color: black;
+        }
+
+        #rejectCallButton:hover {
+            background-color: #e0a800;
+        }
+
+        #endCallButton {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+        }
+
+        #endCallButton:hover {
+            background-color: #c82333;
         }
 
         .hidden-first {
             display: none;
+        }
+
+        .jumbotron {
+            background-color: #518bea;
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .spinner-grow {
+            margin-right: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            #localVideo {
+                width: 100px;
+                top: 5px;
+                right: 5px;
+            }
         }
     </style>
 </head>
