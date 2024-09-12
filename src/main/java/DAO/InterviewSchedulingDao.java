@@ -18,8 +18,30 @@ import java.util.List;
  * @author PC
  */
 public class InterviewSchedulingDao extends DBContext{
-    Connection conn = DBContext();
+    public int countAllInterview() {
+        Connection conn = DBContext();
+        int cnt = 0;
+        String sql = "Select * from InterviewForm";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                cnt++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return cnt;
+    }
+    
     public List<InterviewScheduling> getAll(){
+        Connection conn = DBContext();
         List<InterviewScheduling> list = new ArrayList<>();
         String sql = "Select * from InterviewForm";
         try {
@@ -44,6 +66,7 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public void insert(InterviewScheduling interviewScheduling) {
+        Connection conn = DBContext();
         String sql = "Insert into InterviewForm (candidateID, candidateName, startDate, sessionStartTime, location) values(?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
@@ -67,6 +90,7 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public InterviewScheduling check(String userName) {
+        
         Connection conn = DBContext();
         String sql = "Select * from User where userName = ?";
         try {
@@ -92,6 +116,7 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public void delete(String id){
+        Connection conn = DBContext();
         String sql = "DELETE from InterviewForm where candidateID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
@@ -111,6 +136,7 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public void reset(){
+        Connection conn = DBContext();
         String sql = "DELETE FROM sqlite_sequence WHERE name ='InterviewForm'";
         try {
             PreparedStatement st = conn.prepareStatement(sql);

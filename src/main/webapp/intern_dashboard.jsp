@@ -44,7 +44,7 @@
             <section class="notifications">
                 <div class="reminders">
                     <h3>Nhắc nhở mới, chưa xem</h3>
-                    <p>0</p>
+                    <p>${requestScope.cntInterview}</p>
                     <a href="video-call-demo/user1.html">Xem chi tiết</a>
                 </div>
                 <div class="schedule">

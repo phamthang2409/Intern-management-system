@@ -4,7 +4,9 @@
  */
 package controller;
 
+import DAO.InterviewSchedulingDao;
 import DAO.ProfileDao;
+import Model.InterviewScheduling;
 import Model.Profile;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,9 +63,14 @@ public class InternDashBoardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProfileDao internProfileDao = new ProfileDao();
+        InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
         List<Profile> list = internProfileDao.getAll();
+         
         int cnt = 0;
+        int cntInterview = 0;
+        cntInterview = interviewSchedulingDao.countAllInterview();
         request.setAttribute("cnt", cnt);
+        request.setAttribute("cntInterview", cntInterview);
         request.setAttribute("listIntern", list);
         request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
     }
