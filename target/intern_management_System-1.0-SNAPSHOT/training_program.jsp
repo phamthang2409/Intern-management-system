@@ -46,7 +46,7 @@
                 <select type="text" id="trainerName" name="trainerName" required>
                     <c:forEach items="${requestScope.listProfileStaff}" var="i">
                         <option value="${i.getProfileFirstName()}+${i.getProfileLastName()}">${i.getProfileFirstName()} ${i.getProfileLastName()}</option>
-                        <input type="hidden" name="profileID" value="${i.getProfileID()}"/>
+                        <input type="hidden" name="profileID" value="${i.getID()}"/>
                     </c:forEach>
                     
                 </select>

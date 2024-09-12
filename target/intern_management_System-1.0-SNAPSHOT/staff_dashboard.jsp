@@ -66,18 +66,16 @@
                 <tbody>
                     <c:if test="${requestScope.listProfileIntern != null}">
                         <%!
-                            TrainingFormDao trainingFormDao = new TrainingFormDao();
-                            TrainingForm trainingForm = new TrainingForm();
                             String nameTrainer;
                             Date startDate, endDate;
                             Time startTime, endTime;
                         %>
-
                         <c:forEach items="${requestScope.listProfileIntern}" var="i">
                             <tr>
                                 <%
+                                    TrainingFormDao trainingFormDao = new TrainingFormDao();
                                     Profile profile = (Profile) pageContext.getAttribute("i");
-                                    trainingForm = trainingFormDao.findbyProgramTraining(profile.getTrainingProgram());
+                                    TrainingForm trainingForm = trainingFormDao.findbyProgramTraining(profile.getTrainingProgram());
                                     nameTrainer = trainingForm.getTrainerName();
                                     startDate = trainingForm.getStartDate();
                                     endDate = trainingForm.getEndDate();
@@ -86,14 +84,13 @@
                                 %>
                                 <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
                                 <td>${i.getTrainingProgram()}</td>
-                                <td><%= startDate%></td>
-                                <td><%= endDate%></td>
-                                <td><%= startTime%></td>
-                                <td><%= endTime%></td>
-                                <td><%= nameTrainer%></td>
+                                <td><%= startDate %></td>
+                                <td><%= endDate %></td>
+                                <td><%= startTime %></td>
+                                <td><%= endTime %></td>
+                                <td><%= nameTrainer %></td>
                             </tr>
                         </c:forEach>
-
                     </c:if>
                 </tbody>
             </table>

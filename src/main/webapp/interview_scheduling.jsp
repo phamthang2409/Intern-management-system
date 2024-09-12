@@ -67,12 +67,14 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${requestScope.listInterviewScheduling}" var="i">
-                    <td>${i.getCandidateName()}</td>
-                    <td>${i.getStartDate()}</td>
-                    <td>${i.getSessionStartTime()}</td>
-                    <td>${i.getLocation()}</td>
-                    <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
-                </c:forEach>
+                        <tr>
+                            <td>${i.getCandidateName()}</td>
+                            <td>${i.getStartDate()}</td>
+                            <td>${i.getSessionStartTime()}</td>
+                            <td>${i.getLocation()}</td>
+                            <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </main>

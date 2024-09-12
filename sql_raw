@@ -1,5 +1,5 @@
 --User
-insert into User(userName, passWord, role, profileID) values("ngocphuoc", "123", "intern", 1);
+insert into User(userName, passWord, role, profileID) values("admin", "admin", "Admin", 1);
 CREATE TABLE User (
     ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
     userName NVARCHAR (100) NOT NULL,
