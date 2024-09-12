@@ -52,13 +52,20 @@
                 <thead>
                     <tr>
                         <th>Tên Thực tập sinh</th>
-                        <th>Ngày và Giờ</th>
+                        <th>Ngày phỏng vấn</th>
+                        <th>Giờ bắt đầu</th>
                         <th>Địa điểm</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-<!--                     <a href="video-call-demo//user2.html"><button id="logoutButton"> Gọi</button></a>-->
-                    <!-- Lịch Phỏng vấn sẽ được thêm tại đây -->
+                    <c:forEach items="${requestScope.listInterviewScheduling}" var="i">
+                        <td>${i.getCandidateName()}</td>
+                        <td>${i.getStartDate()}</td>
+                        <td>${i.getSessionStartTime()}</td>
+                        <td>${i.getLocation()}</td>
+                        <td><a href="video-call-demo//user2.html"><button id="logoutButton"> Gọi</button></a></td>
+                    </c:forEach>
                 </tbody>
             </table>
         </main>

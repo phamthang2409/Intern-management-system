@@ -5,8 +5,11 @@
 package controller;
 
 import DAO.InterviewSchedulingDao;
+import DAO.ProfileDao;
 import DAO.UserDao;
 import Model.InterviewScheduling;
+import Model.Profile;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,15 +18,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+
 
 /**
  *
@@ -87,7 +83,6 @@ public class InterviewSchedulingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String candidateID = request.getParameter("candidateID");
-//        String candidateName = request.getParameter("candidateName");
         String startDate_raw = request.getParameter("startDate");
         String sessionStartTime_raw = request.getParameter("sessionStartTime");
         String location = request.getParameter("location");
@@ -97,13 +92,25 @@ public class InterviewSchedulingServlet extends HttpServlet {
             startDate = Date.valueOf(startDate_raw);
             sessionStartTime = Time.valueOf(sessionStartTime_raw + ":00");
             InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
-            InterviewScheduling interviewScheduling = new InterviewScheduling(candidateID,
-                    startDate, sessionStartTime, location);
-            UserDao newUserDao = new UserDao();
-            if (newUserDao.checkUserName(candidateID) != null){
+            ProfileDao profileDao = new ProfileDao();
+            UserDao userDao = new UserDao();
+
+            //Lay user can duoc len lich phong van
+            User newUser = userDao.checkUserName(candidateID);
+            if (newUser != null) {
+                Profile profileUser = profileDao.findByID(newUser.getProfileID());
+                String candidateName = profileUser.getProfileFirstName() + " " + profileUser.getProfileLastName();
+                InterviewScheduling interviewScheduling = new InterviewScheduling(candidateID, candidateName,
+                        startDate, sessionStartTime, location);
                 interviewSchedulingDao.insert(interviewScheduling);
                 response.sendRedirect("interviewScheduling");
-            }else{
+//                if (interviewSchedulingDao.check(candidateID) == null) {
+//                    request.setAttribute("msg", "Student ID has been registered");
+//                    request.getRequestDispatcher("interview_scheduling.jsp").forward(request, response);
+//                }
+            } else {
+                List<InterviewScheduling> list = interviewSchedulingDao.getAll();
+                request.setAttribute("listInterviewScheduling", list);
                 request.setAttribute("msg", "Student ID does not exist");
                 request.getRequestDispatcher("interview_scheduling.jsp").forward(request, response);
             }

@@ -12,7 +12,8 @@ import java.sql.Time;
  * @author PC
  */
 public class InterviewScheduling {
-    private String CandidateID;
+    private String candidateID;
+    private String candidateName;
     private Date startDate;
     private Time sessionStartTime;
     private String Location;
@@ -20,19 +21,28 @@ public class InterviewScheduling {
     public InterviewScheduling() {
     }
 
-    public InterviewScheduling(String CandidateID, Date startDate, Time sessionStartTime, String Location) {
-        this.CandidateID = CandidateID;
+    public InterviewScheduling(String candidateID, String candidateName, Date startDate, Time sessionStartTime, String Location) {
+        this.candidateID = candidateID;
+        this.candidateName = candidateName;
         this.startDate = startDate;
         this.sessionStartTime = sessionStartTime;
         this.Location = Location;
     }
 
     public String getCandidateID() {
-        return CandidateID;
+        return candidateID;
     }
 
-    public void setCandidateID(String CandidateID) {
-        this.CandidateID = CandidateID;
+    public void setCandidateID(String candidateID) {
+        this.candidateID = candidateID;
+    }
+
+    public String getCandidateName() {
+        return candidateName;
+    }
+
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
     }
 
     public Date getStartDate() {
@@ -58,7 +68,6 @@ public class InterviewScheduling {
     public void setLocation(String Location) {
         this.Location = Location;
     }
-
     
     
 }

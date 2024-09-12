@@ -54,7 +54,8 @@ CREATE TABLE InternProfileApproved (
 --Lên lịch phỏng vấn
 drop table InterviewForm;
 CREATE TABLE InterviewForm (
-         candidateID  NVARCHAR(50) Primary KEY,
+         candidateID  NVARCHAR(50)  not null,
+         candidateName NVARCHAR(200) not null,
 	startDate DATE NOT NULL,
          sessionStartTime TIME NOT NULL,
 	location NVARCHAR(255) NOT NULL

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import DAO.InterviewSchedulingDao;
 import DAO.ProfileDao;
 import DAO.RecruitmentCampaignDao;
 import DAO.TrainingFormDao;
@@ -68,11 +69,13 @@ public class HandleDeleteServlet extends HttpServlet {
         
         int id;
         try{
-            id = Integer.parseInt(id_raw);
+            
             if (name.equals("recruitment")){
+                id = Integer.parseInt(id_raw);
                 recruitmentCampaignDao.delete(id);
                 response.sendRedirect("recruitment");
             }else if (name.equals("internProfiles")){
+                id = Integer.parseInt(id_raw);
                 String profilePosition = request.getParameter("profilePosition");
                 UserDao userDao = new UserDao();
                 if (userDao.checkAccountUser(id) != null){
@@ -84,11 +87,15 @@ public class HandleDeleteServlet extends HttpServlet {
                     response.sendRedirect("internProfiles");
                 }else if("Staff".equals(profilePosition)){
                     response.sendRedirect("staffProfile");
-                }              
-                
+                }
             }else if (name.equals("trainingForm")){
+                id = Integer.parseInt(id_raw);
                 trainingFormDao.delete(id);
                 response.sendRedirect("trainingForm");
+            }else if(name.equals("interviewScheduling")){
+                InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
+                interviewSchedulingDao.delete(id_raw);
+                response.sendRedirect("interviewScheduling");
             }
         }catch(NumberFormatException e){
             System.err.println(e);

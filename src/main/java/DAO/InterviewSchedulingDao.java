@@ -26,7 +26,7 @@ public class InterviewSchedulingDao extends DBContext{
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), 
+                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
                         rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"));
                 list.add(interviewScheduling);
             }
@@ -44,13 +44,14 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public void insert(InterviewScheduling interviewScheduling) {
-        String sql = "Insert into InterviewForm (candidateID, startDate, sessionStartTime, location) values(?, ?, ?, ?)";
+        String sql = "Insert into InterviewForm (candidateID, candidateName, startDate, sessionStartTime, location) values(?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, interviewScheduling.getCandidateID());
-            st.setDate(2, interviewScheduling.getStartDate());
-            st.setTime(3, interviewScheduling.getSessionStartTime());
-            st.setString(4, interviewScheduling.getLocation());
+            st.setString(2, interviewScheduling.getCandidateName());
+            st.setDate(3, interviewScheduling.getStartDate());
+            st.setTime(4, interviewScheduling.getSessionStartTime());
+            st.setString(5, interviewScheduling.getLocation());
             st.executeUpdate();
             System.err.println("add thành công");
         } catch (SQLException e) {
@@ -65,11 +66,36 @@ public class InterviewSchedulingDao extends DBContext{
         }
     }
     
-    public void delete(int id){
+    public InterviewScheduling check(String userName) {
+        Connection conn = DBContext();
+        String sql = "Select * from User where userName = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
+                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"));
+                return interviewScheduling;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
+    public void delete(String id){
         String sql = "DELETE from InterviewForm where candidateID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, id);
+            st.setString(1, id);
             st.executeUpdate();
             System.out.println("Delete Success");
         } catch (SQLException e) {

@@ -27,17 +27,17 @@
         </header>
 
         <main>
-
             <form id="interviewForm" action="interviewScheduling" method="post">
                 <h2>Lên Lịch Phỏng Vấn</h2>
                 <c:if test="${requestScope.msg != null}">
                     <h3 style="color: red">${requestScope.msg}</h3>
                 </c:if>
+
                 <label for="candidateName">Mã số thực tập sinh:</label>
                 <input type="text" id="candidateID" name="candidateID" required><br><br>
-                
-<!--                <label for="candidateName">Tên Thực tập sinh:</label>
-                <input type="text" id="candidateName" name="candidateName" required><br><br>-->
+
+                <!--                <label for="candidateName">Tên Thực tập sinh:</label>
+                                <input type="text" id="candidateName" name="candidateName" required><br><br>-->
 
                 <label for="startDate">Ngày phỏng vấn:</label>
                 <input type="date" id="startDate" name="startDate" required><br><br>
@@ -45,8 +45,12 @@
                 <label for="sessionStartTime">Thời gian bắt đầu phỏng vấn</label>
                 <input type="time" id="sessionStartTime" name="sessionStartTime" pattern="[0-9]{2}:[0-9]{2}" required><br><br>
 
-                <label for="location">Địa điểm Phỏng vấn:</label>
-                <input type="text" id="location" name="location" required><br><br>
+                <label for="location">Hình thức Phỏng vấn:</label>
+                <select type="text" id="location" name="location" required>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                <br><br>
 
                 <button type="submit">Thêm Lịch Phỏng vấn</button>
             </form>
@@ -55,16 +59,29 @@
                 <thead>
                     <tr>
                         <th>Tên Thực tập sinh</th>
-                        <th>Ngày và Giờ</th>
+                        <th>Ngày phỏng vấn</th>
+                        <th>Giờ bắt đầu</th>
                         <th>Địa điểm</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <c:forEach items="${requestScope.listInterviewScheduling}" var="i">
+                    <td>${i.getCandidateName()}</td>
+                    <td>${i.getStartDate()}</td>
+                    <td>${i.getSessionStartTime()}</td>
+                    <td>${i.getLocation()}</td>
+                    <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
+                </c:forEach>
                 </tbody>
             </table>
         </main>
-
     </body>
+    <script type="text/javascript">
+        function doDelete(id) {
+            if (confirm("Are you want to delete")) {
+                window.location = "delete?id=" + id + "&name=interviewScheduling";
+            }
+        }
+    </script>
 </html>
