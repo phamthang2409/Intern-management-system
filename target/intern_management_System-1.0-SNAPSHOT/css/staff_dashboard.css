@@ -49,7 +49,6 @@ table tr:nth-child(even) {
 .chat-bubble {
     position: fixed;
     bottom: 20px;
-    left: 20px; /* Di chuyển bong bóng chat sang trái */
     background-color: #007bff; /* Màu xanh */
     color: white;
     width: 60px;
@@ -64,6 +63,7 @@ table tr:nth-child(even) {
 
 .chat-bubble i {
     font-size: 30px; /* Điều chỉnh kích thước icon */
+    
 }
 
 /* Cửa sổ chat */
