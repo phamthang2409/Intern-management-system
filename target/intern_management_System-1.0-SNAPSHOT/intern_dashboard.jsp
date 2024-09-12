@@ -59,6 +59,23 @@
             <section class="chart">
                 <canvas id="scoreChart"></canvas>
             </section>
+            <!-- Bong bóng chat -->
+    <div class="chat-bubble" id="chatBubble">
+        <i class="chat-icon">💬</i>
+    </div>
+
+    <!-- Cửa sổ chat -->
+    <div class="chat-window" id="chatWindow">
+        <header>
+            <h3>Nhắn tin với chúng tôi</h3>
+        </header>
+        <div class="chat-content">
+            <p>Xin chào! Bạn cần hỗ trợ gì?</p>
+            <!-- Khung nhập liệu chat -->
+            <textarea placeholder="Nhập tin nhắn..."></textarea>
+        </div>
+        <button class="send-btn">Gửi</button>
+    </div>
         </main>
 
 
@@ -114,6 +131,62 @@
                     }
                 }
             });
+        </script>
+        <script>
+            // Khi nhấp vào bong bóng chat, mở/đóng cửa sổ chat
+document.getElementById('chatBubble').addEventListener('click', function() {
+    var chatWindow = document.getElementById('chatWindow');
+    if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+        chatWindow.style.display = 'flex'; // Hiển thị cửa sổ chat
+    } else {
+        chatWindow.style.display = 'none'; // Ẩn cửa sổ chat
+    }
+});
+
+// Xử lý gửi tin nhắn từ khung chat
+document.getElementById('sendButton').addEventListener('click', function() {
+    var chatInput = document.getElementById('chatInput').value;
+    var chatContent = document.getElementById('chatContent');
+
+    if (chatInput.trim() !== "") {
+        // Lưu tin nhắn vào localStorage để chia sẻ với các trang khác
+        var messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+        messages.push("Bạn: " + chatInput);
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
+
+        // Tạo thẻ <p> mới để hiển thị tin nhắn trên trang hiện tại
+        var newMessage = document.createElement('p');
+        newMessage.textContent = "Bạn: " + chatInput;
+        chatContent.appendChild(newMessage);
+
+        // Xóa nội dung trong khung nhập
+        document.getElementById('chatInput').value = '';
+
+        // Cuộn xuống để xem tin nhắn mới nhất
+        chatContent.scrollTop = chatContent.scrollHeight;
+    }
+});
+
+// Đồng bộ thông tin từ trang intern_dashboard
+document.addEventListener('DOMContentLoaded', function () {
+    // Lấy thông tin thực tập sinh từ trang (hoặc từ dữ liệu nào đó trong thực tế)
+    let internName = document.getElementById('profileName').textContent;
+
+    // Hiển thị lời chào dựa trên thông tin
+    var chatContent = document.getElementById('chatContent');
+    var greetingMessage = document.createElement('p');
+    greetingMessage.textContent = "Xin chào " + internName + "! Chúng tôi có thể giúp gì cho bạn?";
+    chatContent.appendChild(greetingMessage);
+
+    // Hiển thị các tin nhắn đã lưu trữ
+    var storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+    storedMessages.forEach(function(message) {
+        var messageElement = document.createElement('p');
+        messageElement.textContent = message;
+        chatContent.appendChild(messageElement);
+    });
+});
+
         </script>
     </body>
 </html>
