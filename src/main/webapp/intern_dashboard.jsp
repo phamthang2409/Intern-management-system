@@ -35,7 +35,7 @@
                         </div>
                         <div class="profile-details-right">
                             <p><strong>Trình độ học vấn:</strong> <span id="profileEducation">${i.getProfileEducation()}</span></p>
-                            <p><strong>Vị trí ứng tuyển:</strong> <span id="profilePosition"></span>${i.getProfilePosition()}</p>
+                            <p><strong>Vị trí ứng tuyển:</strong> <span id="profilePosition">${i.getProfilePosition()}</span></p>
                         </div>
                     </div>
             </section>

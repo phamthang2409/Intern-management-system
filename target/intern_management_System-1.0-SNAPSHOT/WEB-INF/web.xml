@@ -57,7 +57,7 @@
             30
         </session-timeout>
     </session-config>
-    <!--    <filter>
+        <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>FIlter.LoginFilter</filter-class>
     </filter>
@@ -75,7 +75,7 @@
         <url-pattern>/staffDashBoard</url-pattern>
         <url-pattern>/interviewScheduling</url-pattern>
         <url-pattern>/performanceTracking</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
     <servlet>
         <servlet-name>DeleteProfileInternServlet</servlet-name>
         <servlet-class>controller.DeleteProfileInternServlet</servlet-class>

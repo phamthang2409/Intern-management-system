@@ -74,7 +74,7 @@ Nhằm tiếp thu ý kiến, đống góp, phản hồi của người sử dụ
                 <c:if test="${requestScope.account == null}">
                     <h3 style="color: red">${requestScope.msg}</h3>
                 </c:if>
-                <form action="login" method="post">
+                <form action="login">
                     <input type="text" name="userName" placeholder="Nhập mã sinh viên" required>
                     <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
                     <button type="submit">Đăng Nhập</button>
