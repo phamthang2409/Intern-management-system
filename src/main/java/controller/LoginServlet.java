@@ -108,6 +108,7 @@ public class LoginServlet extends HttpServlet {
                 ProfileDao internProfileDao = new ProfileDao();
                 Profile internProfile = internProfileDao.findByID(newUser.getProfileID());
                 session.setAttribute("account", newUser);
+                request.setAttribute("userName", newUser.getUserName());
                 request.setAttribute("internProfile", internProfile);
                 request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
             }else if(role.equals("Staff")){

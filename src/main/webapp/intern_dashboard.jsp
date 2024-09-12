@@ -49,6 +49,7 @@
                 </div>
                 <div class="schedule">
                     <h3>Lịch</h3>
+                    <input type="hidden" name="candidate" value="${requestScope.account}"/>
                     <p>0</p>
                     <a href="video-call-demo/user1.html">Xem chi tiết</a>
                 </div>

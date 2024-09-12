@@ -62,15 +62,17 @@ public class InternDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String candidate = request.getParameter("candidate");
         ProfileDao internProfileDao = new ProfileDao();
         InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
         List<Profile> list = internProfileDao.getAll();
-         
+        List<InterviewScheduling> listInterView = interviewSchedulingDao.getAll();
         int cnt = 0;
         int cntInterview = 0;
         cntInterview = interviewSchedulingDao.countAllInterview();
         request.setAttribute("cnt", cnt);
         request.setAttribute("cntInterview", cntInterview);
+        request.setAttribute("listInterview", listInterView);
         request.setAttribute("listIntern", list);
         request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
     }
