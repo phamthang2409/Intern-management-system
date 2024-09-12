@@ -87,20 +87,22 @@
                     <tbody>
                         <c:forEach items="${requestScope.listIntern}" var="i">
                             <c:if test="${i.getProfilePosition() == 'Staff'}">
-                            <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
-                            <td>${i.getProfileDOB()}</td>
-                            <td>${i.getProfileEmail()}</td>
-                            <td>${i.getProfilePosition()}</td>
-                            <td>${i.getProfilePhone()}</td>
-                            <td>${i.getProfileEducation()}</td>                          
-                            <c:if test="${i.getStatus() == 0}">
-                                <td>Chưa cấp tài khoản</td>
+                                <tr>
+                                    <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                    <td>${i.getProfileDOB()}</td>
+                                    <td>${i.getProfileEmail()}</td>
+                                    <td>${i.getProfilePosition()}</td>
+                                    <td>${i.getProfilePhone()}</td>
+                                    <td>${i.getProfileEducation()}</td>                          
+                                    <c:if test="${i.getStatus() == 0}">
+                                        <td>Chưa cấp tài khoản</td>
+                                    </c:if>
+                                    <c:if test="${i.getStatus() == 1}">
+                                        <td>Đã cấp tài khoản</td>
+                                    </c:if> 
+                                </tr>
                             </c:if>
-                            <c:if test="${i.getStatus() == 1}">
-                                <td>Đã cấp tài khoản</td>
-                            </c:if>   
-                        </c:if>
-                    </c:forEach>
+                        </c:forEach>
                     </tbody>
                 </table>
             </section>

@@ -64,6 +64,7 @@ public class StaffDashBoardServlet extends HttpServlet {
         InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
         
         List<TrainingForm> list = trainingFormDao.getAll();
+        
         request.setAttribute("listTraining", list);
         
         List<InterviewScheduling> listInterview = interviewSchedulingDao.getAll();
