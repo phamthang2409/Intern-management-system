@@ -68,13 +68,12 @@
                 <div class="reminders">
                     <h3>Nhắc nhở mới, chưa xem</h3>
                     <p>${requestScope.cntInterview}</p>
-                    <a href="video-call-demo/user1.html">Xem chi tiết</a>
+                    <a href="#">Xem chi tiết</a>
                 </div>
                 <div class="schedule">
-                    <h3>Lịch</h3>
+                    <h3>Lịch Phỏng Vấn</h3>
                     <input type="hidden" name="candidate" value="${requestScope.account}"/>
-                    <p>0</p>
-                    <a href="video-call-demo/user1.html">Xem chi tiết</a>
+                    <a href="interviewSchedule">Xem chi tiết</a>
                 </div>
             </section>
 
