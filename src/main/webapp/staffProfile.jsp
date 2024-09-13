@@ -46,8 +46,8 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Trình độ học vấn</th>
-                            <th>Chương trình đào tạo</th>
-                            <th>Vị trí ứng tuyển</th>
+                            <th>Công việc đào tạo</th>
+                            <th>Vị trí công việc</th>
                             <th>Mức lương</th>
                             <th>Hành động</th>
                             <th>Cấp tài khoản</th>
@@ -56,7 +56,7 @@
                     <c:forEach items="${requestScope.listStaff}" var="i">
                         <tbody>
                             <c:if test="${i.getProfilePosition() != 'Admin'}">
-                                <c:if test="${i.getProfilePosition() == 'Staff'}">
+                                <c:if test="${i.getProfilePosition() == 'Staff' || i.getProfilePosition() == 'Mentor' }">
                                     <tr>
                                         <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
                                         <td>${i.getProfileDOB()}</td>

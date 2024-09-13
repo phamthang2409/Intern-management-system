@@ -107,15 +107,26 @@ public class LoginServlet extends HttpServlet {
                 ProfileDao internProfileDao = new ProfileDao();
                 Profile internProfile = internProfileDao.findByID(newUser.getProfileID());
                 session.setAttribute("account", newUser);
-                request.setAttribute("userName", newUser.getUserName());
-                request.setAttribute("internProfile", internProfile);
-                request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
+                session.setAttribute("internProfile", internProfile);
+                response.sendRedirect("internDashBoard");
             }else if(role.equals("Staff")){
                 ProfileDao staffProfileDao = new ProfileDao();
                 Profile staffProfile = staffProfileDao.findByID(newUser.getProfileID());
                 session.setAttribute("account", newUser);
-                request.setAttribute("staffProfile", staffProfile);
-                request.getRequestDispatcher("staff_dashboard.jsp").forward(request, response);
+                session.setAttribute("staffProfile", staffProfile);
+                response.sendRedirect("staffDashBoard");
+            }else if(role.equals("Admin")){
+                ProfileDao adminProfileDao = new ProfileDao();
+                Profile adminProfile = adminProfileDao.findByID(newUser.getProfileID());
+                session.setAttribute("account", newUser);
+                session.setAttribute("adminProfile", adminProfile);
+                response.sendRedirect("adminDashBoard");
+            }else if(role.equals("Mentor")){
+                ProfileDao mentorProfileDao = new ProfileDao();
+                Profile mentorProfile = mentorProfileDao.findByID(newUser.getProfileID());
+                session.setAttribute("account", newUser);
+                session.setAttribute("mentorProfile", mentorProfile);
+                response.sendRedirect("mentorDashBoard");
             }
             
         }

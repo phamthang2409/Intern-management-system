@@ -50,10 +50,11 @@
                 </ul>
             </nav>
             <li id="username">
-                            <a id="user" href="#" role="button" >
-                                Xin chào,
-                            </a>                              
-                        </li>
+                <c:set var="t" value="${sessionScope.staffProfile}"/>
+                <a id="user" href="#" role="button" >
+                    Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
+                </a>                              
+            </li>
             
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>

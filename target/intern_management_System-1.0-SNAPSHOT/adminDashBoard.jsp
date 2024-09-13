@@ -15,7 +15,26 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
+
     <body>
+        <style>
+            #username #user{
+                text-decoration: none;
+                color: white;
+            }
+            #username {
+                color: red; /* Màu chữ */
+                padding: 10px 20px; /* Khoảng cách bên trong nút */
+                text-align: center; /* Canh giữa chữ */
+                text-decoration: none; /* Bỏ gạch chân */
+                display: inline-block;
+                font-size: 16px; /* Kích thước chữ */
+                cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+                position: absolute; /* Định vị tuyệt đối */
+                top: 10px; /* Cách cạnh trên 10px */
+                left: 10px; /* Cách cạnh phải 10px */
+            }
+        </style>
         <header>
             <h1>Bảng điều khiển Quản trị viên</h1>
             <nav>
@@ -27,6 +46,12 @@
                     <li><a href="reprotingAnalysis"><button>Báo cáo và Phân tích</button></a></li>
 
                 </ul>
+                <li id="username">
+                    <c:set var="t" value="${sessionScope.adminProfile}"/>
+                    <a id="user" href="#" role="button" >
+                        Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
+                    </a>                              
+                </li>
             </nav>
             <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
 
@@ -87,6 +112,43 @@
                     <tbody>
                         <c:forEach items="${requestScope.listIntern}" var="i">
                             <c:if test="${i.getProfilePosition() == 'Staff'}">
+                                <tr>
+                                    <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
+                                    <td>${i.getProfileDOB()}</td>
+                                    <td>${i.getProfileEmail()}</td>
+                                    <td>${i.getProfilePosition()}</td>
+                                    <td>${i.getProfilePhone()}</td>
+                                    <td>${i.getProfileEducation()}</td>                          
+                                    <c:if test="${i.getStatus() == 0}">
+                                        <td>Chưa cấp tài khoản</td>
+                                    </c:if>
+                                    <c:if test="${i.getStatus() == 1}">
+                                        <td>Đã cấp tài khoản</td>
+                                    </c:if> 
+                                </tr>
+                            </c:if>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="info-box">
+                <h2>Danh sách Mentor</h2>
+                <table id="internsTable" class="table-row" border = "1px">
+                    <thead>
+                        <tr>
+                            <th>Họ và Tên</th>
+                            <th>Ngày tháng năm sinh</th>
+                            <th>Email</th>
+                            <th>Vị trí</th>
+                            <th>Số điện thoại</th>
+                            <th>Trình độ học vấn</th>
+                            <th>Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${requestScope.listIntern}" var="i">
+                            <c:if test="${i.getProfilePosition() == 'Mentor'}">
                                 <tr>
                                     <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
                                     <td>${i.getProfileDOB()}</td>

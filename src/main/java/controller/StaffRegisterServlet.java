@@ -81,24 +81,38 @@ public class StaffRegisterServlet extends HttpServlet {
         String profileEmail = request.getParameter("email");
         String profilePhone = request.getParameter("phone");
         String profileEducation = request.getParameter("education");
+        String profilePostition = request.getParameter("position");
         String profileSalary = request.getParameter("salary");
         ProfileDao internProfileDao = new ProfileDao();
-        System.out.println("Ddax vao staff ");
         Date profileDOB;
         try {
             profileDOB = (profileDOB_raw == null) ? null : Date.valueOf(profileDOB_raw);
-            Profile staffProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, "Đào tạo thực tập sinh",
-                    profilePhone, profileEducation, "Staff", profileSalary, 0);
-
-            if (internProfileDao.check(staffProfile) == null) {
-                internProfileDao.insert(staffProfile);
-                response.sendRedirect("staffProfile");
-            } else {
-                request.setAttribute("msg", "This Profile is registered");
-                TrainingFormDao trainingFormDao = new TrainingFormDao();
-                List<TrainingForm> list = trainingFormDao.getAll();
-                request.setAttribute("listTrainingForm", list);
-                request.getRequestDispatcher("staff_profile_register.jsp").forward(request, response);
+            if ("Staff".equals(profilePostition)) {
+                Profile staffProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, "Đào tạo thực tập sinh",
+                        profilePhone, profileEducation, profilePostition, profileSalary, 0);
+                if (internProfileDao.check(staffProfile) == null) {
+                    internProfileDao.insert(staffProfile);
+                    response.sendRedirect("staffProfile");
+                } else {
+                    request.setAttribute("msg", "This Profile is registered");
+                    TrainingFormDao trainingFormDao = new TrainingFormDao();
+                    List<TrainingForm> list = trainingFormDao.getAll();
+                    request.setAttribute("listTrainingForm", list);
+                    request.getRequestDispatcher("staff_profile_register.jsp").forward(request, response);
+                }
+            } else if ("Mentor".equals(profilePostition)) {
+                Profile mentorProfile = new Profile(profileFirstName, profileLastName, profileDOB, profileEmail, "Quản lý thực tập sinh",
+                        profilePhone, profileEducation, profilePostition, profileSalary, 0);
+                if (internProfileDao.check(mentorProfile) == null) {
+                    internProfileDao.insert(mentorProfile);
+                    response.sendRedirect("staffProfile");
+                } else {
+                    request.setAttribute("msg", "This Profile is registered");
+                    TrainingFormDao trainingFormDao = new TrainingFormDao();
+                    List<TrainingForm> list = trainingFormDao.getAll();
+                    request.setAttribute("listTrainingForm", list);
+                    request.getRequestDispatcher("staff_profile_register.jsp").forward(request, response);
+                }
             }
         } catch (ServletException | IOException e) {
             System.out.println(e);

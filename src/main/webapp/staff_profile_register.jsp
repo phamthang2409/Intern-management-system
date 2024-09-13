@@ -59,19 +59,17 @@
                         <option value="Chưa tốt nghiệp">Chưa tốt nghiệp</option>
                     </select>
                 </div>
-
-<!--                 Vị trí ứng tuyển 
                 <div class="form-group">
                     <label for="position">Vị trí ứng tuyển:</label>
-                    <select type="program" id="position" name="position" placeholder="Vị trí ứng tuyển" required>
-                        <option value="Intern">Intern</option>
+                    <select type="program" id="position" name="position" placeholder="Vị trí công việc" required>
                         <option value="Staff">Staff</option>
-                        <option value="Admin">Admin</option>
+                        <option value="Mentor">Mentor</option>
                     </select>
-                </div>-->
+                </div>
+                 
                 <div class="form-group">
-                    <label for="salary">Mức lương mong muốn:</label>
-                    <input id="salary" name="salary" placeholder="Mức lương mong muốn" required>
+                    <label for="salary">Mức lương làm việc:</label>
+                    <input id="salary" name="salary" placeholder="Mức lương làm việc" required>
                 </div>
 
                 <!-- Nút Submit -->

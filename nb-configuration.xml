@@ -16,6 +16,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>ide</org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>
     </properties>
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+        <word>BÁO</word>
         <word>bắt</word>
         <word>chưa</word>
         <word>cấp</word>
@@ -29,9 +30,11 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>ngày</word>
         <word>phân</word>
         <word>phỏng</word>
+        <word>QUẢN</word>
         <word>sơ</word>
         <word>số</word>
         <word>Thiết</word>
+        <word>THÔNG</word>
         <word>thực</word>
         <word>tạo</word>
         <word>viên</word>

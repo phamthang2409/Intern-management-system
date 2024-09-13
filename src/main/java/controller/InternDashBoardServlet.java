@@ -62,7 +62,7 @@ public class InternDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String candidate = request.getParameter("candidate");
+//        String candidate = request.getParameter("candidate");
         ProfileDao internProfileDao = new ProfileDao();
         InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
         List<Profile> list = internProfileDao.getAll();
