@@ -24,6 +24,10 @@
         <servlet-name>StaffRegisterServlet</servlet-name>
         <servlet-class>controller.StaffRegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InterviewScheduleServlet</servlet-name>
+        <servlet-class>controller.InterviewScheduleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HandleDeleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -52,12 +56,16 @@
         <servlet-name>StaffRegisterServlet</servlet-name>
         <url-pattern>/staffRegister</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InterviewScheduleServlet</servlet-name>
+        <url-pattern>/interviewSchedule</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-        <filter>
+    <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>FIlter.LoginFilter</filter-class>
     </filter>

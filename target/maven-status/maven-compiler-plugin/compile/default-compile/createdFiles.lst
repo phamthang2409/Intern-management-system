@@ -31,5 +31,6 @@ Model\TrainingForm.class
 Model\RecruitmentCampaign.class
 controller\PerformanceTrackingServlet.class
 controller\SkillAssessmentServlet.class
+controller\InterviewScheduleServlet.class
 controller\RegisterServlet.class
 DAO\ProfileDao.class
