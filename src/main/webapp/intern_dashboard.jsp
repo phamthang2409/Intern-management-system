@@ -15,9 +15,32 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="script.js"></script>
     </head>
+      <style>
+    #username #user{
+        text-decoration: none;
+        color: white;
+    }
+    #username {
+        color: red; /* Màu chữ */
+        padding: 10px 20px; /* Khoảng cách bên trong nút */
+        text-align: center; /* Canh giữa chữ */
+        text-decoration: none; /* Bỏ gạch chân */
+        display: inline-block;
+        font-size: 16px; /* Kích thước chữ */
+        cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+        position: absolute; /* Định vị tuyệt đối */
+        top: 10px; /* Cách cạnh trên 10px */
+        left: 10px; /* Cách cạnh phải 10px */
+    }
+</style>
     <body>
         <header>
             <h1>Bảng điều khiển Thực tập sinh</h1>
+             <li id="username">
+                            <a id="user" href="#" role="button" >
+                                Xin chào,
+                            </a>                              
+                        </li>
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 

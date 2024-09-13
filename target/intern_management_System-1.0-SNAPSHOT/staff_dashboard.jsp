@@ -22,6 +22,24 @@
         <script src="js/script.js"></script>
     </head>
     <body>
+       <style>
+    #username #user{
+        text-decoration: none;
+        color: white;
+    }
+    #username {
+        color: red; /* Màu chữ */
+        padding: 10px 20px; /* Khoảng cách bên trong nút */
+        text-align: center; /* Canh giữa chữ */
+        text-decoration: none; /* Bỏ gạch chân */
+        display: inline-block;
+        font-size: 16px; /* Kích thước chữ */
+        cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+        position: absolute; /* Định vị tuyệt đối */
+        top: 10px; /* Cách cạnh trên 10px */
+        left: 10px; /* Cách cạnh phải 10px */
+    }
+</style>
         <header>
             <h1>Bảng điều khiển Nhân viên phụ trách</h1>
             <nav>
@@ -31,6 +49,12 @@
                     <li><a href="performanceTracking"><button>Theo dõi Hiệu suất</button></a></li>
                 </ul>
             </nav>
+            <li id="username">
+                            <a id="user" href="#" role="button" >
+                                Xin chào,
+                            </a>                              
+                        </li>
+            
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
