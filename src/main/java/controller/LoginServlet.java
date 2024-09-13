@@ -103,7 +103,6 @@ public class LoginServlet extends HttpServlet {
             
         }else{
             String role = newUser.getRole();
-            System.out.println(role);
             if(role.equals("Intern")){
                 ProfileDao internProfileDao = new ProfileDao();
                 Profile internProfile = internProfileDao.findByID(newUser.getProfileID());
