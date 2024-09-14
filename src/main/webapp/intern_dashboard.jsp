@@ -79,7 +79,12 @@
                 </div>
                 <div class="schedule">
                     <h3>Lịch Phỏng Vấn</h3>
-                    <input type="hidden" name="candidate" value="${requestScope.account}"/>
+                    <c:if test="${requestScope.cntInterview != 0}">
+                        <p>${requestScope.cntInterview}</p>
+                    </c:if>
+                    <c:if test="${requestScope.cntInterview == 0}">
+                        <p>0</p>
+                    </c:if>
                     <a href="interviewSchedule">Xem chi tiết</a>
                 </div>
             </section>

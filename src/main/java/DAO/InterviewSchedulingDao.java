@@ -49,7 +49,33 @@ public class InterviewSchedulingDao extends DBContext{
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
-                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"));
+                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"), rs.getInt("staffID"));
+                list.add(interviewScheduling);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
+    public List<InterviewScheduling> findByCandidateID(String candidateID){
+        Connection conn = DBContext();
+        List<InterviewScheduling> list = new ArrayList<>();
+        String sql = "Select * from InterviewForm where candidateID = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, candidateID);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
+                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"), rs.getInt("staffID"));
                 list.add(interviewScheduling);
             }
             return list;
@@ -67,7 +93,7 @@ public class InterviewSchedulingDao extends DBContext{
     
     public void insert(InterviewScheduling interviewScheduling) {
         Connection conn = DBContext();
-        String sql = "Insert into InterviewForm (candidateID, candidateName, startDate, sessionStartTime, location) values(?, ?, ?, ?, ?)";
+        String sql = "Insert into InterviewForm (candidateID, candidateName, startDate, sessionStartTime, location, staffID) values(?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, interviewScheduling.getCandidateID());
@@ -75,6 +101,7 @@ public class InterviewSchedulingDao extends DBContext{
             st.setDate(3, interviewScheduling.getStartDate());
             st.setTime(4, interviewScheduling.getSessionStartTime());
             st.setString(5, interviewScheduling.getLocation());
+            st.setInt(6, interviewScheduling.getStaffID());
             st.executeUpdate();
             System.err.println("add thành công");
         } catch (SQLException e) {
@@ -90,7 +117,7 @@ public class InterviewSchedulingDao extends DBContext{
     }
     
     public InterviewScheduling check(String userName) {
-        
+
         Connection conn = DBContext();
         String sql = "Select * from User where userName = ?";
         try {
@@ -99,7 +126,7 @@ public class InterviewSchedulingDao extends DBContext{
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
-                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"));
+                        rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"), rs.getInt("staffID"));
                 return interviewScheduling;
             }
             

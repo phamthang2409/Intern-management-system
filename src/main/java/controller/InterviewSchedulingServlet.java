@@ -104,10 +104,6 @@ public class InterviewSchedulingServlet extends HttpServlet {
                         startDate, sessionStartTime, location);
                 interviewSchedulingDao.insert(interviewScheduling);
                 response.sendRedirect("interviewScheduling");
-//                if (interviewSchedulingDao.check(candidateID) == null) {
-//                    request.setAttribute("msg", "Student ID has been registered");
-//                    request.getRequestDispatcher("interview_scheduling.jsp").forward(request, response);
-//                }
             } else {
                 List<InterviewScheduling> list = interviewSchedulingDao.getAll();
                 request.setAttribute("listInterviewScheduling", list);

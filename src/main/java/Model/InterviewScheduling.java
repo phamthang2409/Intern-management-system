@@ -17,18 +17,29 @@ public class InterviewScheduling {
     private Date startDate;
     private Time sessionStartTime;
     private String Location;
+    private int staffID;
 
     public InterviewScheduling() {
     }
 
-    public InterviewScheduling(String candidateID, String candidateName, Date startDate, Time sessionStartTime, String Location) {
+    public InterviewScheduling(String candidateID, String candidateName, Date startDate, Time sessionStartTime, String Location, int staffID) {
         this.candidateID = candidateID;
         this.candidateName = candidateName;
         this.startDate = startDate;
         this.sessionStartTime = sessionStartTime;
         this.Location = Location;
+        this.staffID = staffID;
     }
 
+    public int getStaffID() {
+        return staffID;
+    }
+
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
+    }
+
+    
     public String getCandidateID() {
         return candidateID;
     }

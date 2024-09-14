@@ -67,10 +67,11 @@ public class UserDao extends DBContext{
     
     public User checkUserName(String userName) {
         Connection conn = DBContext();
-        String sql = "Select * from User where userName = ?";
+        String sql = "Select * from User where userName = ? and role = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, userName);
+            st.setString(2, "Staff");
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 

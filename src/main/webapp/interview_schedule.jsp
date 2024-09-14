@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${requestScope.listInterviewScheduling}" var="i">
+                <c:forEach items="${sessionScope.listInterview}" var="i">
                         <tr>
                             <td>${i.getCandidateName()}</td>
                             <td>${i.getStartDate()}</td>

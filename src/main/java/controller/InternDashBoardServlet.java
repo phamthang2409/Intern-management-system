@@ -5,9 +5,8 @@
 package controller;
 
 import DAO.InterviewSchedulingDao;
-import DAO.ProfileDao;
 import Model.InterviewScheduling;
-import Model.Profile;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -62,18 +62,19 @@ public class InternDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String candidate = request.getParameter("candidate");
-        ProfileDao internProfileDao = new ProfileDao();
         InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
-        List<Profile> list = internProfileDao.getAll();
-        List<InterviewScheduling> listInterView = interviewSchedulingDao.getAll();
-        int cnt = 0;
+        //Lấy thông tin của intern
+        HttpSession session = request.getSession();
+        User intern = (User)session.getAttribute("account");
+        //Lấy danh sách phỏng vấn của intern
+        List<InterviewScheduling> listInterView = interviewSchedulingDao.findByCandidateID(intern.getUserName());
+        
         int cntInterview = 0;
-        cntInterview = interviewSchedulingDao.countAllInterview();
-        request.setAttribute("cnt", cnt);
+        for (int i = 0; i< listInterView.size(); i++){
+            cntInterview++;
+        }
         request.setAttribute("cntInterview", cntInterview);
-        request.setAttribute("listInterview", listInterView);
-        request.setAttribute("listIntern", list);
+        session.setAttribute("listInterview", listInterView);
         request.getRequestDispatcher("intern_dashboard.jsp").forward(request, response);
     }
 
