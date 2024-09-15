@@ -4,6 +4,7 @@
  */
 package controller;
 
+import DAO.DailyProgressDao;
 import DAO.InterviewSchedulingDao;
 import DAO.ProfileDao;
 import DAO.RecruitmentCampaignDao;
@@ -94,6 +95,11 @@ public class HandleDeleteServlet extends HttpServlet {
                 InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
                 interviewSchedulingDao.delete(id_raw);
                 response.sendRedirect("interviewScheduling");
+            }else if (name.equals("dailyProgress")){
+                id = Integer.parseInt(id_raw);
+                DailyProgressDao dailyProgressDao = new DailyProgressDao();
+                dailyProgressDao.delete(id);
+                response.sendRedirect("dailyProgress");
             }
         }catch(NumberFormatException e){
             System.err.println(e);

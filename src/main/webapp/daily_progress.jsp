@@ -49,74 +49,42 @@
                             <td><input type="text" id="internID" name="internID" placeholder="Nhập mã số thực tập sinh"></td>
                             <td><input type="date" id="date" name="date"></td>
                             <td><input type="text" id="description" name="description" placeholder="Nhập mô tả tiến độ"></td>
-                            <td><button type="submit" onclick="addProgress()">Thêm Tiến độ</button></td>
+                            <td><button type="submit">Thêm Tiến độ</button></td>
                         </tr>
+                    </tbody>
+                </table>
+            </form>
+            <table id="progressTable" style="padding-top: 50px ">
+                <thead>
+                    <tr>
+                        <th>Mã số Thực tập sinh</th>
+                        <th>Ngày</th>
+                        <th>Mô tả Tiến độ</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Hàng chứa form nhập liệu -->
+                    <c:if test="${requestScope.listProgress != null}">
                         <c:forEach items="${requestScope.listProgress}" var="i">
                             <tr>
                                 <td>${i.getInternID()}</td>
                                 <td>${i.getDateReport()}</td>
                                 <td>${i.getDescription()}</td>
-                                <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
+                                <td><button id="delete" onclick="doDelete(${i.getID()})">Xóa</button></td>
                             </tr>
                         </c:forEach>
+                    </c:if>
 
-                    </tbody>
-                </table>
-            </form>
+                </tbody>
+            </table>
         </main>
-
-        <script type="text/javascript">
-            function doDelete(id) {
-                if (confirm("Are you want to delete")) {
-                    window.location = "delete?id=" + id + "&name=dailyProgress";
-                }
-            }
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Hiển thị tiến độ khi trang được tải
-                displayProgress();
-            });
-
-            function addProgress() {
-                // Lấy dữ liệu từ các trường nhập liệu
-                let internName = document.getElementById('internName').value;
-                let date = document.getElementById('date').value;
-                let description = document.getElementById('description').value;
-
-                // Kiểm tra xem tất cả các thông tin đã được nhập chưa
-                if (!internName || !date || !description) {
-                    alert("Vui lòng nhập đầy đủ thông tin.");
-                    return;
-                }
-
-                // Tạo đối tượng chứa thông tin tiến độ mới
-                let progress = {
-                    name: internName,
-                    date: date,
-                    description: description
-                };
-
-                // Lấy dữ liệu tiến độ hiện có từ Local Storage
-                let dailyProgress = JSON.parse(localStorage.getItem('dailyProgress')) || [];
-
-                // Thêm tiến độ mới vào danh sách
-                dailyProgress.push(progress);
-
-                // Lưu lại danh sách vào Local Storage
-                localStorage.setItem('dailyProgress', JSON.stringify(dailyProgress));
-
-                // Cập nhật bảng hiển thị tiến độ
-                displayProgress();
-
-                // Xóa dữ liệu trong các trường nhập liệu sau khi lưu
-                document.getElementById('internName').value = '';
-                document.getElementById('date').value = '';
-                document.getElementById('description').value = '';
-
-                alert("Tiến độ mới đã được lưu.");
-            }
-
-        </script>
     </body>
+    <script type="text/javascript">
+        function doDelete(id) {
+            if (confirm("Are you want to delete")) {
+                window.location = "delete?id=" + id + "&name=dailyProgress";
+            }
+        }
+    </script>
 </html>

@@ -86,7 +86,7 @@ public class DailyProgressServlet extends HttpServlet {
         DailyProgressDao dailyProgressDao = new DailyProgressDao();
         UserDao userDao = new UserDao();
         try {
-            date = (date_raw == null) ? null : Date.valueOf(date_raw);
+            date = Date.valueOf(date_raw);
             mentorID = Integer.parseInt(mentorID_raw);
             if (userDao.checkUserName(internID) != null){
                 DailyProgress dailyProgress = new DailyProgress(internID, date, description, mentorID);
