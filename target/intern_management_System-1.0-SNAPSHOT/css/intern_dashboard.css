@@ -201,4 +201,12 @@ td {
 /* Styling for the 'new' text */
 .new-label {
     color: red;
-    font-weight: b
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Link Styling */
+a {
+    color: red; /* Red text for links */
+    font-weight: bold;
+}
