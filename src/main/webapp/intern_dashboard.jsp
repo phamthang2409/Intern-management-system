@@ -67,30 +67,30 @@
 
             <!-- Nhắc nhở và lịch -->
             <section class="notifications">
-    <div class="reminders">
-        <h3>Nhắc nhở mới, chưa xem</h3>
-        <c:if test="${requestScope.cntInterview != 0}">
-            <p>${requestScope.cntInterview}</p>
-        </c:if>
-        <c:if test="${requestScope.cntInterview == 0}">
-            <p>0</p>
-        </c:if>
-        <a href="javascript:void(0);" onclick="showReminderDetails()">Xem chi tiết</a>
-    </div>
-    <div class="schedule">
-        <h3>Lịch Phỏng Vấn</h3>
-        <c:if test="${requestScope.cntInterview != 0}">
-            <p>${requestScope.cntInterview}</p>
-        </c:if>
-        <c:if test="${requestScope.cntInterview == 0}">
-            <p>0</p>
-        </c:if>
-        <a href="interviewSchedule">Xem chi tiết</a>
-    </div>
+            <div class="reminders">
+                <h3>Nhắc nhở mới, chưa xem</h3>
+                <c:if test="${requestScope.cntInterview != 0}">
+                    <p>${requestScope.cntInterview}</p>
+                </c:if>
+                <c:if test="${requestScope.cntInterview == 0}">
+                    <p>0</p>
+                </c:if>
+                <a href="javascript:void(0);" onclick="showReminderDetails()">Xem chi tiết</a>
+            </div>
+            <div class="schedule">
+                <h3>Lịch Phỏng Vấn</h3>
+                <c:if test="${requestScope.cntInterview != 0}">
+                    <p>${requestScope.cntInterview}</p>
+                </c:if>
+                <c:if test="${requestScope.cntInterview == 0}">
+                    <p>0</p>
+                </c:if>
+                <a href="interviewSchedule">Xem chi tiết</a>
+            </div>
             </section>
 
             <!-- Bảng hiển thị thông tin nhắc nhở mới, ẩn ban đầu -->
-            <div id="reminderDetails" style="display: none; border: 1px solid #000; padding: 10px; background-color: #f9f9f9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div id="reminderDetails" >
                 <h3>Chi tiết nhắc nhở</h3>
                 <table border="1">
                     <thead>

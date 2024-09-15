@@ -137,55 +137,68 @@ textarea {
 .chat-bubble i {
     font-size: 30px; /* Điều chỉnh kích thước icon */
 }
-.reminder-details {
-    width: 400px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Styling the announcement block */
+#reminderDetails {
+    display: none; /* Hidden by default */
+    border: 1px solid #000; /* Black border */
+    padding: 10px;
+    background-color: #f5f5f5; /* Smoke gray background */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* Styling the headings */
+h3 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text color */
     text-align: center;
-    border-radius: 5px;
 }
 
-.reminder-details h3 {
-    font-size: 18px;
-    color: #003366;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.reminder-details table {
-    width: 100%;
+/* Table Styling */
+table {
     border-collapse: collapse;
-    margin-bottom: 10px;
+    width: 100%;
+    background-color: #f5f5f5; /* Smoke gray background for table */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 1); /* Adding shadow to the table */
 }
 
-.reminder-details th, .reminder-details td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-    font-size: 14px;
+th, td {
+    border: 1px solid #ddd; /* Light grey borders */
+    padding: 8px;
+    text-align: center;
 }
 
-.reminder-details th {
-    background-color: #007bff;
-    color: #fff;
+th {
+    background-color: #0046b3; /* Blue background for table headers */
+    color: white; /* White text for headers */
     font-weight: bold;
 }
 
-.reminder-details button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+td {
+    background-color: #f5f5f5; /* Smoke gray background for table data */
 }
 
-.reminder-details button:hover {
-    background-color: #0056b3;
+/* Styling the announcement blocks with a shadow */
+.announcement-block {
+    border: 1px solid #ddd; /* Light border */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    margin-bottom: 10px;
+    padding: 10px;
 }
+
+/* Styling for the month label */
+.month-label {
+    background-color: #0046b3; /* Blue background */
+    color: white; /* White text */
+    padding: 5px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for the 'new' text */
+.new-label {
+    color: red;
+    font-weight: b
