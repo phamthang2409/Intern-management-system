@@ -137,3 +137,55 @@ textarea {
 .chat-bubble i {
     font-size: 30px; /* Điều chỉnh kích thước icon */
 }
+.reminder-details {
+    width: 400px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.reminder-details h3 {
+    font-size: 18px;
+    color: #003366;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.reminder-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.reminder-details th, .reminder-details td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+}
+
+.reminder-details th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.reminder-details button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reminder-details button:hover {
+    background-color: #0056b3;
+}
