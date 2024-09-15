@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,42 +16,42 @@
         <script src="js/script.js"></script>
     </head>
     <body>
-         <style>
-    #username #user{
-        text-decoration: none;
-        color: white;
-    }
-    #username {
-        color: red; /* Màu chữ */
-        padding: 10px 20px; /* Khoảng cách bên trong nút */
-        text-align: center; /* Canh giữa chữ */
-        text-decoration: none; /* Bỏ gạch chân */
-        display: inline-block;
-        font-size: 16px; /* Kích thước chữ */
-        cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
-        position: absolute; /* Định vị tuyệt đối */
-        top: 10px; /* Cách cạnh trên 10px */
-        left: 10px; /* Cách cạnh phải 10px */
-    }
-</style>
+        <style>
+            #username #user{
+                text-decoration: none;
+                color: white;
+            }
+            #username {
+                color: red; /* Màu chữ */
+                padding: 10px 20px; /* Khoảng cách bên trong nút */
+                text-align: center; /* Canh giữa chữ */
+                text-decoration: none; /* Bỏ gạch chân */
+                display: inline-block;
+                font-size: 16px; /* Kích thước chữ */
+                cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+                position: absolute; /* Định vị tuyệt đối */
+                top: 10px; /* Cách cạnh trên 10px */
+                left: 10px; /* Cách cạnh phải 10px */
+            }
+        </style>
         <header>
             <h1>Bảng điều khiển Mentor</h1>
             <nav>
-            <ul>
-                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
-                <li><a href="dailyProgress"><button>Quản lý Tiến độ Hằng ngày</button></a></li>
-                <li><a href="trainingForm"><button>Thiết lập Chương trình đào tạo</button></a></li>
-                <li><a href="skillAssessment"><button>Đánh giá Kỹ năng</button></a></li>
-                <li><a href="communicationTool"><button>Công cụ giao tiếp</button></a></li>
-                 
-            </ul>
-        </nav>
+                <ul>
+                    <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
+                    <li><a href="dailyProgress"><button>Quản lý Tiến độ Hằng ngày</button></a></li>
+                    <li><a href="trainingForm"><button>Thiết lập Chương trình đào tạo</button></a></li>
+                    <li><a href="skillAssessment"><button>Đánh giá Kỹ năng</button></a></li>
+                    <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
+                </ul>
+            </nav>
             <li id="username">
-                            <a id="user" href="#" role="button" >
-                                Xin chào,
-                            </a>                              
-                        </li>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+                <c:set var="t" value="${sessionScope.mentorProfile}"/>
+                <a id="user" href="#" role="button" >
+                    Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
+                </a>                  
+            </li>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
 
         <main>

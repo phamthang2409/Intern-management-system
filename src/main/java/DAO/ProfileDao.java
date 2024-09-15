@@ -75,7 +75,7 @@ public class ProfileDao extends DBContext{
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
-                Profile internProfile = new Profile(rs.getString("profileFirstName"), 
+                Profile internProfile = new Profile(rs.getInt("ID"),rs.getString("profileFirstName"), 
                         rs.getString("profileLastName"), 
                         rs.getDate("profileDOB"), 
                         rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"), 

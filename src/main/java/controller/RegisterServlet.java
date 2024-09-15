@@ -92,7 +92,7 @@ public class RegisterServlet extends HttpServlet {
                     if ("Intern".equals(profilePosition)) {
                         ProfileDao.updateStatus(profileID, 1);
                         response.sendRedirect("internProfiles");
-                    }else if ("Staff".equals(profilePosition)){
+                    }else if ("Staff".equals(profilePosition) || "Mentor".equals(profilePosition)){
                         ProfileDao.updateStatus(profileID, 1);
                         response.sendRedirect("staffProfile");
                     }

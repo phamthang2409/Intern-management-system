@@ -16,6 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -100,8 +101,12 @@ public class InterviewSchedulingServlet extends HttpServlet {
             if (newUser != null) {
                 Profile profileUser = profileDao.findByID(newUser.getProfileID());
                 String candidateName = profileUser.getProfileFirstName() + " " + profileUser.getProfileLastName();
+                
+                HttpSession session = request.getSession();
+                //Lấy ID profile của staff
+                User staffUser = (User) session.getAttribute("staffAccount");
                 InterviewScheduling interviewScheduling = new InterviewScheduling(candidateID, candidateName,
-                        startDate, sessionStartTime, location);
+                        startDate, sessionStartTime, location, staffUser.getProfileID());
                 interviewSchedulingDao.insert(interviewScheduling);
                 response.sendRedirect("interviewScheduling");
             } else {

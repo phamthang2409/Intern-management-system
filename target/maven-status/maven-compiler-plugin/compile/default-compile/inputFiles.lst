@@ -9,6 +9,7 @@ D:\Intern-management-system\src\main\java\DAO\TrainingFormDao.java
 D:\Intern-management-system\src\main\java\controller\InternDashBoardServlet.java
 D:\Intern-management-system\src\main\java\controller\DailyProgressServlet.java
 D:\Intern-management-system\src\main\java\DAO\UserDao.java
+D:\Intern-management-system\src\main\java\DAO\DailyProgressDao.java
 D:\Intern-management-system\src\main\java\Model\Feedback.java
 D:\Intern-management-system\src\main\java\controller\ResetSessionServlet.java
 D:\Intern-management-system\src\main\java\controller\HandleDeleteServlet.java
@@ -16,9 +17,11 @@ D:\Intern-management-system\src\main\java\DAO\RecruitmentCampaignDao.java
 D:\Intern-management-system\src\main\java\controller\ReprotingAnalysisServlet.java
 D:\Intern-management-system\src\main\java\controller\InterviewSchedulingServlet.java
 D:\Intern-management-system\src\main\java\controller\RecruitmentServlet.java
+D:\Intern-management-system\src\main\java\controller\InterviewScheduleServlet.java
 D:\Intern-management-system\src\main\java\Model\InterviewScheduling.java
 D:\Intern-management-system\src\main\java\com\intern_management_system\resources\JakartaEE10Resource.java
 D:\Intern-management-system\src\main\java\DAO\ProfileDao.java
+D:\Intern-management-system\src\main\java\Model\DailyProgress.java
 D:\Intern-management-system\src\main\java\com\intern_management_system\JakartaRestConfiguration.java
 D:\Intern-management-system\src\main\java\controller\TrainingFormServlet.java
 D:\Intern-management-system\src\main\java\DAO\InterviewSchedulingDao.java

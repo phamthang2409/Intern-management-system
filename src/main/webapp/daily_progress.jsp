@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,39 +18,60 @@
     <body>
         <header>
             <h1> Tiến độ Hằng ngày</h1>
-          <nav>
-            <ul>
-                <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
+                </ul>
+            </nav>
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
         <main>
-            <h2>Tiến độ Hằng ngày của Thực tập sinh</h2>
-
+            <h2>Báo cáo tiến độ hằng ngày của Thực tập sinh</h2>
+            <c:if test="${requestScope.msg != null}">
+                <h3 style="color: red">${requestScope.msg}</h3>
+            </c:if>
             <!-- Bảng chứa form nhập liệu và tiến độ -->
-            <table id="progressTable">
-                <thead>
-                    <tr>
-                        <th>Tên Thực tập sinh</th>
-                        <th>Ngày</th>
-                        <th>Mô tả Tiến độ</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Hàng chứa form nhập liệu -->
-                    <tr>
-                        <td><input type="text" id="internName" placeholder="Nhập tên thực tập sinh"></td>
-                        <td><input type="date" id="date"></td>
-                        <td><input type="text" id="description" placeholder="Nhập mô tả tiến độ"></td>
-                        <td><button onclick="addProgress()">Thêm Tiến độ</button></td>
-                    </tr>
-                    <!-- Các tiến độ hằng ngày sẽ được thêm vào đây -->
-                </tbody>
-            </table>
+            <form action="dailyProgress" method="post">
+                <c:set var="t" value="${sessionScope.mentorProfile}"/>
+                <input type="hidden" name="mentorID" value="${t.getID()}"/>
+                <table id="progressTable">
+                    <thead>
+                        <tr>
+                            <th>Mã số Thực tập sinh</th>
+                            <th>Ngày</th>
+                            <th>Mô tả Tiến độ</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Hàng chứa form nhập liệu -->
+                        <tr>
+                            <td><input type="text" id="internID" name="internID" placeholder="Nhập mã số thực tập sinh"></td>
+                            <td><input type="date" id="date" name="date"></td>
+                            <td><input type="text" id="description" name="description" placeholder="Nhập mô tả tiến độ"></td>
+                            <td><button type="submit" onclick="addProgress()">Thêm Tiến độ</button></td>
+                        </tr>
+                        <c:forEach items="${requestScope.listProgress}" var="i">
+                            <tr>
+                                <td>${i.getInternID()}</td>
+                                <td>${i.getDateReport()}</td>
+                                <td>${i.getDescription()}</td>
+                                <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+                </table>
+            </form>
         </main>
 
+        <script type="text/javascript">
+            function doDelete(id) {
+                if (confirm("Are you want to delete")) {
+                    window.location = "delete?id=" + id + "&name=dailyProgress";
+                }
+            }
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 // Hiển thị tiến độ khi trang được tải
@@ -94,38 +116,6 @@
 
                 alert("Tiến độ mới đã được lưu.");
             }
-
-            function displayProgress() {
-                // Lấy dữ liệu tiến độ từ Local Storage
-                let dailyProgress = JSON.parse(localStorage.getItem('dailyProgress')) || [];
-                let tableBody = document.querySelector('#progressTable tbody');
-
-                // Xóa nội dung hiện tại trong bảng, trừ hàng đầu tiên (form nhập liệu)
-                tableBody.innerHTML = tableBody.rows[0].outerHTML;
-
-                // Duyệt qua danh sách tiến độ và hiển thị lên bảng
-                dailyProgress.forEach(progress => {
-                    let row = document.createElement('tr');
-
-                    let nameCell = document.createElement('td');
-                    nameCell.textContent = progress.name;
-                    row.appendChild(nameCell);
-
-                    let dateCell = document.createElement('td');
-                    dateCell.textContent = progress.date;
-                    row.appendChild(dateCell);
-
-                    let descriptionCell = document.createElement('td');
-                    descriptionCell.textContent = progress.description;
-                    row.appendChild(descriptionCell);
-
-                    // Thêm hàng vào bảng
-                    tableBody.appendChild(row);
-                });
-            }
-            syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-            autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
-
 
         </script>
     </body>

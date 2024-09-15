@@ -18,7 +18,9 @@ controller\InterviewSchedulingServlet.class
 controller\TrainingFormServlet.class
 controller\LoginServlet.class
 controller\InternProfileServlet.class
+Model\DailyProgress.class
 DAO\InterviewSchedulingDao.class
+DAO\DailyProgressDao.class
 controller\ReprotingAnalysisServlet.class
 DAO\RecruitmentCampaignDao.class
 com\intern_management_system\resources\JakartaEE10Resource.class

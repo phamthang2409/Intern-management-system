@@ -114,6 +114,7 @@ public class LoginServlet extends HttpServlet {
                 Profile staffProfile = staffProfileDao.findByID(newUser.getProfileID());
                 session.setAttribute("account", newUser);
                 session.setAttribute("staffProfile", staffProfile);
+                session.setAttribute("staffAccount", newUser);
                 response.sendRedirect("staffDashBoard");
             }else if(role.equals("Admin")){
                 ProfileDao adminProfileDao = new ProfileDao();

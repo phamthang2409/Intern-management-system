@@ -4,12 +4,17 @@
  */
 package controller;
 
+import DAO.DailyProgressDao;
+import DAO.UserDao;
+import Model.DailyProgress;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -55,6 +60,9 @@ public class DailyProgressServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DailyProgressDao dailyProgressDao = new DailyProgressDao();
+        List<DailyProgress> list = dailyProgressDao.getAll();
+        request.setAttribute("listProgress", list);
         request.getRequestDispatcher("daily_progress.jsp").forward(request, response);
     }
 
@@ -69,7 +77,29 @@ public class DailyProgressServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String internID = request.getParameter("internID");
+        String date_raw = request.getParameter("date");
+        String description = request.getParameter("description");
+        String mentorID_raw = request.getParameter("mentorID");
+        Date date;
+        int mentorID;
+        DailyProgressDao dailyProgressDao = new DailyProgressDao();
+        UserDao userDao = new UserDao();
+        try {
+            date = (date_raw == null) ? null : Date.valueOf(date_raw);
+            mentorID = Integer.parseInt(mentorID_raw);
+            if (userDao.checkUserName(internID) != null){
+                DailyProgress dailyProgress = new DailyProgress(internID, date, description, mentorID);
+                dailyProgressDao.insert(dailyProgress);
+                response.sendRedirect("dailyProgress");
+            }else{
+                request.setAttribute("msg", "Student ID does not exist");
+                request.getRequestDispatcher("daily_progress.jsp").forward(request, response);
+            }
+            
+        } catch (ServletException | IOException e) {
+            System.err.println(e);
+        }
     }
 
     /**

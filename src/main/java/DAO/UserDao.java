@@ -71,7 +71,7 @@ public class UserDao extends DBContext{
         try {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, userName);
-            st.setString(2, "Staff");
+            st.setString(2, "Intern");
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
@@ -159,11 +159,12 @@ public class UserDao extends DBContext{
             while (rs.next()) {
                 User user = new User(rs.getInt("ID"),
                         rs.getString("username"),
-                        rs.getNString("passWord"),
+                        rs.getString("passWord"),
                         rs.getString("role"),
                             rs.getInt("profileID"));
                 list.add(user);
             }
+            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }finally{
@@ -173,7 +174,7 @@ public class UserDao extends DBContext{
                 System.out.println(e);
             }
         }
-        return list;
+        return null;
     }
 
     public boolean insert(User user)  {
@@ -220,7 +221,6 @@ public class UserDao extends DBContext{
                 System.out.println(e);
             }
         }
-        
     }
     
     public void reset() {
@@ -248,15 +248,14 @@ public class UserDao extends DBContext{
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User user = new User(rs.getInt("ID"),
-                        rs.getString("userName"),
-                        rs.getNString("passWord"),
+                User newUser = new User(rs.getInt("ID") ,rs.getString("userName"), 
+                        rs.getString("passWord"), 
                         rs.getString("role"),
-                rs.getInt("internID"));
-                return user;
+                        rs.getInt("profileID"));
+                return newUser;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
         }finally{
             try {
                 conn.close();

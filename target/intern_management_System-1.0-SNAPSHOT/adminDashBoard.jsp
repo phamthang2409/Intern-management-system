@@ -49,12 +49,16 @@
                 <li id="username">
                     <c:set var="t" value="${sessionScope.adminProfile}"/>
                     <a id="user" href="#" role="button" >
-                        Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
+                        <c:if test="${t.getProfileFirstName() == t.getProfileLastName()}">
+                            Xin chào ${t.getProfileFirstName()}
+                        </c:if>
+                        <c:if test="${t.getProfileFirstName() != t.getProfileLastName()}">
+                            Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()}
+                        </c:if>
                     </a>                              
                 </li>
             </nav>
             <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
-
         </header>
 
         <main>
@@ -131,7 +135,7 @@
                     </tbody>
                 </table>
             </section>
-            
+
             <section class="info-box">
                 <h2>Danh sách Mentor</h2>
                 <table id="internsTable" class="table-row" border = "1px">
