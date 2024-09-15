@@ -4,12 +4,19 @@
  */
 package controller;
 
+import DAO.DailyProgressDao;
+import DAO.SkillAssessmentDao;
+import DAO.UserDao;
+import Model.DailyProgress;
+import Model.SkillAssessment;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -69,7 +76,35 @@ public class SkillAssessmentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String internID = request.getParameter("internID");
+        String teamworkScore = request.getParameter("teamworkScore");
+        String finishWorkScore = request.getParameter("finishWorkScore");
+        String communicationScore = request.getParameter("communicationScore");
+        System.out.println(internID);
+        SkillAssessmentDao skillAssessmentDao = new SkillAssessmentDao();
+        UserDao userDao = new UserDao();
+        DailyProgressDao dailyProgressDao = new DailyProgressDao();
+        User user = userDao.checkUserName(internID);
+        DailyProgress dailyProgressIntern = dailyProgressDao.findbyID(internID);
+        HttpSession session = request.getSession();
+        int Status = dailyProgressIntern.getStatus();
+        if (user != null) {
+            if (Status == 0) {
+                SkillAssessment skillAssessment = new SkillAssessment(internID, teamworkScore, finishWorkScore,
+                        communicationScore, user.getProfileID());
+                skillAssessmentDao.insert(skillAssessment);
+                dailyProgressDao.updateStatus(internID, 1);
+                session.setAttribute("Success", "Bạn đã đăng ký thành công");
+                response.sendRedirect("skillAssessment");
+            }else{
+                request.setAttribute("msgStatus", "This daily progress has been assessment");
+                request.getRequestDispatcher("skill_assessment.jsp").forward(request, response);
+            }
+
+        } else {
+            request.setAttribute("msg", "Student ID does not exist");
+            request.getRequestDispatcher("skill_assessment.jsp").forward(request, response);
+        }
     }
 
     /**

@@ -15,25 +15,37 @@ public class DailyProgress {
     private String InternID;
     private Date DateReport;
     private String Description;
+    private int Status;
     private int MentorID;
 
     public DailyProgress() {
     }
 
-    public DailyProgress(String InternID, Date DateReport, String Description, int MentorID) {
-        this.InternID = InternID;
-        this.DateReport = DateReport;
-        this.Description = Description;
-        this.MentorID = MentorID;
-    }
-
-    public DailyProgress(int ID, String InternID, Date DateReport, String Description, int MentorID) {
+    public DailyProgress(int ID, String InternID, Date DateReport, String Description, int Status, int MentorID) {
         this.ID = ID;
         this.InternID = InternID;
         this.DateReport = DateReport;
         this.Description = Description;
+        this.Status = Status;
         this.MentorID = MentorID;
     }
+
+    public DailyProgress(String InternID, Date DateReport, String Description, int Status, int MentorID) {
+        this.InternID = InternID;
+        this.DateReport = DateReport;
+        this.Description = Description;
+        this.Status = Status;
+        this.MentorID = MentorID;
+    }
+
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int Status) {
+        this.Status = Status;
+    }
+
 
     public int getID() {
         return ID;

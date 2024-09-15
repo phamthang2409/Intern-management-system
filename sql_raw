@@ -76,7 +76,18 @@ Create table DailyProgress (
         InternID   NVARCHAR(100) NOT NULL,
         DateReport DATE NOT NULL,
         Description NVARCHAR(255) NOT NULL,
+        Status INTEGER NOT NULL DEFAULT 0,
         MentorID    INTEGER NOT NULL,
-        FOREIGN KEY (MentorID) references User(ID),
-        FOREIGN KEY (InternID) references User(userName)
+        FOREIGN KEY (MentorID) references User(ID)
+);
+
+--Đánh giá kỹ năng intern
+Create table SkillAssessment(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    InternName NVARCHAR(100) NOT NULL,
+    TeamWorkScore Nvarchar(20) NOT NULL,
+    FinishWorkScore NVARCHAR(20) NOT NULL,
+    CommunicationScore NVARCHAR(20) NOT NULL,
+    InternID INTEGER NOT NULL,
+    FOREIGN KEY (InternID) references Profile(profileID)
 );

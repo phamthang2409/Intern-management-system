@@ -4,6 +4,7 @@ D:\Intern-management-system\src\main\java\controller\PerformanceTrackingServlet.
 D:\Intern-management-system\src\main\java\controller\InternProfileRegisterServlet.java
 D:\Intern-management-system\src\main\java\Model\Profile.java
 D:\Intern-management-system\src\main\java\controller\RegisterServlet.java
+D:\Intern-management-system\src\main\java\DAO\SkillAssessmentDao.java
 D:\Intern-management-system\src\main\java\Model\Report.java
 D:\Intern-management-system\src\main\java\DAO\TrainingFormDao.java
 D:\Intern-management-system\src\main\java\controller\InternDashBoardServlet.java
@@ -36,4 +37,5 @@ D:\Intern-management-system\src\main\java\controller\StaffDashBoardServlet.java
 D:\Intern-management-system\src\main\java\Model\User.java
 D:\Intern-management-system\src\main\java\Connection\DBContext.java
 D:\Intern-management-system\src\main\java\Model\TrainingForm.java
+D:\Intern-management-system\src\main\java\Model\SkillAssessment.java
 D:\Intern-management-system\src\main\java\controller\AdminDashBoardServlet.java

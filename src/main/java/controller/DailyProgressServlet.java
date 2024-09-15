@@ -62,6 +62,10 @@ public class DailyProgressServlet extends HttpServlet {
             throws ServletException, IOException {
         DailyProgressDao dailyProgressDao = new DailyProgressDao();
         List<DailyProgress> list = dailyProgressDao.getAll();
+        int cnt = dailyProgressDao.countAllDailyProgress();
+        if (cnt == 0){
+            dailyProgressDao.reset();
+        }
         request.setAttribute("listProgress", list);
         request.getRequestDispatcher("daily_progress.jsp").forward(request, response);
     }
@@ -89,7 +93,7 @@ public class DailyProgressServlet extends HttpServlet {
             date = Date.valueOf(date_raw);
             mentorID = Integer.parseInt(mentorID_raw);
             if (userDao.checkUserName(internID) != null){
-                DailyProgress dailyProgress = new DailyProgress(internID, date, description, mentorID);
+                DailyProgress dailyProgress = new DailyProgress(internID, date, description, 0, mentorID);
                 dailyProgressDao.insert(dailyProgress);
                 response.sendRedirect("dailyProgress");
             }else{

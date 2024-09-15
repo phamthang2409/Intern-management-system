@@ -4,12 +4,15 @@
  */
 package controller;
 
+import DAO.DailyProgressDao;
+import Model.DailyProgress;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -55,6 +58,9 @@ public class MentorDashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DailyProgressDao dailyProgressDao = new DailyProgressDao();
+        List<DailyProgress> list = dailyProgressDao.getAll();
+        request.setAttribute("listDailyProgress", list);
         request.getRequestDispatcher("mentor_dashboard.jsp").forward(request, response);
     }
 

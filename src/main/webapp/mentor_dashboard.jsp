@@ -67,46 +67,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Dữ liệu từ daily_progress.html và skill_assessment.html sẽ được hiển thị tại đây -->
+                        <c:if test="${requestScope.listDailyProgress != null}">
+                            <c:forEach items="${requestScope.listDailyProgress}" var="i">
+                                <tr>
+                                    <td>Tên Thực tập sinh</td>
+                                    <td>${i.getDateReport()}</td>
+                                    <td>${i.getDescription()}</td>
+                                    <c:if test="${i.getStatus() == 0}">
+                                        <td>Chưa đánh giá Kỹ năng</td>
+                                    </c:if>
+                                    <c:if test="${i.getStatus() == 1}">
+                                        <td>Đã đánh giá Kỹ năng</td>
+                                    </c:if>
+                                </tr>
+                            </c:forEach>
+
+                        </c:if>
+                        <c:if test="${requestScope.listDailyProgress == null}">
+                            <h2>Không tìm thấy dữ liệu.</h2>
+                        </c:if>
                     </tbody>
                 </table>
             </section>
         </main>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Lấy dữ liệu từ Local Storage
-                let dailyProgress = JSON.parse(localStorage.getItem('dailyProgress')) || [];
-                let evaluations = JSON.parse(localStorage.getItem('evaluations')) || [];
-
-                let tableBody = document.querySelector('#mentorTable tbody');
-
-                dailyProgress.forEach(progress => {
-                    let row = document.createElement('tr');
-
-                    let nameCell = document.createElement('td');
-                    nameCell.textContent = progress.name;
-                    row.appendChild(nameCell);
-
-                    let dateCell = document.createElement('td');
-                    dateCell.textContent = progress.date;
-                    row.appendChild(dateCell);
-
-                    let descriptionCell = document.createElement('td');
-                    descriptionCell.textContent = progress.description;
-                    row.appendChild(descriptionCell);
-
-                    let evaluationCell = document.createElement('td');
-                    let evaluation = evaluations.find(e => e.name === progress.name);
-                    evaluationCell.textContent = evaluation ? `${evaluation.score}%` : 'Chưa đánh giá';
-                    row.appendChild(evaluationCell);
-
-                    tableBody.appendChild(row);
-                });
-            });
-            syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-            autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
-        </script>
-
     </body>
 </html>
