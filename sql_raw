@@ -1,0 +1,102 @@
+--User
+insert into User(userName, passWord, role, profileID) values("admin", "admin", "Admin", 4);
+Select * from User where ID = 1;
+CREATE TABLE User (
+    ID       INTEGER            PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    userName NVARCHAR (100) NOT NULL,
+    passWord NVARCHAR (100) NOT NULL,
+    role     NVARCHAR (20)  NOT NULL,
+    profileID INTEGER            NOT NULL,
+    foreign key (profileID) references Profile(ID)
+);
+drop table Profile;
+-- admin quản lý tuỷen dụng
+CREATE TABLE Recruitment_Campaigns (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    campaignName NVARCHAR(255) NOT NULL,
+    position NVARCHAR(255) NOT NULL,
+    salary INT NOT NULL,
+    education NVARCHAR(255) NOT NULL
+);
+
+--Danh sách InternProfie đăng ký
+
+insert into Profile(profileFirstName, profileLastName, profileDOB, 
+profileEmail, trainingProgram, profilePhone, profileEducation, profilePosition, profileSalary, status)
+values("Admin", "Admin", "22-06-2004", "tranngocphuoc.2000vta@gmail.com", "Quản lý trang web", "0393329634", "Bằng đại học", "Admin", 100000, 1);
+
+CREATE TABLE Profile (
+    ID               INTEGER primary key AUTOINCREMENT DEFAULT 1,
+    profileFirstName NVARCHAR (50) NOT NULL,
+    profileLastName  NVARCHAR (50) NOT NULL,
+    profileDOB       DATE NOT NULL,
+    profileEmail     NVARCHAR (50) NOT NULL,
+    trainingProgram  NVARCHAR (200) NOT NULL,
+    profilePhone     NVARCHAR (20) NOT NULL,
+    profileEducation VARCHAR (20) NOT NULL,
+    profilePosition  NVARCHAR (50) NOT NULL,
+    profileSalary    NVARCHAR (50) NOT NULL,
+    status           INTEGER     NOT NULL DEFAULT 0
+);
+
+
+--Lên lịch phỏng vấn
+drop table InterviewForm;
+CREATE TABLE InterviewForm (
+    candidateID      NVARCHAR (50)  NOT NULL,
+    candidateName    NVARCHAR (200) NOT NULL,
+    startDate        DATE           NOT NULL,
+    sessionStartTime TIME           NOT NULL,
+    location         NVARCHAR (255) NOT NULL,
+    staffID          INTEGER        NOT NULL,
+    FOREIGN KEY (
+        staffID
+    )
+    REFERENCES User (ID)
+);
+
+drop table TrainingForm;
+
+-- staff chương trình đào tạo
+CREATE TABLE TrainingForm (
+	ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+	programName NVARCHAR(255) NOT NULL,
+	startDate DATE NOT NULL,
+	endDate DATE NOT NULL,
+	sessionStartTime TIME NOT NULL,
+	sessionEndTime TIME NOT NULL,
+	trainerName NVARCHAR(255) NOT NULL,
+         trainerID INTEGER NOT NULL,
+         foreign key (trainerID) references Profile(ID)
+);
+
+--Tiến độ hằng ngày của intern
+Create table DailyProgress (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+        InternID   NVARCHAR(100) NOT NULL,
+        DateReport DATE NOT NULL,
+        Description NVARCHAR(255) NOT NULL,
+        Status INTEGER NOT NULL DEFAULT 0,
+        MentorID    INTEGER NOT NULL,
+        FOREIGN KEY (MentorID) references User(ID)
+);
+
+--Đánh giá kỹ năng intern
+Create table SkillAssessment(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    InternName NVARCHAR(100) NOT NULL,
+    TeamWorkScore Nvarchar(20) NOT NULL,
+    FinishWorkScore NVARCHAR(20) NOT NULL,
+    CommunicationScore NVARCHAR(20) NOT NULL,
+    InternID INTEGER NOT NULL,
+    FOREIGN KEY (InternID) references Profile(profileID)
+);
+
+Create table PerformanceTracking(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    InternID NVARCHAR(50) NOT NULL,
+    AbsentSession INTEGER NOT NULL,
+    SkillName NVARCHAR(100) NOT NULL,
+    SkillScore NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (InternID) references User(userName)
+);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <h1>QUẢN LÝ THỰC TẬP SINH</h1>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="notification">
+        <h2>THÔNG BÁO</h2>
+        <div class="announcement">
+            <div class="date">Tháng 09</div>
+            <div class="title">NGỌC PHƯỚC THOÁT Ế VỚI NHƯ NHƯ TRONG MỘT NGÀY MƯA<span class="new">new</span></div>
+            <a href="#" class="detail">Xem chi tiết</a>
+        </div>
+        <!-- Add more announcements as needed -->
+    </div>
+
+    <div class="login-box">
+        <h3>THÔNG TIN ĐĂNG NHẬPll</h3>
+        <form action="/login" method="POST">
+            <input type="text" name="student_id" placeholder="Nhập mã sinh viên" required>
+            <input type="password" name="password" placeholder="Nhập mật khẩu" required>
+            <div class="login-role">
+                <label for="role">Quyền đăng nhập:</label>
+                <select name="role" id="role">
+                    <option value="admin">Quản trị viên</option>
+                    <option value="staff">Người hướng dẫn</option>
+                    <option value="intern">Thực tập sinh</option>
+                </select>
+            </div>
+
+            <button type="submit">Đăng Nhập</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Hồ sơ Thực tập sinh</title>
+    <link rel="stylesheet" href="intern_profiles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+<header>
+    <h1>Quản lý Hồ sơ Thực tập sinh</h1>
+    <nav>
+        <ul>
+            <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
+            <li><a href="recruitment.html"><button>Quản lý Tuyển dụng</button></a></li>
+            <li><a href="intern_profiles.html"><button>Quản lý Hồ sơ Thực tập sinh</button></a></li>
+            <li><a href="reporting_analysis.html"><button>Báo cáo và Phân tích</button></a></li>
+
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2>Danh sách Thực tập sinh</h2>
+    <table id="internsTable" class="table-row">
+        <thead>
+        <tr>
+            <th>Họ và Tên</th>
+            <th>Ngày tháng năm sinh</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Chương trình đào tạo</th>
+            <th>Trình độ học vấn</th>
+            <th>Vị trí ứng tuyển</th>
+            <th>Mức lương</th>
+            <th>Hành động</th>
+            <th>Cấp tài khoan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Dữ liệu hồ sơ sẽ được hiển thị tại đây -->
+        </tbody>
+    </table>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let approvedInterns = JSON.parse(localStorage.getItem('approvedInterns')) || [];
+        const internsTable = document.getElementById('internsTable').getElementsByTagName('tbody')[0];
+
+        approvedInterns.forEach((profile, index) => {
+            let row = internsTable.insertRow();
+
+            row.insertCell(0).textContent = profile.lastName + ' ' + profile.firstName;
+            row.insertCell(1).textContent = profile.dob;
+            row.insertCell(2).textContent = profile.email;
+            row.insertCell(3).textContent = profile.phone;
+            row.insertCell(4).textContent = profile.program;
+            row.insertCell(5).textContent = profile.education;
+            row.insertCell(6).textContent = profile.position;
+            row.insertCell(7).textContent = profile.salary;
+
+            // Thêm nút Xóa
+            let actionCell = row.insertCell(7);
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Xóa';
+            deleteButton.classList.add('delete-btn'); // Apply the delete button style
+            deleteButton.addEventListener('click', function () {
+                // Xóa hồ sơ khỏi danh sách
+                approvedInterns.splice(index, 1);
+                localStorage.setItem('approvedInterns', JSON.stringify(approvedInterns));
+                window.location.reload(); // Reload trang để cập nhật danh sách
+            });
+            actionCell.appendChild(deleteButton);
+
+            // Thêm nút Thêm
+            let addCell = row.insertCell(8);
+            let addButton = document.createElement('button');
+            addButton.textContent = 'Thêm';
+            addButton.classList.add('add-btn'); // Apply the add button style
+            addButton.addEventListener('click', function () {
+                // Hành động khi nhấn nút "Thêm"
+                console.log('Thực hiện hành động thêm cho:', profile);
+                // Bạn có thể tùy chỉnh logic của nút Thêm ở đây
+            });
+            addCell.appendChild(addButton);
+
+        });
+    });
+    syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
+    autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
+
+
+</script>
+
+</body>
+</html>

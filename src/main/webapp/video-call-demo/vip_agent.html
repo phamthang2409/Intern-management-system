@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Agent</title>
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <style>
+        #video-container {
+            position: relative;
+            margin: auto;
+            width: 640px;
+        }
+
+        video {
+            background: #dee;
+            display: none;
+        }
+
+        #localVideo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            z-index: 10;
+            background: #333;
+        }
+
+        #remoteVideo {
+            width: 100%;
+        }
+
+        #action-buttons {
+            margin: auto;
+            text-align: center;
+        }
+
+        .hidden-first {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-12">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2>VIP agent</h2>
+                    <p>By <a href="https://developer.stringee.com/">stringee.com</a></p>
+                    <div id="incoming-call-notice" style="display: none;">
+                        <div class="spinner-grow text-primary" role="status"  >
+                            <span class="sr-only">Incoming call...</span>
+                        </div>
+                        <h3>Incoming call...</h3>
+                    </div>
+                </div>
+                
+            </div>
+
+                <div id="video-container">
+                    <video id="localVideo" autoplay muted></video>
+                    <video id="remoteVideo" autoplay style="height: 360px;"></video>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col" id="action-buttons">
+                <button style="display: none;" id="callButton" class="btn btn-success">Call</button>
+                <button id="answerCallButton" class="btn btn-info hidden-first">Answer Call</button>
+                <button id="rejectCallButton" class="btn btn-warning hidden-first">Reject Call</button>
+                <button id="endCallButton" class="btn btn-danger hidden-first">End Call</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/socket.io-2.2.0.js"></script>
+    <script src="js/StringeeSDK-1.5.10.js"></script>
+    
+    
+
+
+    <script>
+        var token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTQ0MCIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1NzQ0MCwidXNlcklkIjoidmlwX2FnZW50In0.x88D25tAZRi3c8pc3tmVXpCD0PFCdcX0n5yECqYXgE8';
+        var callerId = 'vip_agent';
+        var calleeId = 'client_01';
+    </script>
+
+
+    <script src="js/code.js"></script>
+</body>
+</html>

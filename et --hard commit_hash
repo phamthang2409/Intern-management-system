@@ -1,0 +1,267 @@
+[33mcommit 5e223a9d0adc9ad76449dfa913be9fb4a0a679ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 4208596 92829de
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Wed Sep 11 18:07:39 2024 +0700
+
+    add
+
+[33mcommit 92829de636ea3c14a28d9e6fbe99edea7e515efd[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 18:01:18 2024 +0700
+
+    Update db
+
+[33mcommit 61355f2b1740044b916d8e2b78e49fd0252d5155[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 17:56:24 2024 +0700
+
+    delete db
+
+[33mcommit 4208596677e6f6648d353a8d6430333d743c04bf[m
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Wed Sep 11 17:47:41 2024 +0700
+
+    Update staff profile
+
+[33mcommit a69153047c5383e9231d29f32c9a6e82ff6e1448[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 17:26:07 2024 +0700
+
+    Update
+
+[33mcommit ed0f1b4830ffaa0009b3838377249e42f5effee1[m
+Merge: 5667ed0 530b887
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 17:24:21 2024 +0700
+
+    Merge origin/master
+
+[33mcommit 5667ed05451b4551402dc63d0da97bb3e4a5180f[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 17:22:34 2024 +0700
+
+    Update
+
+[33mcommit 530b88708ad1da45259a0dfad5a007333df33d07[m
+Merge: 7aa6630 982f269
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Wed Sep 11 16:33:20 2024 +0700
+
+    update header
+
+[33mcommit 7aa663006ec631f8ad715216178babbbef8bb289[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Wed Sep 11 16:29:18 2024 +0700
+
+    update header
+
+[33mcommit 982f26980249435cc5b0fd11e70f977d47d93d1a[m
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Wed Sep 11 15:37:50 2024 +0700
+
+    fix
+
+[33mcommit 6fbb46a6ea9f7017a0d5e1be151b78b999fd2a29[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 11 11:22:29 2024 +0700
+
+    Update
+
+[33mcommit e29671e8da1e9eacd94236d55b1e2e187481083a[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Tue Sep 10 21:59:48 2024 +0700
+
+    update staff, mentor
+
+[33mcommit 42c391cf167225bc70718ef4d1dc5a5faae6de5e[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Tue Sep 10 11:19:39 2024 +0700
+
+    Fix add intern
+
+[33mcommit f93ede43c84e1e315d836322357063544976fc37[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Mon Sep 9 23:22:52 2024 +0700
+
+    Fix Register intern
+
+[33mcommit 9924b6402ba6be15de817109a5ca3e747736e2cb[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Sat Sep 7 16:51:15 2024 +0700
+
+    Fix
+
+[33mcommit 7540dfae0856d2800cb0b1511d56ccec3ca4ed1f[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Sat Sep 7 16:01:16 2024 +0700
+
+    update admin
+
+[33mcommit eea94898a10197ac2218ba180572e6ad46318dab[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Sat Sep 7 11:15:54 2024 +0700
+
+    ADD Filter Login
+
+[33mcommit e530ac9fdf43e24430a5d89acaf5391278de5777[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Sat Sep 7 00:13:23 2024 +0700
+
+    Update intern dashboard
+
+[33mcommit 5cb50895ac10a2d15eb9be45743b72a688b42c4f[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Fri Sep 6 21:54:02 2024 +0700
+
+    update staff
+
+[33mcommit 2c76318dbe4081142250fcefe6394788fc9d44e8[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Fri Sep 6 19:22:21 2024 +0700
+
+    fixx
+
+[33mcommit a41a8972da4b04e9d8c3cbaee96d0de804676543[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Fri Sep 6 17:32:51 2024 +0700
+
+    fix
+
+[33mcommit 73e64292a6999df6ef44e3f29f0fbc5e0d1df74d[m
+Author: Pham Thang <149677255+phamthang2409@users.noreply.github.com>
+Date:   Fri Sep 6 15:21:00 2024 +0700
+
+    Delete README.md
+
+[33mcommit a951568119a362e840456a209f4a3a53b4ab6db7[m
+Author: Pham Thang <149677255+phamthang2409@users.noreply.github.com>
+Date:   Fri Sep 6 15:20:43 2024 +0700
+
+    Delete Design-Intern-manager.png
+
+[33mcommit 335403662410d9a69ada84f4bbb1e63b122d2ea1[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Fri Sep 6 00:17:40 2024 +0700
+
+    Update Intern Profiles Dashboard, sql
+
+[33mcommit 8b2c16afd94da06a1fe89ccc4ac77e4961201163[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Thu Sep 5 22:41:16 2024 +0700
+
+    login + css
+
+[33mcommit 1031f0b955c230d9c35d6010b89408f66ec38c3e[m
+Author: ntq <tranquynhnguyen2004@gmail.com>
+Date:   Thu Sep 5 21:29:21 2024 +0700
+
+    update intern_dashboard, file intern_dasdboard
+
+[33mcommit 3adb6cbd48d5f773150802800fbc7b8e11b25c85[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Thu Sep 5 16:39:42 2024 +0700
+
+    Update button intern profile
+
+[33mcommit 8b6d3bf7037f4691def73ed4c73b7e2008245b6b[m
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Thu Sep 5 16:20:36 2024 +0700
+
+    fix
+
+[33mcommit f77b318646e94568092536a9ac029a073c493202[m
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Thu Sep 5 16:16:17 2024 +0700
+
+    fix
+
+[33mcommit 971ff4d8082d562bfec027c403f64af078874284[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Thu Sep 5 12:11:45 2024 +0700
+
+    ADD Interview Form
+
+[33mcommit 9f69423683b7e5d90fb213205a304eaf7b3bf8ab[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Wed Sep 4 23:27:26 2024 +0700
+
+    Update TrainingForm
+
+[33mcommit b148a8baef80ec69f9e778c372d73018aead62fe[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Tue Sep 3 23:54:41 2024 +0700
+
+    ADD Training Form
+
+[33mcommit 2e5db4892691b70c1b6c59646f91872b939aee4a[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Tue Sep 3 16:25:11 2024 +0700
+
+    update staff
+
+[33mcommit a03b3a6ae98e3114b9085849981a8fb2ddc5f901[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Tue Sep 3 15:55:08 2024 +0700
+
+    update
+
+[33mcommit 0cf55cc783d9de8b4df44d22e07b0941bdae0a90[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Fri Aug 30 23:51:34 2024 +0700
+
+    init
+
+[33mcommit 6269c39c236b6e699925eeb50e8e74e466bc2d9a[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Fri Aug 30 23:43:15 2024 +0700
+
+    Delete old Project
+
+[33mcommit a340b7c35c57633ccd101775ccbc009e49c36c20[m
+Author: Bravery <148123910+DuongNguyenCoder@users.noreply.github.com>
+Date:   Tue Aug 27 01:28:44 2024 +0700
+
+    update index:))
+
+[33mcommit cfc9a8c8a5e467cbd1302c2a4b98f0085f848bf3[m
+Merge: e18e9f6 052fd13
+Author: Bravery <148123910+DuongNguyenCoder@users.noreply.github.com>
+Date:   Tue Aug 27 01:19:58 2024 +0700
+
+    Merge branch 'master' of https://github.com/phamthang2409/Intern-management-system
+
+[33mcommit e18e9f66e242f091418fc97f25b61f50d36b5037[m
+Author: Bravery <148123910+DuongNguyenCoder@users.noreply.github.com>
+Date:   Tue Aug 27 01:10:33 2024 +0700
+
+    update index and css
+
+[33mcommit 052fd13ee977cc0e93ef4ff9fcd979ffea56bf76[m
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Mon Aug 26 23:23:49 2024 +0700
+
+    fix
+
+[33mcommit 432d622af06ac677725ea523cd0a1398e00586cd[m
+Merge: 0e3629b d9e6f23
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Sun Aug 25 10:17:35 2024 +0700
+
+    Merge branch 'master' of https://github.com/phamthang2409/Intern-management-system
+
+[33mcommit d9e6f238e70eef8900433609664ad9a9b2408c8d[m
+Author: Trần Ngọc Phước <tranngocphuoc.2000vta@gmail.com>
+Date:   Sun Aug 25 10:16:24 2024 +0700
+
+    Update code
+
+[33mcommit 0e3629ba3e9fa577d30d8fe86dcce1fd3d585aae[m
+Merge: 79b61fc 9c96b3d
+Author: phamthang2409 <149677255+phamthang2409@users.noreply.github.com>
+Date:   Sun Aug 25 09:53:20 2024 +0700
+
+    Merge branch 'master' of https://github.com/phamthang2409/Intern-management-system
+
+[33mcommit 9c96b3db2ebc5ea091a03a7789ca37ccf9f79ed6[m
+Merge: 7747970 1290625
+Author: ntq <tranquynhn
