@@ -91,3 +91,19 @@ Create table SkillAssessment(
     InternID INTEGER NOT NULL,
     FOREIGN KEY (InternID) references Profile(profileID)
 );
+
+Create table PerformanceTracking(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    InternID NVARCHAR(50) NOT NULL,
+    AbsentSession INTEGER NOT NULL,
+    SkillName NVARCHAR(100) NOT NULL,
+    SkillScore NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (InternID) references User(userName)
+);
+
+Create table Chat(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
+    Chat nvarchar(256) NOT NULL,
+    InternID nvarchar(50),
+    StaffID nvarchar(50)
+);

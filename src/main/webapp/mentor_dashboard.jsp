@@ -91,4 +91,11 @@
             </section>
         </main>
     </body>
+    <script type="text/javascript">
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
+            }
+        }
+    </script>
 </html>

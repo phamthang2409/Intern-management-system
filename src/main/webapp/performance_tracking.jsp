@@ -4,7 +4,13 @@
     Author     : PC
 --%>
 
+<%@page import="Model.Profile"%>
+<%@page import="DAO.ProfileDao"%>
+<%@page import="Model.PerformanceTracking"%>
+<%@page import="Model.User"%>
+<%@page import="DAO.UserDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,24 +28,29 @@
                     <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
                 </ul>
             </nav>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
-        
+
         <main>
             <h2>Quản lý Hiệu suất</h2>
-            <form id="performanceForm">
-                <label for="internName">Tên Thực tập sinh:</label>
-                <input type="text" id="internName" name="internName" required><br><br>
+            <c:if test="${requestScope.msg != null}">
+                <h2 style="color: red">${requestScope.msg}</h2>
+            </c:if>
+                <c:if test="${requestScope.msg2 != null}">
+                <h2 style="color: red">${requestScope.msg2}</h2>
+            </c:if>
+            <form id="performanceForm" action="performanceTracking" method="post">
+                <label for="internName">Mã số thực tập sinh:</label>
+                <input type="text" id="internID" name="internID" required><br><br>
 
                 <label for="absentSessions">Số buổi vắng:</label>
-                <input type="number" id="absentSessions" name="absentSessions" min="0" required><br><br>
+                <input type="number" id="absentSession" name="absentSession" min="0" required><br><br>
 
                 <label for="skillName">Tên Kỹ năng được Đào tạo:</label>
                 <input type="text" id="skillName" name="skillName" required><br><br>
 
                 <label for="skillScore">Điểm Kỹ năng:</label>
-                <input type="number" id="skillScore" name="skillScore" min="0" max="100" required><br><br>
-
+                <input type="number" id="skillScore" name="skillScore" min="0" max="10" required><br><br>
                 <button type="submit">Thêm Hiệu suất</button>
             </form>
 
@@ -54,87 +65,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Hiệu suất của thực tập sinh sẽ được thêm tại đây -->
+                    <%!
+                        String nameIntern;
+                        UserDao userDao = new UserDao();
+                        ProfileDao profileDao = new ProfileDao();
+                        int InternID;
+                    %>
+
+                    <c:forEach items="${requestScope.listPerformanceTracking}" var="i">
+                        <%
+                            PerformanceTracking performanceTracking = (PerformanceTracking) pageContext.getAttribute("i");
+                            User user = userDao.checkUserName(performanceTracking.getInternID());
+                            if (user != null) {
+                                InternID = user.getProfileID();
+                                Profile profileIntern = profileDao.findByID(InternID);
+                                nameIntern = profileIntern.getProfileFirstName() + " " + profileIntern.getProfileLastName();
+                            }
+                        %>
+                        <tr>
+                            <td><%= nameIntern %></td>
+                            <td>${i.getAbsentSession()}</td>
+                            <td>${i.getSkillName()}</td>
+                            <td>${i.getSkillScore()}</td>
+                            <td><button id="delete" onclick="doDelete(${i.getID()})">Xóa</button></td>                  
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </main>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Lấy dữ liệu từ Local Storage
-                let performanceData = JSON.parse(localStorage.getItem('performanceData')) || [];
-
-                // Hàm hiển thị hiệu suất thực tập sinh
-                function displayPerformance() {
-                    const performanceTableBody = document.querySelector('#performanceTable tbody');
-                    performanceTableBody.innerHTML = ''; // Xóa dữ liệu cũ
-
-                    performanceData.forEach((performance, index) => {
-                        let row = document.createElement('tr');
-
-                        let internNameCell = document.createElement('td');
-                        internNameCell.textContent = performance.internName;
-                        row.appendChild(internNameCell);
-
-                        let absentSessionsCell = document.createElement('td');
-                        absentSessionsCell.textContent = performance.absentSessions;
-                        row.appendChild(absentSessionsCell);
-
-                        let skillNameCell = document.createElement('td');
-                        skillNameCell.textContent = performance.skillName;
-                        row.appendChild(skillNameCell);
-
-                        let skillScoreCell = document.createElement('td');
-                        skillScoreCell.textContent = performance.skillScore;
-                        row.appendChild(skillScoreCell);
-
-                        let actionCell = document.createElement('td');
-                        let deleteButton = document.createElement('button');
-                        deleteButton.textContent = 'Xóa';
-                        deleteButton.addEventListener('click', function () {
-                            deletePerformance(index);
-                        });
-                        actionCell.appendChild(deleteButton);
-                        row.appendChild(actionCell);
-
-                        performanceTableBody.appendChild(row);
-                    });
-                }
-
-                // Hàm xóa hiệu suất thực tập sinh
-                function deletePerformance(index) {
-                    performanceData.splice(index, 1);
-                    localStorage.setItem('performanceData', JSON.stringify(performanceData));
-                    displayPerformance();
-                }
-
-                // Hàm thêm hiệu suất thực tập sinh mới
-                document.querySelector('#performanceForm').addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    let internName = document.querySelector('#internName').value;
-                    let absentSessions = document.querySelector('#absentSessions').value;
-                    let skillName = document.querySelector('#skillName').value;
-                    let skillScore = document.querySelector('#skillScore').value;
-
-                    performanceData.push({
-                        internName,
-                        absentSessions,
-                        skillName,
-                        skillScore
-                    });
-
-                    localStorage.setItem('performanceData', JSON.stringify(performanceData));
-
-                    document.querySelector('#performanceForm').reset(); // Xóa form
-                    displayPerformance();
-                });
-
-                // Hiển thị hiệu suất khi trang được tải
-                displayPerformance();
-            });
-            syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-            autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
-        </script>
     </body>
+    <script type="text/javascript">
+        function doDelete(id) {
+            if (confirm("Are you want to delete")) {
+                window.location = "delete?id=" + id + "&name=performanceTracking";
+            }
+        }
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
+            }
+        }
+    </script>
 </html>

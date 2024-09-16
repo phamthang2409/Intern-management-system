@@ -12,6 +12,7 @@ controller\AdminDashBoardServlet.class
 controller\MentorDashBoardServlet.class
 controller\StaffProfileServlet.class
 Model\SkillAssessment.class
+Model\PerformanceTracking.class
 controller\CommunicationToolsServlet.class
 Model\InterviewScheduling.class
 DAO\SkillAssessmentDao.class
@@ -32,6 +33,7 @@ Model\User.class
 DAO\TrainingFormDao.class
 Model\Report.class
 Model\TrainingForm.class
+DAO\PerformanceTrackingDao.class
 Model\RecruitmentCampaign.class
 controller\PerformanceTrackingServlet.class
 controller\SkillAssessmentServlet.class

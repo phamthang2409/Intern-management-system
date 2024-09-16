@@ -7,12 +7,13 @@ package DAO;
 import Connection.DBContext;
 import Model.InterviewScheduling;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author PC
@@ -48,7 +49,7 @@ public class InterviewSchedulingDao extends DBContext{
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
+                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getInt("ID"),rs.getString("candidateID"), rs.getString("candidateName"),
                         rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"), rs.getInt("staffID"));
                 list.add(interviewScheduling);
             }
@@ -74,7 +75,7 @@ public class InterviewSchedulingDao extends DBContext{
             st.setString(1, candidateID);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
+                InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getInt("ID"),rs.getString("candidateID"), rs.getString("candidateName"),
                         rs.getDate("startDate"), rs.getTime("sessionStartTime"), rs.getString("location"), rs.getInt("staffID"));
                 list.add(interviewScheduling);
             }
@@ -116,13 +117,15 @@ public class InterviewSchedulingDao extends DBContext{
         }
     }
     
-    public InterviewScheduling check(String userName) {
+    public InterviewScheduling check(String candidateID, Date startDate, Time starTime) {
 
         Connection conn = DBContext();
-        String sql = "Select * from User where userName = ?";
+        String sql = "Select * from InterviewForm where candidateID = ? and startDate = ? and sessionStartTime = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, userName);
+            st.setString(1, candidateID);
+            st.setDate(2, startDate);
+            st.setTime(3, starTime);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 InterviewScheduling interviewScheduling = new InterviewScheduling(rs.getString("candidateID"), rs.getString("candidateName"),
@@ -142,12 +145,12 @@ public class InterviewSchedulingDao extends DBContext{
         return null;
     }
     
-    public void delete(String id){
+    public void delete(int id){
         Connection conn = DBContext();
-        String sql = "DELETE from InterviewForm where candidateID = ?";
+        String sql = "DELETE from InterviewForm where ID = ?";
         try {
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, id);
+            st.setInt(1, id);
             st.executeUpdate();
             System.out.println("Delete Success");
         } catch (SQLException e) {

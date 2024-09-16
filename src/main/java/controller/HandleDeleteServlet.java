@@ -6,6 +6,7 @@ package controller;
 
 import DAO.DailyProgressDao;
 import DAO.InterviewSchedulingDao;
+import DAO.PerformanceTrackingDao;
 import DAO.ProfileDao;
 import DAO.RecruitmentCampaignDao;
 import DAO.TrainingFormDao;
@@ -92,14 +93,20 @@ public class HandleDeleteServlet extends HttpServlet {
                 trainingFormDao.delete(id);
                 response.sendRedirect("trainingForm");
             }else if(name.equals("interviewScheduling")){
+                id = Integer.parseInt(id_raw);
                 InterviewSchedulingDao interviewSchedulingDao = new InterviewSchedulingDao();
-                interviewSchedulingDao.delete(id_raw);
+                interviewSchedulingDao.delete(id);
                 response.sendRedirect("interviewScheduling");
             }else if (name.equals("dailyProgress")){
                 id = Integer.parseInt(id_raw);
                 DailyProgressDao dailyProgressDao = new DailyProgressDao();
                 dailyProgressDao.delete(id);
                 response.sendRedirect("dailyProgress");
+            }else if ("performanceTracking".equals(name)){
+                id = Integer.parseInt(id_raw);
+                PerformanceTrackingDao performanceTrackingDao = new PerformanceTrackingDao();
+                performanceTrackingDao.delete(id);
+                response.sendRedirect("performanceTracking");
             }
         }catch(NumberFormatException e){
             System.err.println(e);

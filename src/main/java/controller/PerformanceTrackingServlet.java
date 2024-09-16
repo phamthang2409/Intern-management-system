@@ -4,12 +4,16 @@
  */
 package controller;
 
+import DAO.PerformanceTrackingDao;
+import DAO.UserDao;
+import Model.PerformanceTracking;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -55,8 +59,11 @@ public class PerformanceTrackingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PerformanceTrackingDao performanceTrackingDao = new PerformanceTrackingDao();
+        List<PerformanceTracking> listPerformanceTracking = performanceTrackingDao.getAll();
+        request.setAttribute("listPerformanceTracking", listPerformanceTracking);
         request.getRequestDispatcher("performance_tracking.jsp").forward(request, response);
-        
+
     }
 
     /**
@@ -70,7 +77,34 @@ public class PerformanceTrackingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String internID = request.getParameter("internID");
+        String absentSession_raw = request.getParameter("absentSession");
+        String skillName = request.getParameter("skillName");
+        String skillScore_raw = request.getParameter("skillScore");
+        PerformanceTrackingDao performanceTrackingDao = new PerformanceTrackingDao();
+        int absentSession, skillScore;
+        try {
+            absentSession = Integer.parseInt(absentSession_raw);
+            skillScore = Integer.parseInt(skillScore_raw);
+            PerformanceTracking checkPerformanceTracking = performanceTrackingDao.findbyID(internID);
+            if (checkPerformanceTracking == null) {
+                UserDao userDao = new UserDao();
+                if (userDao.checkUserName(internID) != null) {
+                    PerformanceTracking performanceTracking = new PerformanceTracking(internID, absentSession, skillName, skillScore);
+                    performanceTrackingDao.insert(performanceTracking);
+                    response.sendRedirect("performanceTracking");
+                } else {
+                    request.setAttribute("msg2", "InternID does not register");
+                    request.getRequestDispatcher("performance_tracking.jsp").forward(request, response);
+                }
+
+            } else {
+                request.setAttribute("msg", "InternID has been reported");
+                request.getRequestDispatcher("performance_tracking.jsp").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        }
     }
 
     /**

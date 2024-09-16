@@ -28,6 +28,10 @@
         <servlet-name>InterviewScheduleServlet</servlet-name>
         <servlet-class>controller.InterviewScheduleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HandleChat</servlet-name>
+        <servlet-class>controller.HandleChat</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HandleDeleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>InterviewScheduleServlet</servlet-name>
         <url-pattern>/interviewSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HandleChat</servlet-name>
+        <url-pattern>/chat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

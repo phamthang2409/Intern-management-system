@@ -20,7 +20,7 @@
             <h1>Thiết lập Chương trình Đào tạo</h1>
             <%@include file="menu_mentor.jsp"%>
         </header>
-        
+
         <main>
             <h2>Chương trình Đào tạo</h2>
             <c:if test="${requestScope.msg != null}">
@@ -48,7 +48,6 @@
                         <option value="${i.getProfileFirstName()} ${i.getProfileLastName()}">${i.getProfileFirstName()} ${i.getProfileLastName()}</option>
                         <input type="hidden" name="profileID" value="${i.getID()}"/>
                     </c:forEach>
-                    
                 </select>
                 <br><br>
 
@@ -84,10 +83,15 @@
         </main>
     </body>
     <script type="text/javascript">
-            function doDelete(id){
-                if (confirm("Are you want to delete")){
-                    window.location = "delete?id=" + id +"&name=trainingForm";
-                }
+        function doDelete(id) {
+            if (confirm("Are you want to delete")) {
+                window.location = "delete?id=" + id + "&name=trainingForm";
             }
+        }
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
+            }
+        }
     </script>
 </html>

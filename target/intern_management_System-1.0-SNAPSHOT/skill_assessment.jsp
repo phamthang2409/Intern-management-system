@@ -23,7 +23,7 @@
                     <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>                
                 </ul>
             </nav>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
         <main>
             <h2>Đánh Giá Kỹ Năng: </h2>
@@ -100,6 +100,12 @@
                 </div>
             </form>
         </main>
-
     </body>
+    <script type="text/javascript">
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
+            }
+        }
+    </script>
 </html>

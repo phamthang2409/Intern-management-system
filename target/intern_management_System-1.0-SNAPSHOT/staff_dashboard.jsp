@@ -22,24 +22,24 @@
         <script src="js/script.js"></script>
     </head>
     <body>
-       <style>
-    #username #user{
-        text-decoration: none;
-        color: white;
-    }
-    #username {
-        color: red; /* Màu chữ */
-        padding: 10px 20px; /* Khoảng cách bên trong nút */
-        text-align: center; /* Canh giữa chữ */
-        text-decoration: none; /* Bỏ gạch chân */
-        display: inline-block;
-        font-size: 16px; /* Kích thước chữ */
-        cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
-        position: absolute; /* Định vị tuyệt đối */
-        top: 10px; /* Cách cạnh trên 10px */
-        left: 10px; /* Cách cạnh phải 10px */
-    }
-</style>
+        <style>
+            #username #user{
+                text-decoration: none;
+                color: white;
+            }
+            #username {
+                color: red; /* Màu chữ */
+                padding: 10px 20px; /* Khoảng cách bên trong nút */
+                text-align: center; /* Canh giữa chữ */
+                text-decoration: none; /* Bỏ gạch chân */
+                display: inline-block;
+                font-size: 16px; /* Kích thước chữ */
+                cursor: pointer; /* Thay đổi con trỏ khi di chuột vào nút */
+                position: absolute; /* Định vị tuyệt đối */
+                top: 10px; /* Cách cạnh trên 10px */
+                left: 10px; /* Cách cạnh phải 10px */
+            }
+        </style>
         <header>
             <h1>Bảng điều khiển Nhân viên phụ trách</h1>
             <nav>
@@ -55,7 +55,7 @@
                     Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
                 </a>                              
             </li>
-            
+
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
         </header>
 
@@ -112,11 +112,11 @@
                                 %>
                                 <td>${i.getProfileFirstName()} ${i.getProfileLastName()}</td>
                                 <td>${i.getTrainingProgram()}</td>
-                                <td><%= startDate %></td>
-                                <td><%= endDate %></td>
-                                <td><%= startTime %></td>
-                                <td><%= endTime %></td>
-                                <td><%= nameTrainer %></td>
+                                <td><%= startDate%></td>
+                                <td><%= endDate%></td>
+                                <td><%= startTime%></td>
+                                <td><%= endTime%></td>
+                                <td><%= nameTrainer%></td>
                             </tr>
                         </c:forEach>
                     </c:if>
@@ -148,71 +148,91 @@
                 </tbody>
             </table>
         </main>
-    <!-- Bong bóng chat -->
-    <div class="chat-bubble" id="chatBubble">
-        <i class="fas fa-comment">💬</i>
-    </div>
-
-    <!-- Cửa sổ chat -->
-    <div class="chat-window" id="chatWindow">
-        <header>
-            <h3>Nhắn tin với chúng tôi</h3>
-        </header>
-        <div class="chat-content" id="chatContent">
-            <p>Xin chào! Bạn cần hỗ trợ gì?</p>
+        <!-- Bong bóng chat -->
+        <div class="chat-bubble" id="chatBubble">
+            <i class="fas fa-comment">💬</i>
         </div>
-        <!-- Khung nhập liệu chat -->
-        <textarea id="chatInput" placeholder="Nhập tin nhắn..."></textarea>
-        <button class="send-btn" id="sendButton">Gửi</button>
-    </div>
+
+        <!-- Cửa sổ chat -->
+        <div class="chat-window" id="chatWindow">
+            <header>
+                <h3>Nhắn tin với chúng tôi</h3>
+            </header>
+            <div class="chat-content" id="chatContent">
+                <p>Xin chào! Bạn cần hỗ trợ gì?</p>
+            </div>
+            <!-- Khung nhập liệu chat -->
+            <textarea id="chatInput" placeholder="Nhập tin nhắn..."></textarea>
+            <button class="send-btn" id="sendButton">Gửi</button>
+        </div>
 
     </body>
     <script>
         // Khi nhấp vào bong bóng chat, mở/đóng cửa sổ chat
-document.getElementById('chatBubble').addEventListener('click', function() {
-    var chatWindow = document.getElementById('chatWindow');
-    if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
-        chatWindow.style.display = 'flex'; // Hiển thị cửa sổ chat
-    } else {
-        chatWindow.style.display = 'none'; // Ẩn cửa sổ chat
-    }
-});
+        document.getElementById('chatBubble').addEventListener('click', function () {
+            var chatWindow = document.getElementById('chatWindow');
+            if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+                chatWindow.style.display = 'flex'; // Hiển thị cửa sổ chat
+            } else {
+                chatWindow.style.display = 'none'; // Ẩn cửa sổ chat
+            }
+        });
 
 // Xử lý gửi tin nhắn từ khung chat
-document.getElementById('sendButton').addEventListener('click', function() {
-    var chatInput = document.getElementById('chatInput').value;
-    var chatContent = document.getElementById('chatContent');
+        document.getElementById('sendButton').addEventListener('click', function () {
+            var chatInput = document.getElementById('chatInput').value;
+            var chatContent = document.getElementById('chatContent');
 
-    if (chatInput.trim() !== "") {
-        // Lưu tin nhắn vào localStorage để chia sẻ với các trang khác
-        var messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-        messages.push("Nhân viên: " + chatInput);
-        localStorage.setItem('chatMessages', JSON.stringify(messages));
+            if (chatInput.trim() !== "") {
+                // Lưu tin nhắn vào localStorage để chia sẻ với các trang khác
+                var messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+                messages.push("Nhân viên: " + chatInput);
+                localStorage.setItem('chatMessages', JSON.stringify(messages));
 
-        // Tạo thẻ <p> mới để hiển thị tin nhắn trên trang hiện tại
-        var newMessage = document.createElement('p');
-        newMessage.textContent = "Nhân viên: " + chatInput;
-        chatContent.appendChild(newMessage);
+                // Tạo thẻ <p> mới để hiển thị tin nhắn trên trang hiện tại
+                var newMessage = document.createElement('p');
+                newMessage.textContent = "Nhân viên: " + chatInput;
+                chatContent.appendChild(newMessage);
 
-        // Xóa nội dung trong khung nhập
-        document.getElementById('chatInput').value = '';
+                // Xóa nội dung trong khung nhập
+                document.getElementById('chatInput').value = '';
 
-        // Cuộn xuống để xem tin nhắn mới nhất
-        chatContent.scrollTop = chatContent.scrollHeight;
-    }
-});
+                // Cuộn xuống để xem tin nhắn mới nhất
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }
+        });
 
 // Đồng bộ thông tin từ trang staff_dashboard
-document.addEventListener('DOMContentLoaded', function () {
-    // Hiển thị các tin nhắn đã lưu trữ
-    var chatContent = document.getElementById('chatContent');
-    var storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-    storedMessages.forEach(function(message) {
-        var messageElement = document.createElement('p');
-        messageElement.textContent = message;
-        chatContent.appendChild(messageElement);
-    });
-});
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hiển thị các tin nhắn đã lưu trữ
+            var chatContent = document.getElementById('chatContent');
+            var storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+            storedMessages.forEach(function (message) {
+                var messageElement = document.createElement('p');
+                messageElement.textContent = message;
+                chatContent.appendChild(messageElement);
+            });
+        });
+
+// Đồng bộ thông tin từ trang intern_dashboard
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lấy thông tin thực tập sinh từ trang (hoặc từ dữ liệu nào đó trong thực tế)
+            let internName = document.getElementById('profileName').textContent;
+
+            // Hiển thị lời chào dựa trên thông tin
+            var chatContent = document.getElementById('chatContent');
+            var greetingMessage = document.createElement('p');
+            greetingMessage.textContent = "Xin chào " + internName + "! Chúng tôi có thể giúp gì cho bạn?";
+            chatContent.appendChild(greetingMessage);
+
+            // Hiển thị các tin nhắn đã lưu trữ
+            var storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+            storedMessages.forEach(function (message) {
+                var messageElement = document.createElement('p');
+                messageElement.textContent = message;
+                chatContent.appendChild(messageElement);
+            });
+        });
 
     </script>
 </html>

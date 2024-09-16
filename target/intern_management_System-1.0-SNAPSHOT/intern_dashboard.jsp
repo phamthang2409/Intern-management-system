@@ -3,6 +3,11 @@
     Created on : Aug 17, 2024, 1:15:12 PM
     Author     : PC
 --%>
+<%@page import="Model.Profile"%>
+<%@page import="Model.User"%>
+<%@page import="DAO.ProfileDao"%>
+<%@page import="DAO.UserDao"%>
+<%@page import="Model.InterviewScheduling"%>
 <!--Trang chủ Intern-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -67,26 +72,27 @@
 
             <!-- Nhắc nhở và lịch -->
             <section class="notifications">
-            <div class="reminders">
-                <h3>Nhắc nhở mới, chưa xem</h3>
-                <c:if test="${requestScope.cntInterview != 0}">
-                    <p>${requestScope.cntInterview}</p>
-                </c:if>
-                <c:if test="${requestScope.cntInterview == 0}">
-                    <p>0</p>
-                </c:if>
-                <a href="javascript:void(0);" onclick="showReminderDetails()">Xem chi tiết</a>
-            </div>
-            <div class="schedule">
-                <h3>Lịch Phỏng Vấn</h3>
-                <c:if test="${requestScope.cntInterview != 0}">
-                    <p>${requestScope.cntInterview}</p>
-                </c:if>
-                <c:if test="${requestScope.cntInterview == 0}">
-                    <p>0</p>
-                </c:if>
-                <a href="interviewSchedule">Xem chi tiết</a>
-            </div>
+                <div class="reminders">
+                    <h3>Nhắc nhở mới, chưa xem</h3>
+                    <c:if test="${requestScope.cntInterview != 0}">
+                        <p>${requestScope.cntInterview}</p>
+                    </c:if>
+                    <c:if test="${requestScope.cntInterview == 0}">
+                        <p>0</p>
+                    </c:if>
+                    <a href="javascript:void(0);" onclick="showReminderDetails()">Xem chi tiết</a>
+                </div>
+                <div class="schedule">
+                    <h3>Lịch Phỏng Vấn</h3>
+
+                    <c:if test="${requestScope.cntInterview != 0}">
+                        <p>${requestScope.cntInterview}</p>
+                    </c:if>
+                    <c:if test="${requestScope.cntInterview == 0}">
+                        <p>0</p>
+                    </c:if>
+                    <a href="interviewSchedule">Xem chi tiết</a>
+                </div>
             </section>
 
             <!-- Bảng hiển thị thông tin nhắc nhở mới, ẩn ban đầu -->
@@ -101,13 +107,32 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%!
+                            int cnt = 1;
+                            String staffName;
+                            int staffID;
+                        %>
                         <!-- Giả sử dữ liệu nhắc nhở được lấy từ requestScope -->
-                        <c:forEach var="reminder" items="${requestScope.reminders}">
+                        <c:forEach var="i" items="${sessionScope.listInterview}">
+                            <%
+                                InterviewScheduling interviewSchedulingIntern = (InterviewScheduling) pageContext.getAttribute("i");
+                                UserDao userDao = new UserDao();
+                                ProfileDao profileDao = new ProfileDao();
+                                staffID = interviewSchedulingIntern.getStaffID();
+                                User staff = userDao.findbyID(staffID);
+                                if (staff == null) {
+                                    System.out.println("Null staff");
+                                } else {
+                                    Profile profile = profileDao.findByID(staff.getProfileID());
+                                    staffName = profile.getProfileFirstName() + " " + profile.getProfileLastName();
+                                }
+                            %>
                             <tr>
-                                <td>${reminder.id}</td>
-                                <td>${reminder.content}</td>
-                                <td>${reminder.time}</td>
+                                <td><%= cnt %></td>
+                                <td> Bạn sẽ có cuộc phỏng vấn với <%= staffName %> </td>
+                                <td>${i.getStartDate()} ${i.getSessionStartTime()}</td>
                             </tr>
+                            <%= cnt++ %>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -121,7 +146,7 @@
             </section>
             <!-- Bong bóng chat -->
             <div class="chat-bubble" id="chatBubble">
-                <i class="chat-icon">💬</i>
+                <i class="fas fa-comment">💬</i>
             </div>
 
             <!-- Cửa sổ chat -->
@@ -129,41 +154,41 @@
                 <header>
                     <h3>Nhắn tin với chúng tôi</h3>
                 </header>
-                <div class="chat-content">
+                <div class="chat-content" id="chatContent">
                     <p>Xin chào! Bạn cần hỗ trợ gì?</p>
-                    <!-- Khung nhập liệu chat -->
-                    <textarea placeholder="Nhập tin nhắn..."></textarea>
                 </div>
-                <button class="send-btn">Gửi</button>
+                <!-- Khung nhập liệu chat -->
+                <textarea id="chatInput" placeholder="Nhập tin nhắn..."></textarea>
+                <button class="send-btn" id="sendButton">Gửi</button>
             </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
-            // Initialize the bar chart
-            var ctx = document.getElementById('scoreChart').getContext('2d');
-            var scoreChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Kỳ 1', 'Kỳ 2', 'Kỳ 3', 'Kỳ 4'],
-                    datasets: [
-                        {
-                            label: 'Điểm của bạn',
-                            data: [8, 7, 6, 7],
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
+                    // Initialize the bar chart
+                    var ctx = document.getElementById('scoreChart').getContext('2d');
+                    var scoreChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Team Work', 'Finish Word', 'Communication'],
+                            datasets: [
+                                {
+                                    label: 'Điểm của bạn',
+                                    data: [8, 7, 6, 7],
+                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
                         }
-                    ]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+                    });
         </script>
         <script>
             // Khi nhấp vào bong bóng chat, mở/đóng cửa sổ chat
@@ -220,15 +245,27 @@
                 });
             });
 
+            // Đồng bộ thông tin từ trang staff_dashboard
+            document.addEventListener('DOMContentLoaded', function () {
+                // Hiển thị các tin nhắn đã lưu trữ
+                var chatContent = document.getElementById('chatContent');
+                var storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+                storedMessages.forEach(function (message) {
+                    var messageElement = document.createElement('p');
+                    messageElement.textContent = message;
+                    chatContent.appendChild(messageElement);
+                });
+            });
+
         </script>
         <script>
-        function showReminderDetails() {
-            document.getElementById('reminderDetails').style.display = 'block';
-        }
+            function showReminderDetails() {
+                document.getElementById('reminderDetails').style.display = 'block';
+            }
 
-        function closeReminderDetails() {
-            document.getElementById('reminderDetails').style.display = 'none';
-        }
+            function closeReminderDetails() {
+                document.getElementById('reminderDetails').style.display = 'none';
+            }
 
         </script>
     </body>

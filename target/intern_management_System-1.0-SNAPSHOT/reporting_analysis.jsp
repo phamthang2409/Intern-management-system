@@ -4,7 +4,13 @@ Created on : Aug 28, 2024, 10:42:44 AM
 Author     : PC
 --%>
 
+<%@page import="Model.Profile"%>
+<%@page import="Model.User"%>
+<%@page import="Model.PerformanceTracking"%>
+<%@page import="DAO.ProfileDao"%>
+<%@page import="DAO.UserDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,73 +28,55 @@ Author     : PC
                     <li><a href="adminDashBoard"><button>Trang Chủ</button></a></li>
                     <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
                 </ul>
-                
+
             </nav>
-            
+
         </header>
-            <main>
-                <h2>Báo cáo Hiệu suất Thực tập sinh</h2>
-                <table id="reportingTable">
-                    <thead>
+        <main>
+            <h2>Báo cáo Hiệu suất Thực tập sinh</h2>
+            <table id="reportingTable">
+                <thead>
+                    <tr>
+                        <th>Tên Thực tập sinh</th>
+                        <th>Số buổi vắng</th>
+                        <th>Kỹ năng</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%!
+                        String nameIntern;
+                        UserDao userDao = new UserDao();
+                        ProfileDao profileDao = new ProfileDao();
+                        int InternID;
+                    %>
+
+                    <c:forEach items="${requestScope.listPerformanceTracking}" var="i">
+                        <%
+                            PerformanceTracking performanceTracking = (PerformanceTracking) pageContext.getAttribute("i");
+                            User user = userDao.checkUserName(performanceTracking.getInternID());
+                            if (user != null) {
+                                InternID = user.getProfileID();
+                                Profile profileIntern = profileDao.findByID(InternID);
+                                nameIntern = profileIntern.getProfileFirstName() + " " + profileIntern.getProfileLastName();
+                            }
+                        %>
                         <tr>
-                            <th>Tên Thực tập sinh</th>
-                            <th>Số buổi vắng</th>
-                            <th>Kỹ năng</th>
-                            <th>Điểm</th>
+                            <td><%= nameIntern%></td>
+                            <td>${i.getAbsentSession()}</td>
+                            <td>${i.getSkillName()}</td>
+                            <td>${i.getSkillScore()}</td>              
                         </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Hiệu suất của thực tập sinh sẽ được thêm tại đây -->
-                    </tbody>
-                </table>
-            </main>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Lấy dữ liệu từ Local Storage
-                    let performanceData = JSON.parse(localStorage.getItem('performanceData')) || [];
-
-                    // Hàm hiển thị dữ liệu báo cáo hiệu suất thực tập sinh
-                    function displayPerformanceReport() {
-                        const reportingTableBody = document.querySelector('#reportingTable tbody');
-                        reportingTableBody.innerHTML = ''; // Xóa dữ liệu cũ
-
-                        performanceData.forEach(performance => {
-                            let row = document.createElement('tr');
-
-                            let internNameCell = document.createElement('td');
-                            internNameCell.textContent = performance.internName;
-                            row.appendChild(internNameCell);
-
-                            let absentSessionsCell = document.createElement('td');
-                            absentSessionsCell.textContent = performance.absentSessions;
-                            row.appendChild(absentSessionsCell);
-
-                            let skillNameCell = document.createElement('td');
-                            skillNameCell.textContent = performance.skillName;
-                            row.appendChild(skillNameCell);
-
-                            let skillScoreCell = document.createElement('td');
-                            skillScoreCell.textContent = performance.skillScore;
-                            row.appendChild(skillScoreCell);
-
-                            reportingTableBody.appendChild(row);
-                        });
-                    }
-
-                    // Hiển thị báo cáo khi trang được tải
-                    displayPerformanceReport();
-                });
-                syncNameInput('internName'); // ID của ô nhập liệu tên thực tập sinh
-                autoFillName('profileName'); // ID của phần tử hiển thị tên thực tập sinh
-            </script>
-
-            <script>
-                function doClick() {
-                    if (confirm("Are you want to exit? ")) {
-                        window.location = "resetSession";
-                    }
+                    </c:forEach>
+                </tbody>
+            </table>
+        </main>
+        <script>
+            function doClick() {
+                if (confirm("Are you want to exit? ")) {
+                    window.location = "resetSession";
                 }
-            </script>
+            }
+        </script>
     </body>
 </html>

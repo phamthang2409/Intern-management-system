@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +23,7 @@
                     <li><a href="staffDashBoard"><button>Trang Chủ</button></a></li>
                 </ul>
             </nav>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
 
         <main>
@@ -32,12 +32,11 @@
                 <c:if test="${requestScope.msg != null}">
                     <h3 style="color: red">${requestScope.msg}</h3>
                 </c:if>
-
+                <c:if test="${requestScope.msg2 != null}">
+                    <h3 style="color: red">${requestScope.msg}</h3>
+                </c:if>
                 <label for="candidateName">Mã số thực tập sinh:</label>
                 <input type="text" id="candidateID" name="candidateID" required><br><br>
-
-                <!--                <label for="candidateName">Tên Thực tập sinh:</label>
-                                <input type="text" id="candidateName" name="candidateName" required><br><br>-->
 
                 <label for="startDate">Ngày phỏng vấn:</label>
                 <input type="date" id="startDate" name="startDate" required><br><br>
@@ -72,7 +71,7 @@
                             <td>${i.getStartDate()}</td>
                             <td>${i.getSessionStartTime()}</td>
                             <td>${i.getLocation()}</td>
-                            <td><button name="delete" onclick="doDelete(${i.getCandidateID()})">Xóa</button></td>
+                            <td><button onclick="doDelete(${i.getID()})">Xóa</button></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -83,6 +82,11 @@
         function doDelete(id) {
             if (confirm("Are you want to delete")) {
                 window.location = "delete?id=" + id + "&name=interviewScheduling";
+            }
+        }
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
             }
         }
     </script>

@@ -23,7 +23,7 @@
                     <li><a href="mentorDashBoard"><button>Trang chủ</button></a></li>
                 </ul>
             </nav>
-            <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
+            <button id="logoutButton" onclick="doClick()">Đăng Xuất</button>
         </header>
         <main>
             <h2>Báo cáo tiến độ hằng ngày của Thực tập sinh</h2>
@@ -84,6 +84,11 @@
         function doDelete(id) {
             if (confirm("Are you want to delete")) {
                 window.location = "delete?id=" + id + "&name=dailyProgress";
+            }
+        }
+        function doClick() {
+            if (confirm("Are you want to exit? ")) {
+                window.location = "resetSession";
             }
         }
     </script>

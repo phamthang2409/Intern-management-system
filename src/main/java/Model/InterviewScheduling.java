@@ -12,6 +12,7 @@ import java.sql.Time;
  * @author PC
  */
 public class InterviewScheduling {
+    private int ID;
     private String candidateID;
     private String candidateName;
     private Date startDate;
@@ -22,6 +23,16 @@ public class InterviewScheduling {
     public InterviewScheduling() {
     }
 
+    public InterviewScheduling(int ID, String candidateID, String candidateName, Date startDate, Time sessionStartTime, String Location, int staffID) {
+        this.ID = ID;
+        this.candidateID = candidateID;
+        this.candidateName = candidateName;
+        this.startDate = startDate;
+        this.sessionStartTime = sessionStartTime;
+        this.Location = Location;
+        this.staffID = staffID;
+    }
+
     public InterviewScheduling(String candidateID, String candidateName, Date startDate, Time sessionStartTime, String Location, int staffID) {
         this.candidateID = candidateID;
         this.candidateName = candidateName;
@@ -30,6 +41,16 @@ public class InterviewScheduling {
         this.Location = Location;
         this.staffID = staffID;
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    
 
     public int getStaffID() {
         return staffID;
