@@ -139,7 +139,6 @@
                 <button onclick="closeReminderDetails()">Đóng</button>
             </div>
 
-
             <!-- Biểu đồ -->
             <section class="chart">
                 <canvas id="scoreChart"></canvas>
@@ -266,7 +265,6 @@
             function closeReminderDetails() {
                 document.getElementById('reminderDetails').style.display = 'none';
             }
-
         </script>
     </body>
 </html>

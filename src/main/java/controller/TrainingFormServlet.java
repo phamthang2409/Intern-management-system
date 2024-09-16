@@ -97,19 +97,24 @@ public class TrainingFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String profileID_raw = request.getParameter("profileID");
+        String trainerID_raw = request.getParameter("trainerID");
         String programName = request.getParameter("programName");
         String startDate_raw = request.getParameter("startDate");
         String endDate_raw = request.getParameter("endDate");
         String sessionStartTime_raw = request.getParameter("sessionStartTime");
         String sessionEndTime_raw = request.getParameter("sessionEndTime");
-        String trainerName = request.getParameter("trainerName");
+
         Date startDate, endDate;
         Time sessionStartTime, sessionEndTime;
         int profileID;
+        String trainerName;
         TrainingFormDao trainingFormDao = new TrainingFormDao();
+        ProfileDao profileDao = new ProfileDao();
+        
         try {
-            profileID = Integer.parseInt(profileID_raw);
+            profileID = Integer.parseInt(trainerID_raw);
+            Profile profileTrainer = profileDao.findByID(profileID);
+            trainerName = profileTrainer.getProfileFirstName() + " " + profileTrainer.getProfileLastName();
             startDate = Date.valueOf(startDate_raw);
             endDate = Date.valueOf(endDate_raw);
             sessionStartTime = Time.valueOf(sessionStartTime_raw + ":00");

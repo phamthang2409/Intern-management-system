@@ -19,6 +19,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>BÁO</word>
         <word>bắt</word>
         <word>chưa</word>
+        <word>cuộc</word>
         <word>cấp</word>
         <word>dẫn</word>
         <word>hướng</word>

@@ -43,10 +43,9 @@
                 <input type="time" id="sessionEndTime" name="sessionEndTime" pattern="[0-9]{2}:[0-9]{2}" required><br><br>
 
                 <label for="trainerName">Tên Người Phụ trách:</label>
-                <select type="text" id="trainerName" name="trainerName" required>
+                <select type="text" id="trainerID" name="trainerID" required>
                     <c:forEach items="${requestScope.listProfileStaff}" var="i">
-                        <option value="${i.getProfileFirstName()} ${i.getProfileLastName()}">${i.getProfileFirstName()} ${i.getProfileLastName()}</option>
-                        <input type="hidden" name="profileID" value="${i.getID()}"/>
+                        <option value="${i.getID()}">${i.getProfileFirstName()} ${i.getProfileLastName()}</option>
                     </c:forEach>
                 </select>
                 <br><br>
