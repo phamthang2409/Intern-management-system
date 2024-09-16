@@ -29,7 +29,7 @@
 
         <main>
             <h2>Thêm Chiến dịch Tuyển dụng</h2>
-            <form id="recruitmentForm">
+            <form id="recruitmentForm" action="recruitment" method="post">
                 <table class="bordered-table">
                     <thead>
                         <tr>

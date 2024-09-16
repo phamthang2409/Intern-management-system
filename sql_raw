@@ -100,10 +100,3 @@ Create table PerformanceTracking(
     SkillScore NVARCHAR(100) NOT NULL,
     FOREIGN KEY (InternID) references User(userName)
 );
-
-Create table Chat(
-    ID INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1,
-    Chat nvarchar(256) NOT NULL,
-    InternID nvarchar(50),
-    StaffID nvarchar(50)
-);
