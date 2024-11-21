@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|c:\\users\\tran ngoc phuoc\\source\\repos\\demoudpchatgui\\demoudpchatgui\\frmserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|solutionrelative:demoudpchatgui\\frmserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\demoudpchatgui\\frmserver.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|solutionrelative:demoudpchatgui\\frmserver.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\demoudpchatgui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|solutionrelative:demoudpchatgui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\demoudpchatgui\\frmclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15F0033-CD24-4524-9EAE-FB7835AC7905}|DemoUDPChatGUI\\DemoUDPChatGUI.csproj|solutionrelative:demoudpchatgui\\frmclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmServer.cs",
+              "DocumentMoniker": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmServer.cs",
+              "RelativeDocumentMoniker": "DemoUDPChatGUI\\FrmServer.cs",
+              "ToolTip": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmServer.cs",
+              "RelativeToolTip": "DemoUDPChatGUI\\FrmServer.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAhwKUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T15:56:21.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmServer.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmServer.Designer.cs",
+              "RelativeDocumentMoniker": "DemoUDPChatGUI\\FrmServer.Designer.cs",
+              "ToolTip": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmServer.Designer.cs",
+              "RelativeToolTip": "DemoUDPChatGUI\\FrmServer.Designer.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAzwGoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T15:25:40.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\Form1.cs",
+              "RelativeDocumentMoniker": "DemoUDPChatGUI\\Form1.cs",
+              "ToolTip": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\Form1.cs",
+              "RelativeToolTip": "DemoUDPChatGUI\\Form1.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T14:35:39.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmClient.cs",
+              "DocumentMoniker": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmClient.cs",
+              "RelativeDocumentMoniker": "DemoUDPChatGUI\\FrmClient.cs",
+              "ToolTip": "C:\\Users\\Tran Ngoc Phuoc\\source\\repos\\DemoUDPChatGUI\\DemoUDPChatGUI\\FrmClient.cs",
+              "RelativeToolTip": "DemoUDPChatGUI\\FrmClient.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAzwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T14:28:15.605Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
