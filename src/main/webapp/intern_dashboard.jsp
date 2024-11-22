@@ -17,8 +17,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bảng điều khiển Thực tập sinh</title>
         <link rel="stylesheet" href="css/intern_dashboard.css">
+        <link rel="stylesheet" href="css/chat.css">
         <link rel="stylesheet" href="css/style.css">
-        <script src="script.js"></script>
     </head>
     <style>
         #username #user{
@@ -37,6 +37,16 @@
             top: 10px; /* Cách cạnh trên 10px */
             left: 10px; /* Cách cạnh phải 10px */
         }
+        
+        #reminderDetails #btn-close{
+            width: 75px;
+            height: 30px;
+            background-color: #f44336;
+            cursor: pointer;
+            margin-top: 25px;
+            color: #fff;
+        }
+        
     </style>
     <body>
         <header>
@@ -45,7 +55,7 @@
             <li id="username">
                 <c:set var="t" value="${sessionScope.internProfile}"/>
                 <a id="user" href="#" role="button" >
-                    Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()},
+                    Xin chào ${t.getProfileFirstName()} ${t.getProfileLastName()}
                 </a>                              
             </li>
             <a href="login"><button id="logoutButton"> Đăng Xuất</button></a>
@@ -132,11 +142,11 @@
                                 <td> Bạn sẽ có cuộc phỏng vấn với <%= staffName %> </td>
                                 <td>${i.getStartDate()} ${i.getSessionStartTime()}</td>
                             </tr>
-                            <%= cnt++ %>
+                            <% cnt=cnt+1; %>
                         </c:forEach>
                     </tbody>
                 </table>
-                <button onclick="closeReminderDetails()">Đóng</button>
+                <button onclick="closeReminderDetails()" id="btn-close">Đóng</button>
             </div>
 
             <!-- Biểu đồ -->
@@ -144,22 +154,24 @@
                 <canvas id="scoreChart"></canvas>
             </section>
             <!-- Bong bóng chat -->
-            <div class="chat-bubble" id="chatBubble">
-                <i class="fas fa-comment">💬</i>
+            <div class="chat-bubble" id="chatBubble"> 
+                <div class="chat-header" onclick="toggleChat()">
+                    <i class="fas fa-comment"">💬</i>
+                </div>
             </div>
 
             <!-- Cửa sổ chat -->
-            <div class="chat-window" id="chatWindow">
-                <header>
-                    <h3>Nhắn tin với chúng tôi</h3>
-                </header>
-                <div class="chat-content" id="chatContent">
-                    <p>Xin chào! Bạn cần hỗ trợ gì?</p>
+            <!-- Chat -->
+            <div id="chat-widget">
+                <div class="chat-body">
+                    <div id="chat-messages"></div>
                 </div>
-                <!-- Khung nhập liệu chat -->
-                <textarea id="chatInput" placeholder="Nhập tin nhắn..."></textarea>
-                <button class="send-btn" id="sendButton">Gửi</button>
-            </div>
+                <div class="chat-footer">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Type your message..." required>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -189,7 +201,7 @@
                         }
                     });
         </script>
-        <script>
+<!--        <script>
             // Khi nhấp vào bong bóng chat, mở/đóng cửa sổ chat
             document.getElementById('chatBubble').addEventListener('click', function () {
                 var chatWindow = document.getElementById('chatWindow');
@@ -256,7 +268,7 @@
                 });
             });
 
-        </script>
+        </script>-->
         <script>
             function showReminderDetails() {
                 document.getElementById('reminderDetails').style.display = 'block';
@@ -265,6 +277,81 @@
             function closeReminderDetails() {
                 document.getElementById('reminderDetails').style.display = 'none';
             }
+        </script>
+        <script>
+            
+            document.addEventListener("DOMContentLoaded", () => {
+                const chatWidget = document.getElementById("chat-widget");
+                const chatMessages = document.getElementById("chat-messages");
+                const chatForm = document.getElementById("chat-form");
+                const chatInput = document.getElementById("chat-input");
+
+                // Toggle chat visibility
+                window.toggleChat = () => {
+                    chatWidget.classList.toggle("open");
+                };
+
+                // Kết nối WebSocket
+                let socket = new WebSocket("ws://localhost:12345");
+                let messageQueue = [];
+                socket.onopen = () => {
+                    console.log("WebSocket connection established.");
+                    while (messageQueue.length > 0) {
+                        socket.send(messageQueue.shift());
+                    }
+                };
+                
+                chatForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+                    const message = chatInput.value.trim();
+                    if (!message) return;
+
+                    if (socket.readyState === WebSocket.OPEN) {
+                        socket.send(message);
+                    } else {
+                        console.log("WebSocket not ready, queuing message.");
+                        messageQueue.push(message);
+                    }
+
+                    chatInput.value = "";
+                });
+
+                socket.onerror = (error) => {
+                    console.error("WebSocket error: ", error);
+                };
+
+                socket.onclose = () => {
+                    console.log("WebSocket connection closed.");
+                };
+
+//                socket.onmessage = (event) => {
+//                    const message = event.data;
+//                    const messageElement = document.createElement("div");
+//                    messageElement.textContent = message;
+//
+//                    // Phân biệt user và admin
+//                    if (message.startsWith("User")) {
+//                        messageElement.classList.add("message", "User");
+//                    } else {
+//                        messageElement.classList.add("message", "Admin");
+//                    }
+//
+//                    chatMessages.appendChild(messageElement);
+//                    chatMessages.scrollTop = chatMessages.scrollHeight; // Tự động cuộn xuống
+//                };
+//
+//                // Gửi tin nhắn
+//                chatForm.addEventListener("submit", (e) => {
+//                    e.preventDefault();
+//                    const message = chatInput.value.trim();
+//                    if (message) {
+//                        socket.send(message);
+//                        chatInput.value = "";
+//                    }
+//                });
+            });
+
         </script>
     </body>
 </html>

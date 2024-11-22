@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bảng điều khiển Mentor</title>
         <link rel="stylesheet" href="css/mentor_dashboard.css">
+        <link rel="stylesheet" href="css/chat.css">
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
@@ -32,6 +33,27 @@
                 position: absolute; /* Định vị tuyệt đối */
                 top: 10px; /* Cách cạnh trên 10px */
                 left: 10px; /* Cách cạnh phải 10px */
+            }
+            /*Chat*/
+            .chat-bubble {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #28a745;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                cursor: pointer;
+                animation: bounce 2s infinite;
+            }
+            .chat-bubble i {
+                font-size: 30px; /* Điều chỉnh kích thước icon */
+                margin-left: 5px;
             }
         </style>
         <header>
@@ -88,6 +110,26 @@
                         </c:if>
                     </tbody>
                 </table>
+                <!-- Bong bóng chat -->
+            <div class="chat-bubble" id="chatBubble"> 
+                <div class="chat-header" onclick="toggleChat()">
+                    <i class="fas fa-comment"">💬</i>
+                </div>
+            </div>
+
+            <!-- Cửa sổ chat -->
+            <!-- Chat -->
+            <div id="chat-widget">
+                <div class="chat-body">
+                    <div id="chat-messages"></div>
+                </div>
+                <div class="chat-footer">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Type your message..." required>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
             </section>
         </main>
     </body>
@@ -98,4 +140,50 @@
             }
         }
     </script>
+    <script>
+    let socket;
+    document.addEventListener("DOMContentLoaded", () => {
+        const chatBody = document.getElementById("chatBody");
+        const chatForm = document.getElementById("chatForm");
+        const messageInput = document.getElementById("messageInput");
+        // Toggle chat visibility
+        window.toggleChat() => {
+            chatWidget.classList.toggle("open");
+        };
+        // Kết nối tới server TCP qua WebSocket
+        socket = new WebSocket(" localhost:12345");
+
+        socket.onopen = () => {
+            console.log("Connected to chat server");
+            socket.send("Admin"); // Đăng ký tên người dùng
+        };
+
+        socket.onmessage = (event) => {
+            const message = event.data;
+            const messageElement = document.createElement("div");
+
+            // Phân biệt user và admin
+            if (message.startsWith("User:")) {
+                messageElement.classList.add("message", "User");
+            } else {
+                messageElement.classList.add("message", "Admin");
+            }
+
+            messageElement.textContent = message;
+            chatBody.appendChild(messageElement);
+            chatBody.scrollTop = chatBody.scrollHeight; // Tự động cuộn xuống
+        };
+
+        // Xử lý gửi tin nhắn
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (message) {
+                socket.send(message);
+                messageInput.value = "";
+            }
+        });
+    });
+
+        </script>
 </html>

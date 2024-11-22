@@ -32,6 +32,14 @@
         <servlet-name>HandleChat</servlet-name>
         <servlet-class>controller.HandleChat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProccessForgotPassword</servlet-name>
+        <servlet-class>controller.ProccessForgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChatServlet</servlet-name>
+        <servlet-class>controller.ChatServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HandleDeleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -67,6 +75,14 @@
     <servlet-mapping>
         <servlet-name>HandleChat</servlet-name>
         <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProccessForgotPassword</servlet-name>
+        <url-pattern>/proccessForgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChatServlet</servlet-name>
+        <url-pattern>/chatMessage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -136,6 +136,7 @@ textarea {
 }
 .chat-bubble i {
     font-size: 30px; /* Điều chỉnh kích thước icon */
+    margin-left: 5px;
 }
 /* Styling the announcement block */
 #reminderDetails {
@@ -157,28 +158,71 @@ h3 {
 }
 
 /* Table Styling */
+/* Tổng thể bảng */
 table {
-    border-collapse: collapse;
     width: 100%;
-    background-color: #f5f5f5; /* Smoke gray background for table */
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 1); /* Adding shadow to the table */
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-th, td {
-    border: 1px solid #ddd; /* Light grey borders */
-    padding: 8px;
-    text-align: center;
-}
-
-th {
-    background-color: #0046b3; /* Blue background for table headers */
-    color: white; /* White text for headers */
+/* Phần đầu bảng */
+table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 12px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
-td {
-    background-color: #f5f5f5; /* Smoke gray background for table data */
+/* Các dòng dữ liệu */
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
 }
+
+/* Dòng đầu tiên và tiêu đề */
+table tr:first-child th {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Dòng cuối cùng */
+table tr:last-child td {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Hiệu ứng hover */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút đóng */
+button {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e04646;
+}
+
 
 /* Styling the announcement blocks with a shadow */
 .announcement-block {

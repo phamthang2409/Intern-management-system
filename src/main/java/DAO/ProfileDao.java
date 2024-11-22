@@ -95,6 +95,34 @@ public class ProfileDao extends DBContext{
         return null;
     }
     
+    public Profile findByEmail(String email) {
+        Connection conn = DBContext();
+        String sql = "Select * from Profile where profileEmail = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                Profile internProfile = new Profile(rs.getInt("ID"),rs.getString("profileFirstName"),
+                        rs.getString("profileLastName"),
+                        rs.getDate("profileDOB"),
+                        rs.getString("profileEmail"), rs.getString("trainingProgram"), rs.getString("profilePhone"),
+                        rs.getString("profileEducation"),
+                        rs.getString("profilePosition"), rs.getString("profileSalary"), rs.getInt("status"));
+                return internProfile;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }finally{
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
     public Profile findInternProgram(String profilePosition) {
         Connection conn = DBContext();
         String sql = "Select * from Profile where profilePosition = ?";

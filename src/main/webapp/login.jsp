@@ -13,6 +13,15 @@
         <title>Login Page</title>
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/style.css">
+        <style>
+            #formLogin a{
+                margin-left: 280px;
+                margin-top: 25px;
+                margin-bottom: 25px;
+                text-decoration: none;
+                
+            }
+        </style>
     </head>
     <body>
         <div class="header">
@@ -54,9 +63,10 @@
                 <c:if test="${requestScope.account == null}">
                     <h3 style="color: red">${requestScope.msg}</h3>
                 </c:if>
-                <form action="login" method="post">
+                <form action="login" method="post" id="formLogin">
                     <input type="text" name="userName" placeholder="Nhập mã sinh viên" required>
                     <input type="password" name="passWord" placeholder="Nhập mật khẩu" required>
+                    <a href="./forgotPassword.jsp">Quên mật khẩu</a>
                     <button type="submit">Đăng Nhập</button>
                 </form>
             </div>
