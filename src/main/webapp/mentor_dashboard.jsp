@@ -82,7 +82,7 @@
                 <table id="mentorTable" class="table-row">
                     <thead>
                         <tr>
-                            <th>Tên Thực tập sinh</th>
+                            <th>Mã Số Thực tập sinh</th>
                             <th>Ngày</th>
                             <th>Mô tả Tiến độ</th>
                             <th>Đánh giá Kỹ năng</th>
@@ -92,7 +92,7 @@
                         <c:if test="${requestScope.listDailyProgress != null}">
                             <c:forEach items="${requestScope.listDailyProgress}" var="i">
                                 <tr>
-                                    <td>Tên Thực tập sinh</td>
+                                    <td>${i.getInternID()}</td>
                                     <td>${i.getDateReport()}</td>
                                     <td>${i.getDescription()}</td>
                                     <c:if test="${i.getStatus() == 0}">
@@ -110,26 +110,6 @@
                         </c:if>
                     </tbody>
                 </table>
-                <!-- Bong bóng chat -->
-            <div class="chat-bubble" id="chatBubble"> 
-                <div class="chat-header" onclick="toggleChat()">
-                    <i class="fas fa-comment"">💬</i>
-                </div>
-            </div>
-
-            <!-- Cửa sổ chat -->
-            <!-- Chat -->
-            <div id="chat-widget">
-                <div class="chat-body">
-                    <div id="chat-messages"></div>
-                </div>
-                <div class="chat-footer">
-                    <form id="chat-form">
-                        <input type="text" id="chat-input" placeholder="Type your message..." required>
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
             </section>
         </main>
     </body>

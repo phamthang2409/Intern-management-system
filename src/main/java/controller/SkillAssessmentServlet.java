@@ -80,7 +80,6 @@ public class SkillAssessmentServlet extends HttpServlet {
         String teamworkScore = request.getParameter("teamworkScore");
         String finishWorkScore = request.getParameter("finishWorkScore");
         String communicationScore = request.getParameter("communicationScore");
-        System.out.println(internID);
         SkillAssessmentDao skillAssessmentDao = new SkillAssessmentDao();
         UserDao userDao = new UserDao();
         DailyProgressDao dailyProgressDao = new DailyProgressDao();

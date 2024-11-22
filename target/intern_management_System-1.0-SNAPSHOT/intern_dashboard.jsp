@@ -154,24 +154,23 @@
                 <canvas id="scoreChart"></canvas>
             </section>
             <!-- Bong bóng chat -->
-            <div class="chat-bubble" id="chatBubble"> 
-                <div class="chat-header" onclick="toggleChat()">
-                    <i class="fas fa-comment"">💬</i>
-                </div>
+            <!-- Bong bóng chat -->
+            <div class="chat-bubble" id="chatBubble">
+                <i class="fas fa-comment">💬</i>
             </div>
 
             <!-- Cửa sổ chat -->
-            <!-- Chat -->
-            <div id="chat-widget">
-                <div class="chat-body">
-                    <div id="chat-messages"></div>
+            <div class="chat-window" id="chatWindow">
+                <header>
+                    <h3>Nhắn tin với chúng tôi</h3>
+                </header>
+                <div class="chat-content" id="chatContent">
+                    <p>Xin chào! Bạn cần hỗ trợ gì?</p>
                 </div>
-                <div class="chat-footer">
-                    <form id="chat-form">
-                        <input type="text" id="chat-input" placeholder="Type your message..." required>
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
+                <!-- Khung nhập liệu chat -->
+                <textarea id="chatInput" placeholder="Nhập tin nhắn..."></textarea>
+                <button class="send-btn" id="sendButton">Gửi</button>
+            </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -201,7 +200,7 @@
                         }
                     });
         </script>
-<!--        <script>
+        <script>
             // Khi nhấp vào bong bóng chat, mở/đóng cửa sổ chat
             document.getElementById('chatBubble').addEventListener('click', function () {
                 var chatWindow = document.getElementById('chatWindow');
@@ -268,7 +267,7 @@
                 });
             });
 
-        </script>-->
+        </script>
         <script>
             function showReminderDetails() {
                 document.getElementById('reminderDetails').style.display = 'block';
@@ -279,51 +278,56 @@
             }
         </script>
         <script>
-            
-            document.addEventListener("DOMContentLoaded", () => {
+
+            wss.on('connection', (ws) => {
+                console.log('Client connected');
+                ws.on('message', (message) => {
+                    console.log('Received:', message);
+                    ws.send(`You said: ${message}`);
+                });
+            });
+            console.log('WebSocket server is running on ws://localhost:12345');
+
                 const chatWidget = document.getElementById("chat-widget");
                 const chatMessages = document.getElementById("chat-messages");
                 const chatForm = document.getElementById("chat-form");
                 const chatInput = document.getElementById("chat-input");
+
+                // Khởi tạo WebSocket một lần
+                const socket = new WebSocket('ws://localhost:12345');
+
+                socket.onopen = () => {
+                    console.log('Connected to the server');
+                };
+
+                socket.onmessage = (event) => {
+                    console.log('Message from server:', event.data);
+                    // Hiển thị tin nhắn trên giao diện
+                    const message = document.createElement('p');
+                    message.textContent = event.data;
+                    chatMessages.appendChild(message);
+                };
+
+                socket.onclose = () => {
+                    console.log('Disconnected from the server');
+                };
 
                 // Toggle chat visibility
                 window.toggleChat = () => {
                     chatWidget.classList.toggle("open");
                 };
 
-                // Kết nối WebSocket
-                let socket = new WebSocket("ws://localhost:12345");
-                let messageQueue = [];
-                socket.onopen = () => {
-                    console.log("WebSocket connection established.");
-                    while (messageQueue.length > 0) {
-                        socket.send(messageQueue.shift());
-                    }
-                };
-                
-                chatForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-
+                // Gửi tin nhắn
+                function sendMessage() {
                     const message = chatInput.value.trim();
-                    if (!message) return;
-
                     if (socket.readyState === WebSocket.OPEN) {
                         socket.send(message);
+                        chatInput.value = ""; // Xóa ô input sau khi gửi
                     } else {
-                        console.log("WebSocket not ready, queuing message.");
-                        messageQueue.push(message);
+                        console.log("WebSocket is not ready to send messages.");
                     }
+                }
 
-                    chatInput.value = "";
-                });
-
-                socket.onerror = (error) => {
-                    console.error("WebSocket error: ", error);
-                };
-
-                socket.onclose = () => {
-                    console.log("WebSocket connection closed.");
-                };
 
 //                socket.onmessage = (event) => {
 //                    const message = event.data;
@@ -350,7 +354,6 @@
 //                        chatInput.value = "";
 //                    }
 //                });
-            });
 
         </script>
     </body>
