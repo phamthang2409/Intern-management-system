@@ -1,0 +1,97 @@
+
+/* General layout settings */
+.container {
+    background-color: #6ac4d0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Main Form Styles */
+main {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 0 auto;
+}
+
+main h1 {
+    text-align: center;
+    color: #2979ff;
+    margin-bottom: 20px;
+}
+
+main label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+main input[type="text"],
+main input[type="email"],
+main input[type="tel"],
+main input[type="date"],
+main select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+main input[type="text"]::placeholder,
+main input[type="email"]::placeholder,
+main input[type="tel"]::placeholder,
+main input[type="date"]::placeholder {
+    color: #999;
+}
+
+main button {
+    background-color: #43a047;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+main button:hover {
+    background-color: #388e3c;
+}
+/* Align skills and button in a row */
+.skill-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.skill-row input[type="text"] {
+    width: 40%;
+    margin-right: 10px;
+}
+
+.skill-row select {
+    width: 20%;
+    margin-right: 10px;
+}
+
+.skill-row button {
+    padding: 10px 20px;
+    background-color: #a45112;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.skill-row button:hover {
+    background-color: #883c0e;
+}
+

@@ -1,0 +1,57 @@
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Chia thành 2 cột theo tỷ lệ */
+    grid-template-rows: auto auto;  /* 2 hàng: profile + notifications và chart */
+    grid-gap: 1.5vw; /* Tạo khoảng cách giữa các phần theo tỷ lệ viewport */
+    padding: 2vw; /* Cách viền của main với các cạnh */
+}
+
+.profile-section {
+    background-color: white;
+    padding: 1.5vw; /* Điều chỉnh padding theo viewport */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 1; /* Đặt ở cột đầu tiên */
+    grid-row: 1; /* Đặt ở hàng đầu tiên */
+    border: 1px solid #ccc;
+    font-size: 1.2vw; /* Điều chỉnh kích thước chữ */
+}
+
+.notifications {
+    background-color: white;
+    padding: 1vw; /* Điều chỉnh padding theo viewport */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 2; /* Đặt ở cột thứ hai */
+    grid-row: 1; /* Đặt ở hàng đầu tiên */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    border: 1px solid #ccc;
+    font-size: 1.2vw; /* Điều chỉnh kích thước chữ */
+}
+
+.chart {
+    background-color: white;
+    padding: 1vw; /* Giảm padding để làm nhỏ lại */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 1 / span 2; /* Giữ nguyên chiếm 2 cột */
+    grid-row: 2; /* Giữ nguyên hàng thứ hai */
+    border: 1px solid #ccc;
+    margin-top: 1vw; /* Giảm margin để làm nhỏ hơn */
+}
+
+canvas {
+    max-width: 100%; /* Giữ nguyên chiều ngang */
+    margin-top: 10px; /* Giảm khoảng cách margin-top */
+    height: auto;
+}
+
+
+.reminders, .schedule, .profile-info {
+    padding: 1vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}

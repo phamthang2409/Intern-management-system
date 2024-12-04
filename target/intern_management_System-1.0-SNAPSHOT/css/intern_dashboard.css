@@ -1,0 +1,256 @@
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Chia thành 2 cột theo tỷ lệ */
+    grid-template-rows: auto auto;  /* 2 hàng: profile + notifications và chart */
+    grid-gap: 1.5vw; /* Tạo khoảng cách giữa các phần theo tỷ lệ viewport */
+    padding: 2vw; /* Cách viền của main với các cạnh */
+}
+
+.profile-section {
+    background-color: white;
+    padding: 1.5vw; /* Điều chỉnh padding theo viewport */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 1; /* Đặt ở cột đầu tiên */
+    grid-row: 1; /* Đặt ở hàng đầu tiên */
+    border: 1px solid #ccc;
+    font-size: 1.2vw; /* Điều chỉnh kích thước chữ */
+}
+
+.notifications {
+    background-color: white;
+    padding: 1.5vw; /* Điều chỉnh padding theo viewport */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 2; /* Đặt ở cột thứ hai */
+    grid-row: 1; /* Đặt ở hàng đầu tiên */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    border: 1px solid #ccc;
+    font-size: 1.2vw; /* Điều chỉnh kích thước chữ */
+}
+
+.chart {
+    background-color: white;
+    padding: 1.5vw;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    grid-column: 1 / span 2; /* Chiếm cả 2 cột */
+    grid-row: 2; /* Đặt ở hàng thứ hai */
+    border: 1px solid #ccc;
+    margin-top: 1.5vw;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.reminders, .schedule, .profile-info {
+    padding: 1vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Bong bóng chat */
+.chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+/* Hiệu ứng nhảy lên nhảy xuống cho bong bóng chat */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Cửa sổ chat */
+.chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    display: none; /* Ẩn cửa sổ chat mặc định */
+    flex-direction: column;
+}
+
+.chat-window header {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.chat-content {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    resize: none;
+}
+
+.send-btn {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+}
+
+.send-btn:hover {
+    background-color: #218838;
+}
+.chat-bubble i {
+    font-size: 30px; /* Điều chỉnh kích thước icon */
+    margin-left: 5px;
+}
+/* Styling the announcement block */
+#reminderDetails {
+    display: none; /* Hidden by default */
+    border: 1px solid #000; /* Black border */
+    padding: 10px;
+    background-color: #f5f5f5; /* Smoke gray background */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling the headings */
+h3 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text color */
+    text-align: center;
+}
+
+/* Table Styling */
+/* Tổng thể bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Phần đầu bảng */
+table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Các dòng dữ liệu */
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+/* Dòng đầu tiên và tiêu đề */
+table tr:first-child th {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Dòng cuối cùng */
+table tr:last-child td {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Hiệu ứng hover */
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút đóng */
+button {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e04646;
+}
+
+
+/* Styling the announcement blocks with a shadow */
+.announcement-block {
+    border: 1px solid #ddd; /* Light border */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Styling for the month label */
+.month-label {
+    background-color: #0046b3; /* Blue background */
+    color: white; /* White text */
+    padding: 5px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for the 'new' text */
+.new-label {
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Link Styling */
+a {
+    color: red; /* Red text for links */
+    font-weight: bold;
+}

@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Chat Widget Styles */
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    visibility: hidden; /* Start hidden */
+    transform: scale(0);
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Chat Header */
+.chat-header {
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    width: 30px;
+    height: 50px;
+    background-color: #36a420;
+    border-radius: 90%;
+}
+
+/* Chat Body */
+.chat-body {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+#chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Chat Bubbles */
+.message {
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+}
+
+.message.admin {
+    align-self: flex-start;
+    background-color: #e9ecef;
+    color: #333;
+}
+
+/* Chat Footer */
+.chat-footer {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chat-footer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-footer button:hover {
+    background-color: #0056b3;
+}
+
+/* Chat Widget Open State */
+#chat-widget.open {
+    visibility: visible;
+    transform: scale(1);
+}

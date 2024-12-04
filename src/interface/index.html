@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="login-box">
+    <h3> CẤP TÀI KHOẢN </h3>
+    <form action="/registed" method="POST">
+        <input type="text" name="user_" placeholder="Nhập mã số" required>
+        <input type="password" name="password" placeholder="Nhập mật khẩu" required>
+        <input type="re_password" name="re_password" placeholder="Nhập lại mật khẩu" required>
+        <div class="login-role">
+            <label for="role">Quyền:</label>
+            <select name="role" id="role">
+                <option value="admin">Quản trị viên</option>
+                <option value="staff">Người hướng dẫn</option>
+                <option value="intern">Thực tập sinh</option>
+            </select>
+        </div>
+
+        <button type="submit">Đăng Ký</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\DemoUDPChatGUI.exe.config
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\DemoUDPChatGUI.exe
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\DemoUDPChatGUI.pdb
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.csproj.AssemblyReference.cache
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.Properties.Resources.resources
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.csproj.GenerateResource.cache
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.csproj.CoreCompileInputs.cache
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPC.0057A586.Up2Date
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.exe
+C:\Users\Tran Ngoc Phuoc\source\repos\DemoUDPChatGUI\DemoUDPChatGUI\obj\Debug\DemoUDPChatGUI.pdb

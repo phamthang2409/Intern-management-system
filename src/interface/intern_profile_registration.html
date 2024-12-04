@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Hồ Sơ Thực Tập Sinh</title>
+    <link rel="stylesheet" href="intern_profile_registrantion.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+<header>
+    <h1>Thêm Thực Tập Sinh</h1>
+    <nav>
+        <ul>
+            <ul>
+                <li><a href="admin_dashboard.html"><button>Trang Chủ</button></a></li>
+
+            </ul>
+    </nav>
+</header>
+<div class="container">
+    <h2>Thêm Hồ Sơ Thực Tập Sinh</h2>
+
+    <form id="internForm" onsubmit="return validateForm()">
+        <!-- Họ và Tên -->
+        <div class="form-group">
+            <label for="firstName">Họ:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Họ" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Tên:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Tên" required>
+        </div>
+
+        <!-- Ngày sinh -->
+        <div class="form-group">
+            <label for="dob">Ngày tháng năm sinh:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <!-- Số điện thoại -->
+        <div class="form-group">
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Số điện thoại" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+
+<!--        chuong trinh dao tao--><!-- Email -->
+        <div class="form-group">
+            <label for="program">chương trình đào tao:</label>
+            <input type="program" id="program" name="program" placeholder="chương trình đào tạo" required>
+        </div>
+
+
+        <!-- Trình độ học vấn -->
+        <div class="form-group">
+            <label for="education">Trình độ học vấn:</label>
+            <input id="education" name="education" placeholder="Trình độ học vấn" required>
+        </div>
+
+        <!-- Vị trí ứng tuyển -->
+        <div class="form-group">
+            <label for="position">Vị trí ứng tuyển:</label>
+            <input id="position" name="position" placeholder="Vị trí ứng tuyển" required>
+        </div>
+
+        <!-- Mức lương mong muốn -->
+        <div class="form-group">
+            <label for="salary">Mức lương mong muốn:</label>
+            <input id="salary" name="salary" placeholder="Mức lương mong muốn" required>
+        </div>
+
+        <!-- Nút Submit -->
+        <div class="form-group">
+            <button type="submit" class="submit-button">Thêm</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        const lastName = document.getElementById('lastName').value.trim();
+        const firstName = document.getElementById('firstName').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const position = document.getElementById('position').value.trim();
+        const salary = document.getElementById('salary').value.trim();
+
+        if (!lastName || !firstName || !phone || !email || !position || !salary) {
+            alert('Vui lòng điền đầy đủ tất cả các trường thông tin.');
+            return false;
+        }
+
+        const phonePattern = /^[0-9]{10,}$/;
+        if (!phonePattern.test(phone)) {
+            alert('Vui lòng nhập số điện thoại hợp lệ (ít nhất 10 chữ số).');
+            return false;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Vui lòng nhập địa chỉ email hợp lệ.');
+            return false;
+        }
+
+        // Lưu thông tin vào localStorage
+        let internProfiles = JSON.parse(localStorage.getItem('internProfiles')) || [];
+
+        // Kiểm tra trùng lặp email
+        let isDuplicateEmail = internProfiles.some(profile => profile.email === email);
+        if (isDuplicateEmail) {
+            alert('Email đã được đăng ký trước đó.');
+            return false;
+        }
+
+        // Thêm thông tin thực tập sinh vào localStorage
+        const profile = {
+            lastName,
+            firstName,
+            dob: document.getElementById('dob').value.trim(),
+            phone,
+            email,
+            education: document.getElementById('education').value,
+            position,
+            salary
+        };
+
+        internProfiles.push(profile);
+        localStorage.setItem('internProfiles', JSON.stringify(internProfiles));
+
+        // Chuyển hướng tới intern_dashboard.html sau khi lưu thông tin
+        window.location.href = 'intern_dashboard.html';
+        return false;
+    }
+
+    // Đồng bộ tên của thực tập sinh
+    syncNameInput('internName');
+    autoFillName('profileName');
+</script>
+
+</body>
+</html>
